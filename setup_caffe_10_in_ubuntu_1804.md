@@ -25,7 +25,10 @@ sudo apt install build-essential \
   libgoogle-glog-dev \
   protobuf-compiler \
   python-pip python-dev python-opencv
-sudo pip install --upgrade pip
+  
+mkdir ~/worskpace
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+python3 get-pip.py
 ```
 
 Move the cursor to the workspace, let's say `/home/YOURNAME/workspace`, clone `caffe` repo:
@@ -88,9 +91,9 @@ PYTHON_INCLUDE := /usr/local/include/python3.6m \
 Build Python API for `caffe`:
 
 ```
-make all -j [number_of_CPU_threads]
-make test [number_of_CPU_threads] && make runtest [number_of_CPU_threads]
-make pycaffe [number_of_CPU_threads]
+make all -j #threads
+make test #threads && make runtest -j #threads
+make pycaffe #threads
 ```
 
 From `~/workspace/caffe` directory, export path to test:
