@@ -78,8 +78,8 @@ CUDA_ARCH := -gencode arch=compute_30,code=sm_30 \
 
 ```
 PYTHON_LIBRARIES := boost_python3 python3.6m
-PYTHON_INCLUDE := /usr/include/python3.6m \
-                  /usr/lib/python3.6/dist-packages/numpy/core/include
+PYTHON_INCLUDE := /usr/local/include/python3.6m \
+                  /usr/local/lib/python3.6/site-packages/numpy/core/include
  ```
 
 
@@ -88,9 +88,9 @@ PYTHON_INCLUDE := /usr/include/python3.6m \
 Build Python API for `caffe`:
 
 ```
-make all
-make test && make runtest
-make pycaffe
+make all -j [number_of_CPU_threads]
+make test [number_of_CPU_threads] && make runtest [number_of_CPU_threads]
+make pycaffe [number_of_CPU_threads]
 ```
 
 From `~/workspace/caffe` directory, export path to test:
