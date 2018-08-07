@@ -27,6 +27,7 @@ sudo apt install build-essential \
   python-pip python-dev python-opencv
   
 mkdir ~/worskpace
+cd ~/workspace
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python3 get-pip.py
 ```
