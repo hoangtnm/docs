@@ -14,7 +14,7 @@ git checkout #Branch
 
 ### Install Bazel
 
-If bazel is not installed on your system, install it now by following ([these directions]https://bazel.build/versions/master/docs/install.html)
+If bazel is not installed on your system, install it now by following ([these directions](https://bazel.build/versions/master/docs/install.html))
 
 ### Install TensorFlow Python dependencies
 
@@ -27,14 +27,14 @@ To install TensorFlow, you must install the following packages:
 To install these packages for Python 3.n, issue the following command:
 
 '''
-sudo apt-get install python3-numpy [python3-dev python3-pip python3-wheel) - no need if building Python from source]
+sudo apt-get install python3-numpy [(python3-dev python3-pip python3-wheel) - no need if building Python from source]
 '''
 
 ### Optional: install TensorFlow for GPU prerequisites
 
 If you are building TensorFlow without GPU support, skip this section.
 The following NVIDIA hardware must be installed on your system:
-- GPU card with CUDA Compute Capability 3.0 or higher. See ([NVIDIA documentation]https://developer.nvidia.com/cuda-gpus) for a list of supported GPU cards.
+- GPU card with CUDA Compute Capability 3.0 or higher. See ([NVIDIA documentation](https://developer.nvidia.com/cuda-gpus)) for a list of supported GPU cards.
 The following NVIDIA software must be installed on your system:
 - `CUDA Toolkit`(>= 8.0). We recommend version 9.0. For details, see NVIDIA's documentation. Ensure that you append the relevant CUDA pathnames to the LD_LIBRARY_PATH environment variable as described in the NVIDIA documentation.
 - `GPU drivers` supporting your version of the CUDA Toolkit.
