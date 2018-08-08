@@ -9,7 +9,7 @@ To clone the latest TensorFlow repository, issue the following command:
 ```
 git clone https://github.com/tensorflow/tensorflow
 cd tensorflow
-git checkout #Branch
+git checkout r1.9
 ```
 
 ### Install Bazel
@@ -27,22 +27,28 @@ To install TensorFlow, you must install the following packages:
 To install these packages for Python 3.n, issue the following command:
 
 '''
-sudo apt-get install python3-numpy [(python3-dev python3-pip python3-wheel) - no need if building Python from source]
+sudo apt-get install python3-numpy python3-dev
 '''
 
-### Optional: install TensorFlow for GPU prerequisites
-
-If you are building TensorFlow without GPU support, skip this section.
-The following NVIDIA hardware must be installed on your system:
-- GPU card with CUDA Compute Capability 3.0 or higher. See ([NVIDIA documentation](https://developer.nvidia.com/cuda-gpus)) for a list of supported GPU cards.
-The following NVIDIA software must be installed on your system:
-- `CUDA Toolkit`(>= 8.0). We recommend version 9.0. For details, see NVIDIA's documentation. Ensure that you append the relevant CUDA pathnames to the LD_LIBRARY_PATH environment variable as described in the NVIDIA documentation.
-- `GPU drivers` supporting your version of the CUDA Toolkit.
-- `DNN SDK` (>= 6.0). We recommend version 7.0. For details, see NVIDIA's documentation.
-- `CUPTI` ships with the CUDA Toolkit, but you also need to append its path to the LD_LIBRARY_PATH environment variable:
+### CUDA Toolkit 9.2
 
 ```
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/extras/CUPTI/lib64
+wget https://developer.nvidia.com/compute/cuda/9.2/Prod2/local_installers/cuda_9.2.148_396.37_linux
+wget https://developer.nvidia.com/compute/cuda/9.2/Prod2/patches/1/cuda_9.2.148.1_linux
+chmod +x cuda_9.2.148*
+sudo ./cuda_9.2.148_396.37_linux.run
+sudo ./cuda_9.2.148.1_linux.run
+export PATH=/usr/local/cuda-9.2/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda-9.2/lib64:/usr/local/cuda/extras/CUPTI/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+```
+### cuDNN 7.2.1
+
+```
+wget https://developer.nvidia.com/compute/machine-learning/cudnn/secure/v7.2.1/prod/9.2_20180806/cudnn-9.2-linux-x64-v7.2.1.38
+tar -xzvf cudnn-9.2-linux-x64-v7.2.1.38.tgz
+sudo cp cuda/include/cudnn.h /usr/local/cuda/include
+sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
+sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
 ```
 
 ### Configure the installation
