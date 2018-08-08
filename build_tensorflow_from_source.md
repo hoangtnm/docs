@@ -7,7 +7,9 @@ Start the process of building TensorFlow by cloning a TensorFlow repository.
 To clone the latest TensorFlow repository, issue the following command:
 
 ```
-git clone https://github.com/tensorflow/tensorflow
+mkdir ~/workspace
+cd ~/workspace
+git clone https://github.com/tensorflow/tensorflow.git
 cd tensorflow
 git checkout r1.9
 ```
@@ -32,7 +34,16 @@ sudo apt-get install python3-numpy python3-dev
 
 ### CUDA Toolkit 9.2
 
+IMHO, it’s always best practice to install pip modules into the virtual environments, and use TensorFlow from PyPI. This will provide a flexible solution. For the same reason, I didn’t recommend to use Anaconda.
+
+CUDA v9.2 requires GCC 7, while default GCC version in Ubuntu 17.10 is GCC 7.2 and some other Deep Learning framework requires GCC 6. So we have to install GCC 6 and create symlinks as below:
+
 ```
+cd ~/Downloads
+sudo apt install gcc-6 g++-6
+sudo ln -s /usr/bin/gcc-6 /usr/local/cuda/bin/gcc
+sudo ln -s /usr/bin/g++-6 /usr/local/cuda/bin/g++
+
 wget https://developer.nvidia.com/compute/cuda/9.2/Prod2/local_installers/cuda_9.2.148_396.37_linux
 wget https://developer.nvidia.com/compute/cuda/9.2/Prod2/patches/1/cuda_9.2.148.1_linux
 chmod +x cuda_9.2.148*
@@ -41,7 +52,10 @@ sudo ./cuda_9.2.148.1_linux.run
 export PATH=/usr/local/cuda-9.2/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=/usr/local/cuda-9.2/lib64:/usr/local/cuda/extras/CUPTI/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 ```
+
 ### cuDNN 7.2.1
+
+The NVIDIA CUDA® Deep Neural Network library (cuDNN) is a GPU-accelerated library of primitives for deep neural networks. cuDNN provides highly tuned implementations for standard routines such as forward and backward convolution, pooling, normalization, and activation layers
 
 ```
 wget https://developer.nvidia.com/compute/machine-learning/cudnn/secure/v7.2.1/prod/9.2_20180806/cudnn-9.2-linux-x64-v7.2.1.38
