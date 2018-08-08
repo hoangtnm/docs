@@ -21,14 +21,17 @@ wget "$PYTHON_DOWNLOAD_URL" -O python.tar.tgz
 tar -zxvf python.tar.tgz
 cd Python-$PYTHON_VERSION
 ./configure --enable-shared --enable-optimizations --enable-loadable-sqlite-extensions
-make
+make -j #threads
 sudo make install
 ```
 
-By default , `pip` is being automatically installed along as Python. But maybe it isn't there for some reason. In this case, you can manually install `pip` using `apt`.
+By default , `pip` is being automatically installed along as Python. But maybe it isn't there for some reason. In this case, you can manually install `pip` using `get-pip`.
 
 ```
-sudo apt install python3-pip
+mkdir ~/worskpace
+cd ~/workspace
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+python3 get-pip.py
 ```
 
 ### 2. Virtual environments
