@@ -93,8 +93,8 @@ Build Python API for `caffe`:
 
 ```
 make all -j #threads
-make test #threads && make runtest -j #threads
-make pycaffe #threads
+make test -j #threads && make runtest -j #threads
+make pycaffe -j #threads
 ```
 
 From `~/workspace/caffe` directory, export path to test:
