@@ -26,9 +26,9 @@ To install TensorFlow, you must install the following packages:
 
 To install these packages for Python 3.n, issue the following command:
 
-'''
+```
 sudo apt-get install python3-numpy python3-dev
-'''
+```
 
 ### CUDA Toolkit 9.2
 
