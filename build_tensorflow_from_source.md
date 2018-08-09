@@ -180,7 +180,7 @@ bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
 Invoke ```pip install``` to install that pip package. The filename of the ```.whl``` file depends on your platform. For example, the following command will install the pip package:
 
 ```
-sudo pip install /tmp/tensorflow_pkg/tensorflow-1.10.0-py2-none-any.whl
+sudo pip install /tmp/tensorflow_pkg/tensorflow-1.9.0-cp36-cp36m-linux_x86_64.whl
 ```
 
 ### Validate your installation
