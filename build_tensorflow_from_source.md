@@ -154,3 +154,47 @@ Preconfigured Bazel build configs. You can use any of the below by adding "--con
 	--config=monolithic  	# Config for mostly static monolithic build.
 Configuration finished
 ```
+
+### Build the pip package
+
+```
+bazel build -c opt --copt=-mavx --copt=-mavx2 --copt=-mfma --copt=-mfpmath=both --copt=-msse4.2 --cxxopt="-D_GLIBCXX_USE_CXX11_ABI=0" --config=cuda //tensorflow/tools/pip_package:build_pip_package
+```
+
+***NOTE on gcc 5 or later:*** the binary pip packages available on the TensorFlow website are built with gcc 4, which uses the older ABI. To make your build compatible with the older ABI, you need to add ```--cxxopt="-D_GLIBCXX_USE_CXX11_ABI=0"``` to your ```bazel build``` command. ABI compatibility allows custom ops built against the TensorFlow pip package to continue to work against your built package.
+
+***Tip:*** By default, building TensorFlow from sources consumes a lot of RAM. If RAM is an issue on your system, you may limit RAM usage by specifying ```--local_resources 2048,.5,1.0``` while invoking ```bazel```.
+
+The ```bazel build``` command builds a script named ```build_pip_package```. Running this script as follows will build a ```.whl``` file within the ```/tmp/tensorflow_pkg``` directory:
+
+```
+bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
+```
+
+### Install the pip package
+
+Invoke ```pip install``` to install that pip package. The filename of the ```.whl``` file depends on your platform. For example, the following command will install the pip package:
+
+```
+sudo pip install /tmp/tensorflow_pkg/tensorflow-1.10.0-py2-none-any.whl
+```
+
+### Validate your installation
+
+Start a terminal.
+Change directory (```cd```) to any directory on your system other than the ```tensorflow``` subdirectory from which you invoked the ```configure``` command.
+Invoke python:
+
+```
+python3
+import tensorflow as tf
+hello = tf.constant('Hello, TensorFlow!')
+sess = tf.Session()
+print(sess.run(hello))
+```
+
+If the system outputs the following, then you are ready to begin writing TensorFlow programs:
+
+```
+Hello, TensorFlow!
+```
