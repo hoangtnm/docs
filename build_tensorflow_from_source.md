@@ -53,6 +53,10 @@ echo 'export PATH=/usr/local/cuda-9.2/bin${PATH:+:${PATH}}' >> ~/.bashrc
 echo 'export LD_LIBRARY_PATH=/usr/local/cuda-9.2/lib64:/usr/local/cuda/extras/CUPTI/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
 source ~/.bashrc
 ```
+To remember, the general rule is:
+- ```~/.bash_profile``` is being activated just one time when you login (GUI or SSH)
+- ```~/.bash_aliases``` is being activated every time when you open the terminal (window or tab)
+However this behavior can be changed by modifying ```~/.bashrc```, ```~/.profile```, or ```/etc/bash.bashrc```, etc.
 
 ### Install cuDNN 7.2.1
 
