@@ -182,7 +182,9 @@ sudo pip install /tmp/tensorflow_pkg/tensorflow-1.10.0-py2-none-any.whl
 ### Validate your installation
 
 Start a terminal.
+
 Change directory (```cd```) to any directory on your system other than the ```tensorflow``` subdirectory from which you invoked the ```configure``` command.
+
 Invoke python:
 
 ```
