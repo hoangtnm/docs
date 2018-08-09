@@ -137,5 +137,5 @@ Run it:
 If it works, you should got:
 
 ```
-1.0.0
+1.0.0-rc3
 ```
