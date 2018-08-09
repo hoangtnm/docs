@@ -32,7 +32,7 @@ To install these packages for Python 3.n, issue the following command:
 sudo apt-get install python3-numpy python3-dev
 ```
 
-### CUDA Toolkit 9.2
+### Install CUDA Toolkit 9.2
 
 IMHO, it’s always best practice to install pip modules into the virtual environments, and use TensorFlow from PyPI. This will provide a flexible solution. For the same reason, I didn’t recommend to use Anaconda.
 
@@ -54,7 +54,7 @@ echo 'export LD_LIBRARY_PATH=/usr/local/cuda-9.2/lib64:/usr/local/cuda/extras/CU
 source ~/.bashrc
 ```
 
-### cuDNN 7.2.1
+### Install cuDNN 7.2.1
 
 The NVIDIA CUDA® Deep Neural Network library (cuDNN) is a GPU-accelerated library of primitives for deep neural networks. cuDNN provides highly tuned implementations for standard routines such as forward and backward convolution, pooling, normalization, and activation layers
 
