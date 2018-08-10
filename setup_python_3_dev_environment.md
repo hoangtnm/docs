@@ -23,6 +23,8 @@ cd Python-$PYTHON_VERSION
 ./configure --enable-shared --enable-optimizations --enable-loadable-sqlite-extensions
 make -j #threads
 sudo make install
+
+sudo rm /usr/bin/python && sudo ln -s /usr/local/bin/python3 /usr/bin/python
 ```
 
 By default , `pip` is being automatically installed along as Python. But maybe it isn't there for some reason. In this case, you can manually install `pip` using `get-pip`.
