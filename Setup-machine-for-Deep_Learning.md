@@ -63,31 +63,29 @@ Recheck it using the above `cat` command or `nvidia-smi` for more detail.
 
 ### 4. CUDA v9.0
 
-TensorFlow team just [released v1.7](https://github.com/tensorflow/tensorflow/releases/tag/v1.7.0) that has been [built with CUDA 9.0](https://github.com/tensorflow/tensorflow/issues/15656), so unless you have plan to build TensorFlow from source, you should not install CUDA v9.1 to avoid the unexpected issues.
-
 IMHO, it’s always best practice to install pip modules into the virtual environments, and use TensorFlow from PyPI. This will provide a flexible solution. For the same reason, I didn’t recommend to use Anaconda.
 
-CUDA v9.0 requires GCC 6, while default GCC version in Ubuntu 16.04 and newer is GCC 7.2. So we have to install GCC 6 and create symlinks as below:
+CUDA v9.2 requires GCC 7, while default GCC version in Ubuntu 17.10 is GCC 7.2 and some other Deep Learning framework requires GCC 6. So we have to install GCC 6 and create symlinks as below:
 
 ```
-sudo apt install gcc-6 g++-6sudo ln -s /usr/bin/gcc-6 /usr/local/cuda/bin/gccsudo ln -s /usr/bin/g++-6 /usr/local/cuda/bin/g++
-```
+cd ~/Downloads
+sudo apt install gcc-6 g++-6
+sudo ln -s /usr/bin/gcc-6 /usr/local/cuda/bin/gcc
+sudo ln -s /usr/bin/g++-6 /usr/local/cuda/bin/g++
 
-Now `gcc` command is running as gcc-6, check it with:
-
+wget https://developer.nvidia.com/compute/cuda/9.2/Prod2/local_installers/cuda_9.2.148_396.37_linux
+wget https://developer.nvidia.com/compute/cuda/9.2/Prod2/patches/1/cuda_9.2.148.1_linux
+chmod +x cuda_9.2.148*
+sudo ./cuda_9.2.148_396.37_linux.run --override
+sudo ./cuda_9.2.148.1_linux.run
+echo 'export PATH=/usr/local/cuda-9.2/bin${PATH:+:${PATH}}' >> ~/.bashrc
+echo 'export LD_LIBRARY_PATH=/usr/local/cuda-9.2/lib64:/usr/local/cuda/extras/CUPTI/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
+source ~/.bashrc
 ```
-gcc -v
-```
-
-Then, we stop x-server, download CUDA 9 and install it:
-
-```
-sudo service lightdm stop  
-wget [https://developer.nvidia.com/compute/cuda/9.0/Prod/local_installers/cuda_9.0.176_384.81_linux-run](https://developer.nvidia.com/compute/cuda/9.0/Prod/local_installers/cuda_9.0.176_384.81_linux-run)  
-mv cuda_9.0.176_384.81_linux-run cuda_9.0.176_384.81_linux.run  
-chmod +x cuda_9.0.176_384.81_linux.run  
-sudo ./cuda_9.0.176_384.81_linux.run --override --dkms -s
-```
+To remember, the general rule is:
+- ```~/.bash_profile``` is being activated just one time when you login (GUI or SSH)
+- ```~/.bash_aliases``` is being activated every time when you open the terminal (window or tab)
+However this behavior can be changed by modifying ```~/.bashrc```, ```~/.profile```, or ```/etc/bash.bashrc```, etc.
 
 While compiling, it will ask several questions, answer as below:
 
@@ -109,32 +107,18 @@ Enter CUDA Samples Location
 ```
 
 If nothing special happens, the process will end succefully.
-
-As [NVIDIA’s docs](http://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#post-installation-actions), we may need to add these paths into `~/.bash_aliases`:
-
-```
-export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-```
-
 Lastly, reboot the system.
 
 ### 5. cuDNN v7.0.5 for CUDA 9.0
 
-CUDA 9.0 only plays with its appropriate cuDNN version, you can [download it here](https://developer.nvidia.com/cudnn) after joining [NVIDIA Developer Program](https://developer.nvidia.com/developer-program).
-
-Choose the correct item from list as below:
-
-![](https://cdn-images-1.medium.com/max/800/1*OHxg3vx5Xyui3GMoxiBepg.png)
-
-Download it then run these commands:
+The NVIDIA CUDA® Deep Neural Network library (cuDNN) is a GPU-accelerated library of primitives for deep neural networks. cuDNN provides highly tuned implementations for standard routines such as forward and backward convolution, pooling, normalization, and activation layers
 
 ```
-tar -xzvf cudnn-9.0-linux-x64-v7.tgz  
-sudo cp cuda/include/cudnn.h /usr/local/cuda/include  
-sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64  
-sudo chmod a+r /usr/local/cuda/include/cudnn.h  
-/usr/local/cuda/lib64/libcudnn*
+wget https://developer.nvidia.com/compute/machine-learning/cudnn/secure/v7.2.1/prod/9.2_20180806/cudnn-9.2-linux-x64-v7.2.1.38
+tar -xzvf cudnn-9.2-linux-x64-v7.2.1.38.tgz
+sudo cp cuda/include/cudnn.h /usr/local/cuda/include
+sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
+sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
 ```
 
 That's it. Now you can clone [greenglobal/tf-object-detection](https://github.com/greenglobal/tf-object-detection) to start training.
