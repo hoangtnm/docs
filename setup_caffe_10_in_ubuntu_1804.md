@@ -44,7 +44,6 @@ git checkout ssd
 Then create Makefile.config and edit it with nano or vim.
 
 ```
-cd caffe
 cp Makefile.config.example Makefile.config
 vim Makefile.config
 ```
