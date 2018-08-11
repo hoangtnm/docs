@@ -54,7 +54,9 @@ rivatv
 And install:
 
 ```
-sudo add-apt-repository ppa:graphics-drivers/ppasudo apt updatesudo apt install nvidia-384 nvidia-384-dev
+sudo add-apt-repository ppa:graphics-drivers/ppa 
+sudo apt update
+sudo apt install nvidia-384 nvidia-384-dev
 ```
 
 Recheck it using the above `cat` command or `nvidia-smi` for more detail.
