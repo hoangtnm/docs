@@ -43,7 +43,12 @@ sudo nano /etc/modprobe.d/blacklist.conf
 Then paste the following lines into then save it:
 
 ```
-blacklist vga16fbblacklist nouveaublacklist rivafbblacklist nvidiafbblacklist rivatv
+blacklist 
+vga16fbblacklist 
+nouveaublacklist 
+rivafbblacklist 
+nvidiafbblacklist 
+rivatv
 ```
 
 And install:
