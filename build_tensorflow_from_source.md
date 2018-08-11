@@ -47,7 +47,7 @@ sudo ln -s /usr/bin/g++-6 /usr/local/cuda/bin/g++
 wget https://developer.nvidia.com/compute/cuda/9.2/Prod2/local_installers/cuda_9.2.148_396.37_linux
 wget https://developer.nvidia.com/compute/cuda/9.2/Prod2/patches/1/cuda_9.2.148.1_linux
 chmod +x cuda_9.2.148*
-sudo ./cuda_9.2.148_396.37_linux.run
+sudo ./cuda_9.2.148_396.37_linux.run --override
 sudo ./cuda_9.2.148.1_linux.run
 echo 'export PATH=/usr/local/cuda-9.2/bin${PATH:+:${PATH}}' >> ~/.bashrc
 echo 'export LD_LIBRARY_PATH=/usr/local/cuda-9.2/lib64:/usr/local/cuda/extras/CUPTI/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
