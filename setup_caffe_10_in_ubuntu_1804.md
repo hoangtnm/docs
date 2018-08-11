@@ -103,6 +103,8 @@ From `~/workspace/caffe` directory, export path to test:
 export PYTHONPATH=`pwd`/python:$PYTHONPATH
 # also add to .bash_profile
 sudo bash -c 'echo "export PYTHONPATH=`pwd`/python:$PYTHONPATH" >> ~/.bash_profile'
+sudo bash -c 'echo "export PYTHONPATH=`pwd`/python:$PYTHONPATH" >> ~/.bashrc'
+source ~/.bashrc
 ```
 
 Now, create virtual environment to work with `pycaffe`:
