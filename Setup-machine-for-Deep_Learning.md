@@ -61,7 +61,7 @@ sudo apt install nvidia-384 nvidia-384-dev
 
 Recheck it using the above `cat` command or `nvidia-smi` for more detail.
 
-### 4. CUDA v9.0
+### 4. Install CUDA Toolkit 9.2
 
 IMHO, it’s always best practice to install pip modules into the virtual environments, and use TensorFlow from PyPI. This will provide a flexible solution. For the same reason, I didn’t recommend to use Anaconda.
 
@@ -109,7 +109,7 @@ Enter CUDA Samples Location
 If nothing special happens, the process will end succefully.
 Lastly, reboot the system.
 
-### 5. cuDNN v7.0.5 for CUDA 9.0
+### 5. Install cuDNN 7.2.1 for CUDA 9.2
 
 The NVIDIA CUDA® Deep Neural Network library (cuDNN) is a GPU-accelerated library of primitives for deep neural networks. cuDNN provides highly tuned implementations for standard routines such as forward and backward convolution, pooling, normalization, and activation layers
 
