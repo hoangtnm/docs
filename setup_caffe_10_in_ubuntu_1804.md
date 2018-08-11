@@ -5,7 +5,7 @@
 
 - Ubuntu 18.04 ([refer](https://github.com/greenglobal/ggml-docs/blob/master/setup_ubuntu_1804_from_minimalcd.md))
 - CUDA 9.0, cuDNN 7.0 ([refer](https://github.com/greenglobal/ggml-docs/blob/master/setup_machine_for_deep_learning.md))
-- Python 3.6.5 (must be installed exactly as same as [this guideline](https://github.com/hoangtnm/TrainingServer-docs/blob/master/setup_python_3_dev_environment.md)
+- Python 3.6.5 (must be installed exactly as same as [this guideline](https://github.com/hoangtnm/TrainingServer-docs/blob/master/setup_python_3_dev_environment.md))
 
 
 ### Installation
