@@ -4,7 +4,7 @@
 
 For studying, you can start with a small set as below:
 
--   Intel(R) Core(TM) i5–7600 CPU @ 3.50GHz
+-   AMD Ryzen™ 5 1600 CPU @ 3.20GHz
 -   240 GB hard drive (SSD)
 -   8 GB RAM (DDR4)
 -   nVidia GP106 [GeForce GTX 1060 6GB]
