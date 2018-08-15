@@ -21,7 +21,7 @@ wget "$PYTHON_DOWNLOAD_URL" -O python.tar.tgz
 tar -zxvf python.tar.tgz
 cd Python-$PYTHON_VERSION
 ./configure --enable-shared --enable-optimizations --enable-loadable-sqlite-extensions
-make -j #threads
+make -j `nproc`
 sudo make install
 
 sudo rm /usr/bin/python && sudo ln -s /usr/local/bin/python3 /usr/bin/python
