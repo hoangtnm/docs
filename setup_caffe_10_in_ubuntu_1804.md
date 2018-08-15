@@ -91,9 +91,9 @@ PYTHON_INCLUDE := /usr/local/include/python3.6m \
 Build Python API for `caffe`:
 
 ```
-make all -j #threads
-make test -j #threads && make runtest -j #threads
-make pycaffe -j #threads
+make all -j `nproc`
+make test -j `nproc` && make runtest -j `nproc`
+make pycaffe -j `nproc`
 ```
 
 From `~/workspace/caffe` directory, export path to test:
