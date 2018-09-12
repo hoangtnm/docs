@@ -115,6 +115,11 @@ Open up a new terminal window and your prompt should look something like this:
 
 In case you did not find a suitable theme for your needs, please have a look at the wiki for [more of them](https://github.com/robbyrussell/oh-my-zsh/wiki/External-themes).
 
+To use agnoster font in Microsoft Visual Studio, please add the following font to `User Settings`:
+
+```
+"terminal.integrated.fontFamily": "DejaVu Sans Mono for Powerline, Book"
+```
 
 ## Advanced Topics
 
