@@ -53,3 +53,13 @@ If you installed with GPU support, test that the GPU build was a success with th
 ```
 python caffe2/python/operator_test/activation_ops_test.py
 ```
+
+### Setting Up Tutorials & Jupyter Server
+
+If you’re running this all on a cloud computer, you probably won’t have a UI or way to view the IPython notebooks by default. Typically, you would launch them locally with ipython notebook and you would see a localhost:8888 webpage pop up with the directory of notebooks running. The following example will show you how to launch the Jupyter server and connect to remotely via an SSH tunnel.
+
+First configure your cloud server to accept port 8889, or whatever you want, but change the port in the following commands. On AWS you accomplish this by adding a rule to your server’s security group allowing a TCP inbound on port 8889. Otherwise you would adjust iptables for this.
+
+<p align="center">
+      <img src="https://caffe2.ai/static/images/security-group-jupyter.png" alt="Jupyter Server">
+</p> 
