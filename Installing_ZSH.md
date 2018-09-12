@@ -1,7 +1,7 @@
 # Installing ZSH
 
 
-## Zsh?
+### Zsh?
 
 Oh-My-Zsh is a framework for Zsh, the Z shell.
 - In order for Oh-My-Zsh to work, Zsh must be installed.
@@ -10,9 +10,9 @@ Oh-My-Zsh is a framework for Zsh, the Z shell.
 - Additionally, Zsh should be set as your default shell
 
 
-## How to install zsh in many platforms
+### How to install zsh in many platforms
 
-### macOS
+#### macOS
 
 Try `zsh --version` before installing it from Homebrew. If it's newer than 4.3.9 you might be OK. Preferably newer than or equal to `5.0`.
 
@@ -20,43 +20,43 @@ Try `zsh --version` before installing it from Homebrew. If it's newer than 4.3.9
 brew install zsh zsh-completions
 ```
 
-### Ubuntu, Debian & derivatives
+#### Ubuntu, Debian & derivatives
 
 ```
 sudo apt install zsh
 ```
 
-### Set up zsh as default (Optional)
+#### Set up zsh as default (Optional)
 
 ```
 chsh -s $(which zsh)
 ```
 
-## Oh My Zsh
+### Oh My Zsh
 
 <p align="center">
   <img src="https://s3.amazonaws.com/ohmyzsh/oh-my-zsh-logo.png" alt="Oh My Zsh">
 </p>
 
-### Basic Installation
+#### Basic Installation
 
 Oh My Zsh is installed by running one of the following commands in your terminal. You can install this via the command-line with either `curl` or `wget`.
 
-#### via curl
+##### via curl
 
 ```shell
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ```
 
-#### via wget
+##### via wget
 
 ```shell
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 ```
 
-## Using Oh My Zsh
+### Using Oh My Zsh
 
-### Plugins
+#### Plugins
 
 Oh My Zsh comes with a shitload of plugins to take advantage of. You can take a look in the [plugins](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins) directory and/or the [wiki](https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins) to see what's currently available.
 
@@ -121,16 +121,16 @@ To use the `agnoster` theme in Microsoft Visual Studio, please add the following
 "terminal.integrated.fontFamily": "DejaVu Sans Mono for Powerline, Book"
 ```
 
-## Advanced Topics
+### Advanced Topics
 
-### Installation Problems
+#### Installation Problems
 
 If you have any hiccups installing, here are a few common fixes.
 
 * You _might_ need to modify your `PATH` in `~/.zshrc` if you're not able to find some commands after switching to `oh-my-zsh`.
 * If you installed manually or changed the install location, check the `ZSH` environment variable in `~/.zshrc`.
 
-### Custom Plugins and Themes
+#### Custom Plugins and Themes
 
 If you want to override any of the default behaviors, just add a new file (ending in `.zsh`) in the `custom/` directory.
 
@@ -138,7 +138,7 @@ If you have many functions that go well together, you can put them as a `XYZ.plu
 
 If you would like to override the functionality of a plugin distributed with Oh My Zsh, create a plugin of the same name in the `custom/plugins/` directory and it will be loaded instead of the one in `plugins/`.
 
-## Getting Updates
+### Getting Updates
 
 By default, you will be prompted to check for upgrades every few weeks. If you would like `oh-my-zsh` to automatically upgrade itself without prompting you, set the following in your `~/.zshrc`:
 
@@ -162,7 +162,7 @@ upgrade_oh_my_zsh
 
 Magic! 🎉
 
-## Uninstalling Oh My Zsh
+### Uninstalling Oh My Zsh
 
 Oh My Zsh isn't for everyone. We'll miss you, but we want to make this an easy breakup.
 
