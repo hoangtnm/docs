@@ -7,7 +7,7 @@ For studying, you can start with a small set as below:
 -   AMD Ryzen™ 5 1600 CPU @ 3.20GHz
 -   240 GB hard drive (SSD)
 -   16 GB RAM (DDR4)
--   nVidia GP106 [GeForce GTX 1060 6GB]
+-   nVidia GP104 [GeForce GTX 1070Ti 6GB]
 
 Of course, it also requires a case, power supply, keyboard, mouse and monitor. Total cost about $1500.
 
