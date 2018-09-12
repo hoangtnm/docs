@@ -34,6 +34,10 @@ chsh -s $(which zsh)
 
 ## Oh My Zsh
 
+<p align="center">
+  <img src="https://s3.amazonaws.com/ohmyzsh/oh-my-zsh-logo.png" alt="Oh My Zsh">
+</p>
+
 ### Basic Installation
 
 Oh My Zsh is installed by running one of the following commands in your terminal. You can install this via the command-line with either `curl` or `wget`.
