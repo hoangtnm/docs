@@ -63,3 +63,15 @@ First configure your cloud server to accept port 8889, or whatever you want, but
 <p align="center">
       <img src="https://caffe2.ai/static/images/security-group-jupyter.png" alt="Jupyter Server">
 </p> 
+
+Next you launch the Juypter server.
+
+```
+jupyter notebook --no-browser --port=8889
+```
+
+Then create the SSH tunnel. This will pass the cloud server’s Jupyter instance to your localhost 8888 port for you to use locally. The example below is templated after how you would connect AWS, where `your-public-cert.pem` is your own public certificate and `ubuntu@super-rad-GPU-instance.compute-1.amazonaws.com` is your login to your cloud server. You can easily grab this on AWS by going to Instances > Connect and copy the part after ssh and swap that out in the command below.
+
+```
+ssh -N -f -L localhost:8888:localhost:8889 -i "your-public-cert.pem" ubuntu@super-rad-GPU-instance.compute-1.amazonaws.com
+```
