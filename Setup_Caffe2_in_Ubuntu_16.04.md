@@ -57,7 +57,7 @@ cd ~ && python -c 'from caffe2.python import core' 2>/dev/null && echo "Success"
 
 If this fails, then get a better error message by running Python in your home directory and then running from caffe2.python import core inside Python.
 
-If this fails with a message about not finding caffe2.python or not finding libcaffe2.so, please see this info on how Caffe2 installs in Python.
+If this fails with a message about not finding caffe2.python or not finding libcaffe2.so, please see [this info](https://caffe2.ai/docs/faq.html#why-do-i-get-import-errors-in-python-when-i-try-to-use-caffe2) on how Caffe2 installs in Python.
 
 If you installed with GPU support, test that the GPU build was a success with this command (run from the top level pytorch directory). You will get a test output either way, but it will warn you at the top of the output if CPU was used instead of GPU, along with other errors such as missing libraries.
 
