@@ -41,6 +41,7 @@ sudo pip2 install \
 ### Clone & Build
 
 ```
+cd ~/workspace
 git clone https://github.com/pytorch/pytorch.git && cd pytorch
 git submodule update --init --recursive
 python setup.py install
