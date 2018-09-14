@@ -1,4 +1,4 @@
-# Setup Caffe 2 in Ubuntu 18.04
+# Setup Caffe2 in Ubuntu 18.04
 
 
 ### Requirements
