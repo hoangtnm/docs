@@ -7,6 +7,12 @@
 - CUDA 9.2, cuDNN 7.2 ([refer](https://github.com/hoangtnm/TrainingServer-docs/blob/master/Setup-machine-for-Deep_Learning.md))
 - Python 2.7
 
+### Make sure python2 is being used as default
+
+```
+sudo rm /usr/bin/python && sudo ln -s /usr/bin/python2 /usr/bin/python
+```
+
 ### Install Dependencies
 
 ```
@@ -32,12 +38,6 @@ sudo pip install
       protobuf \
       typing \
       yaml
-```
-
-### Make sure python2 is being used as default
-
-```
-sudo rm /usr/bin/python && sudo ln -s /usr/bin/python2 /usr/bin/python
 ```
 
 ### Clone & Build
