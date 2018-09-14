@@ -36,9 +36,10 @@ source ~/.bashrc
 
 ## Other Dependencies
 
-Install the [COCO API](https://github.com/cocodataset/cocoapi):
+Install the [COCO API](https://github.com/cocodataset/cocoapi) and python3 is required to install COCOAPI:
 
 ```
+sudo rm /usr/bin/python && sudo ln -s /usr/bin/python3 /usr/bin/python
 # COCOAPI=/path/to/clone/cocoapi
 git clone https://github.com/cocodataset/cocoapi.git $COCOAPI
 cd $COCOAPI/PythonAPI
@@ -60,9 +61,10 @@ Clone the Densepose repository:
 git clone https://github.com/facebookresearch/densepose $DENSEPOSE
 ```
 
-Install Python dependencies:
+Install Python dependencies, and make python2 as default again:
 
 ```
+sudo rm /usr/bin/python && sudo ln -s /usr/bin/python2 /usr/bin/python
 sudo pip2 install -r $DENSEPOSE/requirements.txt
 ```
 
