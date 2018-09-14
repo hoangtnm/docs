@@ -27,7 +27,11 @@ sudo apt-get install -y --no-install-recommends \
       openmpi-bin \
       openmpi-doc \
       protobuf-compiler                          
-pip install numpy protobuf
+sudo pip3 install 
+      numpy \
+      protobuf \
+      typing \
+      yaml
 ```
 
 ### Clone & Build
