@@ -1,4 +1,4 @@
-# Setup Caffe 2 in Ubuntu 16.04
+# Setup Caffe2 in Ubuntu 16.04
 
 
 ### Requirements
