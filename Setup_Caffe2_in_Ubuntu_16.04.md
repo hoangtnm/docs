@@ -35,7 +35,9 @@ sudo apt-get install -y --no-install-recommends \
 sudo pip2 install \
       future \
       numpy \
-      protobuf
+      protobuf \
+      typing \
+      yaml
 ```
 
 ### Clone & Build
