@@ -34,6 +34,12 @@ sudo pip install
       yaml
 ```
 
+### Make sure python2 is being used as default
+
+```
+sudo rm /usr/bin/python && sudo ln -s /usr/bin/python2 /usr/bin/python
+```
+
 ### Clone & Build
 
 ```
