@@ -26,7 +26,7 @@ sudo apt install build-essential \
   protobuf-compiler \
   python-pip python-dev python-opencv
   
-mkdir ~/worskpace && cd ~/workspace
+mkdir /home/$USER/workspace && cd /home/$USER/workspace
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python3 get-pip.py
 ```
