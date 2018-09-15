@@ -37,7 +37,7 @@ sudo pip2 install \
       numpy \
       protobuf \
       typing \
-      yaml
+      pyyaml
 ```
 
 ### Make sure python2 is being used as default
