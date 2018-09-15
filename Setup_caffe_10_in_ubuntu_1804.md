@@ -26,8 +26,7 @@ sudo apt install build-essential \
   protobuf-compiler \
   python-pip python-dev python-opencv
   
-mkdir ~/worskpace
-cd ~/workspace
+mkdir ~/worskpace && cd ~/workspace
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python3 get-pip.py
 ```
@@ -35,8 +34,7 @@ python3 get-pip.py
 Move the cursor to the workspace, let's say `/home/YOURNAME/workspace`, clone `caffe` repo:
 
 ```
-cd ~/workspace
-git clone https://github.com/weiliu89/caffe.git
+git clone https://github.com/weiliu89/caffe.git /home/$USER/home/workspace
 cd caffe
 git checkout ssd
 ```
