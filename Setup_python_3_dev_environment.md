@@ -15,7 +15,7 @@ export PYTHON_DOWNLOAD_URL=https://www.python.org/ftp/python/$PYTHON_VERSION/Pyt
 sudo apt update
 sudo apt install --no-install-recommends -y \
   software-properties-common build-essential \
-  libssl-dev libreadline-dev libbz2-dev libsqlite3-dev zlib1g-dev \
+  libssl-dev libreadline-dev libbz2-dev libsqlite3-dev zlib1g-dev tk-dev \
   python-minimal
 wget "$PYTHON_DOWNLOAD_URL" -O python.tar.tgz
 tar -zxvf python.tar.tgz
