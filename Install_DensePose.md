@@ -30,7 +30,7 @@ python2 -c 'from caffe2.python import workspace; print(workspace.NumCudaDevices(
 If the `caffe2` Python package or `Detectron ops lib` are not found, you likely need to adjust your `PYTHONPATH` environment variable to include its location (`/path/to/caffe2/build`, where `build` is the Caffe2 CMake build directory).
 
 ```
-echo "export PYTHONPATH=/path/to/pytorch/build" > ~/.bashrc
+echo "export PYTHONPATH=~/workspace/pytorch/build" > ~/.bashrc
 source ~/.bashrc
 ```
 
