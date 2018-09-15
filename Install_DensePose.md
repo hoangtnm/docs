@@ -40,7 +40,7 @@ Install the [COCO API](https://github.com/cocodataset/cocoapi) and python3 is re
 
 ```
 sudo rm /usr/bin/python && sudo ln -s /usr/bin/python3 /usr/bin/python
-# COCOAPI=/path/to/clone/cocoapi
+# COCOAPI=~/workspace/cocoapi
 git clone https://github.com/cocodataset/cocoapi.git $COCOAPI
 cd $COCOAPI/PythonAPI
 # Install into global site-packages
@@ -57,7 +57,7 @@ Note that instructions like `# COCOAPI=/path/to/install/cocoapi` indicate that y
 Clone the Densepose repository:
 
 ```
-# DENSEPOSE=/path/to/clone/densepose
+# DENSEPOSE=~/workspace/densepose
 git clone https://github.com/facebookresearch/densepose $DENSEPOSE
 ```
 
