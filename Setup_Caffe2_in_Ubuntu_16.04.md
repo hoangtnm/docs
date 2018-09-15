@@ -31,7 +31,7 @@ sudo apt-get install -y --no-install-recommends \
       python-pip \
       python3-dev \
       python3-pip \
-      Cython
+      cython
 sudo pip2 install \
       future \
       numpy \
