@@ -32,7 +32,7 @@ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python3 get-pip.py
 ```
 
-Move the cursor to the workspace, let's say `/home/YOURNAME/workspace`, clone `caffe` repo:
+Move the cursor to the workspace, let's say `/home/$USER/workspace`, clone `caffe` repo:
 
 ```
 git clone https://github.com/weiliu89/caffe.git /home/$USER/workspace
