@@ -7,8 +7,8 @@ Start the process of building TensorFlow by cloning a TensorFlow repository.
 To clone the latest TensorFlow repository, issue the following command:
 
 ```
-mkdir ~/workspace
-cd ~/workspace
+mkdir /home/$USER/workspace
+cd /home/$USER/workspace
 git clone https://github.com/tensorflow/tensorflow.git
 cd tensorflow
 git checkout r1.9
