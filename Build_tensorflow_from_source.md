@@ -11,7 +11,7 @@ mkdir /home/$USER/workspace
 cd /home/$USER/workspace
 git clone https://github.com/tensorflow/tensorflow.git
 cd tensorflow
-git checkout r1.9
+git checkout r1.10
 ```
 
 ### Install Bazel
