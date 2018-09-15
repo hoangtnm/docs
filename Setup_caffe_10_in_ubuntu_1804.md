@@ -24,7 +24,8 @@ sudo apt install build-essential \
   libgflags-dev \
   libgoogle-glog-dev \
   protobuf-compiler \
-  python-pip python-dev python-opencv
+  python3-dev \
+  python-opencv
   
 mkdir /home/$USER/workspace && cd /home/$USER/workspace
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
