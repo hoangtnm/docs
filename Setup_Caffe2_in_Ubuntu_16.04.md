@@ -37,7 +37,8 @@ sudo pip2 install \
       numpy \
       protobuf \
       typing \
-      pyyaml
+      pyyaml \
+      hypothesis
 ```
 
 ### Make sure python2 is being used as default
