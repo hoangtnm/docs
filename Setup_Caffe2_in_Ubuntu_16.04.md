@@ -38,7 +38,8 @@ sudo pip2 install \
       protobuf \
       typing \
       pyyaml \
-      hypothesis
+      hypothesis \
+      matplotlib
 ```
 
 ### Make sure python2 is being used as default
