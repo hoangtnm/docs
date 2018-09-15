@@ -3,9 +3,9 @@
 
 ### Requirements
 
-- Ubuntu 16.04
+- Ubuntu 16.04 LTS
 - CUDA 8.0, cuDNN 6.0 GA2
-- Python 2.7 for Caffe2, and Python 3.6 for COCOAPI
+- Python 2.7 as default
 
 ### Install Dependencies
 
