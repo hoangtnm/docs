@@ -34,7 +34,7 @@ python3 get-pip.py
 Move the cursor to the workspace, let's say `/home/YOURNAME/workspace`, clone `caffe` repo:
 
 ```
-git clone https://github.com/weiliu89/caffe.git /home/$USER/home/workspace
+git clone https://github.com/weiliu89/caffe.git /home/$USER/workspace
 cd caffe
 git checkout ssd
 ```
