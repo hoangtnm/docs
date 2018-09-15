@@ -29,8 +29,8 @@ python2 -c 'from caffe2.python import workspace; print(workspace.NumCudaDevices(
 
 If the `caffe2` Python package or `Detectron ops lib` are not found, you likely need to adjust your `PYTHONPATH` environment variable to include its location (`/path/to/caffe2/build`, where `build` is the Caffe2 CMake build directory).
 
-```
-echo "export PYTHONPATH=~/workspace/pytorch/build" > ~/.bashrc
+```/home/$USER/
+echo "export PYTHONPATH=/home/$USER/workspace/pytorch/build" > ~/.bashrc
 source ~/.bashrc
 ```
 
@@ -40,7 +40,7 @@ Install the [COCO API](https://github.com/cocodataset/cocoapi) and python3 is re
 
 ```
 sudo rm /usr/bin/python && sudo ln -s /usr/bin/python3 /usr/bin/python
-# COCOAPI=~/workspace/cocoapi
+# COCOAPI=/home/$USER/workspace/cocoapi
 git clone https://github.com/cocodataset/cocoapi.git $COCOAPI
 cd $COCOAPI/PythonAPI
 # Install into global site-packages
@@ -57,7 +57,7 @@ Note that instructions like `# COCOAPI=/path/to/install/cocoapi` indicate that y
 Clone the Densepose repository:
 
 ```
-# DENSEPOSE=~/workspace/densepose
+# DENSEPOSE=/home/$USER/workspace/densepose
 git clone https://github.com/facebookresearch/densepose $DENSEPOSE
 ```
 
