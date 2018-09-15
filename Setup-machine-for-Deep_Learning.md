@@ -18,7 +18,7 @@ As our experience, GeForce GTX 1060 with 6GB can process from 1000 to 6000 image
 To install Ubuntu 18.04 and Python dev environment, please read these notes:
 
 -   [Setup Ubuntu 18.04 from MinimalCD](https://github.com/greenglobal/ggml-docs/blob/master/setup_ubuntu_1804_from_minimalcd.md)
--   [Setup Python 3 dev environment](https://github.com/hoangtnm/TrainingServer-docs/blob/master/setup_python_3_dev_environment.md)
+-   [Setup Python 3 dev environment](https://github.com/hoangtnm/TrainingServer-docs/blob/master/Setup_python_3_dev_environment.md)
 
 ### 3. NVIDIA driver
 
