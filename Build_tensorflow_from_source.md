@@ -1,6 +1,12 @@
 # Install TensorFlow from Sources
 
 
+### Requirements
+
+- Ubuntu 18.04 ([refer](https://github.com/greenglobal/ggml-docs/blob/master/setup_ubuntu_1804_from_minimalcd.md))
+- CUDA 9.2, cuDNN 7.2 ([refer](https://github.com/hoangtnm/TrainingServer-docs/blob/master/Setup-machine-for-Deep_Learning.md))
+- Python 3.6.5 (must be installed exactly as same as [this guideline](https://github.com/hoangtnm/TrainingServer-docs/blob/master/setup_python_3_dev_environment.md))
+
 ### Clone the TensorFlow repository
 
 Start the process of building TensorFlow by cloning a TensorFlow repository.
@@ -29,8 +35,7 @@ To install TensorFlow, you must install the following packages:
 To install these packages for Python 3.n, issue the following command:
 
 ```
-sudo pip install numpy
-sudo apt-get install python3-numpy python3-dev
+sudo pip3 install numpy wheel
 ```
 
 ### Install CUDA Toolkit 9.2
@@ -181,7 +186,7 @@ bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
 Invoke ```pip install``` to install that pip package. The filename of the ```.whl``` file depends on your platform. For example, the following command will install the pip package:
 
 ```
-sudo pip install /tmp/tensorflow_pkg/tensorflow-1.9.0-cp36-cp36m-linux_x86_64.whl
+sudo pip3 install /tmp/tensorflow_pkg/tensorflow-1.10-cp36-cp36m-linux_x86_64.whl
 ```
 
 ### Validate your installation
