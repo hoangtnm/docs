@@ -73,7 +73,7 @@ sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
 ### Configure the installation
 
 ```
-cd ~/workspace/tensorflow
+cd /home/$USER/workspace/tensorflow
 ./configure
 Please specify the location of python. [Default is /usr/bin/python]: 
 
