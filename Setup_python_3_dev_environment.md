@@ -30,8 +30,7 @@ sudo rm /usr/bin/python && sudo ln -s /usr/local/bin/python3 /usr/bin/python
 By default , `pip` is being automatically installed along as Python. But maybe it isn't there for some reason. In this case, you can manually install `pip` using `get-pip`.
 
 ```
-mkdir ~/worskpace
-cd ~/workspace
+mkdir /home/$USER/workspace && cd /home/$USER/workspace
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python3 get-pip.py
 ```
