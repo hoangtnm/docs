@@ -49,7 +49,7 @@ sudo rm /usr/bin/python && sudo ln -s /usr/bin/python2 /usr/bin/python
 ### Clone & Build
 
 ```
-cd ~/workspace
+cd /home/$USER/workspace
 git clone https://github.com/pytorch/pytorch.git && cd pytorch
 git submodule update --init --recursive
 python setup.py install
