@@ -28,10 +28,7 @@ sudo apt-get install -y --no-install-recommends \
       openmpi-doc \
       protobuf-compiler \
       python-dev \
-      python-pip \
-      python3-dev \
-      python3-pip \
-      cython
+      python-pip
 sudo pip2 install \
       future \
       numpy \
