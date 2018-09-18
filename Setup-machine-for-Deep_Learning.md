@@ -11,8 +11,6 @@ For studying, you can start with a small set as below:
 
 Of course, it also requires a case, power supply, keyboard, mouse and monitor. Total cost about $1500.
 
-As our experience, GeForce GTX 1060 with 6GB can process from 1000 to 6000 images as well.  It takes about 3 to 18 hours to train Object Detection model using TensorFlow GPU, depending on the size of dataset, the algorithm and the neural network architecture you chosen. SSD MobileNet may be fastest.
-
 ### 2. OS & platform
 
 To install Ubuntu 18.04 and Python dev environment, please read these notes:
@@ -24,7 +22,7 @@ To install Ubuntu 18.04 and Python dev environment, please read these notes:
 
 There is two available versions for NVIDIA graphic card’s driver: Nouveau driver and Nvidia driver. The first one is open source, by community. The last one is close source, by NVIDIA.
 
-Normally, Nvidia driver is default. For Ubuntu, it’s `nvidia-384`. We can check it with:
+Normally, Nvidia driver is default. For Ubuntu, it’s `nvidia-390`. We can check it with:
 
 ```
 cat /proc/driver/nvidia/version
@@ -55,7 +53,8 @@ And install:
 ```
 sudo add-apt-repository ppa:graphics-drivers/ppa 
 sudo apt update
-sudo apt install nvidia-390 nvidia-390-dev
+sudo apt install nvidia-396 nvidia-396-dev
+reboot
 ```
 
 Recheck it using the above `cat` command or `nvidia-smi` for more detail.
@@ -119,9 +118,3 @@ sudo cp cuda/include/cudnn.h /usr/local/cuda/include
 sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
 sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
 ```
-
-That's it. Now you can clone [greenglobal/tf-object-detection](https://github.com/greenglobal/tf-object-detection) to start training.
-
-Older version of this note is shared at:
-
-- [Setup a lightweight environment for deep learning](https://medium.com/@ndaidong/setup-a-simple-environment-for-deep-learning-dc05c81c4914)
