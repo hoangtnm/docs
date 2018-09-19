@@ -28,7 +28,7 @@ sudo apt-get install -y --no-install-recommends \
       openmpi-doc \
       protobuf-compiler \
       python-dev \
-      python-pip \
+      python-pip
 
 sudo apt install python-setuptools
 sudo pip2 install \
