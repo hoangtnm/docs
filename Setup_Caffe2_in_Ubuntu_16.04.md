@@ -28,15 +28,28 @@ sudo apt-get install -y --no-install-recommends \
       openmpi-doc \
       protobuf-compiler \
       python-dev \
-      python-pip
+      python-pip \
+      libgflags-dev
+
+sudo apt install python-setuptools
 sudo pip2 install \
       future \
       numpy \
       protobuf \
       typing \
-      pyyaml \
+      enum \
+      networkx \
+      cython \
+      graphviz \
       hypothesis \
-      matplotlib
+      jupyter \
+      matplotlib \
+      pydot \
+      python-nvd3 \
+      pyyaml \
+      requests \
+      scikit-image \
+      scipy
 ```
 
 ### Make sure python2 is being used as default
@@ -51,7 +64,7 @@ sudo rm /usr/bin/python && sudo ln -s /usr/bin/python2 /usr/bin/python
 cd /home/$USER/workspace
 git clone https://github.com/pytorch/pytorch.git && cd pytorch
 git submodule update --init --recursive
-sudo python setup.py install
+sudo make install -j`nproc`
 ```
 
 ### Test the Caffe2 Installation
