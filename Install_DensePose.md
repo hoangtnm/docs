@@ -29,7 +29,10 @@ python2 -c 'from caffe2.python import workspace; print(workspace.NumCudaDevices(
 
 If the `caffe2` Python package or `Detectron ops lib` are not found, you likely need to adjust your `PYTHONPATH` environment variable to include its location (`/path/to/caffe2/build`, where `build` is the Caffe2 CMake build directory).
 
-```/home/$USER/
+```
+echo "export PYTHONPATH=/usr/local" > ~/.bashrc
+echo "export PYTHONPATH=$PYTHONPATH:/home/$USER/workspace/pytorch/build" > ~/.bashrc
+echo "export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH" > ~/.bashrc
 echo "export PYTHONPATH=/home/$USER/workspace/pytorch/build" > ~/.bashrc
 source ~/.bashrc
 ```
@@ -39,12 +42,11 @@ source ~/.bashrc
 Install the [COCO API](https://github.com/cocodataset/cocoapi):
 
 ```
-sudo rm /usr/bin/python && sudo ln -s /usr/bin/python3 /usr/bin/python
 # COCOAPI=/home/$USER/workspace/cocoapi
 git clone https://github.com/cocodataset/cocoapi.git $COCOAPI
 cd $COCOAPI/PythonAPI
 # Install into global site-packages
-make install -j`nproc`
+sudo make install -j`nproc`
 # Alternatively, if you do not have permissions or prefer
 # not to install the COCO API into global site-packages
 python2 setup.py install --user
@@ -61,10 +63,9 @@ Clone the Densepose repository:
 git clone https://github.com/facebookresearch/densepose $DENSEPOSE
 ```
 
-Install Python dependencies, and make python2 as default again:
+Install Python dependencies:
 
 ```
-sudo rm /usr/bin/python && sudo ln -s /usr/bin/python2 /usr/bin/python
 sudo pip2 install -r $DENSEPOSE/requirements.txt
 ```
 
