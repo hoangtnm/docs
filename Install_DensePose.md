@@ -36,7 +36,7 @@ source ~/.bashrc
 
 ## Other Dependencies
 
-Install the [COCO API](https://github.com/cocodataset/cocoapi) and python3 is required to install COCOAPI:
+Install the [COCO API](https://github.com/cocodataset/cocoapi):
 
 ```
 sudo rm /usr/bin/python && sudo ln -s /usr/bin/python3 /usr/bin/python
