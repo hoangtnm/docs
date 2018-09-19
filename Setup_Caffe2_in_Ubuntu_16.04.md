@@ -63,6 +63,15 @@ sudo rm /usr/bin/python && sudo ln -s /usr/bin/python2 /usr/bin/python
 cd /home/$USER/workspace
 git clone https://github.com/pytorch/pytorch.git && cd pytorch
 git submodule update --init --recursive
+# Create a directory to put Caffe2's build files in
+mkdir build && cd build
+
+# Configure Caffe2's build
+# This looks for packages on your machine and figures out which functionality
+# to include in the Caffe2 installation. The output of this command is very
+# useful in debugging.
+cmake ..
+
 sudo make install -j`nproc`
 ```
 
