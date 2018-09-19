@@ -29,7 +29,6 @@ sudo apt-get install -y --no-install-recommends \
       protobuf-compiler \
       python-dev \
       python-pip \
-      libgflags-dev
 
 sudo apt install python-setuptools
 sudo pip2 install \
