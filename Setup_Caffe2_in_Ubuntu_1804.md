@@ -7,19 +7,20 @@
 - CUDA 9.2, cuDNN 7.2 ([refer](https://github.com/hoangtnm/TrainingServer-docs/blob/master/Setup-machine-for-Deep_Learning.md))
 - Python 2.7
 
-### Make sure python2 is being used as default
+### Make sure python2 and pip2 are being used as default
 
 ```
 sudo rm /usr/bin/python && sudo ln -s /usr/bin/python2 /usr/bin/python
+sudo rm /usr/bin/pip && sudo ln -s /usr/bin/pip2 /usr/bin/pip
 ```
 
 ### Install Dependencies
 
 ```
-sudo apt-get update
 sudo apt-get install -y --no-install-recommends \
       build-essential \
       cmake \
+      git \
       libgoogle-glog-dev \
       libgflags-dev \
       libgtest-dev \
@@ -32,12 +33,29 @@ sudo apt-get install -y --no-install-recommends \
       libprotobuf-dev \
       openmpi-bin \
       openmpi-doc \
-      protobuf-compiler                          
-sudo pip install 
+      protobuf-compiler \
+      python-dev \
+      python-pip
+
+sudo apt install python-setuptools
+sudo pip2 install \
+      future \
       numpy \
       protobuf \
       typing \
-      yaml
+      enum \
+      networkx \
+      cython \
+      graphviz \
+      hypothesis \
+      jupyter \
+      matplotlib \
+      pydot \
+      python-nvd3 \
+      pyyaml \
+      requests \
+      scikit-image \
+      scipy
 ```
 
 ### Clone & Build
@@ -46,7 +64,16 @@ sudo pip install
 cd /home/$USER/workspace
 git clone https://github.com/pytorch/pytorch.git && cd pytorch
 git submodule update --init --recursive
-python setup.py install
+# Create a directory to put Caffe2's build files in
+mkdir build && cd build
+
+# Configure Caffe2's build
+# This looks for packages on your machine and figures out which functionality
+# to include in the Caffe2 installation. The output of this command is very
+# useful in debugging.
+cmake ..
+
+sudo make install -j`nproc`
 ```
 
 ### Test the Caffe2 Installation
