@@ -20,7 +20,7 @@ sudo apt install --no-install-recommends -y \
 wget "$PYTHON_DOWNLOAD_URL" -O python.tar.tgz
 tar -zxvf python.tar.tgz
 cd Python-$PYTHON_VERSION
-./configure --enable-shared --enable-optimizations --enable-loadable-sqlite-extensions
+./configure --enable-shared --enable-ipv6 --enable-optimizations --enable-loadable-sqlite-extensions 
 make -j `nproc`
 sudo make install
 
