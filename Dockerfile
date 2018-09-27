@@ -64,6 +64,7 @@ ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
 ENV NVIDIA_REQUIRE_CUDA "cuda>=9.2"
 
+
 # Runtime
 ENV NCCL_VERSION 2.3.4
 
@@ -72,4 +73,27 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         cuda-nvtx-$CUDA_PKG_VERSION \
         libnccl2=$NCCL_VERSION-1+cuda9.2 && \
     apt-mark hold libnccl2 && \
+    rm -rf /var/lib/apt/lists/*
+
+
+# Devel
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        cuda-libraries-dev-$CUDA_PKG_VERSION \
+        cuda-nvml-dev-$CUDA_PKG_VERSION \
+        cuda-minimal-build-$CUDA_PKG_VERSION \
+        cuda-command-line-tools-$CUDA_PKG_VERSION \
+        libnccl-dev=$NCCL_VERSION-1+cuda9.2 && \
+    rm -rf /var/lib/apt/lists/*
+
+ENV LIBRARY_PATH /usr/local/cuda/lib64/stubs
+
+
+# Devel + cuDNN
+ENV CUDNN_VERSION 7.2.1.38
+LABEL com.nvidia.cudnn.version="${CUDNN_VERSION}"
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+            libcudnn7=$CUDNN_VERSION-1+cuda9.2 \
+            libcudnn7-dev=$CUDNN_VERSION-1+cuda9.2 && \
+    apt-mark hold libcudnn7 && \
     rm -rf /var/lib/apt/lists/*
