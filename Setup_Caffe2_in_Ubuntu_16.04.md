@@ -32,23 +32,27 @@ sudo apt-get install -y --no-install-recommends \
 
 sudo apt install python-setuptools
 sudo pip2 install \
-      future \
-      numpy \
-      protobuf \
+      future==0.16.0 \
+      numpy==1.14.0 \
+      protobuf==3.5.1 \
+      enum34==1.1.6 \
+      h5py==2.8.0 \
+      networkx==2.0 \
+      cython==0.28.5 \
+      hypothesis==3.44.16 \
+      matplotlib==2.1.1 \
+      pyyaml==3.13 \
+      opencv-python==3.4.3.18 \
+      scikit-image==0.13.1 \
+      scipy==0.19.1 \
+      mock==2.0.0 \
+      memory-profiler==0.54.0 \
       typing \
-      enum \
-      networkx \
-      cython \
       graphviz \
-      hypothesis \
       jupyter \
-      matplotlib \
       pydot \
       python-nvd3 \
-      pyyaml \
-      requests \
-      scikit-image \
-      scipy
+      requests
 ```
 
 ### Make sure python2 is being used as default
