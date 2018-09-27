@@ -119,7 +119,7 @@ ssh -N -f -L localhost:8888:localhost:8889 -i "your-public-cert.pem" ubuntu@supe
 
 ## Docker Image
 
-We provide a [`Dockerfile`](docker/Dockerfile) that you can use to build a Densepose image on top of a Caffe2 image that satisfies the requirements outlined at the top. If you would like to use a Caffe2 image different from the one we use by default, please make sure that it includes the [Detectron module](https://github.com/caffe2/caffe2/tree/master/modules/detectron).
+We provide a [`Dockerfile`](https://github.com/facebookresearch/DensePose/blob/master/docker/Dockerfile) that you can use to build a Densepose image on top of a Caffe2 image that satisfies the requirements outlined at the top. If you would like to use a Caffe2 image different from the one we use by default, please make sure that it includes the [Detectron module](https://github.com/caffe2/caffe2/tree/master/modules/detectron).
 
 Build the image:
 
