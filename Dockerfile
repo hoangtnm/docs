@@ -31,7 +31,8 @@
 FROM ubuntu:16.04
 LABEL maintainer "NVIDIA CORPORATION <cudatools@nvidia.com>"
 
-RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates apt-transport-https gnupg-curl && \
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates apt-transport-https gnupg-curl openssh-server && \
     rm -rf /var/lib/apt/lists/* && \
     NVIDIA_GPGKEY_SUM=d1be581509378368edeec8c1eb2958702feedf3bc3d17011adbf24efacce4ab5 && \
     NVIDIA_GPGKEY_FPR=ae09fe4bbd223a84b2ccfce3f60f4b3d7fa2af80 && \
@@ -97,3 +98,19 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
             libcudnn7-dev=$CUDNN_VERSION-1+cuda9.2 && \
     apt-mark hold libcudnn7 && \
     rm -rf /var/lib/apt/lists/*
+
+
+# User settings
+RUN mkdir /var/run/sshd
+RUN echo ‘root:aiteam’ | chpasswd
+RUN sed -i ‘s/PermitRootLogin prohibit-password/PermitRootLogin yes/’ /etc/ssh/sshd_config
+
+# SSH login fix. Otherwise user is kicked off after login
+RUN sed ‘s@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g’ -i /etc/pam.d/sshd
+
+ENV NOTVISIBLE “in users profile”
+RUN echo “export VISIBLE=now” >> /etc/profile
+
+EXPOSE 22
+EXPOSE 80
+CMD [“/usr/sbin/sshd”, “-D”]
