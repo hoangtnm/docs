@@ -42,7 +42,7 @@ sudo add-apt-repository \
    stable"
 ```
 
-### Install DOCKER CE
+### Install Docker CE
 
 ```
 sudo apt-get install docker-ce
