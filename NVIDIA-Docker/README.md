@@ -4,7 +4,9 @@
 [![Documentation](https://img.shields.io/badge/documentation-wiki-blue.svg?style=flat-square)](https://github.com/NVIDIA/nvidia-docker/wiki)
 [![Package repository](https://img.shields.io/badge/packages-repository-b956e8.svg?style=flat-square)](https://nvidia.github.io/nvidia-docker)
 
-![nvidia-gpu-docker](https://cloud.githubusercontent.com/assets/3028125/12213714/5b208976-b632-11e5-8406-38d379ec46aa.png)
+NVIDIA-GPU-Docker          |NVIDIA-Docker architecture
+:-------------------------:|:-------------------------:
+![](https://cloud.githubusercontent.com/assets/3028125/12213714/5b208976-b632-11e5-8406-38d379ec46aa.png)  |  ![](https://devblogs.nvidia.com/wp-content/uploads/2018/05/dgx-docker-768x728.png)
 
 # Documentation
 
