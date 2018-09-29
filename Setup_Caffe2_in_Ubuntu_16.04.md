@@ -31,6 +31,7 @@ sudo apt-get install -y --no-install-recommends \
       python-pip
 
 sudo apt install python-setuptools
+sudo pip2 install wheel
 sudo pip2 install \
       future==0.16.0 \
       numpy==1.14.0 \
