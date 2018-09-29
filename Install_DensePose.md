@@ -83,7 +83,7 @@ python2 $DENSEPOSE/detectron/tests/test_spatial_narrow_as_op.py
 Build the custom operators library:
 
 ```
-cd $DENSEPOSE && make ops
+cd $DENSEPOSE && make ops -j`nproc`
 ```
 
 Check that the custom operator tests pass:
