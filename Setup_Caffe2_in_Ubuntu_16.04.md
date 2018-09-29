@@ -64,9 +64,10 @@ sudo rm /usr/bin/python && sudo ln -s /usr/bin/python2 /usr/bin/python
 ### Clone & Build
 
 ```
+echo "export Caffe2_DIR=/home/$USER/workspace/pytorch/build" >> ~/.bashrc
 echo "export PYTHONPATH=/usr/local" >> ~/.bashrc
 echo "export PYTHONPATH=$PYTHONPATH:/home/$USER/workspace/pytorch/build" >> ~/.bashrc
-echo "export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH" >> ~/.bashrc
+echo "export LD_LIBRARY_PATH=/usr/local/lib:/home/$USER/workspace/pytorch/build/lib:$LD_LIBRARY_PATH" >> ~/.bashrc
 source ~/.bashrc
 
 cd /home/$USER/workspace
