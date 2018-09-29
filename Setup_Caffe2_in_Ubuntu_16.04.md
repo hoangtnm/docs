@@ -10,7 +10,7 @@
 ### Install Dependencies
 
 ```
-sudo apt-get install -y --no-install-recommends \
+sudo apt install -y --no-install-recommends \
       build-essential \
       cmake \
       git \
