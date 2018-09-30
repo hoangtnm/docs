@@ -119,7 +119,7 @@ sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
 sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
 ```
 
-### Install NCCL v2.3.5
+### Install NCCL 2.3.5
 
 wget https://developer.nvidia.com/compute/machine-learning/nccl/secure/v2.3/prod2/CUDA9.2/txz/nccl_2.3.5-2-cuda9.2_x86_64
 tar -zxvf nccl_2.3.5-2+cuda9.2_x86_64.txz
