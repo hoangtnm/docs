@@ -107,13 +107,13 @@ Enter CUDA Samples Location
 If nothing special happens, the process will end succefully.
 Lastly, reboot the system.
 
-### 5. Install cuDNN 7.2.1 for CUDA 9.2
+### 5. Install cuDNN 7.3.1 for CUDA 9.2
 
 The NVIDIA CUDA® Deep Neural Network library (cuDNN) is a GPU-accelerated library of primitives for deep neural networks. cuDNN provides highly tuned implementations for standard routines such as forward and backward convolution, pooling, normalization, and activation layers
 
 ```shell
-curl https://developer.nvidia.com/compute/machine-learning/cudnn/secure/v7.2.1/prod/9.2_20180806/cudnn-9.2-linux-x64-v7.2.1.38
-tar -xzvf cudnn-9.2-linux-x64-v7.2.1.38.tgz
+curl https://developer.nvidia.com/compute/machine-learning/cudnn/secure/v7.3.1/prod/9.2_2018927/cudnn-9.2-linux-x64-v7.3.1.20
+tar -xzvf cudnn-9.2-linux-x64-v7.3.1.20.tgz
 sudo cp cuda/include/cudnn.h /usr/local/cuda/include
 sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
 sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
