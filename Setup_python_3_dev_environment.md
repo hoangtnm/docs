@@ -8,7 +8,7 @@ Python 2.7 is the last of the 2.x series. Its EOL is January 1st, 2020, and ther
 
 To build Python 3 from source, you can run the following script line by line, or save the whole text as file, "install-python.sh" for example, so you can run it with `sh install-python.sh`.
 
-```
+```shell
 #!/bin/bash
 export PYTHON_VERSION=3.6.5
 export PYTHON_DOWNLOAD_URL=https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tgz
@@ -29,7 +29,7 @@ sudo rm /usr/bin/python && sudo ln -s /usr/local/bin/python3 /usr/bin/python
 
 By default , `pip` is being automatically installed along as Python. But maybe it isn't there for some reason. In this case, you can manually install `pip` using `get-pip`.
 
-```
+```shell
 mkdir /home/$USER/workspace && cd /home/$USER/workspace
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python3 get-pip.py
@@ -39,7 +39,7 @@ python3 get-pip.py
 
 Using virtual environment is recommended to work with Python and Pip. Since Python 3, you can create virtual environment as below:
 
-```
+```shell
 python3 -m venv /path/to/new/virtual/environment
 ```
 
@@ -47,7 +47,7 @@ Never install the packages directly! They will be stored as global packages and 
 
 A good approach is group your packages by kind of project. For example you known while doing Machine Learning project you often work with `tensorflow`, `numpy`, `opencv-python`; while building web apps you often need `flask`, `requests`, `pymongo`. So you can create 2 different virtual environments for each of project type.
 
-```
+```shell
 # go to your workspace
 cd ~/workspace
 # create environment for machine learning projects
@@ -66,7 +66,7 @@ source web-env/bin/activate
 
 Now you have 2 separate environments:
 
-```
+```shell
 ~/workspace
    + ml-env
    + web-env
@@ -86,7 +86,7 @@ tensorflow-gpu>=1.8
 ```
 That makes your life easier when you want to share your development environment to your teammate or recreate the same environment in another computer.
 
-```
+```shell
 cd ~/another-workspace
 python3 -m venv another-ml-env
 souce another-ml-env/bin/activate
@@ -108,7 +108,7 @@ Jupyter Notebook is useful tool for learning Python, sharing and collaborating w
 
 You can install Jupyter as pip package, within your favorite virtual environment. Don't follow [its official tips](http://jupyter.org/install)!
 
-```
+```shell
 source ~/workspace/ml-env/bin/activate
 (ml-env) pip install jupyter
 (ml-env) jupyter notebook --ip 0.0.0.0 --port 7963
