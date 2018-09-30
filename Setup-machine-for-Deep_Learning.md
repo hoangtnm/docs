@@ -5,7 +5,7 @@
 For studying, you can start with a small set as below:
 
 -   AMD Ryzen™ 5 1600 CPU @ 3.20GHz
--   240 GB hard drive (SSD)
+-   500 GB hard drive (SSD)
 -   16 GB RAM (DDR4)
 -   nVidia GP104 [GeForce GTX 1070Ti 8GB]
 
@@ -77,7 +77,7 @@ chmod +x cuda_9.2.148*
 sudo ./cuda_9.2.148_396.37_linux.run --override
 sudo ./cuda_9.2.148.1_linux.run
 echo 'export PATH=/usr/local/cuda-9.2/bin${PATH:+:${PATH}}' >> ~/.bashrc
-echo 'export LD_LIBRARY_PATH=/usr/local/cuda-9.2/lib64:/usr/local/cuda/extras/CUPTI/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
+echo 'export LD_LIBRARY_PATH=/usr/local/cuda-9.2/lib64:/usr/local/cuda/extras/CUPTI/lib64:/usr/local/NCCL2${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
 source ~/.bashrc
 ```
 To remember, the general rule is:
@@ -118,3 +118,17 @@ sudo cp cuda/include/cudnn.h /usr/local/cuda/include
 sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
 sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
 ```
+
+### Install NCCL v2.3.5
+
+wget https://developer.nvidia.com/compute/machine-learning/nccl/secure/v2.3/prod2/CUDA9.2/txz/nccl_2.3.5-2-cuda9.2_x86_64
+tar -zxvf nccl_2.3.5-2+cuda9.2_x86_64.txz
+sudo cp nccl_2.3.5-2+cuda9.2_x86_64 /usr/local/NCCL2
+
+Create symbolic link for NCCL header file
+
+```
+sudo ln -s /usr/local/NCCL2/include/nccl.h /usr/include/nccl.h
+```
+
+Installation is now complete. You can now incorporate NCCL in your GPU-accelerated application.
