@@ -13,7 +13,7 @@
 
 ### Installation
 
-```sh
+```shell
 sudo apt update && sudo apt upgrade
 sudo apt install build-essential \
   libhdf5-serial-dev \
@@ -102,7 +102,7 @@ From `~/workspace/caffe` directory, export path to test:
 
 ```shell
 export PYTHONPATH=`pwd`/python:$PYTHONPATH
-# also add to .bash_profile
+# also add to bash_profile
 sudo bash -c 'echo "export PYTHONPATH=`pwd`/python:$PYTHONPATH" >> ~/.bash_profile'
 sudo bash -c 'echo "export PYTHONPATH=`pwd`/python:$PYTHONPATH" >> ~/.bashrc'
 source ~/.bashrc
@@ -133,7 +133,7 @@ Ctrl + X, press Y then Enter to save file.
 
 Run it:
 
-```sh
+```shell
 (pycaffe-env) python test.py
 ```
 
