@@ -140,10 +140,10 @@ sudo ln -s /usr/local/NCCL2/include/nccl.h /usr/include/nccl.h
 Tests for NCCL are maintained separately at https://github.com/nvidia/nccl-tests.
 
 ```shell
-$ git clone https://github.com/NVIDIA/nccl-tests.git
-$ cd nccl-tests
-$ make
-$ ./build/allreduce_perf -b 8 -e 256M -f 2 -g <ngpus>
+git clone https://github.com/NVIDIA/nccl-tests.git
+cd nccl-tests
+make
+./build/allreduce_perf -b 8 -e 256M -f 2 -g <ngpus>
 ```
 
 Installation is now complete. You can now incorporate NCCL in your GPU-accelerated application.
