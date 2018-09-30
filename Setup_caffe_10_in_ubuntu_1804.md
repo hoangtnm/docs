@@ -1,5 +1,8 @@
 # Setup Caffe 1.0 in Ubuntu 18.04
 
+<p align="center">
+  <img src="https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/caffe/GPU-ReadyApp_Caffe_Social-Image_TW-LI_2048X1024.jpg" alt="Caffe Logo">
+</p>
 
 ### Requirements
 
