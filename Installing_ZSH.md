@@ -72,13 +72,10 @@ For example, this might begin to look like this:
 
 ```shell
 plugins=(
-  git
+  docker
   bundler
-  dotenv
-  osx
-  rake
-  rbenv
-  ruby
+  git
+  python
 )
 ```
 
