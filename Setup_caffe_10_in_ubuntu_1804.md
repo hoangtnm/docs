@@ -13,7 +13,7 @@
 
 ### Installation
 
-```
+```sh
 sudo apt update && sudo apt upgrade
 sudo apt install build-essential \
   libhdf5-serial-dev \
@@ -37,7 +37,7 @@ python3 get-pip.py
 
 Move the cursor to the workspace, let's say `/home/$USER/workspace`, clone `caffe` repo:
 
-```
+```shell
 git clone https://github.com/weiliu89/caffe.git /home/$USER/workspace
 cd caffe
 git checkout ssd
@@ -45,7 +45,7 @@ git checkout ssd
 
 Then create Makefile.config and edit it with nano or vim.
 
-```
+```shell
 cp Makefile.config.example Makefile.config
 vim Makefile.config
 ```
@@ -92,7 +92,7 @@ PYTHON_INCLUDE := /usr/local/include/python3.6m \
 
 Build Python API for `caffe`:
 
-```
+```shell
 make all -j `nproc`
 make test -j `nproc` && make runtest -j `nproc`
 make pycaffe -j `nproc`
@@ -100,7 +100,7 @@ make pycaffe -j `nproc`
 
 From `~/workspace/caffe` directory, export path to test:
 
-```
+```shell
 export PYTHONPATH=`pwd`/python:$PYTHONPATH
 # also add to .bash_profile
 sudo bash -c 'echo "export PYTHONPATH=`pwd`/python:$PYTHONPATH" >> ~/.bash_profile'
@@ -110,7 +110,7 @@ source ~/.bashrc
 
 Now, create virtual environment to work with `pycaffe`:
 
-```
+```shell
 cd ~/workspace
 python3 -m venv pycaffe-env
 source pycaffe-env/bin/activate
@@ -119,7 +119,7 @@ source pycaffe-env/bin/activate
 
 ### Test
 
-```
+```shell
 (pycaffe-env) nano test.py
 ```
 
@@ -133,7 +133,7 @@ Ctrl + X, press Y then Enter to save file.
 
 Run it:
 
-```
+```sh
 (pycaffe-env) python test.py
 ```
 
