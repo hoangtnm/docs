@@ -24,7 +24,7 @@ There is two available versions for NVIDIA graphic card’s driver: Nouveau driv
 
 Normally, Nvidia driver is default. For Ubuntu, it’s `nvidia-390`. We can check it with:
 
-```
+```shell
 cat /proc/driver/nvidia/version
 ```
 
@@ -50,7 +50,7 @@ blacklist rivatv
 
 And install:
 
-```
+```shell
 sudo add-apt-repository ppa:graphics-drivers/ppa 
 sudo apt update
 sudo apt install nvidia-396 nvidia-396-dev
@@ -65,14 +65,14 @@ IMHO, it’s always best practice to install pip modules into the virtual enviro
 
 CUDA v9.2 requires GCC 7, while default GCC version in Ubuntu 17.10 is GCC 7.2 and some other Deep Learning framework requires GCC 6. So we have to install GCC 6 and create symlinks as below:
 
-```
+```shell
 cd ~/Downloads
 sudo apt install gcc-6 g++-6
 sudo ln -s /usr/bin/gcc-6 /usr/local/cuda/bin/gcc
 sudo ln -s /usr/bin/g++-6 /usr/local/cuda/bin/g++
 
-wget https://developer.nvidia.com/compute/cuda/9.2/Prod2/local_installers/cuda_9.2.148_396.37_linux
-wget https://developer.nvidia.com/compute/cuda/9.2/Prod2/patches/1/cuda_9.2.148.1_linux
+curl https://developer.nvidia.com/compute/cuda/9.2/Prod2/local_installers/cuda_9.2.148_396.37_linux
+curl https://developer.nvidia.com/compute/cuda/9.2/Prod2/patches/1/cuda_9.2.148.1_linux
 chmod +x cuda_9.2.148*
 sudo ./cuda_9.2.148_396.37_linux.run --override
 sudo ./cuda_9.2.148.1_linux.run
@@ -92,13 +92,13 @@ You are attempting to install on an unsupported configuration. Do you wish to co
 **y**  
 Install NVIDIA Accelerated Graphics Driver for Linux-x86_64 384.81?  
 **n**  
-Install the CUDA 9.0 Toolkit?  
+Install the CUDA 9.2 Toolkit?  
 **y**  
 Enter Toolkit Location  
 [default location]  
 Do you want to install a symbolic link at /usr/local/cuda?  
 **y**  
-Install the CUDA 9.0 Samples?  
+Install the CUDA 9.2 Samples?  
 **y**  
 Enter CUDA Samples Location  
 [default location]
@@ -111,8 +111,8 @@ Lastly, reboot the system.
 
 The NVIDIA CUDA® Deep Neural Network library (cuDNN) is a GPU-accelerated library of primitives for deep neural networks. cuDNN provides highly tuned implementations for standard routines such as forward and backward convolution, pooling, normalization, and activation layers
 
-```
-wget https://developer.nvidia.com/compute/machine-learning/cudnn/secure/v7.2.1/prod/9.2_20180806/cudnn-9.2-linux-x64-v7.2.1.38
+```shell
+curl https://developer.nvidia.com/compute/machine-learning/cudnn/secure/v7.2.1/prod/9.2_20180806/cudnn-9.2-linux-x64-v7.2.1.38
 tar -xzvf cudnn-9.2-linux-x64-v7.2.1.38.tgz
 sudo cp cuda/include/cudnn.h /usr/local/cuda/include
 sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
@@ -125,15 +125,15 @@ NCCL (pronounced "Nickel") is a stand-alone library of standard collective commu
 
 For more information on NCCL usage, please refer to the [NCCL documentation](https://docs.nvidia.com/deeplearning/sdk/nccl-developer-guide/index.html).
 
-```
-wget https://developer.nvidia.com/compute/machine-learning/nccl/secure/v2.3/prod2/CUDA9.2/txz/nccl_2.3.5-2-cuda9.2_x86_64
+```shell
+curl https://developer.nvidia.com/compute/machine-learning/nccl/secure/v2.3/prod2/CUDA9.2/txz/nccl_2.3.5-2-cuda9.2_x86_64
 tar -zxvf nccl_2.3.5-2+cuda9.2_x86_64.txz
 sudo cp nccl_2.3.5-2+cuda9.2_x86_64 /usr/local/NCCL2
 ```
 
 Create symbolic link for NCCL header file
 
-```
+```shell
 sudo ln -s /usr/local/NCCL2/include/nccl.h /usr/include/nccl.h
 ```
 
