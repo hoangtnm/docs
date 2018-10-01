@@ -85,7 +85,7 @@ cmake .. \
       -DCUDA_ARCH_NAME=Manual \
       -DCUDA_ARCH_BIN="35 52 60 61" \
       -DCUDA_ARCH_PTX="61" \
-      -DUSE_NATIVE_ARCH=ON
+      -DUSE_NATIVE_ARCH=ON \
       -DUSE_NNPACK=OFF \
       -DUSE_ROCKSDB=OFF
 
