@@ -81,7 +81,13 @@ mkdir build && cd build
 # This looks for packages on your machine and figures out which functionality
 # to include in the Caffe2 installation. The output of this command is very
 # useful in debugging.
-cmake ..
+cmake .. \
+      -DCUDA_ARCH_NAME=Manual \
+      -DCUDA_ARCH_BIN="35 52 60 61" \
+      -DCUDA_ARCH_PTX="61" \
+      -DUSE_NATIVE_ARCH=ON
+      -DUSE_NNPACK=OFF \
+      -DUSE_ROCKSDB=OFF
 
 sudo make install -j`nproc`
 ```
