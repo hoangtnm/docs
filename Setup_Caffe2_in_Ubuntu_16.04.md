@@ -134,7 +134,7 @@ ssh -N -f -L localhost:8888:localhost:8889 -i "your-public-cert.pem" ubuntu@supe
 
 ### Troubleshooting
 
-### Protobuf Errors
+#### Protobuf Errors
 
 Caffe2 uses protobuf as its serialization format and requires version `3.2.0` or newer.
 If your protobuf version is older, you can build protobuf from Caffe2 protobuf submodule and use that version instead.
@@ -166,7 +166,7 @@ You may also experience problems with protobuf if you have both system and anaco
 This could lead to problems as the versions could be mixed at compile time or at runtime.
 This issue can also be overcome by following the commands from above.
 
-### Caffe2 Python Binaries
+#### Caffe2 Python Binaries
 
 In case you experience issues with CMake being unable to find the required Python paths when
 building Caffe2 Python binaries (e.g. in virtualenv), you can try pointing Caffe2 CMake to python
@@ -179,15 +179,15 @@ cmake .. \
   -DPYTHON_INCLUDE_DIR=$(python -c "from distutils import sysconfig; print(sysconfig.get_python_inc())")
 ```
 
-### Caffe2 with NNPACK Build
+#### Caffe2 with NNPACK Build
 
 Detectron does not require Caffe2 built with NNPACK support. If you face NNPACK related issues during Caffe2 installation, you can safely disable NNPACK by setting the `-DUSE_NNPACK=OFF` CMake flag.
 
-#### Caffe2 with OpenCV Build
+##### Caffe2 with OpenCV Build
 
 Analogously to the NNPACK case above, you can disable OpenCV by setting the `-DUSE_OPENCV=OFF` CMake flag.
 
-#### COCO API Undefined Symbol Error
+##### COCO API Undefined Symbol Error
 
 If you encounter a COCO API import error due to an undefined symbol, as reported [here](https://github.com/cocodataset/cocoapi/issues/35),
 make sure that your python versions are not getting mixed. For instance, this issue may arise if you have
