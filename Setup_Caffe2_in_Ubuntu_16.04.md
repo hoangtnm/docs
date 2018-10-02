@@ -89,7 +89,8 @@ cmake .. \
       -DUSE_NATIVE_ARCH=ON \
       -DUSE_NNPACK=OFF \
       -DUSE_ROCKSDB=OFF \
-      -DPYTHON_LIBRARY=$(python -c "from distutils import sysconfig; print(sysconfig.get_python_lib())") \        -               -DPYTHON_INCLUDE_DIR=$(python -c "from distutils import sysconfig; print(sysconfig.get_python_inc())")
+      -DPYTHON_LIBRARY=$(python -c "from distutils import sysconfig; print(sysconfig.get_python_lib())") \
+      -DPYTHON_INCLUDE_DIR=$(python -c "from distutils import sysconfig; print(sysconfig.get_python_inc())")
 
 
 sudo make install -j`nproc`
