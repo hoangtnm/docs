@@ -159,7 +159,10 @@ section. One could also prefetch all the necessary weights files used for traini
 Then one should start a container with the host `DensePoseData` and COCO directories mounted:
 
 ```
-nvidia-docker run -v $DENSEPOSE/DensePoseData:/denseposedata -v /path/to/coco:/coco -it densepose:c2-cuda9-cudnn7 bash
+nvidia-docker run \
+   -v $DENSEPOSE/DensePoseData:/denseposedata \
+   -v /path/to/coco:/coco \
+   -it densepose:c2-cuda9-cudnn7 bash
 ```
 
 Within the container one needs to replace the local `DensePoseData` directory with the host one:
