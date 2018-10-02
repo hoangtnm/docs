@@ -82,6 +82,7 @@ mkdir build && cd build
 # to include in the Caffe2 installation. The output of this command is very
 # useful in debugging.
 cmake .. \
+      -DBUILD_CUSTOM_PROTOBUF=OFF \
       -DCUDA_ARCH_NAME=Manual \
       -DCUDA_ARCH_BIN="35 52 60 61" \
       -DCUDA_ARCH_PTX="61" \
