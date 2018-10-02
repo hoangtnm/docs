@@ -88,7 +88,9 @@ cmake .. \
       -DUSE_PROF=ON \
       -DUSE_NATIVE_ARCH=ON \
       -DUSE_NNPACK=OFF \
-      -DUSE_ROCKSDB=OFF
+      -DUSE_ROCKSDB=OFF \
+      -DPYTHON_LIBRARY=$(python -c "from distutils import sysconfig; print(sysconfig.get_python_lib())") \        -               -DPYTHON_INCLUDE_DIR=$(python -c "from distutils import sysconfig; print(sysconfig.get_python_inc())")
+
 
 sudo make install -j`nproc`
 ```
@@ -149,7 +151,7 @@ cmake .. \
   -DCMAKE_INSTALL_PREFIX=$HOME/c2_tp_protobuf \
   -Dprotobuf_BUILD_TESTS=OFF \
   -DCMAKE_CXX_FLAGS="-fPIC"
-make install
+make install -j`nproc`
 ```
 
 To point Caffe2 CMake to the newly built protobuf:
