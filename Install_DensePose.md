@@ -191,5 +191,9 @@ The new image can be used to run inference / training. However, one needs to
 remember to mount `DensePoseData` and COCO directories:
 
 ```
-nvidia-docker run --rm -v $DENSEPOSE/DensePoseData:/denseposedata -v /path/to/coco:/coco -it densepose:c2-cuda9-cudnn7-wdata <inference_or_training_command>
+nvidia-docker run \
+   --rm \
+   -v $DENSEPOSE/DensePoseData:/denseposedata \
+   -v /path/to/coco:/coco \
+   -it densepose:c2-cuda9-cudnn7-wdata <inference_or_training_command>
 ```
