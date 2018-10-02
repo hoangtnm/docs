@@ -85,6 +85,7 @@ cmake .. \
       -DCUDA_ARCH_NAME=Manual \
       -DCUDA_ARCH_BIN="35 52 60 61" \
       -DCUDA_ARCH_PTX="61" \
+      -DUSE_PROF=ON \
       -DUSE_NATIVE_ARCH=ON \
       -DUSE_NNPACK=OFF \
       -DUSE_ROCKSDB=OFF
@@ -129,3 +130,70 @@ Then create the SSH tunnel. This will pass the cloud server’s Jupyter instance
 ```
 ssh -N -f -L localhost:8888:localhost:8889 -i "your-public-cert.pem" ubuntu@super-rad-GPU-instance.compute-1.amazonaws.com
 ```
+
+
+### Troubleshooting
+
+### Protobuf Errors
+
+Caffe2 uses protobuf as its serialization format and requires version `3.2.0` or newer.
+If your protobuf version is older, you can build protobuf from Caffe2 protobuf submodule and use that version instead.
+
+To build Caffe2 protobuf submodule:
+
+```
+# CAFFE2=/path/to/caffe2
+cd $CAFFE2/third_party/protobuf/cmake
+mkdir -p build && cd build
+cmake .. \
+  -DCMAKE_INSTALL_PREFIX=$HOME/c2_tp_protobuf \
+  -Dprotobuf_BUILD_TESTS=OFF \
+  -DCMAKE_CXX_FLAGS="-fPIC"
+make install
+```
+
+To point Caffe2 CMake to the newly built protobuf:
+
+```
+cmake .. \
+  # insert your Caffe2 CMake flags here
+  -DPROTOBUF_PROTOC_EXECUTABLE=$HOME/c2_tp_protobuf/bin/protoc \
+  -DPROTOBUF_INCLUDE_DIR=$HOME/c2_tp_protobuf/include \
+  -DPROTOBUF_LIBRARY=$HOME/c2_tp_protobuf/lib64/libprotobuf.a
+```
+
+You may also experience problems with protobuf if you have both system and anaconda packages installed.
+This could lead to problems as the versions could be mixed at compile time or at runtime.
+This issue can also be overcome by following the commands from above.
+
+### Caffe2 Python Binaries
+
+In case you experience issues with CMake being unable to find the required Python paths when
+building Caffe2 Python binaries (e.g. in virtualenv), you can try pointing Caffe2 CMake to python
+library and include dir by using:
+
+```
+cmake .. \
+  # insert your Caffe2 CMake flags here
+  -DPYTHON_LIBRARY=$(python -c "from distutils import sysconfig; print(sysconfig.get_python_lib())") \
+  -DPYTHON_INCLUDE_DIR=$(python -c "from distutils import sysconfig; print(sysconfig.get_python_inc())")
+```
+
+### Caffe2 with NNPACK Build
+
+Detectron does not require Caffe2 built with NNPACK support. If you face NNPACK related issues during Caffe2 installation, you can safely disable NNPACK by setting the `-DUSE_NNPACK=OFF` CMake flag.
+
+#### Caffe2 with OpenCV Build
+
+Analogously to the NNPACK case above, you can disable OpenCV by setting the `-DUSE_OPENCV=OFF` CMake flag.
+
+#### COCO API Undefined Symbol Error
+
+If you encounter a COCO API import error due to an undefined symbol, as reported [here](https://github.com/cocodataset/cocoapi/issues/35),
+make sure that your python versions are not getting mixed. For instance, this issue may arise if you have
+[both system and conda numpy installed](https://stackoverflow.com/questions/36190757/numpy-undefined-symbol-pyfpe-jbuf).
+
+#### CMake Cannot Find Caffe2
+
+In case you experience issues with CMake being unable to find the Caffe2 package when building custom operators,
+make sure you have run `make install` as part of your Caffe2 installation process.
