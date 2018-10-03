@@ -201,3 +201,48 @@ make sure that your python versions are not getting mixed. For instance, this is
 
 In case you experience issues with CMake being unable to find the Caffe2 package when building custom operators,
 make sure you have run `make install` as part of your Caffe2 installation process.
+
+#### How do I fix error messages that are Protobuf related?
+
+Protobuf version mismatch is a common problem. Having different protobuf versions often leads to incompatible headers and libraries. **Upgrading to the latest protobuf is not the solution.** The version of Protobuf used during compile time must match the one used at runtime.
+
+Run these commands to see which Protobuf version is currently visible on your machine.
+
+```
+which protoc
+protoc --version
+find $(dirname $(which protoc))/../lib -name 'libproto*'
+```
+
+Now find what Protobuf version your Caffe2 installation expects. First find your Caffe2 library, which can have several possible locations depending on your install environment. Then run the following command with `<your libcaffe2>` replaced with the location of your Caffe2 library.
+
+For Linux: `ldd <your libcaffe2>` For macOS: `otool -L <your libcaffe2>`
+
+You need the Protobuf versions to match.
+
+For example, on a Mac you might find that your current visible Protobuf is:
+
+```
+$ which protoc
+/usr/local/bin/protoc
+$ protoc --version
+libprotoc 3.5.1
+$ otool -L /usr/local/lib/libprotobuf.dylib
+/usr/local/lib/libprotobuf.dylib:
+	/usr/local/opt/protobuf/lib/libprotobuf.15.dylib (compatibility version 16.0.0, current version 16.1.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.11)
+	/usr/lib/libc++.1.dylib (compatibility version 1.0.0, current version 400.9.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1252.0.0)
+```
+
+but that your Caffe2 installation expects
+
+```
+$ otool -L /usr/local/lib/libcaffe2.dylib
+@rpath/libcaffe2.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@rpath/libprotobuf.14.dylib (compatibility version 15.0.0, current version 15.0.0)
+	/usr/lib/libc++.1.dylib (compatibility version 1.0.0, current version 400.9.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1252.0.0)
+```
+
+This example would lead to Protobuf errors, as `libprotobuf.14.dylib` which Caffe2 expects is not the same as libprotobuf.15.dylib which exists on the machine. In this example, the Protobuf on the machine will have to be downgraded to 3.4.1.
