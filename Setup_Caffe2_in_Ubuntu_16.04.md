@@ -4,7 +4,7 @@
 ### Requirements
 
 - Ubuntu 16.04 LTS
-- CUDA 8.0, cuDNN 6.0 GA2
+- CUDA 8.0, cuDNN 6.0 GA2, NCCL 2.3.5
 - Python 2.7 as default
 
 ### Install Dependencies
