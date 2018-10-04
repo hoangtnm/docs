@@ -5,9 +5,7 @@
 
 1. Download a macOS installer, such as macOS Mojave or macOS High Sierra.
 
-```
-To download macOS Mojave or High Sierra for this purpose, download from a Mac that is using macOS Sierra 10.12.5 or later, or El Capitan 10.11.6. Enterprise administrators, please download from Apple, not a locally hosted software-update server.
-```
+> To download macOS Mojave or High Sierra for this purpose, download from a Mac that is using macOS Sierra 10.12.5 or later, or El Capitan 10.11.6. Enterprise administrators, please download from Apple, not a locally hosted software-update server.
 
 2. When the macOS installer opens, quit it without continuing installation.
 
