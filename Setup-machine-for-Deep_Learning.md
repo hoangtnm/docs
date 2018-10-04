@@ -88,20 +88,29 @@ However this behavior can be changed by modifying ```~/.bashrc```, ```~/.profile
 While compiling, it will ask several questions, answer as below:
 
 ```
-You are attempting to install on an unsupported configuration. Do you wish to continue?  
-**y**  
-Install NVIDIA Accelerated Graphics Driver for Linux-x86_64 384.81?  
-**n**  
-Install the CUDA 9.2 Toolkit?  
-**y**  
-Enter Toolkit Location  
-[default location]  
-Do you want to install a symbolic link at /usr/local/cuda?  
-**y**  
-Install the CUDA 9.2 Samples?  
-**y**  
-Enter CUDA Samples Location  
-[default location]
+Do you accept the previously read EULA?
+accept/decline/quit: accept
+
+You are attempting to install on an unsupported configuration. Do you wish to continue?
+(y)es/(n)o [ default is no ]: y
+
+Install NVIDIA Accelerated Graphics Driver for Linux-x86_64 384.81?
+(y)es/(n)o/(q)uit: n
+
+Install the CUDA 9.0 Toolkit?
+(y)es/(n)o/(q)uit: y
+
+Enter Toolkit Location
+ [ default is /usr/local/cuda-9.0 ]: 
+
+Do you want to install a symbolic link at /usr/local/cuda?
+(y)es/(n)o/(q)uit: y
+
+Install the CUDA 9.0 Samples?
+(y)es/(n)o/(q)uit: y
+
+Enter CUDA Samples Location
+ [default location]:   
 ```
 
 If nothing special happens, the process will end succefully.
