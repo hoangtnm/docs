@@ -11,13 +11,17 @@ Building OpenBLAS requires the following to be installed:
 * IBM MASS (optional, see below)
 
 
-## Installation from Source
+## Clone the OpenBLAS repository
 
 ```
 git clone https://github.com/xianyi/OpenBLAS.git
 ```
 
 ### Normal compile
+
+```
+make -j`nproc`
+```
 
 Simply invoking `make` (or `gmake` on BSD) will detect the CPU automatically.
 To set a specific target CPU, use `make TARGET=xxx`, e.g. `make TARGET=NEHALEM`.
