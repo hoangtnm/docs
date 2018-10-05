@@ -13,8 +13,9 @@ Building OpenBLAS requires the following to be installed:
 
 ## Clone the OpenBLAS repository
 
-```
+```shell
 git clone https://github.com/xianyi/OpenBLAS.git
+cd OpenBLAS
 ```
 
 ### Normal compile
