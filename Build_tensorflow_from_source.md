@@ -12,7 +12,7 @@
 Start the process of building TensorFlow by cloning a TensorFlow repository.
 To clone the latest TensorFlow repository, issue the following command:
 
-```
+```shell
 mkdir /home/$USER/workspace
 cd /home/$USER/workspace
 git clone https://github.com/tensorflow/tensorflow.git
@@ -44,7 +44,7 @@ IMHO, it’s always best practice to install pip modules into the virtual enviro
 
 CUDA v9.2 requires GCC 7, while default GCC version in Ubuntu 17.10 is GCC 7.2 and some other Deep Learning framework requires GCC 6. So we have to install GCC 6 and create symlinks as below:
 
-```
+```shell
 cd ~/Downloads
 sudo apt install gcc-6 g++-6
 sudo ln -s /usr/bin/gcc-6 /usr/local/cuda/bin/gcc
@@ -68,7 +68,7 @@ However this behavior can be changed by modifying ```~/.bashrc```, ```~/.profile
 
 The NVIDIA CUDA® Deep Neural Network library (cuDNN) is a GPU-accelerated library of primitives for deep neural networks. cuDNN provides highly tuned implementations for standard routines such as forward and backward convolution, pooling, normalization, and activation layers
 
-```
+```shell
 wget https://developer.nvidia.com/compute/machine-learning/cudnn/secure/v7.2.1/prod/9.2_20180806/cudnn-9.2-linux-x64-v7.2.1.38
 tar -xzvf cudnn-9.2-linux-x64-v7.2.1.38.tgz
 sudo cp cuda/include/cudnn.h /usr/local/cuda/include
@@ -78,7 +78,7 @@ sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
 
 ### Configure the installation
 
-```
+```shell
 cd /home/$USER/workspace/tensorflow
 ./configure
 Please specify the location of python. [Default is /usr/bin/python]: 
@@ -167,7 +167,7 @@ Configuration finished
 
 ### Build the pip package
 
-```
+```shell
 bazel build -c opt --copt=-mavx --copt=-mavx2 --copt=-mfma --copt=-mfpmath=both --copt=-msse4.2 --cxxopt="-D_GLIBCXX_USE_CXX11_ABI=0" --config=cuda //tensorflow/tools/pip_package:build_pip_package
 ```
 
@@ -177,7 +177,7 @@ bazel build -c opt --copt=-mavx --copt=-mavx2 --copt=-mfma --copt=-mfpmath=both 
 
 The ```bazel build``` command builds a script named ```build_pip_package```. Running this script as follows will build a ```.whl``` file within the ```/tmp/tensorflow_pkg``` directory:
 
-```
+```shell
 bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
 ```
 
@@ -185,7 +185,7 @@ bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
 
 Invoke ```pip install``` to install that pip package. The filename of the ```.whl``` file depends on your platform. For example, the following command will install the pip package:
 
-```
+```shell
 sudo pip3 install /tmp/tensorflow_pkg/tensorflow-1.10-cp36-cp36m-linux_x86_64.whl
 ```
 
@@ -197,7 +197,7 @@ Change directory (```cd```) to any directory on your system other than the ```te
 
 Invoke python:
 
-```
+```python
 python3
 import tensorflow as tf
 hello = tf.constant('Hello, TensorFlow!')
