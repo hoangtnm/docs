@@ -9,7 +9,7 @@
 
 ### Install Dependencies
 
-```
+```shell
 sudo apt install -y --no-install-recommends \
       build-essential \
       cmake \
@@ -58,13 +58,13 @@ sudo pip2 install \
 
 ### Make sure python2 is being used as default
 
-```
+```shell
 sudo rm /usr/bin/python && sudo ln -s /usr/bin/python2 /usr/bin/python
 ```
 
 ### Clone & Build
 
-```
+```shell
 echo "export Caffe2_DIR=/home/$USER/workspace/pytorch/build" >> ~/.bashrc
 echo "export PYTHONPATH=/usr/local:/home/$USER/workspace/pytorch/build" >> ~/.bashrc
 echo "export LD_LIBRARY_PATH=/usr/local/lib:/home/$USER/workspace/pytorch/build/lib:$LD_LIBRARY_PATH" >> ~/.bashrc
@@ -100,7 +100,7 @@ sudo make install -j`nproc`
 
 ### Test the Caffe2 Installation
 
-```
+```shell
 cd ~ && python -c 'from caffe2.python import core' 2>/dev/null && echo "Success" || echo "Failure"
 ```
 
@@ -110,7 +110,7 @@ If this fails with a message about not finding caffe2.python or not finding libc
 
 If you installed with GPU support, test that the GPU build was a success with this command (run from the top level pytorch directory). You will get a test output either way, but it will warn you at the top of the output if CPU was used instead of GPU, along with other errors such as missing libraries.
 
-```
+```python
 python caffe2/python/operator_test/activation_ops_test.py
 ```
 
@@ -132,7 +132,7 @@ jupyter notebook --no-browser --port=8889
 
 Then create the SSH tunnel. This will pass the cloud server’s Jupyter instance to your localhost 8888 port for you to use locally. The example below is templated after how you would connect AWS, where `your-public-cert.pem` is your own public certificate and `ubuntu@super-rad-GPU-instance.compute-1.amazonaws.com` is your login to your cloud server. You can easily grab this on AWS by going to Instances > Connect and copy the part after ssh and swap that out in the command below.
 
-```
+```shell
 ssh -N -f -L localhost:8888:localhost:8889 -i "your-public-cert.pem" ubuntu@super-rad-GPU-instance.compute-1.amazonaws.com
 ```
 
@@ -146,7 +146,7 @@ If your protobuf version is older, you can build protobuf from Caffe2 protobuf s
 
 To build Caffe2 protobuf submodule:
 
-```
+```shell
 # CAFFE2=/path/to/caffe2
 cd $CAFFE2/third_party/protobuf/cmake
 mkdir -p build && cd build
@@ -159,7 +159,7 @@ make install -j`nproc`
 
 To point Caffe2 CMake to the newly built protobuf:
 
-```
+```shell
 cmake .. \
   # insert your Caffe2 CMake flags here
   -DPROTOBUF_PROTOC_EXECUTABLE=$HOME/c2_tp_protobuf/bin/protoc \
@@ -177,7 +177,7 @@ In case you experience issues with CMake being unable to find the required Pytho
 building Caffe2 Python binaries (e.g. in virtualenv), you can try pointing Caffe2 CMake to python
 library and include dir by using:
 
-```
+```shell
 cmake .. \
   # insert your Caffe2 CMake flags here
   -DPYTHON_LIBRARY=$(python -c "from distutils import sysconfig; print(sysconfig.get_python_lib())") \
@@ -209,7 +209,7 @@ Protobuf version mismatch is a common problem. Having different protobuf version
 
 Run these commands to see which Protobuf version is currently visible on your machine.
 
-```
+```shell
 which protoc
 protoc --version
 find $(dirname $(which protoc))/../lib -name 'libproto*'
@@ -223,7 +223,7 @@ You need the Protobuf versions to match.
 
 For example, on a Mac you might find that your current visible Protobuf is:
 
-```
+```shell
 $ which protoc
 /usr/local/bin/protoc
 $ protoc --version
@@ -238,7 +238,7 @@ $ otool -L /usr/local/lib/libprotobuf.dylib
 
 but that your Caffe2 installation expects
 
-```
+```shell
 $ otool -L /usr/local/lib/libcaffe2.dylib
 @rpath/libcaffe2.dylib (compatibility version 0.0.0, current version 0.0.0)
 	@rpath/libprotobuf.14.dylib (compatibility version 15.0.0, current version 15.0.0)
