@@ -125,7 +125,7 @@ source pycaffe-env/bin/activate
 
 Paste the following content into test.py:
 
-```
+```python
 import caffe
 print(caffe.__version__)
 ```
@@ -133,7 +133,7 @@ Ctrl + X, press Y then Enter to save file.
 
 Run it:
 
-```shell
+```python
 (pycaffe-env) python test.py
 ```
 
