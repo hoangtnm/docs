@@ -71,7 +71,19 @@ mkdir build && cd build
 # This looks for packages on your machine and figures out which functionality
 # to include in the Caffe2 installation. The output of this command is very
 # useful in debugging.
-cmake ..
+cmake .. \
+      -DBUILD_CUSTOM_PROTOBUF=OFF \
+      -DCUDA_ARCH_NAME=Manual \
+      -DCUDA_ARCH_BIN="35 52 60 61" \
+      -DCUDA_ARCH_PTX="61" \
+      -DUSE_SYSTEM_NCCL=ON \
+      -DUSE_PROF=ON \
+      -DUSE_NATIVE_ARCH=ON \
+      -DUSE_NNPACK=OFF \
+      -DUSE_ROCKSDB=OFF \
+      -DPYTHON_LIBRARY=$(python -c "from distutils import sysconfig; print(sysconfig.get_python_lib())") \
+      -DPYTHON_INCLUDE_DIR=$(python -c "from distutils import sysconfig; print(sysconfig.get_python_inc())") \
+      -DCUDA_HOST_COMPILER=/usr/bin/gcc-5
 
 sudo make install -j`nproc`
 ```
