@@ -31,5 +31,5 @@ sudo vim /etc/rc.local
 
 # Here, find the exit 0 line, and in the line above, add
 /usr/bin/zram.sh &
-# When you reboot your Pi, you’ll be using efficient ZRAM swapping rather than relying on spare (and slower) microSD card space.
+# When you reboot your Pi, you’ll be using efficient ZRAM swapping.
 ``
