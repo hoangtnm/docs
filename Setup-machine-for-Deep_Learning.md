@@ -156,3 +156,49 @@ make
 ```
 
 Installation is now complete. You can now incorporate NCCL in your GPU-accelerated application.
+
+### Install CUDA, NCCL and cuDNN (network)
+
+CUDA 9.2 is not officially supported on ubuntu 18.04 yet, we use the ubuntu 17.10 repository for CUDA instead
+
+```
+# Install CUDA Toolkit
+curl -fsSL https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1710/x86_64/7fa2af80.pub | apt-key add - && \
+echo "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1710/x86_64 /" > /etc/apt/sources.list.d/cuda.list && \
+echo "deb https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1604/x86_64 /" > /etc/apt/sources.list.d/nvidia-ml.list
+
+export CUDA_VERSION=9.2.148
+export CUDA_PKG_VERSION=9-2=$CUDA_VERSION-1
+
+sudo apt-get update && apt-get install -y --no-install-recommends cuda-cudart-$CUDA_PKG_VERSION && \
+sudo ln -s cuda-9.2 /usr/local/cuda
+
+echo "/usr/local/nvidia/lib" >> /etc/ld.so.conf.d/nvidia.conf && \
+echo "/usr/local/nvidia/lib64" >> /etc/ld.so.conf.d/nvidia.conf
+
+export PATH=/usr/local/nvidia/bin:/usr/local/cuda/bin:${PATH}
+export LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+
+# Setup NCCL 2
+export NCCL_VERSION=2.3.5
+
+sudo apt-get install -y --no-install-recommends \
+        cuda-libraries-$CUDA_PKG_VERSION \
+        cuda-nvtx-$CUDA_PKG_VERSION \
+        libnccl2=$NCCL_VERSION-2+cuda9.2 && \
+     apt-mark hold libnccl2
+sudo apt-get install -y --no-install-recommends \
+        cuda-libraries-dev-$CUDA_PKG_VERSION \
+        cuda-nvml-dev-$CUDA_PKG_VERSION \
+        cuda-minimal-build-$CUDA_PKG_VERSION \
+        cuda-command-line-tools-$CUDA_PKG_VERSION \
+        libnccl-dev=$NCCL_VERSION-2+cuda9.2
+
+# Install cuDNN
+export CUDNN_VERSION=7.2.1.38
+
+sudo apt-get install -y --no-install-recommends \
+            libcudnn7=$CUDNN_VERSION-1+cuda9.2 \
+            libcudnn7-dev=$CUDNN_VERSION-1+cuda9.2 && \
+     apt-mark hold libcudnn7
+```
