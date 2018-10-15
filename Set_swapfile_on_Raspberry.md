@@ -7,6 +7,15 @@ sudo dphys-swapfile swapon
 ```
 
 
+### Remove Bloatware
+
+```
+sudo apt purge libreoffice* minecraft-pi sonic-pi
+sudo apt clean
+sudo apt autoremove
+```
+
+
 ### Use ZRAM as Super Fast Storage
 
 ZRAM uses the Raspberry Pi’s built in hardware for swap data, rather than relying on the microSD card.
