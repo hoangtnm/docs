@@ -4,14 +4,14 @@
 ### 1. Uninstall old versions
 
 ```
-sudo apt-get remove docker docker-engine docker.io
+sudo apt remove docker docker-engine docker.io
 ```
 
 ### 1. SET UP THE REPOSITORY
 
 ```
-sudo apt-get update
-sudo apt-get install \
+sudo apt update
+sudo apt install \
      apt-transport-https \
      ca-certificates \
      curl \
@@ -31,7 +31,7 @@ echo "deb [arch=armhf] https://download.docker.com/linux/debian \
 ### 2. INSTALL DOCKER CE
 
 ```
-sudo apt-get install docker-ce
+sudo apt install docker-ce
 ```
 
 Verify that Docker CE is installed correctly by running the `hello-world` image.
