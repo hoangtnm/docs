@@ -1,19 +1,4 @@
-# Set swapfile on Raspberry
-
-```shell
-sudo su -c 'echo "CONF_SWAPSIZE=2048" > /etc/dphys-swapfile'
-sudo dphys-swapfile setup
-sudo dphys-swapfile swapon
-```
-
-
-### Remove Bloatware
-
-```
-sudo apt purge libreoffice* minecraft-pi sonic-pi
-sudo apt clean
-sudo apt autoremove
-```
+# Optimize Raspberry Pi 3 Model B
 
 
 ### Use ZRAM as Super Fast Storage
@@ -32,4 +17,22 @@ sudo vim /etc/rc.local
 # Here, find the exit 0 line, and in the line above, add
 /usr/bin/zram.sh &
 # When you reboot your Pi, you’ll be using efficient ZRAM swapping.
-``
+```
+
+### Remove Bloatware
+
+```
+sudo apt purge libreoffice* minecraft-pi sonic-pi
+sudo apt clean
+sudo apt autoremove
+```
+
+
+
+### Set swapfile on Raspberry (When ZRAM is impossible)
+
+```shell
+sudo su -c 'echo "CONF_SWAPSIZE=2048" > /etc/dphys-swapfile'
+sudo dphys-swapfile setup
+sudo dphys-swapfile swapon
+```
