@@ -17,7 +17,7 @@ mkdir /home/$USER/workspace
 cd /home/$USER/workspace
 git clone https://github.com/tensorflow/tensorflow.git
 cd tensorflow
-git checkout r1.10
+git checkout r1.11
 ```
 
 ### Install Bazel
@@ -186,7 +186,7 @@ bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
 Invoke ```pip install``` to install that pip package. The filename of the ```.whl``` file depends on your platform. For example, the following command will install the pip package:
 
 ```shell
-sudo pip3 install /tmp/tensorflow_pkg/tensorflow-1.10-cp36-cp36m-linux_x86_64.whl
+sudo pip3 install /tmp/tensorflow_pkg/tensorflow-1.11-cp36-cp36m-linux_x86_64.whl
 ```
 
 ### Validate your installation
