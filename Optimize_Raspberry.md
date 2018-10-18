@@ -18,7 +18,7 @@ They provide `Adaptive Charging Technology` and an advanced multiple level prote
 
 Sandisk Ultra A1 and Sandisk Extreme V30 A1 are always the best candiates for performance purposes.
 
-These microSD card is designed with `A1-rated` performance, which provides:
+These microSD card are designed with `A1-rated` performance, which provides:
 
 - Minimum Random Read of 1,500 IOPS (input/output operations per second)
 
