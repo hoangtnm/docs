@@ -3,7 +3,7 @@
 
 ### 1. Connect a Reliable Power Supply
 
-`Anker` and `Aukey` are the recommended brands for power supply solution
+`Anker` and `Aukey` are the recommended brands for power supply solutions
 
 They provide `Adaptive Charging Technology` and an advanced multiple level protection system:
 
