@@ -1,7 +1,37 @@
 # Optimize Raspberry Pi 3 Model B
 
 
-### Use ZRAM as Super Fast Storage
+### 1. Connect a Reliable Power Supply
+
+`Anker` and `Aukey` are the recommended brands for power supply solution
+
+They provide `Adaptive Charging Technology` and an advanced multiple level protection system:
+
+- AUKEY AiPower Adaptive Charging Technology gives all your USB powered devices exactly what they need with up to 2.4A.
+
+- Anker PowerIQ instantly identifies any connected device and adjusts voltage output for tailored, optimized charging speed.
+
+- VoltageBoost™ is an Anker-exclusive technology that compensates for cable resistance by smoothing voltage output.
+
+
+### 2. Use a High Performance microSD Card
+
+Sandisk Ultra A1 and Sandisk Extreme V30 A1 are always the best candiates for performance purposes.
+
+These microSD card is designed with `A1-rated` performance, which provides:
+
+- Minimum Random Read of 1,500 IOPS (input/output operations per second)
+
+- Minimum Random Write of 500 IOPS
+
+- Minimum Sustained Sequential Write speed of 10MB/s
+
+<p align="center">
+  <img src="https://assets.hardwarezone.com/img/2017/06/P6290065.jpg">
+</p>
+
+
+### 3. Use ZRAM as Super Fast Storage
 
 ZRAM uses the Raspberry Pi’s built in hardware for swap data, rather than relying on the microSD card.
 
@@ -19,7 +49,8 @@ sudo vim /etc/rc.local
 # When you reboot your Pi, you’ll be using efficient ZRAM swapping.
 ```
 
-### Remove Bloatware
+
+### 4. Remove Bloatware
 
 ```
 sudo apt purge libreoffice* minecraft-pi sonic-pi
@@ -28,8 +59,7 @@ sudo apt autoremove
 ```
 
 
-
-### Set swapfile on Raspberry (When ZRAM is impossible)
+### 5. Set swapfile on Raspberry (When ZRAM is impossible)
 
 ```shell
 sudo su -c 'echo "CONF_SWAPSIZE=2048" > /etc/dphys-swapfile'
