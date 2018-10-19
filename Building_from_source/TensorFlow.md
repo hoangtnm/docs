@@ -1,4 +1,4 @@
-# Install TensorFlow from Sources
+# Build TensorFlow from Source
 
 
 ### Requirements
