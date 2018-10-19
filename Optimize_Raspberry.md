@@ -3,13 +3,13 @@
 
 ### 1. Connect a Reliable Power Supply
 
-`Anker` and `Aukey` are the recommended brands for power supply solutions
+[Anker](https://www.anker.com/) and [Aukey](https://www.aukey.com/) are the recommended brands for power supply solutions
 
 They provide `Adaptive Charging Technology` and an advanced multiple level protection system:
 
-- AUKEY AiPower Adaptive Charging Technology gives all your USB powered devices exactly what they need with up to 2.4A.
+- [AUKEY AiPower Adaptive Charging Technology](https://www.aukeydirect.com/en/technologies-aukey#AiPower) gives all your USB powered devices exactly what they need with up to 2.4A.
 
-- Anker PowerIQ instantly identifies any connected device and adjusts voltage output for tailored, optimized charging speed.
+- [Anker PowerIQ](https://www.anker.com/deals/poweriq) instantly identifies any connected device and adjusts voltage output for tailored, optimized charging speed.
 
 - VoltageBoost™ is an Anker-exclusive technology that compensates for cable resistance by smoothing voltage output.
 
