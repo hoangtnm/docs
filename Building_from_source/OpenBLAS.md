@@ -27,7 +27,16 @@ cd OpenBLAS
 ### Normal compile
 
 ```sh
-make -j`nproc`
+make FC=gfortran -j`nproc`
+```
+
+Make sure that the directory containing `libopenblas.so` is in your shared library search path
+
+```
+export LD_LIBRARY_PATH=/opt/OpenBLAS/lib:$LD_LIBRARY_PATH
+sudo sh -c "echo '/opt/OpenBLAS/lib' > /etc/ld.so.conf.d/openblas.conf"
+source ~/.bashrc
+sudo ldconfig
 ```
 
 Notes
