@@ -46,7 +46,7 @@ include_dirs = /opt/OpenBLAS/include
 
 ### Verify
 
-```
+```python
 python setup.py config
 ```
 
@@ -94,7 +94,7 @@ python setup.py build --fcompiler=gnu95 -j `nproc` install --prefix=/usr/local
 This will compile numpy on all CPUs and install it into the specified prefix. to perform a parallel in-place build, run:
 
 ```shell
-python setup.py build_ext --inplace -j `nproc`
+python setup.py build_ext --fcompiler=gnu95 --inplace -j `nproc`
 ```
 
 ### FORTRAN ABI mismatch
