@@ -54,6 +54,33 @@ make install PREFIX=your_installation_directory
 
 The default installation directory is `/opt/OpenBLAS`.
 
+The directory structure is:
+
+```
+.
+├── bin
+├── include
+│   ├── cblas.h
+│   ├── f77blas.h
+│   ├── lapacke_config.h
+│   ├── lapacke.h
+│   ├── lapacke_mangling.h
+│   ├── lapacke_utils.h
+│   └── openblas_config.h
+└── lib
+    ├── cmake
+    │   └── openblas
+    │       ├── OpenBLASConfig.cmake
+    │       └── OpenBLASConfigVersion.cmake
+    ├── libopenblas.a -> libopenblas_haswellp-r0.3.4.dev.a
+    ├── libopenblas_haswellp-r0.3.4.dev.a
+    ├── libopenblas_haswellp-r0.3.4.dev.so
+    ├── libopenblas.so -> libopenblas_haswellp-r0.3.4.dev.so
+    ├── libopenblas.so.0 -> libopenblas_haswellp-r0.3.4.dev.so
+    └── pkgconfig
+        └── openblas.pc
+```
+
 ## Supported CPUs and Operating Systems
 
 Please read `GotoBLAS_01Readme.txt`.
