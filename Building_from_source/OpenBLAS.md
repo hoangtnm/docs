@@ -1,6 +1,12 @@
 # Install OpenBlas in Ubuntu 18.04
 
 
+### Introduction
+
+OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version.
+
+Please read the documentation on the OpenBLAS wiki pages: <http://github.com/xianyi/OpenBLAS/wiki>.
+
 ### Dependencies
 
 Building OpenBLAS requires the following to be installed:
