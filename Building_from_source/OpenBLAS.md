@@ -24,6 +24,12 @@ cd OpenBLAS
 make -j`nproc`
 ```
 
+Notes
+
+- OpenBLAS doesn't support g77. Please use gfortran or other Fortran compilers. e.g. `make FC=gfortran`
+
+- When building in an emulator (KVM,QEMU etc.) make sure that the combination of CPU features exposed to the virtual environment matches that of an existing CPU to allow detection of the cpu model to succeed. (With qemu, this can be done by passing `-cpu host` or a supported model name at invocation)
+
 Simply invoking `make` (or `gmake` on BSD) will detect the CPU automatically.
 To set a specific target CPU, use `make TARGET=xxx`, e.g. `make TARGET=NEHALEM`.
 The full target list is in the file `TargetList.txt`.
