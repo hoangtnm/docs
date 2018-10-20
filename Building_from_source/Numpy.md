@@ -19,7 +19,7 @@
 
 ```sh
 mkdir -p /home/$USER/workspace/prebuilt_libraries/numpy
-export NUMPY=/home/$USER/workspace
+export NUMPY=/home/$USER/workspace/prebuilt_libraries/numpy
 
 git clone https://github.com/numpy/numpy.git $NUMPY && cd $NUMPY
 ```
