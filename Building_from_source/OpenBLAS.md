@@ -120,7 +120,7 @@ If you compile this library with `USE_OPENMP=1`, you should use the above functi
 
 ### Replace system BLAS/updating APT OpenBLAS in Ubuntu/Debian
 
-Ubuntu and Debian provides 'alternatives' mechanism to comfortably replace BLAS and LAPACK libraries systemwide.
+Ubuntu and Debian provides [alternatives mechanism](http://manpages.ubuntu.com/manpages/trusty/man8/update-alternatives.8.html) to comfortably replace BLAS and LAPACK libraries systemwide.
 
 After successful build of OpenBLAS (with DYNAMIC_ARCH set to 1)
 
