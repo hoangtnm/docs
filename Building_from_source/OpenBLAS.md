@@ -19,14 +19,14 @@ Building OpenBLAS requires the following to be installed:
 
 ## Clone the OpenBLAS repository
 
-```shell
+```sh
 git clone https://github.com/xianyi/OpenBLAS.git
 cd OpenBLAS
 ```
 
 ### Normal compile
 
-```
+```sh
 make -j`nproc`
 ```
 
@@ -124,7 +124,7 @@ Ubuntu and Debian provides 'alternatives' mechanism to comfortably replace BLAS 
 
 After successful build of OpenBLAS (with DYNAMIC_ARCH set to 1)
 
-```
+```sh
 make clean
 make DYNAMIC_ARCH=1
 sudo make DYNAMIC_ARCH=1 install
@@ -132,19 +132,49 @@ sudo make DYNAMIC_ARCH=1 install
 
 One can redirect BLAS and LAPACK alternatives to point to source-built OpenBLAS First you have to install NetLib LAPACK reference implementation (to have alternatives to replace):
 
-```
+```sh
 sudo apt install libblas-dev liblapack-dev
 ```
 
 Then we can set alternative to our freshly-built library:
 
-```
+```sh
 sudo update-alternatives --add /usr/lib/libblas.so.3 libblas.so.3 /opt/OpenBLAS/lib/libopenblas.so.0 41 \
    --slave /usr/lib/liblapack.so.3 liblapack.so.3 /opt/OpenBLAS/lib/libopenblas.so.0
 ```
 
 Or remove redirection and switch back to APT-provided BLAS implementation order:
 
-```
+```sh
 sudo update-alternatives --remove libblas.so.3 /opt/OpenBLAS/lib/libopenblas.so.0
+```
+
+### Specific instructions
+
+To build from source the following packages are needed:
+
+```sh
+sudo apt-get install gcc gfortran python-dev libopenblas-dev liblapack-dev cython
+```
+
+To customize which BLAS is used, you can setup a `site.cfg` file. See the site.cfg.example file in the numpy source for the options you can set.
+
+Note that Debian and Ubuntu package optimized BLAS libraries in a exchangeable way. You can install libraries such as ATLAS or OpenBLAS and change the default one used via the alternatives mechanism:
+
+```sh
+$ sudo apt-get install libopenblas-base libatlas3-base
+$ update-alternatives --list libblas.so.3
+/usr/lib/atlas-base/atlas/libblas.so.3
+/usr/lib/libblas/libblas.so.3
+/usr/lib/openblas-base/libopenblas.so.0
+
+$ sudo update-alternatives --set libblas.so.3 /usr/lib/openblas-base/libopenblas.so.0
+```
+
+See /usr/share/doc/libatlas3-base/README.Debian for instructions on how to build optimized ATLAS packages for your specific CPU. 
+
+You can also use a library you built yourself by preloading it. This does not require administrator rights.
+
+```sh
+LD_PRELOAD=/path/to/libatlas.so.3 ./my-application
 ```
