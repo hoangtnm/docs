@@ -97,7 +97,7 @@ export ATLAS=/path/to/libatlas.so
 From NumPy 1.10.0 on it’s also possible to do a parallel build with:
 
 ```shell
-python setup.py build -j `nproc` install --prefix=/usr/local
+python setup.py build --fcompiler=gnu95 -j `nproc` install --prefix=/usr/local
 ```
 
 This will compile numpy on all CPUs and install it into the specified prefix. to perform a parallel in-place build, run:
