@@ -117,3 +117,34 @@ void openblas_set_num_threads(int num_threads);
 ```
 
 If you compile this library with `USE_OPENMP=1`, you should use the above functions too.
+
+### Replace system BLAS/updating APT OpenBLAS in Ubuntu/Debian
+
+Ubuntu and Debian provides 'alternatives' mechanism to comfortably replace BLAS and LAPACK libraries systemwide.
+
+After successful build of OpenBLAS (with DYNAMIC_ARCH set to 1)
+
+```
+make clean
+make DYNAMIC_ARCH=1
+sudo make DYNAMIC_ARCH=1 install
+```
+
+One can redirect BLAS and LAPACK alternatives to point to source-built OpenBLAS First you have to install NetLib LAPACK reference implementation (to have alternatives to replace):
+
+```
+sudo apt install libblas-dev liblapack-dev
+```
+
+Then we can set alternative to our freshly-built library:
+
+```
+sudo update-alternatives --add /usr/lib/libblas.so.3 libblas.so.3 /opt/OpenBLAS/lib/libopenblas.so.0 41 \
+   --slave /usr/lib/liblapack.so.3 liblapack.so.3 /opt/OpenBLAS/lib/libopenblas.so.0
+```
+
+Or remove redirection and switch back to APT-provided BLAS implementation order:
+
+```
+sudo update-alternatives --remove libblas.so.3 /opt/OpenBLAS/lib/libopenblas.so.0
+```
