@@ -10,7 +10,7 @@
 - C and Fortran compilers (typically `gcc` and `gfortran`).
 
 - BLAS and LAPACK libraries (optional but strongly recommended for NumPy, required for SciPy):
-  - typically ATLAS + [OpenBLAS](https://github.com/xianyi/OpenBLAS/)
+  - typically ATLAS + [OpenBLAS](https://github.com/hoangtnm/TrainingServer-docs/blob/master/Building_from_source/OpenBLAS.md)
   - or [MKL](https://software.intel.com/en-us/mkl)
 
 - Cython
@@ -22,15 +22,6 @@ mkdir -p /home/$USER/workspace/prebuilt_libraries/numpy
 export NUMPY=/home/$USER/workspace
 
 git clone https://github.com/numpy/numpy.git $NUMPY && cd $NUMPY
-```
-
-Make sure that the directory containing libopenblas.so is in your shared library search path
-
-```sh
-export LD_LIBRARY_PATH=/opt/OpenBLAS/lib:$LD_LIBRARY_PATH
-sudo sh -c "echo '/opt/OpenBLAS/lib' > /etc/ld.so.conf.d/openblas.conf"
-source ~/.bashrc
-sudo ldconfig
 ```
 
 Then create `site.cfg` and edit it with nano or vim.
