@@ -90,7 +90,8 @@ export LAPACK=/path/to/liblapack.so
 export ATLAS=/path/to/libatlas.so
 
 # Installing with pip is preferable to using python setup.py install
-# since pip will keep track of the package metadata and allow you to easily uninstall or upgrade numpy in the future.
+# since pip will keep track of the package metadata, allow you to easily uninstall or upgrade numpy in the future
+# sudo pip3 install .
 ```
 
 From NumPy 1.10.0 on it’s also possible to do a parallel build with:
