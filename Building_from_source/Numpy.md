@@ -17,14 +17,70 @@
 
 ### Clone the Numpy repository
 
-```shell
+```sh
 mkdir -p /home/$USER/workspace/prebuilt_libraries/numpy
 export NUMPY=/home/$USER/workspace
 
 git clone https://github.com/numpy/numpy.git $NUMPY && cd $NUMPY
 ```
 
+Make sure that the directory containing libopenblas.so is in your shared library search path
+
+```sh
+export LD_LIBRARY_PATH=/opt/OpenBLAS/lib:$LD_LIBRARY_PATH
+sudo sh -c "echo '/opt/OpenBLAS/lib' > /etc/ld.so.conf.d/openblas.conf"
+source ~/.bashrc
+sudo ldconfig
+```
+
+Then create `site.cfg` and edit it with nano or vim.
+
+```sh
+cp site.cfg.example site.cfg
+vim site.cfg
+```
+
+### Modify site.cfg
+
+Uncomment these lines:
+
+```
+....
+[openblas]
+libraries = openblas
+library_dirs = /opt/OpenBLAS/lib
+include_dirs = /opt/OpenBLAS/include
+....
+```
+
+### Verify
+
+```
+python setup.py config
+```
+
+The output should look something like this:
+
+```
+...
+openblas_info:
+  FOUND:
+    libraries = ['openblas', 'openblas']
+    library_dirs = ['/opt/OpenBLAS/lib']
+    language = c
+    define_macros = [('HAVE_CBLAS', None)]
+
+  FOUND:
+    libraries = ['openblas', 'openblas']
+    library_dirs = ['/opt/OpenBLAS/lib']
+    language = c
+    define_macros = [('HAVE_CBLAS', None)]
+...
+```
+
+
 ### Parallel builds
+
 
 If you need to use specific BLAS/LAPACK libraries, you can do
 
@@ -32,6 +88,9 @@ If you need to use specific BLAS/LAPACK libraries, you can do
 export BLAS=/path/to/libblas.so
 export LAPACK=/path/to/liblapack.so
 export ATLAS=/path/to/libatlas.so
+
+# Installing with pip is preferable to using python setup.py install
+# since pip will keep track of the package metadata and allow you to easily uninstall or upgrade numpy in the future.
 ```
 
 From NumPy 1.10.0 on it’s also possible to do a parallel build with:
