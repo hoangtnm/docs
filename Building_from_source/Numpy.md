@@ -89,6 +89,9 @@ From NumPy 1.10.0 on it’s also possible to do a parallel build with:
 
 ```shell
 python setup.py build --fcompiler=gnu95 -j `nproc` install --prefix=/usr/local
+
+# Install to your home directory
+# python setup.py install --user
 ```
 
 This will compile numpy on all CPUs and install it into the specified prefix. to perform a parallel in-place build, run:
