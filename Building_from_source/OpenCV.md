@@ -52,6 +52,7 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
       -D BUILD_EXAMPLES=OFF ..
 make -j`nproc`
 sudo make install
+sudo ldconfig
 ```
 
 By default , `pip` is being automatically installed along as Python. But maybe it isn't there for some reason. In this case, you can manually install `pip` using `get-pip`.
