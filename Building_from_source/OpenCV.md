@@ -60,5 +60,5 @@ By default , `pip` is being automatically installed along as Python. But maybe i
 ```shell
 mkdir /home/$USER/workspace && cd /home/$USER/workspace
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-python3 get-pip.py
+sudo python3 get-pip.py
 ```
