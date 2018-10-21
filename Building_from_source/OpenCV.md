@@ -28,6 +28,11 @@ wget "$OPENCV_DOWNLOAD_URL" -O opencv.zip
 wget "$OPENCV_CONTRIB_DOWNLOAD_URL" -O opencv_contrib.zip
 unzip opencv.zip
 unzip opencv_contrib.zip
+```
+
+### Configure OpenCV with CMake & Build
+
+```
 cd opencv-${OPENCV_VERSION}
 mkdir -p build
 cd build
