@@ -12,7 +12,7 @@ sudo apt install -y \
      libavcodec-dev libavformat-dev libswscale-dev libv4l-dev \
      libxvidcore-dev libx264-dev \
      libgtk2.0-dev libgtk-3-dev \
-     libatlas-base-dev gfortran \
+     libatlas-base-dev gfortran
 ```
 
 ### Download the official OpenCV source
