@@ -1,6 +1,13 @@
 # Build OpenCV from source
 
 
+### Prerequisites
+
+- Ubuntu 18.04 LTS or Raspbian
+
+- Python 2 or Python 3.6.5 (must be installed exactly as same as [this guideline](https://github.com/hoangtnm/TrainingServer-docs/blob/master/Setup_python_3_dev_environment.md))
+
+
 ### Install OpenCV dependencies
 
 ```
