@@ -7,13 +7,12 @@
 #! /bin/bash
 sudo apt update
 sudo apt install -y \
-     build-essential cmake unzip pkg-config \
+     build-essential wget cmake unzip pkg-config \
      libjpeg-dev libtiff5-dev libjasper-dev libpng12-dev \
      libavcodec-dev libavformat-dev libswscale-dev libv4l-dev \
      libxvidcore-dev libx264-dev \
      libgtk2.0-dev libgtk-3-dev \
      libatlas-base-dev gfortran \
-     wget
 ```
 
 ### Download the official OpenCV source
