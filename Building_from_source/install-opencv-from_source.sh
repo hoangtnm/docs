@@ -27,7 +27,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	export OPENCV_DOWNLOAD_URL=https://github.com/opencv/opencv/archive/$OPENCV_VERSION.zip
 	export OPENCV_CONTRIB_DOWNLOAD_URL=https://github.com/opencv/opencv_contrib/archive/$OPENCV_VERSION.zip
   
-	export CURR_DIR=`pwd`
+	export CURRENT_DIR=`pwd`
 	wget "$OPENCV_DOWNLOAD_URL" -O opencv.zip
 	wget "$OPENCV_CONTRIB_DOWNLOAD_URL" -O opencv_contrib.zip
 	unzip opencv.zip
@@ -39,7 +39,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	      -D CMAKE_INSTALL_PREFIX=/usr/local \
 	      -D INSTALL_PYTHON_EXAMPLES=OFF \
 	      -D WITH_V4L=ON \
-	      -D OPENCV_EXTRA_MODULES_PATH=$CURR_DIR/opencv_contrib-$OPENCV_VERSION/modules \
+	      -D OPENCV_EXTRA_MODULES_PATH=$CURRENT_DIR/opencv_contrib-$OPENCV_VERSION/modules \
 	      -D BUILD_DOCS=OFF \
 	      -D BUILD_PERF_TESTS=OFF \
 	      -D BUILD_TESTS=OFF \
