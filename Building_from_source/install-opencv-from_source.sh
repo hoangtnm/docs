@@ -40,10 +40,10 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	      -D INSTALL_PYTHON_EXAMPLES=OFF \
 	      -D WITH_V4L=ON \
 	      -D OPENCV_EXTRA_MODULES_PATH=$CURR_DIR/opencv_contrib-$OPENCV_VERSION/modules \
-        -D BUILD_DOCS=OFF \
-        -D BUILD_PERF_TESTS=OFF \
-        -D BUILD_TESTS=OFF \
-        -D BUILD_EXAMPLES=OFF ..
+	      -D BUILD_DOCS=OFF \
+	      -D BUILD_PERF_TESTS=OFF \
+	      -D BUILD_TESTS=OFF \
+	      -D BUILD_EXAMPLES=OFF ..
 	make -j`nproc`
 	sudo make install
 	sudo ldconfig
