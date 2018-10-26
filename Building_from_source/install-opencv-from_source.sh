@@ -44,7 +44,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	      -D BUILD_PERF_TESTS=OFF \
 	      -D BUILD_TESTS=OFF \
 	      -D BUILD_EXAMPLES=OFF ..
-	make -j`nproc`
+	make -j $(nproc)
 	sudo make install
 	sudo ldconfig
 else
