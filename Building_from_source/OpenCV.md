@@ -25,8 +25,8 @@ sudo apt install -y \
 ### Download the official OpenCV source
 
 ```
-export WORKSPACE=/home/$USER/workspace
-mkdir $WORKSPACE && cd $WORKSPACE
+export OPENCV=/home/$USER/workspace/OpenCV
+mkdir -p $OPENCV && cd $OPENCV
 export OPENCV_VERSION=3.4.3
 export OPENCV_DOWNLOAD_URL=https://github.com/opencv/opencv/archive/$OPENCV_VERSION.zip
 export OPENCV_CONTRIB_DOWNLOAD_URL=https://github.com/opencv/opencv_contrib/archive/$OPENCV_VERSION.zip
@@ -45,7 +45,7 @@ cd build
 cmake -D CMAKE_BUILD_TYPE=RELEASE \
       -D CMAKE_INSTALL_PREFIX=/usr/local \
       -D INSTALL_PYTHON_EXAMPLES=OFF \
-      -D OPENCV_EXTRA_MODULES_PATH=$WORKSPACE/opencv_contrib-${OPENCV_VERSION}/modules \
+      -D OPENCV_EXTRA_MODULES_PATH=$OPENCV/opencv_contrib-${OPENCV_VERSION}/modules \
       -D WITH_V4L=ON \
       -D BUILD_DOCS=OFF \
       -D BUILD_PERF_TESTS=OFF \
