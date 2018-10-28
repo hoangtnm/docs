@@ -11,7 +11,6 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
 	sudo apt update -y && sudo apt-get upgrade -y
 	sudo apt install -y build-essential gcc g++ cmake doxygen
-	sudo apt install -y python2.7-dev python3-dev
 	
 	export INTEL_MKL_VERSION=0.16
 	export INTEL_MKL_DOWNLOAD_URL=https://github.com/intel/mkl-dnn/archive/v$INTEL_MKL_VERSION.zip
