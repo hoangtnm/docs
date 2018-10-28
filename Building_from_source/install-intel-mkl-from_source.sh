@@ -1,7 +1,7 @@
 #! /bin/bash
 
 echo ""
-echo "************************ Please confirm *******************************"
+echo "************************************************ Please confirm *******************************************************"
 echo " Installing Intel(R) Math Kernel Library for Deep Neural Networks (Intel(R) MKL-DNN) from source may take a long time. "
 echo " Select n to skip Intel MKL-DNN installation or y to install it." 
 read -p " Continue installing Intel MKL-DNN (y/n) ? " CONTINUE
