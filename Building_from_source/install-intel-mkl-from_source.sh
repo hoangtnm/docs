@@ -11,6 +11,9 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
 	sudo apt update -y && sudo apt-get upgrade -y
 	sudo apt install -y build-essential gcc g++ cmake doxygen
+	echo "";
+	echo "Downloading and Building the Source Code";
+	echo "";
 	export INTEL_MKL_VERSION=0.16
 	export INTEL_MKL_DOWNLOAD_URL=https://github.com/intel/mkl-dnn/archive/v$INTEL_MKL_VERSION.zip
 	wget "$INTEL_MKL_DOWNLOAD_URL" -O mkl-dnn.zip
@@ -23,7 +26,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
 	make test -j $(nproc)
 	echo "";
-	echo "Finalize the Installation"
+	echo "Finalizing the Installation"
 	sudo make install -j $(nproc)
 	echo "The libraries and other components that are required to develop Intel MKL-DNN enabled applications under the /usr/local directory"
 	echo "Shared libraries (/usr/local/lib): libiomp5.so, libmkldnn.so, libmklml_intel.so"
