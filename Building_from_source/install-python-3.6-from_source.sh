@@ -2,9 +2,9 @@
 
 echo ""
 echo "******************** Please confirm ***************************"
-echo " Installing CUDA Toolkit may take a long time. "
-echo " Select n to skip CUDA Toolkit installation or y to install it." 
-read -p " Continue installing CUDA Toolkit (y/n) ? " CONTINUE
+echo " Installing Python 3.6 may take a long time. "
+echo " Select n to skip Python 3.6 installation or y to install it." 
+read -p " Continue installing Python 3.6 (y/n) ? " CONTINUE
 if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
 	echo "Installing Python 3.6.5";
