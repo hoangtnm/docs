@@ -15,9 +15,9 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
   export CUDNN_VERSION=7.3.1.20
   echo "";
   echo "The following NEW packages will be installed:";
-  echo "- CUDA Toolkit: $CUDA_VERSION";
-  echo "- NCCL        : $NCCL_VERSION";
-  echo "- cuDNN       : $CUDNN_VERSION";
+  echo "	CUDA Toolkit: $CUDA_VERSION";
+  echo "	NCCL        : $NCCL_VERSION";
+  echo "	cuDNN       : $CUDNN_VERSION";
   echo "";
   sudo apt update && apt-get install -y --no-install-recommends \
   	  cuda-cudart-$CUDA_PKG_VERSION \
