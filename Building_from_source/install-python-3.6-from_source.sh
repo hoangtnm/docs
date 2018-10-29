@@ -14,9 +14,9 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	export PYTHON_VERSION=3.6.5
 	export PYTHON_DOWNLOAD_URL=https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tgz
 	sudo apt update && sudo apt install --no-install-recommends -y \
-					software-properties-common build-essential \
-					dpkg-dev libssl-dev libreadline-dev libbz2-dev libsqlite3-dev zlib1g-dev python-tk python3-tk tk-dev \
-					python-minimal
+		software-properties-common build-essential \
+		dpkg-dev libssl-dev libreadline-dev libbz2-dev libsqlite3-dev zlib1g-dev python-tk python3-tk tk-dev \
+		python-minimal
 	wget "$PYTHON_DOWNLOAD_URL" -O python.tar.tgz
 	tar -zxvf python.tar.tgz
 	cd Python-$PYTHON_VERSION
