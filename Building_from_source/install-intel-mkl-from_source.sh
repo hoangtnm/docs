@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/ba
 
 echo ""
 echo "************************************************ Please confirm *******************************************************"
@@ -10,7 +10,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "Installing Intel MKL-DNN"; 
 	echo "";
 	sudo apt update -y && sudo apt-get upgrade -y
-	sudo apt install -y build-essential gcc g++ cmake doxygen
+	sudo apt install -y build-essential unzip gcc g++ cmake doxygen
 	echo "";
 	echo "Downloading and Building the Source Code";
 	echo "";
