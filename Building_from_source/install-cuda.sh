@@ -29,7 +29,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
           cuda-minimal-build-$CUDA_PKG_VERSION \
           cuda-command-line-tools-$CUDA_PKG_VERSION \
 	  libnccl2=$NCCL_VERSION-2+cuda10.0 \
-          libnccl-dev=$NCCL_VERSION-2+cuda10.0 \
+	  libnccl-dev=$NCCL_VERSION-2+cuda10.0 \
 	  libcudnn7=$CUDNN_VERSION-1+cuda10.0 \
 	  libcudnn7-dev=$CUDNN_VERSION-1+cuda10.0
   sudo ln -s cuda-10.0 /usr/local/cuda
