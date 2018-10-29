@@ -20,14 +20,14 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
   echo "- cuDNN       : $CUDNN_VERSION";
   echo "";
   sudo apt update && apt-get install -y --no-install-recommends \
-          cuda-cudart-$CUDA_PKG_VERSION \
-          cuda-compat-10-0=410.48-1 \
+  	  cuda-cudart-$CUDA_PKG_VERSION \
+	  cuda-compat-10-0=410.48-1 \
 	  cuda-libraries-$CUDA_PKG_VERSION \
-          cuda-libraries-dev-$CUDA_PKG_VERSION \
-          cuda-nvtx-$CUDA_PKG_VERSION \
-          cuda-nvml-dev-$CUDA_PKG_VERSION \
-          cuda-minimal-build-$CUDA_PKG_VERSION \
-          cuda-command-line-tools-$CUDA_PKG_VERSION \
+	  cuda-libraries-dev-$CUDA_PKG_VERSION \
+	  cuda-nvtx-$CUDA_PKG_VERSION \
+	  cuda-nvml-dev-$CUDA_PKG_VERSION \
+	  cuda-minimal-build-$CUDA_PKG_VERSION \
+	  cuda-command-line-tools-$CUDA_PKG_VERSION \
 	  libnccl2=$NCCL_VERSION-2+cuda10.0 \
 	  libnccl-dev=$NCCL_VERSION-2+cuda10.0 \
 	  libcudnn7=$CUDNN_VERSION-1+cuda10.0 \
