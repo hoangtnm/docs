@@ -33,6 +33,6 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "Header files (/usr/local/include): mkldnn.h, mkldnn.hpp, mkldnn_types.h"
 else
 	echo "";
-	echo "Skipping OpenCV installation";
+	echo "Skipping Intel MKL-DNN installation";
 	echo "";
 fi
