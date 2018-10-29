@@ -6,6 +6,7 @@ echo " Installing CUDA Toolkit may take a long time. "
 echo " Select n to skip CUDA Toolkit installation or y to install it." 
 read -p " Continue installing CUDA Toolkit (y/n) ? " CONTINUE
 if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
+  sudo apt install -y curl ca-certificates
   curl -fsSL https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub | apt-key add -
   echo "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64 /" > /etc/apt/sources.list.d/cuda.list
   echo "deb https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64 /" > /etc/apt/sources.list.d/nvidia-ml.list
@@ -32,7 +33,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	  libnccl-dev=$NCCL_VERSION-2+cuda10.0 \
 	  libcudnn7=$CUDNN_VERSION-1+cuda10.0 \
 	  libcudnn7-dev=$CUDNN_VERSION-1+cuda10.0
-  sudo ln -s cuda-10.0 /usr/local/cuda
+  sudo ln -s /usr/local/cuda-10.0 /usr/local/cuda
   sudo apt-mark hold libnccl2
   sudo apt-mark hold libcudnn7
   echo 'export PATH=/usr/local/nvidia/bin:/usr/local/cuda/bin${PATH:+:${PATH}}' >> ~/.bashrc
@@ -40,7 +41,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
   echo 'export LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
   source ~/.bashrc
   sudo ldconfig
-  echo "The CUDA Toolkit installation completed!";
+  echo "The installation completed!";
 else
 	echo "";
 	echo "Skipping CUDA Toolkit installation";
