@@ -41,6 +41,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
   echo 'export LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
   source ~/.bashrc
   sudo ldconfig
+  echo "The CUDA Toolkit installation completed!";
 else
 	echo "";
 	echo "Skipping CUDA Toolkit installation";
