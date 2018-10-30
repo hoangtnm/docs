@@ -14,8 +14,8 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
 	git clone https://github.com/xianyi/OpenBLAS.git
 	cd OpenBLAS
-	make FC=gfortran -j $(nproc)
-	sudo make install
+	make DYNAMIC_ARCH=1 FC=gfortran -j $(nproc)
+	sudo make DYNAMIC_ARCH=1 install
 	
 	echo "";
 	echo "Finalizing the Installation";
