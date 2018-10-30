@@ -21,7 +21,6 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	sudo apt install -y libxvidcore-dev libx264-dev
 	sudo apt install -y libgtk2.0-dev libgtk-3-dev
 	sudo apt install -y libatlas-base-dev gfortran
-	sudo apt install -y python2.7-dev python3-dev
 	
 	export OPENCV_VERSION=3.4.3
 	export OPENCV_DOWNLOAD_URL=https://github.com/opencv/opencv/archive/$OPENCV_VERSION.zip
