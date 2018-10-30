@@ -9,7 +9,6 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	sudo apt update -y && sudo apt-get upgrade -y
 	sudo apt install build-essential \
 		libhdf5-serial-dev \
-		libatlas-base-dev \
 		libboost-all-dev \
 		libprotobuf-dev \
 		libleveldb-dev \
