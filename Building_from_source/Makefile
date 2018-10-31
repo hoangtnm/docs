@@ -3,15 +3,16 @@ help:
 	@echo "\nmake help starting."
 	@echo "Make targets are:"
 	@echo "  make help - shows this message"
-	@echo "  make python3 - Installs Python 3.6.5"
-	@echo "  make cuda - Installs CUDA Toolkit 10.0, cuDNN 7.3.1.20 and NCCL 2.3.5"
+	@echo "  make python3 - Install Python 3.6.5"
+	@echo "  make cuda - Install CUDA Toolkit 10.0, cuDNN 7.3.1.20 and NCCL 2.3.5"
 	@echo "  make intelmkl - Install Intel MKL"
 	@echo "  make intelmkl-dnn - Install Intel MKL-DNN"
 	@echo "  make openblas - Install OpenBLAS"
 	@echo "  make opencv - Install OpenCV"
+	@echo "  make protobuf - Install Protobuf"
 	@echo "  make caffe - Install Caffe"
 	@echo "  make tensorflow - Install Tensorflow"
-	@echo "  make clean - removes targets and intermediate files." 
+	@echo "  make clean - remove targets and intermediate files." 
 
 .PHONY: all
 all: prereqs python3 cuda intelmkl intelmkl-dnn openblas opencv caffe tensorflow
@@ -39,6 +40,10 @@ openblas:
 .PHONY: opencv
 opencv: 
 	./install-opencv-from_source.sh
+	
+.PHONY: protobuf
+protobuf:
+	./install-protobuf-from_source.sh
 
 .PHONY: prereqs
 prereqs:
@@ -46,6 +51,7 @@ prereqs:
 	@chmod +x install-cuda-10.sh
 	@chmod +x install-openblas-from_source.sh
 	@chmod +x install-opencv-from_source.sh
+	@chmod +x install-protobuf-from_source.sh
 	@chmod +x install-intel-mkl-from_source.sh
 	@chmod +x install-intel-mkl-dnn-from_source.sh
 
