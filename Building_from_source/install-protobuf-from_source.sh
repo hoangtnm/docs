@@ -25,7 +25,6 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	make -j $(nproc)
 	make check -j $(nproc)
 	sudo make install
-	sudo ldconfig
 	
 	echo "";
 	echo "Finalizing the Installation";
@@ -33,6 +32,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
 	echo 'export LD_LIBRARY_PATH=/usr/local/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
 	source ~/.bashrc
+	sudo ldconfig
 	echo "";
 else
 	echo "";
