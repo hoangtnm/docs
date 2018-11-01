@@ -12,7 +12,7 @@ help:
 	@echo "  make numpy - Install Numpy"
 	@echo "  make scipy - Install Scipy"
 	@echo "  make opencv - Install OpenCV"
-	@echo "  make protobuf - Install Protobuf
+	@echo "  make protobuf - Install "
 	@echo "  make caffe - Install Caffe"
 	@echo "  make tensorflow - Install Tensorflow"
 	@echo "  make clean - remove targets and intermediate files." 
