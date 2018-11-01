@@ -7,7 +7,7 @@ echo " Select n to skip BLIS installation or y to install it."
 read -p " Continue installing BLIS (y/n) ? " CONTINUE
 if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then  
 	echo "";
-	echo "Installing OpenCV"; 
+	echo "Installing BLIS"; 
 	echo "";
 	sudo apt update -y && sudo apt-get upgrade -y
 	sudo apt install -y build-essential cmake git
