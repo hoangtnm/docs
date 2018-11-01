@@ -9,8 +9,10 @@ help:
 	@echo "  make intelmkl-dnn - Install Intel MKL-DNN"
 	@echo "  make openblas - Install OpenBLAS"
 	@echo "  make blis - Install BLIS"
+	@echo "  make numpy - Install Numpy"
+	@echo "  make scipy - Install Scipy"
 	@echo "  make opencv - Install OpenCV"
-	@echo "  make protobuf - Install Protobuf"
+	@echo "  make protobuf - Install Protobuf
 	@echo "  make caffe - Install Caffe"
 	@echo "  make tensorflow - Install Tensorflow"
 	@echo "  make clean - remove targets and intermediate files." 
@@ -41,6 +43,14 @@ openblas:
 .PHONY: blis
 blis:
 	./install-blis-from_soure.sh
+	
+.PHONY: numpy
+numpy:
+	./install-numpy-from_source.sh
+	
+.PHONY: scipy
+scipy:
+	./install-scipy-from_source.sh
 
 .PHONY: opencv
 opencv: 
@@ -56,6 +66,8 @@ prereqs:
 	@chmod +x install-cuda-10.sh
 	@chmod +x install-openblas-from_source.sh
 	@chmod +x install-blis-from_soure.sh
+	@chmod +x install-numpy-from_source.sh
+	@chmod +x install-scipy-from_source.sh
 	@chmod +x install-opencv-from_source.sh
 	@chmod +x install-protobuf-from_source.sh
 	@chmod +x install-intel-mkl-from_source.sh
