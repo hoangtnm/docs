@@ -11,6 +11,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
 	sudo apt update -y && sudo apt-get upgrade -y
 	sudo apt install -y build-essential cmake git gcc gfortran
+	sudo pip3 install cython
 	
 	echo "";
 	echo "Downloading and Building the Source Code";
