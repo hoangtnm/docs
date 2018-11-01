@@ -16,7 +16,7 @@ help:
 	@echo "  make clean - remove targets and intermediate files." 
 
 .PHONY: all
-all: prereqs python3 openblas blis protobuf opencv caffe tensorflow
+all: prereqs python3 openblas blis protobuf opencv
 
 .PHONY: python3
 python3:
