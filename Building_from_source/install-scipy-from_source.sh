@@ -15,8 +15,11 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
 	echo "Downloading and Building the Source Code";
 	echo "";
-	git clone https://github.com/scipy/scipy.git
-	cd scipy
+	export SCIPY_VERSION=1.1.0
+	export SCIPY_DOWNLOAD_URL=https://github.com/scipy/scipy/archive/v$SCIPY_VERSION.zip
+	wget "$SCIPY_DOWNLOAD_URL" -O scipy.zip
+	unzip scipy.zip
+	cd scipy-$SCIPY_VERSION
 	echo '[blis]' >> site.cfg
 	echo 'libraries = blis' >> site.cfg
 	bash -c 'echo "library_dirs = $HOME/blis/lib" >> site.cfg'
