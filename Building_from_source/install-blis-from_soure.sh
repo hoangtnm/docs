@@ -32,6 +32,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "  development headers will be installed at $(HOME)/blis/include/blis";
 	echo "";
 	make install
+	bash -c 'echo "export LD_LIBRARY_PATH=$HOME/blis/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}'" >> ~/.bashrc'
 else
 	echo "";
 	echo "Skipping BLIS installation";
