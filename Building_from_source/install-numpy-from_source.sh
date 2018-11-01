@@ -20,8 +20,8 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	cd numpy
 	cp site.cfg.example site.cfg
 	sed -i 's/# libraries = blis/libraries = blis/g' site.cfg
-	sed -i 's/# library_dirs = \/home\/$USER\/blis\/lib/library_dirs = \/home\/$USER\/blis\/lib/g' site.cfg
-	sed -i 's/# include_dirs = \/home\/$USER\/blis\/include\/blis/include_dirs = \/home\/$USER\/blis\/include\/blis/g' site.cfg
+	sed -i 's/# library_dirs = \/home\/username\/blis/library_dirs = $HOME\/blis\/lib/g' site.cfg
+	sed -i 's/# include_dirs = \/home\/username\/blis\/include\/blis/include_dirs = $HOME\/blis\/include\/blis/g' site.cfg
 	
 	echo "";
 	echo "Validating the Build";
