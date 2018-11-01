@@ -18,11 +18,10 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
 	git clone https://github.com/numpy/numpy.git
 	cd numpy
-	cp site.cfg.example site.cfg
-	sed -i 's/# [blis]/[blis]/g' site.cfg
-	sed -i 's/# libraries = blis/libraries = blis/g' site.cfg
-	sed -i 's/# library_dirs = \/home\/username\/blis/library_dirs = $HOME\/blis\/lib/g' site.cfg
-	sed -i 's/# include_dirs = \/home\/username\/blis\/include\/blis/include_dirs = $HOME\/blis\/include\/blis/g' site.cfg
+	echo '[blis]' >> site.cfg
+	echo 'libraries = blis' >> site.cfg
+	echo 'library_dirs = $HOME/blis/lib' >> site.cfg
+	echo 'include_dirs = $HOME/blis/include/blis' >> site.cfg
 	
 	echo "";
 	echo "Validating the Build";
