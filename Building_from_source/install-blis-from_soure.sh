@@ -29,7 +29,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "Finalizing the installation";
 	echo "The default installation location is $HOME/blis";
 	echo "  libraries will be installed at $(HOME)/blis/lib";
-	echo "  development headers will be installed at $(HOME)/blis/include";
+	echo "  development headers will be installed at $(HOME)/blis/include/blis";
 	echo "";
 	make install
 else
