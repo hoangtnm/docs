@@ -32,7 +32,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
 	echo "Finalizing the installation";
 	echo "";
-	python setup.py build --fcompiler=gnu95 -j $(nproc) install --prefix=/usr/local
+	sudo python setup.py build --fcompiler=gnu95 -j $(nproc) install --prefix=/usr/local
 else
 	echo "";
 	echo "Skipping Numpy installation";
