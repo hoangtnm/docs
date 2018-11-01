@@ -15,7 +15,7 @@ help:
 	@echo "  make clean - remove targets and intermediate files." 
 
 .PHONY: all
-all: prereqs python3 cuda intelmkl intelmkl-dnn openblas protobuf opencv caffe tensorflow
+all: prereqs python3 openblas blis protobuf opencv caffe tensorflow
 
 .PHONY: python3
 python3:
@@ -36,6 +36,10 @@ intelmkl-dnn:
 .PHONY: openblas
 openblas:
 	./install-openblas-from_source.sh
+	
+.PHONY: blis
+blis:
+	./install-blis-from_soure.sh
 
 .PHONY: opencv
 opencv: 
@@ -50,6 +54,7 @@ prereqs:
 	@chmod +x install-python-3.6-from_source.sh
 	@chmod +x install-cuda-10.sh
 	@chmod +x install-openblas-from_source.sh
+	@chmod +x install-blis-from_soure.sh
 	@chmod +x install-opencv-from_source.sh
 	@chmod +x install-protobuf-from_source.sh
 	@chmod +x install-intel-mkl-from_source.sh
