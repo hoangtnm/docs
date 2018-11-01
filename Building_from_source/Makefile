@@ -8,6 +8,7 @@ help:
 	@echo "  make intelmkl - Install Intel MKL"
 	@echo "  make intelmkl-dnn - Install Intel MKL-DNN"
 	@echo "  make openblas - Install OpenBLAS"
+	@echo "  make blis - Install BLIS"
 	@echo "  make opencv - Install OpenCV"
 	@echo "  make protobuf - Install Protobuf"
 	@echo "  make caffe - Install Caffe"
