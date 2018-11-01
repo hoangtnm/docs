@@ -17,14 +17,14 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "Downloading and Building the Source Code";
 	echo "";
 	export NUMPY_VERSION=1.15.3
-	export NUMPY_DOWNLOAD_URL=https://github.com/opencv/opencv/archive/$NUMPY_VERSION.zip
+	export NUMPY_DOWNLOAD_URL=https://github.com/opencv/opencv/archive/v$NUMPY_VERSION.zip
 	wget "$NUMPY_DOWNLOAD_URL" -O numpy.zip
 	unzip numpy.zip
 	cd numpy-$NUMPY_VERSION
 	echo '[blis]' >> site.cfg
 	echo 'libraries = blis' >> site.cfg
-	echo 'library_dirs = $HOME/blis/lib' >> site.cfg
-	echo 'include_dirs = $HOME/blis/include/blis' >> site.cfg
+	bash -c 'echo "library_dirs = $HOME/blis/lib" >> site.cfg'
+	bash -c 'echo "include_dirs = $HOME/blis/include/blis" >> site.cfg'
 	
 	echo "";
 	echo "Validating the Build";
