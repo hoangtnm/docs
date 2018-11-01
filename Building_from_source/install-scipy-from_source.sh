@@ -19,8 +19,8 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	cd scipy
 	echo '[blis]' >> site.cfg
 	echo 'libraries = blis' >> site.cfg
-	echo 'library_dirs = $HOME/blis/lib' >> site.cfg
-	echo 'include_dirs = $HOME/blis/include/blis' >> site.cfg
+	bash -c 'echo "library_dirs = $HOME/blis/lib" >> site.cfg'
+	bash -c 'echo "include_dirs = $HOME/blis/include/blis" >> site.cfg'
 	
 	echo "";
 	echo "Validating the Build";
