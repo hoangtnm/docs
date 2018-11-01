@@ -16,8 +16,11 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
 	echo "Downloading and Building the Source Code";
 	echo "";
-	git clone https://github.com/numpy/numpy.git
-	cd numpy
+	export NUMPY_VERSION=1.15.3
+	export NUMPY_DOWNLOAD_URL=https://github.com/opencv/opencv/archive/$OPENCV_VERSION.zip
+	wget "$OPENCV_DOWNLOAD_URL" -O numpy.zip
+	unzip numpy.zip
+	cd numpy-$NUMPY_VERSION
 	echo '[blis]' >> site.cfg
 	echo 'libraries = blis' >> site.cfg
 	echo 'library_dirs = $HOME/blis/lib' >> site.cfg
