@@ -17,10 +17,10 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
 	git clone https://github.com/scipy/scipy.git
 	cd scipy
-	cp site.cfg.example site.cfg
-	sed -i 's/# libraries = blis/libraries = blis/g' site.cfg
-	sed -i 's/# library_dirs = \/home\/$USER\/blis\/lib/library_dirs = \/home\/$USER\/blis\/lib/g' site.cfg
-	sed -i 's/# include_dirs = \/home\/$USER\/blis\/include/include_dirs = \/home\/$USER\/blis\/include/g' site.cfg
+	echo '[blis]' >> site.cfg
+	echo 'libraries = blis' >> site.cfg
+	echo 'library_dirs = $HOME/blis/lib' >> site.cfg
+	echo 'include_dirs = $HOME/blis/include/blis' >> site.cfg
 	
 	echo "";
 	echo "Validating the Build";
