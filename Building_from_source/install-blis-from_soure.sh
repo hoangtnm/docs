@@ -10,7 +10,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "Installing BLIS"; 
 	echo "";
 	sudo apt update -y && sudo apt-get upgrade -y
-	sudo apt install -y build-essential cmake git
+	sudo apt install -y build-essential cmake make git
 	
 	echo "";
 	echo "Downloading and Building the Source Code";
@@ -27,6 +27,9 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	
 	echo "";
 	echo "Finalizing the installation";
+	echo "The default installation location is $HOME/blis";
+	echo "  libraries will be installed at $(HOME)/blis/lib";
+	echo "  development headers will be installed at $(HOME)/blis/include";
 	echo "";
 	make install
 else
