@@ -18,6 +18,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	sudo apt install -y build-essential cmake pkg-config
 	sudo apt install -y libjpeg-dev libtiff5-dev libjasper-dev libpng12-dev
 	sudo apt install -y libavcodec-dev libavformat-dev libswscale-dev libv4l-dev
+	sudo apt install -y libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev
 	sudo apt install -y libxvidcore-dev libx264-dev
 	sudo apt install -y libgtk2.0-dev libgtk-3-dev
 	sudo apt install -y libatlas-base-dev gfortran
@@ -38,6 +39,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	      -D CMAKE_INSTALL_PREFIX=/usr/local \
 	      -D INSTALL_PYTHON_EXAMPLES=OFF \
 	      -D WITH_V4L=ON \
+	      -D WITH_GSTREAMER=ON \
 	      -D OPENCV_EXTRA_MODULES_PATH=$CURRENT_DIR/opencv_contrib-$OPENCV_VERSION/modules \
 	      -D BUILD_DOCS=OFF \
 	      -D BUILD_PERF_TESTS=OFF \
