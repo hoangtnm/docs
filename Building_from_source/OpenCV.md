@@ -17,6 +17,7 @@ sudo apt install -y \
      build-essential wget cmake unzip pkg-config \
      libjpeg-dev libtiff5-dev libjasper-dev libpng12-dev \
      libavcodec-dev libavformat-dev libswscale-dev libv4l-dev \
+     libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev \
      libxvidcore-dev libx264-dev \
      libgtk2.0-dev libgtk-3-dev \
      libatlas-base-dev gfortran
@@ -47,6 +48,7 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
       -D INSTALL_PYTHON_EXAMPLES=OFF \
       -D OPENCV_EXTRA_MODULES_PATH=$OPENCV/opencv_contrib-${OPENCV_VERSION}/modules \
       -D WITH_V4L=ON \
+      -D WITH_GSTREAMER=ON \
       -D BUILD_DOCS=OFF \
       -D BUILD_PERF_TESTS=OFF \
       -D BUILD_TESTS=OFF \
