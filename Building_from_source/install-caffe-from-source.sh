@@ -31,7 +31,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	sed -i 's/-gencode\ arch=compute_20,code=sm_21\ \\//g' Makefile.config
 	sed -i 's/#\ BLAS_INCLUDE\ :=\ \/path\/to\/your\/blas/BLAS_INCLUDE\ :=\ opt\/OpenBLAS\/include/g' Makefile.config
 	sed -i 's/#\ BLAS_LIB\ :=\ \/path\/to\/your\/blas/BLAS_LIB\ :=\ opt\/OpenBLAS\/lib/g' Makefile.config
-	sed -i 's/PYTHON_INCLUDE := \/usr\/include\/python2.7/#PYTHON_INCLUDE := \/usr\/include\/python2.7/g' Makefile.config
+	sed -i 's/PYTHON_INCLUDE\ := \/usr\/include\/python2.7/#PYTHON_INCLUDE\ :=\ \/usr\/include\/python2.7/g' Makefile.config
 	sed -i 's/#\ PYTHON_LIBRARIES\ :=\ boost_python3\ python3.5m/PYTHON_LIBRARIES\ :=\ boost_python3\ python3.6m' Makefile.config
 	sed -i 's/#\ PYTHON_INCLUDE\ :=\ \/usr\/include\/python3.5m/PYTHON_INCLUDE\ :=\ \/usr\/local\/local\/include\/python3.6m/g' Makefile.config
 	sed -i 's/#\                 \/usr\/lib\/python3.5\/dist-packages/\                 \/usr\/local\/lib\/python3.6\/site-packages/g' Makefile.config
