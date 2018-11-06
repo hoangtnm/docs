@@ -14,7 +14,6 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 		libleveldb-dev \
 		libsnappy-dev \
 		liblmdb-dev \
-		libopencv-dev \
 		libgflags-dev \
 		libgoogle-glog-dev \
 		protobuf-compiler
