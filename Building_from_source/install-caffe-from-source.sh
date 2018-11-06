@@ -1,7 +1,7 @@
 #! /bin/bash
 
 echo ""
-echo "********************** Please confirm ****************************"
+echo "*************** Please confirm *********************"
 echo " Installing Caffe from source may take a long time. "
 echo " Select n to skip Caffe installation or y to install it." 
 read -p " Continue installing Caffe (y/n) ? " CONTINUE
