@@ -21,9 +21,8 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
 	echo "Downloading and Building the Source Code";
 	echo "";
-	git clone https://github.com/weiliu89/caffe.git
+	git clone -b ssd https://github.com/weiliu89/caffe.git
 	cd caffe
-	git checkout ssd
 	cp Makefile.config.example Makefile.config
 	sed -i 's/# USE_CUDNN := 1/USE_CUDNN := 1/g' Makefile.config
 	sed -i 's/# OPENCV_VERSION := 3/OPENCV_VERSION := 3/g' Makefile.config
