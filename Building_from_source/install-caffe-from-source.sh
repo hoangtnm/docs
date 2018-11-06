@@ -17,6 +17,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 		libgflags-dev \
 		libgoogle-glog-dev \
 		protobuf-compiler
+	
 	echo "";
 	echo "Downloading and Building the Source Code";
 	echo "";
