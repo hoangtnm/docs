@@ -27,8 +27,9 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	sed -i 's/#\ USE_CUDNN\ :=\ 1/USE_CUDNN\ :=\ 1/g' Makefile.config
 	sed -i 's/#\ OPENCV_VERSION\ :=\ 3/OPENCV_VERSION\ :=\ 3/g' Makefile.config
 	sed -i 's/#\ CUSTOM_CXX\ :=\ g++/CUSTOM_CXX\ :=\ g++/g' Makefile.config
-	sed -i 's/-gencode\ arch=compute_20,code=sm_20\ \\//g' Makefile.config
+	sed -i 's/CUDA_ARCH\ :=\ -gencode\ arch=compute_20,code=sm_20\ \\//g' Makefile.config
 	sed -i 's/-gencode\ arch=compute_20,code=sm_21\ \\//g' Makefile.config
+	sed -i 's/\             -gencode arch=compute_30,code=sm_30/CUDA_ARCH\ :=\ -gencode arch=compute_30,code=sm_30/g' Makefile.config
 	sed -i 's/#\ BLAS_INCLUDE\ :=\ \/path\/to\/your\/blas/BLAS_INCLUDE\ :=\ \/opt\/OpenBLAS\/include/g' Makefile.config
 	sed -i 's/#\ BLAS_LIB\ :=\ \/path\/to\/your\/blas/BLAS_LIB\ :=\ \/opt\/OpenBLAS\/lib/g' Makefile.config
 	sed -i 's/PYTHON_INCLUDE\ := \/usr\/include\/python2.7/#PYTHON_INCLUDE\ :=\ \/usr\/include\/python2.7/g' Makefile.config
