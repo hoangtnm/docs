@@ -38,6 +38,22 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	sed -i 's/#\                 \/usr\/lib\/python3.5\/dist-packages/\                 \/usr\/local\/lib\/python3.6\/site-packages/g' Makefile.config
 	sed -i 's/INCLUDE_DIRS\ :=\ $(PYTHON_INCLUDE)\ \/usr\/local\/include/INCLUDE_DIRS\ :=\ $(PYTHON_INCLUDE)\ \/usr\/local\/include\ \/usr\/include\/hdf5\/serial/g' Makefile.config
 	sed -i 's/LIBRARY_DIRS\ :=\ $(PYTHON_LIB)\ \/usr\/local\/lib\ \/usr\/lib/LIBRARY_DIRS\ :=\ $(PYTHON_LIB)\ \/usr\/local\/lib\ \/usr\/lib\/x86_64-linux-gnu\/hdf5\/serial/g' Makefile.config
+	
+	echo "";
+	echo "Building & Verifying";
+	echo "";
+	make all -j $(nproc)
+	make test -j $(nproc) && make runtest -j $(nproc)
+	make pycaffe -j $(nproc)
+	
+	echo "";
+	echo "Finalizing the Installation";
+	echo "";
+	export PYTHONPATH=`pwd`/python:$PYTHONPATH
+	# also add to bash_profile
+	sudo bash -c 'echo "export PYTHONPATH=`pwd`/python:$PYTHONPATH" >> ~/.bash_profile'
+	sudo bash -c 'echo "export PYTHONPATH=`pwd`/python:$PYTHONPATH" >> ~/.bashrc'
+	bash source ~/.bashrc
 else
 	echo "";
 	echo "Skipping Caffe installation";
