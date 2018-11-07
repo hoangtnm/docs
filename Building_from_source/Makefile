@@ -18,7 +18,7 @@ help:
 	@echo "  make clean - remove targets and intermediate files." 
 
 .PHONY: all
-all: prereqs python3 openblas blis protobuf opencv
+all: prereqs python3 openblas blis protobuf opencv caffe
 
 .PHONY: python3
 python3:
@@ -59,6 +59,10 @@ opencv:
 .PHONY: protobuf
 protobuf:
 	./install-protobuf-from_source.sh
+	
+.PHONY: caffe
+caffe:
+	./install-caffe-from_source.sh
 
 .PHONY: prereqs
 prereqs:
@@ -70,6 +74,7 @@ prereqs:
 	@chmod +x install-scipy-from_source.sh
 	@chmod +x install-opencv-from_source.sh
 	@chmod +x install-protobuf-from_source.sh
+	@chmod +x install-caffe-from_source.sh
 	@chmod +x install-intel-mkl-from_source.sh
 	@chmod +x install-intel-mkl-dnn-from_source.sh
 
