@@ -20,10 +20,10 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	wget "$SCIPY_DOWNLOAD_URL" -O scipy.zip
 	unzip scipy.zip
 	cd scipy-$SCIPY_VERSION
-	echo '[blis]' >> site.cfg
-	echo 'libraries = blis' >> site.cfg
-	bash -c 'echo "library_dirs = $HOME/blis/lib" >> site.cfg'
-	bash -c 'echo "include_dirs = $HOME/blis/include/blis" >> site.cfg'
+	echo '[openblas]' >> site.cfg
+	echo 'libraries = openblas' >> site.cfg
+	bash -c 'echo "library_dirs = /opt/OpenBLAS/lib" >> site.cfg'
+	bash -c 'echo "include_dirs = /opt/OpenBLAS/include" >> site.cfg'
 	
 	echo "";
 	echo "Validating the Build";
