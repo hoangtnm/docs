@@ -17,7 +17,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "Downloading and Building the Source Code";
 	echo "";
 	export NUMPY_VERSION=1.15.4
-	export NUMPY_DOWNLOAD_URL=https://github.com/opencv/opencv/archive/v$NUMPY_VERSION.zip
+	export NUMPY_DOWNLOAD_URL=https://github.com/numpy/numpy/archive/v$NUMPY_VERSION.zip
 	wget "$NUMPY_DOWNLOAD_URL" -O numpy.zip
 	unzip numpy.zip
 	cd numpy-$NUMPY_VERSION
