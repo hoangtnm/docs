@@ -21,10 +21,10 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	wget "$NUMPY_DOWNLOAD_URL" -O numpy.zip
 	unzip numpy.zip
 	cd numpy-$NUMPY_VERSION
-	echo '[blis]' >> site.cfg
-	echo 'libraries = blis' >> site.cfg
-	bash -c 'echo "library_dirs = $HOME/blis/lib" >> site.cfg'
-	bash -c 'echo "include_dirs = $HOME/blis/include/blis" >> site.cfg'
+	echo '[openblas]' >> site.cfg
+	echo 'libraries = openblas' >> site.cfg
+	bash -c 'echo "library_dirs = /opt/OpenBLAS/lib" >> site.cfg'
+	bash -c 'echo "include_dirs = /opt/OpenBLAS/include" >> site.cfg'
 	
 	echo "";
 	echo "Validating the Build";
