@@ -20,7 +20,7 @@ An introduction to the NVIDIA Container Runtime is also covered in our [blog pos
 
 **If you have a custom `/etc/docker/daemon.json`, the `nvidia-docker2` package might override it.**  
 
-#### Ubuntu 14.04/16.04/18.04, Debian Jessie/Stretch
+#### Ubuntu 16.04/18.04, Debian Jessie/Stretch
 ```sh
 # If you have nvidia-docker 1.0 installed: we need to remove it and all existing GPU containers
 docker volume ls -q -f driver=nvidia-docker | xargs -r -I{} -n1 docker ps -q -a -f volume={} | xargs -r docker rm -f
@@ -42,50 +42,64 @@ sudo pkill -SIGHUP dockerd
 docker run --runtime=nvidia --rm nvidia/cuda:9.0-base nvidia-smi
 ```
 
-#### CentOS 7 (docker-ce), RHEL 7.4/7.5 (docker-ce), Amazon Linux 1/2
+## Environment variables (OCI spec)
 
-If you are **not** using the official `docker-ce` package on CentOS/RHEL, use the next section.
+Each environment variable maps to an command-line argument for `nvidia-container-cli` from [libnvidia-container](https://github.com/NVIDIA/libnvidia-container).  
+These variables are already set in our [official CUDA images](https://hub.docker.com/r/nvidia/cuda/).
 
-```sh
-# If you have nvidia-docker 1.0 installed: we need to remove it and all existing GPU containers
-docker volume ls -q -f driver=nvidia-docker | xargs -r -I{} -n1 docker ps -q -a -f volume={} | xargs -r docker rm -f
-sudo yum remove nvidia-docker
+### `NVIDIA_VISIBLE_DEVICES`
+This variable controls which GPUs will be made accessible inside the container.  
 
-# Add the package repositories
-distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
-curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.repo | \
-  sudo tee /etc/yum.repos.d/nvidia-docker.repo
+#### Possible values
+* `0,1,2`, `GPU-fef8089b` …: a comma-separated list of GPU UUID(s) or index(es).
+* `all`: all GPUs will be accessible, this is the default value in our container images.
+* `none`: no GPU will be accessible, but driver capabilities will be enabled.
+* `void` or *empty* or *unset*: `nvidia-container-runtime` will have the same behavior as `runc`.
 
-# Install nvidia-docker2 and reload the Docker daemon configuration
-sudo yum install -y nvidia-docker2
-sudo pkill -SIGHUP dockerd
+### `NVIDIA_DRIVER_CAPABILITIES`
+This option controls which driver libraries/binaries will be mounted inside the container.
 
-# Test nvidia-smi with the latest official CUDA image
-docker run --runtime=nvidia --rm nvidia/cuda:9.0-base nvidia-smi
-```
-If `yum` reports a conflict on `/etc/docker/daemon.json` with the
-`docker` package, you need to use the next section instead.
+#### Possible values
+* `compute,video`, `graphics,utility` …: a comma-separated list of driver features the container needs.
+* `all`: enable all available driver capabilities.
+* *empty* or *unset*: use default driver capability: `utility`.
 
-For docker-ce on `ppc64le`, look at the [FAQ](https://github.com/nvidia/nvidia-docker/wiki/Frequently-Asked-Questions#do-you-support-powerpc64-ppc64le).
+#### Supported driver capabilities
+* `compute`: required for CUDA and OpenCL applications.
+* `compat32`: required for running 32-bit applications.
+* `graphics`: required for running OpenGL and Vulkan applications.
+* `utility`: required for using `nvidia-smi` and NVML.
+* `video`: required for using the Video Codec SDK.
+* `display`: required for leveraging X11 display.
 
-#### CentOS 7 (docker), RHEL 7.4/7.5 (docker)
-```sh
-# If you have nvidia-docker 1.0 installed: we need to remove it and all existing GPU containers
-docker volume ls -q -f driver=nvidia-docker | xargs -r -I{} -n1 docker ps -q -a -f volume={} | xargs -r docker rm -f
-sudo yum remove nvidia-docker
+### `NVIDIA_REQUIRE_*`
+A logical expression to define constraints on the configurations supported by the container.  
 
-# Add the package repositories
-distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
-curl -s -L https://nvidia.github.io/nvidia-container-runtime/$distribution/nvidia-container-runtime.repo | \
-  sudo tee /etc/yum.repos.d/nvidia-container-runtime.repo
+#### Supported constraints
+* `cuda`: constraint on the CUDA driver version.
+* `driver`: constraint on the driver version.
+* `arch`: constraint on the compute architectures of the selected GPUs.
+* `brand`: constraint on the brand of the selected GPUs (e.g. GeForce, Tesla, GRID).
 
-# Install the nvidia runtime hook
-sudo yum install -y nvidia-container-runtime-hook
+#### Expressions
+Multiple constraints can be expressed in a single environment variable: space-separated constraints are ORed, comma-separated constraints are ANDed.  
+Multiple environment variables of the form `NVIDIA_REQUIRE_*` are ANDed together.
 
-# Test nvidia-smi with the latest official CUDA image
-# You can't use `--runtime=nvidia` with this setup.
-docker run --rm nvidia/cuda:9.0-base nvidia-smi
-```
+### `NVIDIA_DISABLE_REQUIRE`
+Single switch to disable all the constraints of the form `NVIDIA_REQUIRE_*`.
+
+### `NVIDIA_REQUIRE_CUDA`
+
+The version of the CUDA toolkit used by the container. It is an instance of the generic `NVIDIA_REQUIRE_*` case and it is set by official CUDA images.
+If the version of the NVIDIA driver is insufficient to run this version of CUDA, the container will not be started.
+
+#### Possible values
+* `cuda>=7.5`, `cuda>=8.0`, `cuda>=9.0` …: any valid CUDA version in the form `major.minor`.
+
+### `CUDA_VERSION`
+Similar to `NVIDIA_REQUIRE_CUDA`, for legacy CUDA images.  
+In addition, if `NVIDIA_REQUIRE_CUDA` is not set, `NVIDIA_VISIBLE_DEVICES` and `NVIDIA_DRIVER_CAPABILITIES` will default to `all`.
+
 
 #### Other distributions and architectures
 
