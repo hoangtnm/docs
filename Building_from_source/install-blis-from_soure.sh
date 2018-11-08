@@ -1,7 +1,7 @@
 #! /bin/bash
 
 echo ""
-echo "************************ Please confirm *******************************"
+echo "**************** Please confirm ***********************"
 echo " Installing BLIS from source may take a long time. "
 echo " Select n to skip BLIS installation or y to install it." 
 read -p " Continue installing BLIS (y/n) ? " CONTINUE
