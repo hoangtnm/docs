@@ -11,6 +11,7 @@ help:
 	@echo "  make blis - Install BLIS"
 	@echo "  make numpy - Install Numpy"
 	@echo "  make scipy - Install Scipy"
+	@echo "  make sklearn - Install scikit-learn"
 	@echo "  make opencv - Install OpenCV"
 	@echo "  make protobuf - Install "
 	@echo "  make caffe - Install Caffe"
@@ -18,7 +19,7 @@ help:
 	@echo "  make clean - remove targets and intermediate files." 
 
 .PHONY: all
-all: prereqs python3 openblas blis protobuf opencv caffe
+all: prereqs python3 openblas blis protobuf numpy scipy sklearn opencv caffe
 
 .PHONY: python3
 python3:
@@ -51,6 +52,10 @@ numpy:
 .PHONY: scipy
 scipy:
 	./install-scipy-from_source.sh
+	
+.PHONY: sklearn
+sklearn:
+	./install-sklearn-from_source.sh
 
 .PHONY: opencv
 opencv: 
@@ -72,6 +77,7 @@ prereqs:
 	@chmod +x install-blis-from_soure.sh
 	@chmod +x install-numpy-from_source.sh
 	@chmod +x install-scipy-from_source.sh
+	@chmod +x install-sklearn-from_source.sh
 	@chmod +x install-opencv-from_source.sh
 	@chmod +x install-protobuf-from_source.sh
 	@chmod +x install-caffe-from_source.sh
