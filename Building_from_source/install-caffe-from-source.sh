@@ -46,7 +46,8 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 		sudo apt install libatlas-base-dev \
 		                 libopencv-dev \
 				 python3-dev \
-				 python-opencv
+				 python-opencv \
+				 sudoA
 		sed -i 's/#\ CPU_ONLY\ :=\ 1/CPU_ONLY\ :=\ 1/g' Makefile.config
 		sed -i 's/#\ OPENCV_VERSION\ :=\ 3/OPENCV_VERSION\ :=\ 3/g' Makefile.config
 		sed -i 's/#\ CUSTOM_CXX\ :=\ g++/CUSTOM_CXX\ :=\ g++/g' Makefile.config
