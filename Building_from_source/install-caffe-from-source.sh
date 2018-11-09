@@ -43,11 +43,11 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 		sed -i 's/INCLUDE_DIRS\ :=\ $(PYTHON_INCLUDE)\ \/usr\/local\/include/INCLUDE_DIRS\ :=\ $(PYTHON_INCLUDE)\ \/usr\/local\/include\ \/usr\/include\/hdf5\/serial/g' Makefile.config
 		sed -i 's/LIBRARY_DIRS\ :=\ $(PYTHON_LIB)\ \/usr\/local\/lib\ \/usr\/lib/LIBRARY_DIRS\ :=\ $(PYTHON_LIB)\ \/usr\/local\/lib\ \/usr\/lib\/x86_64-linux-gnu\/hdf5\/serial/g' Makefile.config
 	elif [[ "$CONTINUE" == "rasp" || "$CONTINUE" == "RASP" ]]; then
-		sudo apt install libatlas-base-dev \
+		sudo apt install -y libatlas-base-dev \
 		                 libopencv-dev \
 				 python3-dev \
 				 python-opencv \
-				 sudoA
+				 sudo
 		sed -i 's/#\ CPU_ONLY\ :=\ 1/CPU_ONLY\ :=\ 1/g' Makefile.config
 		sed -i 's/#\ OPENCV_VERSION\ :=\ 3/OPENCV_VERSION\ :=\ 3/g' Makefile.config
 		sed -i 's/#\ CUSTOM_CXX\ :=\ g++/CUSTOM_CXX\ :=\ g++/g' Makefile.config
