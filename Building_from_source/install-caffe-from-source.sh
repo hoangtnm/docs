@@ -25,7 +25,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	cd caffe
 	cp Makefile.config.example Makefile.config
 	
-	echo "Please select which platform for the environment: Raspberry Pi 3 or PC with NVIDIA GPU"
+	echo "Please select which platform for the environment: Raspberry Pi 3 or PC with NVIDIA GPU";
 	read -p " Raspberry or PC (rasp/pc) ? " CONTINUE
 	if [[ "$CONTINUE" == "pc" || "$CONTINUE" == "PC" ]]; then
 		sed -i 's/#\ USE_CUDNN\ :=\ 1/USE_CUDNN\ :=\ 1/g' Makefile.config
