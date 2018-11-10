@@ -4,8 +4,9 @@ echo ""
 echo "************************ Please confirm *******************************"
 echo " Installing TensorFlow from source may take a long time. "
 echo " Select n to skip TensorFlow installation or y to install it." 
-echo " Note that if you installed tensorflow via pip3 it will be uninstalled"
-read -p " Continue installing OpenCV (y/n) ? " CONTINUE
+echo " Note that: if you installed tensorflow via pip3 it will be uninstalled"
+echo "            the computer must be equipped with an NVIDIA GPU"
+read -p " Continue installing TensorFlow (y/n) ? " CONTINUE
 if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo ""; 
 	echo "Uninstalling pip installation";
@@ -27,9 +28,25 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "Configuring the build";
 	echo "";
 	./configure << EOF
-	\
+	/usr/local/bin/python3
 	/usr/local/lib/python3.6/site-packages
-	
+	\n
+	\n
+	\n
+	\n
+	y
+	10.0
+	\n
+	\n
+	\n
+	\n
+	1.3
+	\n
+	\n
+	\n
+	\n
+	-march=native
+	\n
 	EOF
 	
 	echo "";
