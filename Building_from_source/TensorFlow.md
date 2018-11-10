@@ -4,7 +4,7 @@
 ### Requirements
 
 - Ubuntu 18.04 ([refer](https://github.com/greenglobal/ggml-docs/blob/master/setup_ubuntu_1804_from_minimalcd.md))
-- CUDA 9.2, cuDNN 7.2 ([refer](https://github.com/hoangtnm/TrainingServer-docs/blob/master/Setup-machine-for-Deep_Learning.md))
+- CUDA 10.0, cuDNN 7.4 ([refer](https://github.com/hoangtnm/TrainingServer-docs/blob/master/Setup-machine-for-Deep_Learning.md))
 - Python 3.6.5 (must be installed exactly as same as [this guideline](https://github.com/hoangtnm/TrainingServer-docs/blob/master/Setup_python_3_dev_environment.md))
 
 ### Clone the TensorFlow repository
@@ -86,62 +86,45 @@ Please specify the location of python. [Default is /usr/bin/python]:
 
 Found possible Python library paths:
   /usr/local/lib/python3.6/site-packages
+  /home/minhhoang/workspace/caffe/python
 Please input the desired Python library path to use.  Default is [/usr/local/lib/python3.6/site-packages]
 
-Do you wish to build TensorFlow with jemalloc as malloc support? [Y/n]: 
-jemalloc as malloc support will be enabled for TensorFlow.
+Do you wish to build TensorFlow with Apache Ignite support? [Y/n]: 
+Apache Ignite support will be enabled for TensorFlow.
 
-Do you wish to build TensorFlow with Google Cloud Platform support? [Y/n]: 
-Google Cloud Platform support will be enabled for TensorFlow.
-
-Do you wish to build TensorFlow with Hadoop File System support? [Y/n]: 
-Hadoop File System support will be enabled for TensorFlow.
-
-Do you wish to build TensorFlow with Amazon S3 File System support? [Y/n]: 
-Amazon S3 File System support will be enabled for TensorFlow.
-
-Do you wish to build TensorFlow with Apache Kafka Platform support? [Y/n]: 
-Apache Kafka Platform support will be enabled for TensorFlow.
-
-Do you wish to build TensorFlow with XLA JIT support? [y/N]: 
-No XLA JIT support will be enabled for TensorFlow.
-
-Do you wish to build TensorFlow with GDR support? [y/N]: 
-No GDR support will be enabled for TensorFlow.
-
-Do you wish to build TensorFlow with VERBS support? [y/N]: 
-No VERBS support will be enabled for TensorFlow.
+Do you wish to build TensorFlow with XLA JIT support? [Y/n]: 
+XLA JIT support will be enabled for TensorFlow.
 
 Do you wish to build TensorFlow with OpenCL SYCL support? [y/N]: 
 No OpenCL SYCL support will be enabled for TensorFlow.
 
+Do you wish to build TensorFlow with ROCm support? [y/N]: 
+No ROCm support will be enabled for TensorFlow.
+
 Do you wish to build TensorFlow with CUDA support? [y/N]: y
 CUDA support will be enabled for TensorFlow.
 
-Please specify the CUDA SDK version you want to use. [Leave empty to default to CUDA 9.0]: 9.2
+Please specify the CUDA SDK version you want to use. [Leave empty to default to CUDA 9.0]: 10.0
 
 
-Please specify the location where CUDA 9.2 toolkit is installed. Refer to README.md for more details. [Default is /usr/local/cuda]: 
+Please specify the location where CUDA 10.0 toolkit is installed. Refer to README.md for more details. [Default is /usr/local/cuda]: 
 
 
-Please specify the cuDNN version you want to use. [Leave empty to default to cuDNN 7.0]: 7.2.1   
+Please specify the cuDNN version you want to use. [Leave empty to default to cuDNN 7]: 
 
 
-Please specify the location where cuDNN 7 library is installed. Refer to README.md for more details. [Default is /usr/local/cuda]:
+Please specify the location where cuDNN 7 library is installed. Refer to README.md for more details. [Default is /usr/local/cuda]: 
 
 
 Do you wish to build TensorFlow with TensorRT support? [y/N]: 
 No TensorRT support will be enabled for TensorFlow.
 
-Please specify the NCCL version you want to use. [Leave empty to default to NCCL 1.3]: 2.2
-
-
-Please specify the location where NCCL 2 library is installed. Refer to README.md for more details. [Default is /usr/local/cuda]:/usr/local/nccl_2.2.13-1+cuda9.2_x86_64
+Please specify the NCCL version you want to use. If NCCL 2.2 is not installed, then you can use version 1.3 that can be fetched automatically but it may have worse performance with multiple GPUs. [Default is 2.2]: 1.3
 
 
 Please specify a list of comma-separated Cuda compute capabilities you want to build with.
 You can find the compute capability of your device at: https://developer.nvidia.com/cuda-gpus.
-Please note that each additional compute capability significantly increases your build time and binary size. [Default is: 6.1]
+Please note that each additional compute capability significantly increases your build time and binary size. [Default is: 5.0]: 
 
 
 Do you want to use clang as CUDA compiler? [y/N]: 
@@ -162,6 +145,9 @@ Not configuring the WORKSPACE for Android builds.
 Preconfigured Bazel build configs. You can use any of the below by adding "--config=<>" to your build command. See tools/bazel.rc for more details.
 	--config=mkl         	# Build with MKL support.
 	--config=monolithic  	# Config for mostly static monolithic build.
+	--config=gdr         	# Build with GDR support.
+	--config=verbs       	# Build with libverbs support.
+	--config=ngraph      	# Build with Intel nGraph support.
 Configuration finished
 ```
 
