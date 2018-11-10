@@ -17,7 +17,7 @@ mkdir /home/$USER/workspace
 cd /home/$USER/workspace
 git clone https://github.com/tensorflow/tensorflow.git
 cd tensorflow
-git checkout r1.11
+git checkout r1.12
 ```
 
 ### Install Bazel
@@ -36,44 +36,6 @@ To install these packages for Python 3.n, issue the following command:
 
 ```
 sudo pip3 install numpy wheel
-```
-
-### Install CUDA Toolkit 9.2
-
-IMHO, it’s always best practice to install pip modules into the virtual environments, and use TensorFlow from PyPI. This will provide a flexible solution. For the same reason, I didn’t recommend to use Anaconda.
-
-CUDA v9.2 requires GCC 7, while default GCC version in Ubuntu 17.10 is GCC 7.2 and some other Deep Learning framework requires GCC 6. So we have to install GCC 6 and create symlinks as below:
-
-```shell
-cd ~/Downloads
-sudo apt install gcc-6 g++-6
-sudo ln -s /usr/bin/gcc-6 /usr/local/cuda/bin/gcc
-sudo ln -s /usr/bin/g++-6 /usr/local/cuda/bin/g++
-
-wget https://developer.nvidia.com/compute/cuda/9.2/Prod2/local_installers/cuda_9.2.148_396.37_linux
-wget https://developer.nvidia.com/compute/cuda/9.2/Prod2/patches/1/cuda_9.2.148.1_linux
-chmod +x cuda_9.2.148*
-sudo ./cuda_9.2.148_396.37_linux.run --override
-sudo ./cuda_9.2.148.1_linux.run
-echo 'export PATH=/usr/local/cuda-9.2/bin${PATH:+:${PATH}}' >> ~/.bashrc
-echo 'export LD_LIBRARY_PATH=/usr/local/cuda-9.2/lib64:/usr/local/cuda/extras/CUPTI/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
-source ~/.bashrc
-```
-To remember, the general rule is:
-- ```~/.bash_profile``` is being activated just one time when you login (GUI or SSH)
-- ```~/.bash_aliases``` is being activated every time when you open the terminal (window or tab)
-However this behavior can be changed by modifying ```~/.bashrc```, ```~/.profile```, or ```/etc/bash.bashrc```, etc.
-
-### Install cuDNN 7.2.1
-
-The NVIDIA CUDA® Deep Neural Network library (cuDNN) is a GPU-accelerated library of primitives for deep neural networks. cuDNN provides highly tuned implementations for standard routines such as forward and backward convolution, pooling, normalization, and activation layers
-
-```shell
-wget https://developer.nvidia.com/compute/machine-learning/cudnn/secure/v7.2.1/prod/9.2_20180806/cudnn-9.2-linux-x64-v7.2.1.38
-tar -xzvf cudnn-9.2-linux-x64-v7.2.1.38.tgz
-sudo cp cuda/include/cudnn.h /usr/local/cuda/include
-sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
-sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
 ```
 
 ### Configure the installation
@@ -172,7 +134,7 @@ bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
 Invoke ```pip install``` to install that pip package. The filename of the ```.whl``` file depends on your platform. For example, the following command will install the pip package:
 
 ```shell
-sudo pip3 install /tmp/tensorflow_pkg/tensorflow-1.11-cp36-cp36m-linux_x86_64.whl
+sudo pip3 install /tmp/tensorflow_pkg/tensorflow-1.12-cp36-cp36m-linux_x86_64.whl
 ```
 
 ### Validate your installation
