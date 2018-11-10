@@ -66,7 +66,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
 	echo "Installing the package";
 	echo "";
-	sudo pip3 install --upgrade /tmp/tensorflow_pkg/tensorflow-version-tags.whl
+	sudo pip3 install --upgrade --force-reinstall /tmp/tensorflow_pkg/tensorflow-version-tags.whl
 else
 	echo "";
 	echo "Skipping TensorFlow installation";
