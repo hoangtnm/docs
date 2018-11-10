@@ -25,7 +25,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "	NCCL        : $NCCL_VERSION";
 	echo "	cuDNN       : $CUDNN_VERSION";
 	echo "";
-	sudo apt update && apt-get install -y --no-install-recommends \
+	sudo apt update && sudo apt install -y --no-install-recommends \
 		cuda-cudart-$CUDA_PKG_VERSION \
 		cuda-compat-10-0=410.48-1 \
 		cuda-libraries-$CUDA_PKG_VERSION \
