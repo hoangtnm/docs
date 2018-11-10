@@ -24,6 +24,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	git clone https://github.com/tensorflow/tensorflow.git
 	cd tensorflow
 	git checkout r$TENSORFLOW_VERSION
+	
 	echo "";
 	echo "Configuring the build";
 	echo "";
