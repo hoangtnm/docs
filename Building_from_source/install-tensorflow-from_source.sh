@@ -31,7 +31,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
 	echo "Configuring the build";
 	echo "";
-	./configure <<EOF
+	./configure << EOF
 	/usr/local/bin/python3
 	/usr/local/lib/python3.6/site-packages
 	\n
