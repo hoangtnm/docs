@@ -1,16 +1,19 @@
 #! /bin/bash
 
 echo ""
-echo "************************ Please confirm *******************************"
-echo " Installing TensorFlow from source may take a long time. "
+echo "**************************** Please confirm **********************************"
+echo " Installing TensorFlow from source may take a long time."
 echo " Select n to skip TensorFlow installation or y to install it." 
 echo " Note that: if you installed tensorflow via pip3 it will be uninstalled"
-echo "            the computer must be equipped with an NVIDIA GPU"
+echo "            the computer must be equipped with an CUDA-Enabled GeForce Product"
+echo "            CUDA Toolkit's version must be 10.0"
 read -p " Continue installing TensorFlow (y/n) ? " CONTINUE
 if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo ""; 
 	echo "Uninstalling pip installation";
+	echo "";
 	sudo pip3 uninstall tensorflow tensorflow-gpu
+	
 	echo "";
 	echo "Installing TensorFlow"; 
 	echo "";
@@ -28,7 +31,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
 	echo "Configuring the build";
 	echo "";
-	./configure << EOF
+	./configure <<EOF
 	/usr/local/bin/python3
 	/usr/local/lib/python3.6/site-packages
 	\n
