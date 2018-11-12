@@ -4,6 +4,7 @@ echo ""
 echo "***************** Please confirm ***********************"
 echo " Installing Caffe from source may take a long time. "
 echo " Select n to skip Caffe installation or y to install it." 
+echo " Note that: OpenBLAS is required instead of ATLAS"
 read -p " Continue installing Caffe (y/n) ? " CONTINUE
 if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	sudo apt update -y && sudo apt-get upgrade -y
