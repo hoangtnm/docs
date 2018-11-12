@@ -16,8 +16,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 		libsnappy-dev \
 		liblmdb-dev \
 		libgflags-dev \
-		libgoogle-glog-dev \
-		protobuf-compiler
+		libgoogle-glog-dev
 	
 	echo "";
 	echo "Downloading and Building the Source Code";
