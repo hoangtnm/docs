@@ -38,6 +38,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 		libnccl-dev=$NCCL_VERSION-1+cuda10.0 \
 		libcudnn7=$CUDNN_VERSION-1+cuda10.0 \
 		libcudnn7-dev=$CUDNN_VERSION-1+cuda10.0
+	sudo ln -s /usr/local/cuda-10.0 /usr/local/cuda
 	sudo apt-mark hold libnccl2
 	sudo apt-mark hold libcudnn7
 	echo 'export PATH=/usr/local/nvidia/bin:/usr/local/cuda/bin${PATH:+:${PATH}}' >> ~/.bashrc
