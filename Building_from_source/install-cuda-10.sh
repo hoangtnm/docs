@@ -41,9 +41,9 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	sudo ln -s /usr/local/cuda-10.0 /usr/local/cuda
 	sudo apt-mark hold libnccl2
 	sudo apt-mark hold libcudnn7
-	echo 'export PATH=/usr/local/nvidia/bin:/usr/local/cuda/bin${PATH:+:${PATH}}' >> ~/.bashrc
+	echo 'export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}' >> ~/.bashrc
 	echo 'export LIBRARY_PATH=/usr/local/cuda/lib64/stubs${LIBRARY_PATH:+:${LIBRARY_PATH}}' >> ~/.bashrc
-	echo 'export LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
+	echo 'export LD_LIBRARY_PATH=/usr/local/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
 	source ~/.bashrc
 	sudo ldconfig
 	echo "The installation completed!";
