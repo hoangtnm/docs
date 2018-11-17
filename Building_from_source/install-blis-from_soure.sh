@@ -9,7 +9,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
 	echo "Installing BLIS"; 
 	echo "";
-	sudo apt update -y && sudo apt-get upgrade -y
+	sudo apt update -y
 	sudo apt install -y build-essential cmake make git
 	
 	echo "";
