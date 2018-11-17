@@ -17,7 +17,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
 	echo "Installing TensorFlow"; 
 	echo "";
-	sudo apt update -y && sudo apt-get upgrade -y
+	sudo apt update -y
 	sudo apt install -y build-essential git
 	
 	echo "";
