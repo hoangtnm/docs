@@ -28,7 +28,6 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	sudo make install -j $(nproc)
 	echo "Updating pip3 to the latest version";
 	echo "";
-	sudo rm /usr/bin/python && sudo ln -s /usr/local/bin/python3 /usr/bin/python
 	curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 	sudo python3 get-pip.py
 else
