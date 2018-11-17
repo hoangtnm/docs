@@ -6,7 +6,7 @@ echo " Installing OpenBLAS from source may take a long time. "
 echo " Select n to skip OpenBLAS installation or y to install it." 
 read -p " Continue installing OpenBLAS (y/n) ? " CONTINUE
 if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
-	sudo apt update -y && sudo apt-get upgrade -y
+	sudo apt update -y
 	sudo apt install -y build-essential cmake cython git gcc g++ gfortran
 	
 	echo "";
