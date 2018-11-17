@@ -11,7 +11,6 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	sudo apt install build-essential \
 		libhdf5-serial-dev \
 		libboost-all-dev \
-		libprotobuf-dev \
 		libleveldb-dev \
 		libsnappy-dev \
 		liblmdb-dev \
