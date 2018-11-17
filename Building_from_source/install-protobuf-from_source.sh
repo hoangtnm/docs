@@ -9,7 +9,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
 	echo "Installing Protobuf"; 
 	echo "";
-	sudo apt update -y && sudo apt-get upgrade -y
+	sudo apt update -y
 	sudo apt install -y build-essential autoconf automake libtool curl make g++ unzip
 	
 	export PROTOBUF_VERSION=3.6.1
