@@ -2,9 +2,9 @@
 help:
 	@echo "\nmake help starting."
 	@echo "Make targets are:"
-	@echo "  make help - shows this message"
+	@echo "  make help - Show this message"
 	@echo "  make python3 - Install Python 3.6.5"
-	@echo "  make cuda - Install CUDA Toolkit 10.0, cuDNN 7.3.1.20 and NCCL 2.3.5"
+	@echo "  make cuda - Install CUDA Toolkit 10.0, cuDNN 7 and NCCL 2"
 	@echo "  make intelmkl - Install Intel MKL"
 	@echo "  make intelmkl-dnn - Install Intel MKL-DNN"
 	@echo "  make openblas - Install OpenBLAS"
@@ -19,7 +19,7 @@ help:
 	@echo "  make clean - remove targets and intermediate files." 
 
 .PHONY: all
-all: prereqs python3 openblas blis protobuf numpy scipy sklearn opencv caffe
+all: prereqs python3 openblas protobuf numpy scipy opencv caffe
 
 .PHONY: python3
 python3:
@@ -75,15 +75,15 @@ prereqs:
 	@chmod +x install-cuda-10.sh
 	@chmod +x install-openblas-from_source.sh
 	@chmod +x install-blis-from_soure.sh
+	@chmod +x install-intel-mkl-from_source.sh
+	@chmod +x install-intel-mkl-dnn-from_source.sh
 	@chmod +x install-numpy-from_source.sh
 	@chmod +x install-scipy-from_source.sh
 	@chmod +x install-sklearn-from_source.sh
 	@chmod +x install-opencv-from_source.sh
 	@chmod +x install-protobuf-from_source.sh
 	@chmod +x install-caffe-from_source.sh
-	@chmod +x install-intel-mkl-from_source.sh
-	@chmod +x install-intel-mkl-dnn-from_source.sh
-
+	
 .PHONY: clean
 clean:
 	@echo "\nmake clean starting."
