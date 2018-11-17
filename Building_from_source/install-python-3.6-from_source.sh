@@ -26,6 +26,8 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "Finalizing the Installation"
 	echo "";
 	sudo make install -j $(nproc)
+	
+	echo "";
 	echo "Updating pip3 to the latest version";
 	echo "";
 	sudo rm /usr/bin/python && sudo ln -s /usr/local/bin/python3 /usr/bin/python
