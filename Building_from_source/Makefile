@@ -3,6 +3,8 @@ help:
 	@echo "\nmake help starting."
 	@echo "Make targets are:"
 	@echo "  make help - Show this message"
+	@echo "  make all - Install the default options"
+	@echo "  make driver - Install NVIDIA driver"
 	@echo "  make python3 - Install Python 3.6.5"
 	@echo "  make cuda 10- Install CUDA Toolkit 10.0, cuDNN 7.4.1.5 and NCCL 2.3.7"
 	@echo "  make cuda 9- Install CUDA Toolkit 9.2, cuDNN 7.4.1.5 and NCCL 2.3.7"
@@ -20,7 +22,11 @@ help:
 	@echo "  make clean - remove targets and intermediate files." 
 
 .PHONY: all
-all: prereqs python3 openblas protobuf numpy scipy opencv caffe
+all: prereqs driver cuda9 python3 openblas protobuf numpy scipy opencv caffe
+
+.PHONY: driver
+driver:
+	./install-nvidia-driver.sh
 
 .PHONY: python3
 python3:
@@ -76,6 +82,7 @@ caffe:
 
 .PHONY: prereqs
 prereqs:
+	@chmod +x install-nvidia-driver.sh
 	@chmod +x install-python-3.6-from_source.sh
 	@chmod +x install-cuda-10.sh
 	@chmod +x install-openblas-from_source.sh
