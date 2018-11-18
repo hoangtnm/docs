@@ -4,7 +4,8 @@ help:
 	@echo "Make targets are:"
 	@echo "  make help - Show this message"
 	@echo "  make python3 - Install Python 3.6.5"
-	@echo "  make cuda - Install CUDA Toolkit 10.0, cuDNN 7.4.1.5 and NCCL 2.3.7"
+	@echo "  make cuda 10- Install CUDA Toolkit 10.0, cuDNN 7.4.1.5 and NCCL 2.3.7"
+	@echo "  make cuda 10- Install CUDA Toolkit 9.2, cuDNN 7.4.1.5 and NCCL 2.3.7"
 	@echo "  make intelmkl - Install Intel MKL"
 	@echo "  make intelmkl-dnn - Install Intel MKL-DNN"
 	@echo "  make openblas - Install OpenBLAS"
@@ -25,9 +26,13 @@ all: prereqs python3 openblas protobuf numpy scipy opencv caffe
 python3:
 	./install-python-3.6-from_source.sh
 	
-.PHONY: cuda
-cuda:
+.PHONY: cuda10
+cuda10:
 	./install-cuda-10.sh
+	
+.PHONY: cuda9
+cuda9:
+	./install-cuda-9.sh
 	
 .PHONY: intelmkl
 intelmkl:
