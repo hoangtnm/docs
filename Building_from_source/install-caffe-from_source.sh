@@ -38,7 +38,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 		sed -i 's/PYTHON_INCLUDE\ := \/usr\/include\/python2.7/#PYTHON_INCLUDE\ :=\ \/usr\/include\/python2.7/g' Makefile.config
 		sed -i 's/#\ PYTHON_LIBRARIES\ :=\ boost_python3\ python3.5m/PYTHON_LIBRARIES\ :=\ boost_python3\ python3.6m/g' Makefile.config
 		sed -i 's/#\ PYTHON_INCLUDE\ :=\ \/usr\/include\/python3.5m/PYTHON_INCLUDE\ :=\ \/usr\/local\/include\/python3.6m/g' Makefile.config
-		sed -i 's/#\                 \/usr\/lib\/python3.5\/dist-packages/\                 \/usr\/local\/lib\/python3.6\/site-packages/g' Makefile.config
+		sed -i 's/#\                 \/usr/lib/python3.5/dist-packages/numpy/core/include/\                 \/usr\/local\/lib\/python3.6\/site-packages\/numpy-1.15.4-py3.6-linux-x86_64.egg\/numpy\/core\/include/g' Makefile.config
 		sed -i 's/INCLUDE_DIRS\ :=\ $(PYTHON_INCLUDE)\ \/usr\/local\/include/INCLUDE_DIRS\ :=\ $(PYTHON_INCLUDE)\ \/usr\/local\/include\ \/usr\/include\/hdf5\/serial/g' Makefile.config
 		sed -i 's/LIBRARY_DIRS\ :=\ $(PYTHON_LIB)\ \/usr\/local\/lib\ \/usr\/lib/LIBRARY_DIRS\ :=\ $(PYTHON_LIB)\ \/usr\/local\/lib\ \/usr\/lib\/x86_64-linux-gnu\/hdf5\/serial/g' Makefile.config
 	elif [[ "$CONTINUE" == "rasp" || "$CONTINUE" == "RASP" ]]; then
