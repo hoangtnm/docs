@@ -27,7 +27,6 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
 	sudo apt update && sudo apt install -y --no-install-recommends \
 		cuda-cudart-$CUDA_PKG_VERSION \
-		cuda-compat-10-0=410.48-1 \
 		cuda-libraries-$CUDA_PKG_VERSION \
 		cuda-libraries-dev-$CUDA_PKG_VERSION \
 		cuda-nvtx-$CUDA_PKG_VERSION \
