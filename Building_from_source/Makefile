@@ -88,6 +88,7 @@ caffe:
 .PHONY: prereqs
 prereqs:
 	@chmod +x install-nvidia-driver.sh
+	@chmod +x install-bazel.sh
 	@chmod +x install-python-3.6-from_source.sh
 	@chmod +x install-cuda-10.sh
 	@chmod +x install-openblas-from_source.sh
