@@ -5,6 +5,7 @@ help:
 	@echo "  make help - Show this message"
 	@echo "  make all - Install the default options"
 	@echo "  make driver - Install NVIDIA driver"
+	@echo "  make bazel - Install Bazel"
 	@echo "  make python3 - Install Python 3.6.5"
 	@echo "  make cuda10 - Install CUDA Toolkit 10.0, cuDNN 7.4.1.5 and NCCL 2.3.7"
 	@echo "  make cuda9 - Install CUDA Toolkit 9.2, cuDNN 7.4.1.5 and NCCL 2.3.7"
@@ -27,6 +28,10 @@ all: prereqs driver cuda9 python3 openblas protobuf numpy scipy opencv caffe
 .PHONY: driver
 driver:
 	./install-nvidia-driver.sh
+
+.PHONY: bazel
+bazel:
+	./install-bazel.sh
 
 .PHONY: python3
 python3:
