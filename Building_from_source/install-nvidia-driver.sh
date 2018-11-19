@@ -2,4 +2,4 @@
 
 sudo add-apt-repository ppa:graphics-drivers/ppa
 sudo apt update
-sudo apt install nvidia-driver-410
+sudo apt install -y nvidia-driver-410
