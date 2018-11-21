@@ -7,7 +7,7 @@ echo " Select n to skip Protobuf installation or y to install it."
 read -p " Continue installing Protobuf (y/n) ? " CONTINUE
 if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
-	echo "Installing Protobuf"; 
+	echo "Installing Protocol Compiler"; 
 	echo "";
 	sudo apt update -y
 	sudo apt install -y build-essential autoconf automake libtool curl make g++ unzip
@@ -28,12 +28,19 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	
 	echo "";
 	echo "Finalizing the Installation";
-	echo "By default, the package will be installed to /usr/local";
+	echo "By default, the Protocol Compiler will be installed to /usr/local";
 	echo "";
 	echo 'export LD_LIBRARY_PATH=/usr/local/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
 	source ~/.bashrc
 	sudo ldconfig
+	
 	echo "";
+	echo "Installing the protobuf runtime for Python";
+	echo "";
+	cd python
+	python setup.py build
+	python setup.py test
+	sudo python setup.py install
 else
 	echo "";
 	echo "Skipping Protobuf installation";
