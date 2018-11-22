@@ -23,7 +23,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
 	echo "Install the TensorFlow pip package dependencies";
 	echo "";
-	sudo pip install --no-deps six mock keras_applications==1.0.5 keras_preprocessing==1.0.3
+	sudo pip install --no-deps six mock keras_applications==1.0.6 keras_preprocessing==1.0.5
 	
 	echo "";
 	echo "Downloading the Source Code";
