@@ -23,7 +23,7 @@ help:
 	@echo "  make clean - remove targets and intermediate files." 
 
 .PHONY: all
-all: prereqs driver cuda9 python3 openblas protobuf numpy scipy opencv caffe
+all: prereqs driver cuda10 python3 openblas protobuf numpy scipy opencv caffe
 
 .PHONY: driver
 driver:
