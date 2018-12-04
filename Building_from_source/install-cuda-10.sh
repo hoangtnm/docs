@@ -39,7 +39,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	#	libnccl-dev=$NCCL_VERSION-1+cuda10.0 \
 	#	libcudnn7=$CUDNN_VERSION-1+cuda10.0 \
 	#	libcudnn7-dev=$CUDNN_VERSION-1+cuda10.0
-	sudo apt update && sudo apt install -y --no-install-recommends \
+	sudo apt update && sudo apt install -y \
 		cuda \
 		libnccl2=$NCCL_VERSION-1+cuda10.0 \
 		libnccl-dev=$NCCL_VERSION-1+cuda10.0 \
