@@ -10,9 +10,9 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "Installing Scikit-learn"; 
 	echo "";
 	sudo apt update -y
-	sudo apt pip3 install pytest
+	sudo pip3 install pytest
 	
-	export SKLEARN_VERSION=0.19.1
+	export SKLEARN_VERSION=0.20.2
 	export SKLEARN_DOWNLOAD_URL=https://github.com/scikit-learn/scikit-learn/archive/$SKLEARN_VERSION.zip
   
 	export CURRENT_DIR=`pwd`
