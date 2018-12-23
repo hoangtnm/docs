@@ -23,7 +23,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	sudo apt install -y libgtk2.0-dev libgtk-3-dev
 	sudo apt install -y libatlas-base-dev gfortran
 	
-	export OPENCV_VERSION=3.4.3
+	export OPENCV_VERSION=3.4.5
 	export OPENCV_DOWNLOAD_URL=https://github.com/opencv/opencv/archive/$OPENCV_VERSION.zip
 	export OPENCV_CONTRIB_DOWNLOAD_URL=https://github.com/opencv/opencv_contrib/archive/$OPENCV_VERSION.zip
   
