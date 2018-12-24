@@ -5,7 +5,7 @@
 For studying, you can start with a small set as below:
 
 -   AMD Ryzen™ 5 1600 CPU @ 3.20GHz
--   500 GB hard drive (SSD)
+-   500 GB solid state drive (SSD)
 -   16 GB RAM (DDR4)
 -   nVidia GP104 [GeForce GTX 1070Ti 8GB]
 
