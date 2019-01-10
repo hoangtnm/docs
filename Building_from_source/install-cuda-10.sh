@@ -9,7 +9,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	export CUDA_VERSION=10.0.130
 	export CUDA_PKG_VERSION="10-0=$CUDA_VERSION-1"
 	export NCCL_VERSION=2.3.7
-	export CUDNN_VERSION=7.4.1.5
+	export CUDNN_VERSION=7.4.2.24
 	sudo apt purge cuda* cuda-repo-ubuntu* nvidia-machine-learning-repo-ubuntu*
 	sudo apt update && sudo apt install -y curl wget ca-certificates
 	wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-repo-ubuntu1804_10.0.130-1_amd64.deb
