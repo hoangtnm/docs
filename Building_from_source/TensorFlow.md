@@ -4,7 +4,7 @@
 ### Requirements
 
 - Ubuntu 18.04 ([refer](https://github.com/greenglobal/ggml-docs/blob/master/setup_ubuntu_1804_from_minimalcd.md))
-- CUDA 10.0, cuDNN 7.4 ([refer](https://github.com/hoangtnm/TrainingServer-docs/blob/master/Building_from_source/install-cuda-10.sh))
+- CUDA 10.0, cuDNN 7.4, NCCL2 ([refer](https://github.com/hoangtnm/TrainingServer-docs/blob/master/Building_from_source/install-cuda-10.sh))
 - Python 3.6.5 (must be installed exactly as same as [this guideline](https://github.com/hoangtnm/TrainingServer-docs/blob/master/Setup_python_3_dev_environment.md))
 - Protobuf 3.6.1 (must be installed exactly as same as [this guideline](https://github.com/hoangtnm/TrainingServer-docs/blob/master/Building_from_source/install-protobuf-from_source.sh))
 
