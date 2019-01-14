@@ -46,7 +46,7 @@ To install TensorFlow, you must install the following packages:
 To install these packages for Python 3.n, issue the following command:
 
 ```bash
-sudo pip3 install six numpy wheel mock google-cloud
+sudo pip3 install six numpy==0.15.4 wheel mock google-cloud
 sudo pip install keras_applications==1.0.6 keras_preprocessing==1.0.5 --no-deps
 ```
 
