@@ -29,8 +29,8 @@ If bazel is not installed on your system, install it now by following ([these di
 export BAZEL_VERSION = 0.18.1
 sudo apt install pkg-config zip g++ zlib1g-dev unzip
 wget https://github.com/bazelbuild/bazel/releases/download/$BAZEL_VERSION/bazel-$BAZEL_VERSION-installer-linux-x86_64.sh
-chmod +x $BAZEL_VERSION-installer-linux-x86_64.sh
-sudo ./bazel-<version>-installer-linux-x86_64.sh
+chmod +x bazel-$BAZEL_VERSION-installer-linux-x86_64.sh
+sudo ./bazel-$BAZEL_VERSION-installer-linux-x86_64.sh
 ```
 
 Note: Bazel version must be 0.18.1
