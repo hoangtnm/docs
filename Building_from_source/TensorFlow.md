@@ -4,8 +4,9 @@
 ### Requirements
 
 - Ubuntu 18.04 ([refer](https://github.com/greenglobal/ggml-docs/blob/master/setup_ubuntu_1804_from_minimalcd.md))
-- CUDA 10.0, cuDNN 7.4 ([refer](https://github.com/hoangtnm/TrainingServer-docs/blob/master/Setup-machine-for-Deep_Learning.md))
+- CUDA 10.0, cuDNN 7.4 ([refer](https://github.com/hoangtnm/TrainingServer-docs/blob/master/Building_from_source/install-cuda-10.sh))
 - Python 3.6.5 (must be installed exactly as same as [this guideline](https://github.com/hoangtnm/TrainingServer-docs/blob/master/Setup_python_3_dev_environment.md))
+- Protobuf 3.6.1 (must be installed exactly as same as [this guideline](https://github.com/hoangtnm/TrainingServer-docs/blob/master/Building_from_source/install-protobuf-from_source.sh))
 
 ### Clone the TensorFlow repository
 
@@ -24,6 +25,16 @@ git checkout r1.12
 
 If bazel is not installed on your system, install it now by following ([these directions](https://bazel.build/versions/master/docs/install.html))
 
+```bash
+export BAZEL_VERSION = 0.18.1
+sudo apt install pkg-config zip g++ zlib1g-dev unzip
+wget https://github.com/bazelbuild/bazel/releases/download/$BAZEL_VERSION/bazel-$BAZEL_VERSION-installer-linux-x86_64.sh
+chmod +x $BAZEL_VERSION-installer-linux-x86_64.sh
+sudo ./bazel-<version>-installer-linux-x86_64.sh
+```
+
+Note: Bazel version must be 0.18.1
+
 ### Install TensorFlow Python dependencies
 
 To install TensorFlow, you must install the following packages:
@@ -34,8 +45,9 @@ To install TensorFlow, you must install the following packages:
 
 To install these packages for Python 3.n, issue the following command:
 
-```
-sudo pip3 install numpy wheel
+```bash
+sudo pip3 install six numpy wheel mock google-cloud
+sudo pip install keras_applications==1.0.6 keras_preprocessing==1.0.5 --no-deps
 ```
 
 ### Configure the installation
