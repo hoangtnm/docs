@@ -24,12 +24,6 @@ There is two available versions for NVIDIA graphic card’s driver: Nouveau driv
 
 It is recommended to create a new configuration file, for example, `/etc/modprobe.d/disable-nouveau.conf`, rather than editing one of the existing files, such as `/etc/modprobe.d/blacklist.conf`
 
-You can install Nvidia driver via terminal too. For this case, many experts suggest to add Nouveau to blacklist first:
-
-sudo vim /etc/modprobe.d/disable-nouveau.conf
-
-Then paste the following lines into then save it:
-
 ```
 blacklist nouveau
 options nouveau modeset=0
@@ -37,7 +31,7 @@ options nouveau modeset=0
 
 And install:
 
-```shell
+```bash
 sudo add-apt-repository ppa:graphics-drivers/ppa 
 sudo apt install nvidia-driver-410
 sudo reboot
