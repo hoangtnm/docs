@@ -15,7 +15,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
 	echo "Downloading and Building the Source Code";
 	echo "";
-	export INTEL_MKL_VERSION=0.16
+	export INTEL_MKL_VERSION=0.17.4
 	export INTEL_MKL_DOWNLOAD_URL=https://github.com/intel/mkl-dnn/archive/v$INTEL_MKL_VERSION.zip
 	wget "$INTEL_MKL_DOWNLOAD_URL" -O mkl-dnn.zip
 	unzip mkl-dnn.zip
