@@ -14,10 +14,10 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
 	echo "Downloading and Building the Source Code";
 	echo "";
-	export INTEL_MKL_DOWNLOAD_URL=http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/13575/l_mkl_2019.0.117.tgz
+	export INTEL_MKL_DOWNLOAD_URL=http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/15095/l_mkl_2019.2.187.tgz
 	wget "$INTEL_MKL_DOWNLOAD_URL" -O intel-mkl.zip
 	unzip intel-mkl.zip
-	cd l_mkl_2019.0.117
+	cd l_mkl_2019.2.187
 	./install.sh
 	echo "The libraries and other components that are required to develop Intel MKL-DNN enabled applications under the /usr/local directory"
 	echo "Shared libraries (/usr/local/lib): libiomp5.so, libmkldnn.so, libmklml_intel.so"

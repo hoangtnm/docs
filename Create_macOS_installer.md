@@ -1,7 +1,7 @@
 # Create a MacOS installer
 
 
-### Download MacOS
+### Download macOS
 
 1. Download a macOS installer, such as macOS Mojave or macOS High Sierra.
 
@@ -48,3 +48,21 @@ After creating the bootable installer, follow these steps to use it.
 4. A bootable installer doesn't download macOS from the Internet, but it does require the Internet to get information specific to your Mac model, such as firmware updates. If you need to connect to a Wi-Fi network, use the Wi-Fi menu  in the menu bar. 
 
 5. Select Install macOS (or Install OS X) from the Utilities window, then click Continue and follow the onscreen instructions.
+
+### Troubleshooting
+
+In case of macOS installation problems, here are some guide to troubleshoote
+
+#### Reset the System Management Controller (SMC)
+
+1. Shut down the Mac and connect it to your MagSafe adapter and a wall outlet as usual
+
+2. Hold down the Shift+Control+Option+Power button at the same time for a few seconds
+
+3. Release all keys at the same time, then boot the Mac as usual
+
+#### Enter Recovery Mode
+
+1. In the Apple menu choose Restart, or power on your Mac.
+
+2. As the Mac restarts, hold down the Command (⌘) – R combination immediately upon hearing the startup chime. Hold the keys until the Apple logo appears.

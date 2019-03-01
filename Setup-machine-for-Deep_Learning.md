@@ -22,39 +22,19 @@ To install Ubuntu 18.04 and Python dev environment, please read these notes:
 
 There is two available versions for NVIDIA graphic card’s driver: Nouveau driver and Nvidia driver. The first one is open source, by community. The last one is close source, by NVIDIA.
 
-Normally, Nvidia driver is default. For Ubuntu, it’s `nvidia-390`. We can check it with:
-
-```shell
-cat /proc/driver/nvidia/version
-```
-
-If it’s not there for some reason, just install it.
-
-From GUI, you can choose it via Drivers Management tool. It will be downloaded and installed automatically.
-
-![](https://cdn-images-1.medium.com/max/800/1*JrKer_82RJybSbiBFHLo8A.jpeg)
-
-You can install Nvidia driver via terminal too. For this case, many experts suggest to add Nouveau to blacklist first:
-
-sudo nano /etc/modprobe.d/blacklist.conf
-
-Then paste the following lines into then save it:
+It is recommended to create a new configuration file, for example, `/etc/modprobe.d/disable-nouveau.conf`, rather than editing one of the existing files, such as `/etc/modprobe.d/blacklist.conf`
 
 ```
-blacklist vga16fb
 blacklist nouveau
-blacklist rivafb
-blacklist nvidiafb
-blacklist rivatv
+options nouveau modeset=0
 ```
 
 And install:
 
-```shell
+```bash
 sudo add-apt-repository ppa:graphics-drivers/ppa 
-sudo apt update
-sudo apt install nvidia-396 nvidia-396-dev
-reboot
+sudo apt install nvidia-driver-410
+sudo reboot
 ```
 
 Recheck it using the above `cat` command or `nvidia-smi` for more detail.
