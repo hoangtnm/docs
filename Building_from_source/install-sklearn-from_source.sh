@@ -12,7 +12,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	sudo apt update -y
 	sudo pip3 install pytest setuptools
 	
-	export SKLEARN_VERSION=0.20.2
+	export SKLEARN_VERSION=0.20.3
 	export SKLEARN_DOWNLOAD_URL=https://github.com/scikit-learn/scikit-learn/archive/$SKLEARN_VERSION.zip
 	wget "$SKLEARN_DOWNLOAD_URL" -O sklearn.zip
 	unzip sklearn.zip
