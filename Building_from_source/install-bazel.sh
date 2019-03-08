@@ -1,21 +1,20 @@
 #! /bin/bash
 
-echo "";
-echo "Install JDK 8";
-echo "";
+echo "\nInstalling JDK 8\n";
 sudo apt install -y curl openjdk-8-jdk
 
-echo "";
-echo "Add Bazel distribution URI as a package source";
-echo "";
-echo "deb [arch=amd64] http://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
-curl https://bazel.build/bazel-release.pub.gpg | sudo apt-key add -
+echo "\nInstalling required packages\n";
+sudo apt install -y pkg-config zip g++ zlib1g-dev unzip
 
-echo "";
-echo "Install and update Bazel":
-echo "";
-sudo apt update && sudo apt install -y bazel
+echo "\nInstalling Bazel 0.21\n";
+export BAZEL_VERSION=0.21.0
+export BAZEL_DOWNLOAD_URL=https://github.com/bazelbuild/bazel/releases/download/$BAZEL_VERSION/bazel-$BAZEL_VERSION-installer-linux-x86_64.sh
+wget $BAZEL_DOWNLOAD_URL
+chmod +x bazel-$BAZEL_VERSION-installer-linux-x86_64.sh
+./bazel-$BAZEL_VERSION-installer-linux-x86_64.sh --user
 
-echo "";
-echo "The installation completed";
-echo "";
+echo "\nSet up your environment\n";
+echo 'export PATH=$HOME/bin${PATH:+:${PATH}}' >> ~/.bashrc
+source ~/.bashrc
+
+echo "\nThe installation completed\n"
