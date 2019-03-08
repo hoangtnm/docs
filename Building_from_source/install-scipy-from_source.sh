@@ -15,7 +15,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
 	echo "Downloading and Building the Source Code";
 	echo "";
-	export SCIPY_VERSION=1.1.0
+	export SCIPY_VERSION=1.2.1
 	export SCIPY_DOWNLOAD_URL=https://github.com/scipy/scipy/archive/v$SCIPY_VERSION.zip
 	wget "$SCIPY_DOWNLOAD_URL" -O scipy.zip
 	unzip scipy.zip
