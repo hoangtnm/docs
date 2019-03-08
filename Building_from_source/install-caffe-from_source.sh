@@ -17,9 +17,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 		libgflags-dev \
 		libgoogle-glog-dev
 	
-	echo "";
-	echo "Downloading and Building the Source Code";
-	echo "";
+	echo "\nDownloading and Building the Source Code\n";
 	git clone -b ssd https://github.com/weiliu89/caffe.git
 	cd caffe
 	cp Makefile.config.example Makefile.config
@@ -58,18 +56,15 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 		sed -i 's/INCLUDE_DIRS\ :=\ $(PYTHON_INCLUDE)\ \/usr\/local\/include/INCLUDE_DIRS\ :=\ $(PYTHON_INCLUDE)\ \/usr\/local\/include\ \/usr\/include\/hdf5\/serial/g' Makefile.config
 		sed -i 's/LIBRARY_DIRS\ :=\ $(PYTHON_LIB)\ \/usr\/local\/lib\ \/usr\/lib/LIBRARY_DIRS\ :=\ $(PYTHON_LIB)\ \/usr\/local\/lib\ \/usr\/lib\/x86_64-linux-gnu\/hdf5\/serial/g' Makefile.config
 	else
-		echo "Skipping Caffe installation";
+		echo "\nSkipping Caffe installation\n";
 	fi
-	echo "";
-	echo "Building & Verifying";
-	echo "";
+
+	echo "\nBuilding & Verifying\n";
 	make all -j $(nproc)
 	make test -j $(nproc) && make runtest -j $(nproc)
 	make pycaffe -j $(nproc)
 	
-	echo "";
-	echo "Finalizing the Installation";
-	echo "";
+	echo "\nFinalizing the Installation\n";
 	export PYTHONPATH=`pwd`/python:$PYTHONPATH
 	# also add to bash_profile
 	sudo bash -c 'echo "export PYTHONPATH=`pwd`/python:$PYTHONPATH" >> ~/.bash_profile'
@@ -77,7 +72,5 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	source ~/.bash_profile
 	source ~/.bashrc
 else
-	echo "";
-	echo "Skipping Caffe installation";
-	echo "";
+	echo "\nSkipping Caffe installation\n";
 fi
