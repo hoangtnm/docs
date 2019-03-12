@@ -5,9 +5,9 @@
 For studying, you can start with a small set as below:
 
 -   AMD Ryzen™ 5 1600 CPU @ 3.20GHz
--   500 GB solid state drive (SSD)
--   16 GB RAM (DDR4)
--   nVidia GP104 [GeForce GTX 1070Ti 8GB]
+-   500 GB SSD
+-   16 GB DDR4 DRAM
+-   NVIDIA GeForce GTX 1070Ti
 
 Of course, it also requires a case, power supply, keyboard, mouse and monitor. Total cost about $1500.
 
@@ -31,19 +31,17 @@ options nouveau modeset=0
 
 And install:
 
-```bash
+```shell
 sudo add-apt-repository ppa:graphics-drivers/ppa 
-sudo apt install nvidia-driver-410
+sudo apt install nvidia-driver-418
 sudo reboot
 ```
 
 Recheck it using the above `cat` command or `nvidia-smi` for more detail.
 
-### 4. Install CUDA Toolkit 9.2
+### 4. Install CUDA Toolkit 10.0
 
-IMHO, it’s always best practice to install pip modules into the virtual environments, and use TensorFlow from PyPI. This will provide a flexible solution. For the same reason, I didn’t recommend to use Anaconda.
-
-CUDA v9.2 requires GCC 7, while default GCC version in Ubuntu 17.10 is GCC 7.2 and some other Deep Learning framework requires GCC 6. So we have to install GCC 6 and create symlinks as below:
+CUDA Toolkit 10.0 requires `gcc-7`, while default GCC version in Ubuntu 18.04 LTS is `gcc-7` and some other Deep Learning framework requires `gcc-6`. So we have to install `gcc-6` and create symlinks as below:
 
 ```shell
 cd ~/Downloads
@@ -51,58 +49,27 @@ sudo apt install gcc-6 g++-6
 sudo ln -s /usr/bin/gcc-6 /usr/local/cuda/bin/gcc
 sudo ln -s /usr/bin/g++-6 /usr/local/cuda/bin/g++
 
-curl https://developer.nvidia.com/compute/cuda/9.2/Prod2/local_installers/cuda_9.2.148_396.37_linux
-curl https://developer.nvidia.com/compute/cuda/9.2/Prod2/patches/1/cuda_9.2.148.1_linux
-chmod +x cuda_9.2.148*
-sudo ./cuda_9.2.148_396.37_linux.run --override
-sudo ./cuda_9.2.148.1_linux.run
-echo 'export PATH=/usr/local/cuda-9.2/bin${PATH:+:${PATH}}' >> ~/.bashrc
-echo 'export LD_LIBRARY_PATH=/usr/local/cuda-9.2/lib64:/usr/local/cuda/extras/CUPTI/lib64:/usr/local/NCCL2:/opt/OpenBLAS/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
+wget https://developer.nvidia.com/compute/cuda/10.0/Prod/local_installers/cuda_10.0.130_410.48_linux
+mv cuda_10.0.130_410.48_linux cuda_10.0.130_410.48_linux.run
+chmod +x cuda_10.0.130*
+sudo ./cuda_10.0.130_410.48_linux.run --override
+echo 'export PATH=/usr/local/cuda-10.0/bin${PATH:+:${PATH}}' >> ~/.bashrc
+echo 'export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib64:/usr/local-10.0/cuda/extras/CUPTI/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
 source ~/.bashrc
 ```
+
 To remember, the general rule is:
 - ```~/.bash_profile``` is being activated just one time when you login (GUI or SSH)
 - ```~/.bash_aliases``` is being activated every time when you open the terminal (window or tab)
 However this behavior can be changed by modifying ```~/.bashrc```, ```~/.profile```, or ```/etc/bash.bashrc```, etc.
 
-While compiling, it will ask several questions, answer as below:
-
-```
-Do you accept the previously read EULA?
-accept/decline/quit: accept
-
-You are attempting to install on an unsupported configuration. Do you wish to continue?
-(y)es/(n)o [ default is no ]: y
-
-Install NVIDIA Accelerated Graphics Driver for Linux-x86_64 384.81?
-(y)es/(n)o/(q)uit: n
-
-Install the CUDA 9.0 Toolkit?
-(y)es/(n)o/(q)uit: y
-
-Enter Toolkit Location
- [ default is /usr/local/cuda-9.0 ]: 
-
-Do you want to install a symbolic link at /usr/local/cuda?
-(y)es/(n)o/(q)uit: y
-
-Install the CUDA 9.0 Samples?
-(y)es/(n)o/(q)uit: y
-
-Enter CUDA Samples Location
- [default location]:   
-```
-
-If nothing special happens, the process will end succefully.
-Lastly, reboot the system.
-
-### 5. Install cuDNN 7.3.1 for CUDA 9.2
+### 5. Install cuDNN 7.5
 
 The NVIDIA CUDA® Deep Neural Network library (cuDNN) is a GPU-accelerated library of primitives for deep neural networks. cuDNN provides highly tuned implementations for standard routines such as forward and backward convolution, pooling, normalization, and activation layers
 
 ```shell
-curl https://developer.nvidia.com/compute/machine-learning/cudnn/secure/v7.3.1/prod/9.2_2018927/cudnn-9.2-linux-x64-v7.3.1.20
-tar -xzvf cudnn-9.2-linux-x64-v7.3.1.20.tgz
+curl https://developer.nvidia.com/compute/machine-learning/cudnn/secure/v7.5.0.56/prod/10.0_20190219/cudnn-10.0-linux-x64-v7.5.0.56.tgz
+tar -xzvf cudnn-10.0-linux-x64-v7.5.0.56.tgz
 sudo cp cuda/include/cudnn.h /usr/local/cuda/include
 sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
 sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
@@ -124,61 +91,4 @@ Create symbolic link for NCCL header file
 
 ```shell
 sudo ln -s /usr/local/NCCL2/include/nccl.h /usr/include/nccl.h
-```
-
-Tests for NCCL are maintained separately at https://github.com/nvidia/nccl-tests.
-
-```shell
-git clone https://github.com/NVIDIA/nccl-tests.git
-cd nccl-tests
-make
-./build/allreduce_perf -b 8 -e 256M -f 2 -g <ngpus>
-```
-
-Installation is now complete. You can now incorporate NCCL in your GPU-accelerated application.
-
-### Install CUDA, NCCL and cuDNN (network)
-
-CUDA 9.2 is not officially supported on ubuntu 18.04 yet, we use the ubuntu 17.10 repository for CUDA instead
-
-```
-# Install CUDA Toolkit
-curl -fsSL https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1710/x86_64/7fa2af80.pub | apt-key add - && \
-echo "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1710/x86_64 /" > /etc/apt/sources.list.d/cuda.list && \
-echo "deb https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1604/x86_64 /" > /etc/apt/sources.list.d/nvidia-ml.list
-
-export CUDA_VERSION=9.2.148
-export CUDA_PKG_VERSION=9-2=$CUDA_VERSION-1
-
-sudo apt-get update && apt-get install -y --no-install-recommends cuda-cudart-$CUDA_PKG_VERSION && \
-sudo ln -s cuda-9.2 /usr/local/cuda
-
-echo "/usr/local/nvidia/lib" >> /etc/ld.so.conf.d/nvidia.conf && \
-echo "/usr/local/nvidia/lib64" >> /etc/ld.so.conf.d/nvidia.conf
-
-export PATH=/usr/local/nvidia/bin:/usr/local/cuda/bin:${PATH}
-export LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
-
-# Setup NCCL 2
-export NCCL_VERSION=2.3.5
-
-sudo apt-get install -y --no-install-recommends \
-        cuda-libraries-$CUDA_PKG_VERSION \
-        cuda-nvtx-$CUDA_PKG_VERSION \
-        libnccl2=$NCCL_VERSION-2+cuda9.2 && \
-     apt-mark hold libnccl2
-sudo apt-get install -y --no-install-recommends \
-        cuda-libraries-dev-$CUDA_PKG_VERSION \
-        cuda-nvml-dev-$CUDA_PKG_VERSION \
-        cuda-minimal-build-$CUDA_PKG_VERSION \
-        cuda-command-line-tools-$CUDA_PKG_VERSION \
-        libnccl-dev=$NCCL_VERSION-2+cuda9.2
-
-# Install cuDNN
-export CUDNN_VERSION=7.2.1.38
-
-sudo apt-get install -y --no-install-recommends \
-            libcudnn7=$CUDNN_VERSION-1+cuda9.2 \
-            libcudnn7-dev=$CUDNN_VERSION-1+cuda9.2 && \
-     apt-mark hold libcudnn7
 ```
