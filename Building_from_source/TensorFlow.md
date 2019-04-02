@@ -162,7 +162,6 @@ Change directory (```cd```) to any directory on your system other than the ```te
 Invoke python:
 
 ```python
-python3
 import tensorflow as tf
 hello = tf.constant('Hello, TensorFlow!')
 sess = tf.Session()
