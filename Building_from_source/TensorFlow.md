@@ -4,8 +4,8 @@
 ### Requirements
 
 - Ubuntu 18.04 ([refer](https://github.com/greenglobal/ggml-docs/blob/master/setup_ubuntu_1804_from_minimalcd.md))
-- CUDA 10.0, cuDNN 7.4, NCCL2 ([refer](https://github.com/hoangtnm/TrainingServer-docs/blob/master/Building_from_source/install-cuda-10.sh))
-- Python 3.6.5 (must be installed exactly as same as [this guideline](https://github.com/hoangtnm/TrainingServer-docs/blob/master/Setup_python_3_dev_environment.md))
+- CUDA 10.0, cuDNN 7.5, NCCL2 ([refer](https://github.com/hoangtnm/TrainingServer-docs/blob/master/Building_from_source/install-cuda-10.sh))
+- Python 3.6.8 (must be installed exactly as same as [this guideline](https://github.com/hoangtnm/TrainingServer-docs/blob/master/Setup_python_3_dev_environment.md))
 - Protobuf 3.6.1 (must be installed exactly as same as [this guideline](https://github.com/hoangtnm/TrainingServer-docs/blob/master/Building_from_source/install-protobuf-from_source.sh))
 
 ### Clone the TensorFlow repository
@@ -18,7 +18,7 @@ mkdir /home/$USER/workspace
 cd /home/$USER/workspace
 git clone https://github.com/tensorflow/tensorflow.git
 cd tensorflow
-git checkout r1.12
+git checkout r1.13
 ```
 
 ### Install Bazel
@@ -26,14 +26,14 @@ git checkout r1.12
 If bazel is not installed on your system, install it now by following ([these directions](https://bazel.build/versions/master/docs/install.html))
 
 ```bash
-export BAZEL_VERSION = 0.18.1
+export BAZEL_VERSION = 0.21.0
 sudo apt install pkg-config zip g++ zlib1g-dev unzip
 wget https://github.com/bazelbuild/bazel/releases/download/$BAZEL_VERSION/bazel-$BAZEL_VERSION-installer-linux-x86_64.sh
 chmod +x bazel-$BAZEL_VERSION-installer-linux-x86_64.sh
 sudo ./bazel-$BAZEL_VERSION-installer-linux-x86_64.sh
 ```
 
-Note: Bazel version must be 0.18.1
+Note: Bazel version must be 0.21.0
 
 ### Install TensorFlow Python dependencies
 
@@ -60,11 +60,7 @@ Please specify the location of python. [Default is /usr/bin/python]:
 
 Found possible Python library paths:
   /usr/local/lib/python3.6/site-packages
-  /home/minhhoang/workspace/caffe/python
 Please input the desired Python library path to use.  Default is [/usr/local/lib/python3.6/site-packages]
-
-Do you wish to build TensorFlow with Apache Ignite support? [Y/n]: 
-Apache Ignite support will be enabled for TensorFlow.
 
 Do you wish to build TensorFlow with XLA JIT support? [Y/n]: 
 XLA JIT support will be enabled for TensorFlow.
@@ -78,7 +74,7 @@ No ROCm support will be enabled for TensorFlow.
 Do you wish to build TensorFlow with CUDA support? [y/N]: y
 CUDA support will be enabled for TensorFlow.
 
-Please specify the CUDA SDK version you want to use. [Leave empty to default to CUDA 9.0]: 10.0
+Please specify the CUDA SDK version you want to use. [Leave empty to default to CUDA 10.0]: 
 
 
 Please specify the location where CUDA 10.0 toolkit is installed. Refer to README.md for more details. [Default is /usr/local/cuda]: 
@@ -93,12 +89,12 @@ Please specify the location where cuDNN 7 library is installed. Refer to README.
 Do you wish to build TensorFlow with TensorRT support? [y/N]: 
 No TensorRT support will be enabled for TensorFlow.
 
-Please specify the NCCL version you want to use. If NCCL 2.2 is not installed, then you can use version 1.3 that can be fetched automatically but it may have worse performance with multiple GPUs. [Default is 2.2]:
+Please specify the locally installed NCCL version you want to use. [Default is to use https://github.com/nvidia/nccl]: 
 
 
 Please specify a list of comma-separated Cuda compute capabilities you want to build with.
 You can find the compute capability of your device at: https://developer.nvidia.com/cuda-gpus.
-Please note that each additional compute capability significantly increases your build time and binary size. [Default is: 5.0]: 
+Please note that each additional compute capability significantly increases your build time and binary size. [Default is: 5.0]: 6.1
 
 
 Do you want to use clang as CUDA compiler? [y/N]: 
@@ -110,18 +106,26 @@ Please specify which gcc should be used by nvcc as the host compiler. [Default i
 Do you wish to build TensorFlow with MPI support? [y/N]: 
 No MPI support will be enabled for TensorFlow.
 
-Please specify optimization flags to use during compilation when bazel option "--config=opt" is specified [Default is -march=native]: 
+Please specify optimization flags to use during compilation when bazel option "--config=opt" is specified [Default is -march=native -Wno-sign-compare]: 
 
 
 Would you like to interactively configure ./WORKSPACE for Android builds? [y/N]: 
 Not configuring the WORKSPACE for Android builds.
 
-Preconfigured Bazel build configs. You can use any of the below by adding "--config=<>" to your build command. See tools/bazel.rc for more details.
+Preconfigured Bazel build configs. You can use any of the below by adding "--config=<>" to your build command. See .bazelrc for more details.
 	--config=mkl         	# Build with MKL support.
 	--config=monolithic  	# Config for mostly static monolithic build.
 	--config=gdr         	# Build with GDR support.
 	--config=verbs       	# Build with libverbs support.
 	--config=ngraph      	# Build with Intel nGraph support.
+	--config=dynamic_kernels	# (Experimental) Build kernels into separate shared objects.
+Preconfigured Bazel build configs to DISABLE default on features:
+	--config=noaws       	# Disable AWS S3 filesystem support.
+	--config=nogcp       	# Disable GCP support.
+	--config=nohdfs      	# Disable HDFS support.
+	--config=noignite    	# Disable Apacha Ignite support.
+	--config=nokafka     	# Disable Apache Kafka support.
+	--config=nonccl      	# Disable NVIDIA NCCL support.
 Configuration finished
 ```
 
