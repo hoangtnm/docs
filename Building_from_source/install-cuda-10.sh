@@ -6,19 +6,15 @@ echo " Installing CUDA Toolkit may take a long time. "
 echo " Select n to skip CUDA Toolkit installation or y to install it." 
 read -p " Continue installing CUDA Toolkit (y/n) ? " CONTINUE
 if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
-	export CUDA_VERSION=10.1.105
-	export CUDA_PKG_VERSION="10-1=$CUDA_VERSION-1"
+	export CUDA_VERSION=10.0.130
 	export NCCL_VERSION=2.4.2
 	export CUDNN_VERSION=7.5.0.56
 	sudo apt purge cuda* cuda-repo-ubuntu* nvidia-machine-learning-repo-ubuntu*
 	sudo apt update && sudo apt install -y curl wget ca-certificates
-	wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-repo-ubuntu1804_$CUDA_VERSION-1_amd64.deb
+	wget https://developer.nvidia.com/compute/cuda/10.0/Prod/local_installers/cuda_10.0.130_410.48_linux \
+		- o https://developer.nvidia.com/compute/cuda/10.0/Prod/local_installers/cuda_10.0.130_410.48_linux.run
 	wget https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
-	sudo dpkg -i cuda-repo-ubuntu1804_$CUDA_VERSION-1_amd64.deb
 	sudo dpkg -i nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
-	rm cuda-repo-ubuntu1804_$CUDA_VERSION-1_amd64.deb
-	rm nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
-	sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
 	
 	echo "";
 	echo "The following NEW packages will be installed:";
@@ -26,20 +22,17 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "	NCCL        : $NCCL_VERSION";
 	echo "	cuDNN       : $CUDNN_VERSION";
 	echo "";
-	sudo apt update && sudo apt install -y --no-install-recommends \
-		cuda-cudart-$CUDA_PKG_VERSION \
-		cuda-compat-10-1=418.39-1 \
-		cuda-libraries-$CUDA_PKG_VERSION \
-		cuda-libraries-dev-$CUDA_PKG_VERSION \
-		cuda-nvtx-$CUDA_PKG_VERSION \
-		cuda-nvml-dev-$CUDA_PKG_VERSION \
-		cuda-minimal-build-$CUDA_PKG_VERSION \
-		cuda-command-line-tools-$CUDA_PKG_VERSION \
-		libnccl2=$NCCL_VERSION-1+cuda10.1 \
-		libnccl-dev=$NCCL_VERSION-1+cuda10.1 \
-		libcudnn7=$CUDNN_VERSION-1+cuda10.1 \
-		libcudnn7-dev=$CUDNN_VERSION-1+cuda10.1
-	sudo ln -s /usr/local/cuda-10.1 /usr/local/cuda
+	sudo apt update && sudo apt install gcc-6 g++-6
+	sudo rm /usr/bin/gcc && sudo ln -s /usr/bin/gcc
+	sudo rm /usr/bin/g++ && sudo ln -s /usr/bin/g++
+	chmod +x cuda_10.0.130_410.48_linux.run
+	sudo sh cuda_10.0.130_410.48_linux.run
+	sudo apt install -y --no-install-recommends \
+		libnccl2=$NCCL_VERSION-1+cuda10.0 \
+		libnccl-dev=$NCCL_VERSION-1+cuda10.0 \
+		libcudnn7=$CUDNN_VERSION-1+cuda10.0 \
+		libcudnn7-dev=$CUDNN_VERSION-1+cuda10.0
+	sudo ln -s /usr/local/cuda-10.0 /usr/local/cuda
 	sudo apt-mark hold libnccl2
 	sudo apt-mark hold libcudnn7
 	echo 'export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}' >> ~/.bashrc
