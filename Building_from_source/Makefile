@@ -86,7 +86,6 @@ prereqs:
 	@chmod +x install-bazel.sh
 	@chmod +x install-python-3.6-from_source.sh
 	@chmod +x install-cuda-10.sh
-	@chmod +x install-cuda-9.sh
 	@chmod +x install-openblas-from_source.sh
 	@chmod +x install-blis-from_soure.sh
 	@chmod +x install-intel-mkl-from_source.sh
