@@ -8,7 +8,7 @@ read -p " Continue installing CUDA Toolkit (y/n) ? " CONTINUE
 if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	export CUDA_VERSION=10.0.130
 	export NCCL_VERSION=2.4.2
-	export CUDNN_VERSION=7.5.0.56
+	export CUDNN_VERSION=7.5.1.10
 	sudo apt purge cuda* cuda-repo-ubuntu* nvidia-machine-learning-repo-ubuntu*
 	sudo apt update && sudo apt install -y curl wget ca-certificates
 	wget https://developer.nvidia.com/compute/cuda/10.0/Prod/local_installers/cuda_10.0.130_410.48_linux \
