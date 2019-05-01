@@ -1,6 +1,6 @@
 #! /bin/bash
 
-echo 'blacklist nouveau\noptions nouveau modeset=0' >> /etc/modprobe.d/disable-nouveau.conf
+echo $'blacklist nouveau\noptions nouveau modeset=0' >> /etc/modprobe.d/disable-nouveau.conf
 sudo dracut --force
 sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
