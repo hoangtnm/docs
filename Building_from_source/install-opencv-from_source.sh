@@ -37,15 +37,12 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	cd build
 	cmake -D CMAKE_BUILD_TYPE=RELEASE \
 	      -D CMAKE_INSTALL_PREFIX=/usr/local \
-	      -D WITH_CUDA=ON \
-	      -D WITH_GTK=ON \
-	      -D ENABLE_FAST_MATH=1 \
-	      -D CUDA_FAST_MATH=1 \
-	      -D WITH_CUBLAS=1 \
 	      -D INSTALL_PYTHON_EXAMPLES=OFF \
 	      -D WITH_V4L=ON \
 	      -D WITH_FFMPEG=ON \
 	      -D WITH_GSTREAMER=ON \
+	      -D BUILD_opencv_cnn_3dobj=OFF \
+	      -D BUILD_opencv_dnn_modern=OFF \
 	      -D OPENCV_EXTRA_MODULES_PATH=$CURRENT_DIR/opencv_contrib-$OPENCV_VERSION/modules \
 	      -D BUILD_DOCS=OFF \
 	      -D BUILD_PERF_TESTS=OFF \
