@@ -7,7 +7,7 @@ echo " Select n to skip OpenBLAS installation or y to install it."
 read -p " Continue installing OpenBLAS (y/n) ? " CONTINUE
 if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	sudo apt update -y
-	sudo apt install -y build-essential cmake cython git gcc g++ gfortran
+	sudo apt install -y build-essential cmake cython git gcc g++ gfortran libblas-dev liblapack-dev
 	
 	echo "";
 	echo "Downloading and Building the Source Code";
@@ -25,6 +25,8 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	rm -rf OpenBLAS
 	echo 'export LD_LIBRARY_PATH=/opt/OpenBLAS/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
 	sudo sh -c "echo '/opt/OpenBLAS/lib' > /etc/ld.so.conf.d/openblas.conf"
+	sudo update-alternatives --install /usr/lib/libblas.so.3 libblas.so.3 /opt/OpenBLAS/lib/libopenblas.so.0 41 \
+		--slave /usr/lib/liblapack.so.3 liblapack.so.3 /opt/OpenBLAS/lib/libopenblas.so.0
 	source ~/.bashrc
 	sudo ldconfig
 else
