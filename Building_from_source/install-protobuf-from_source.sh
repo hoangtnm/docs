@@ -15,8 +15,8 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
 	echo "Downloading the Source Code";
 	echo "";
-	export PROTOBUF_VERSION=3.6.1
-	export PROTOBUF_DOWNLOAD_URL=https://github.com/protocolbuffers/protobuf/releases/download/v3.6.1/protobuf-all-$PROTOBUF_VERSION.zip
+	export PROTOBUF_VERSION=3.7.1
+	export PROTOBUF_DOWNLOAD_URL=https://github.com/protocolbuffers/protobuf/releases/download/v$PROTOBUF_VERSION/protobuf-all-$PROTOBUF_VERSION.zip
 	wget "$PROTOBUF_DOWNLOAD_URL" -O protobuf.zip
 	unzip protobuf.zip
 	
