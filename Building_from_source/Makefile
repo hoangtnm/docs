@@ -16,7 +16,7 @@ help:
 	@echo "  make scipy - Install Scipy"
 	@echo "  make sklearn - Install scikit-learn"
 	@echo "  make opencv - Install OpenCV"
-	@echo "  make protobuf - Install Protocol Buffers 3.6.1"
+	@echo "  make protobuf - Install Protocol Buffers 3.7.1"
 	@echo "  make caffe - Install Caffe"
 	@echo "  make tensorflow - Install Tensorflow"
 	@echo "  make clean - remove targets and intermediate files." 
