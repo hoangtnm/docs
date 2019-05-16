@@ -12,6 +12,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	sudo apt update
 	sudo apt install -y build-essential cmake git gcc gfortran
 	sudo pip3 install cython
+	sudo pip3 uninstall enum34
 	
 	echo "";
 	echo "Downloading and Building the Source Code";
