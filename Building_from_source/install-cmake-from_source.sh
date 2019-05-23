@@ -12,6 +12,6 @@ cd cmake-3.14.3
 ./configure --qt-gui
 ./bootstrap
 make -j $(nproc)
-make install -j $(nproc)
+sudo make install -j $(nproc)
 
 echo "Installation completed."
