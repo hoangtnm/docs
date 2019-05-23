@@ -3,11 +3,12 @@
 echo ""
 echo "******************** Please confirm ***********************"
 echo " Installing OpenBLAS from source may take a long time. "
+echo " Note : only install if cmake has been installed. "
 echo " Select n to skip OpenBLAS installation or y to install it." 
 read -p " Continue installing OpenBLAS (y/n) ? " CONTINUE
 if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	sudo apt update -y
-	sudo apt install -y build-essential cmake cython git gcc g++ gfortran libblas-dev liblapack-dev
+	sudo apt install -y build-essential cython git gcc g++ gfortran libblas-dev liblapack-dev
 	
 	echo "";
 	echo "Downloading and Building the Source Code";
