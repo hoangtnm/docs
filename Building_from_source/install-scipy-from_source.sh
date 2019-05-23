@@ -3,6 +3,7 @@
 echo ""
 echo "************************ Please confirm *******************************"
 echo " Installing Scipy from source may take a long time. "
+echo " Note : only install if cmake has been installed. "
 echo " Select n to skip Scipy installation or y to install it." 
 read -p " Continue installing Scipy (y/n) ? " CONTINUE
 if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then  
@@ -10,12 +11,12 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "Installing Scipy"; 
 	echo "";
 	sudo apt update -y
-	sudo apt install -y build-essential cmake git gcc gfortran
+	sudo apt install -y build-essential git gcc gfortran
 	
 	echo "";
 	echo "Downloading and Building the Source Code";
 	echo "";
-	export SCIPY_VERSION=1.2.1
+	export SCIPY_VERSION=1.3.0
 	export SCIPY_DOWNLOAD_URL=https://github.com/scipy/scipy/archive/v$SCIPY_VERSION.zip
 	wget "$SCIPY_DOWNLOAD_URL" -O scipy.zip
 	unzip scipy.zip
