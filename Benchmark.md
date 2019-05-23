@@ -12,7 +12,7 @@ Often times you'll want to put a system through the paces after it's been set up
 On Ubuntu, you can install `stress`, `htop`, and `iotop` via `apt`.
 
 ```bash
-sudo apt-get install -y stress htop iotop lm-sensors
+sudo apt install -y stress htop iotop lm-sensors
 # Run a stress test with `nproc` CPU workers (sqrt)
 #                        `nproc` Virtual Memory workers (malloc / free)
 #                        `nproc` workers calling (sync)
