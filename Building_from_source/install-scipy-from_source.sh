@@ -3,7 +3,6 @@
 echo ""
 echo "************************ Please confirm *******************************"
 echo " Installing Scipy from source may take a long time. "
-echo " Note : only install if cmake has been installed. "
 echo " Select n to skip Scipy installation or y to install it." 
 read -p " Continue installing Scipy (y/n) ? " CONTINUE
 if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then  
@@ -11,7 +10,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "Installing Scipy"; 
 	echo "";
 	sudo apt update -y
-	sudo apt install -y build-essential git gcc gfortran
+	sudo apt install -y build-essential cmake git gcc gfortran
 	
 	echo "";
 	echo "Downloading and Building the Source Code";
