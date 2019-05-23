@@ -4,7 +4,7 @@ echo ""
 echo "******************** Please confirm ***************************"
 echo " Installing Python 3.6 may take a long time. "
 echo " Select n to skip Python 3.6 installation or y to install it." 
-read -p " Continue installing Python 3.6.5 (y/n) ? " CONTINUE
+read -p " Continue installing Python 3.6.8 (y/n) ? " CONTINUE
 if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
 	echo "Installing Python 3.6.8";
