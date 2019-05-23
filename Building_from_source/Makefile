@@ -6,6 +6,7 @@ help:
 	@echo "  make all - Install the default options"
 	@echo "  make driver - Install NVIDIA driver"
 	@echo "  make bazel - Install Bazel"
+	@echo "  make cmake - Install CMake"
 	@echo "  make python3 - Install Python 3.6.8"
 	@echo "  make cuda10 - Install CUDA Toolkit 10.0, cuDNN 7.5.1.10 and NCCL 2.4.2"
 	@echo "  make intelmkl - Install Intel MKL"
@@ -31,6 +32,10 @@ driver:
 .PHONY: bazel
 bazel:
 	./install-bazel.sh
+
+.PHONY: cmake
+cmake:
+	./install-cmake-from_source.sh
 
 .PHONY: python3
 python3:
@@ -84,6 +89,7 @@ caffe:
 prereqs:
 	@chmod +x install-nvidia-driver.sh
 	@chmod +x install-bazel.sh
+	@chmod +x install-cmake-from_source.sh
 	@chmod +x install-python-3.6-from_source.sh
 	@chmod +x install-cuda-10.sh
 	@chmod +x install-openblas-from_source.sh
