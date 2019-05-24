@@ -10,9 +10,9 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	export NCCL_VERSION=2.4.2
 	export CUDNN_VERSION=7.5.1.10
 	sudo apt purge cuda* cuda-repo-ubuntu* nvidia-machine-learning-repo-ubuntu*
-	sudo apt update && sudo apt install -y curl wget ca-certificates
+	sudo apt update && sudo apt install -y curl wget ca-certificates gcc g++
 	wget https://developer.nvidia.com/compute/cuda/10.0/Prod/local_installers/cuda_10.0.130_410.48_linux \
-		-o https://developer.nvidia.com/compute/cuda/10.0/Prod/local_installers/cuda_10.0.130_410.48_linux.run
+		-O cuda_10.0.130_410.48_linux.run
 	wget https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
 	sudo dpkg -i nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
 	sudo apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/7fa2af80.pub
@@ -23,11 +23,11 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "	NCCL        : $NCCL_VERSION";
 	echo "	cuDNN       : $CUDNN_VERSION";
 	echo "";
-	sudo apt update && sudo apt install gcc-6 g++-6
-	sudo rm /usr/bin/gcc && sudo ln -s /usr/bin/gcc
-	sudo rm /usr/bin/g++ && sudo ln -s /usr/bin/g++
 	chmod +x cuda_10.0.130_410.48_linux.run
 	sudo sh cuda_10.0.130_410.48_linux.run
+	echo "\nInstalling Patch 1 for CUDA Toolkit 10.0\n";
+	wget http://developer.download.nvidia.com/compute/cuda/10.0/Prod/patches/1/cuda_10.0.130.1_linux.run
+	sudo sh cuda_10.0.130.1_linux.run
 	sudo apt install -y --no-install-recommends \
 		libnccl2=$NCCL_VERSION-1+cuda10.0 \
 		libnccl-dev=$NCCL_VERSION-1+cuda10.0 \
