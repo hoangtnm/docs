@@ -10,14 +10,6 @@ RUN apt update --fix-missing && apt install -y wget curl bzip2 ca-certificates \
     rm /usr/bin/python && ln -s /usr/bin/python3 /usr/bin/python && \
     systemctl enable mysql
 
-RUN apt install -y curl grep sed dpkg && \
-    TINI_VERSION=`curl https://github.com/krallin/tini/releases/latest | grep -o "/v.*\"" | sed 's:^..\(.*\).$:\1:'` && \
-    curl -L "https://github.com/krallin/tini/releases/download/v${TINI_VERSION}/tini_${TINI_VERSION}.deb" > tini.deb && \
-    dpkg -i tini.deb && \
-    rm tini.deb && \
-    apt clean
-
-
 # Setup NVIDIA Base
 RUN apt update && apt install -y --no-install-recommends gnupg2 curl ca-certificates && \
     curl -fsSL https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub | apt-key add - && \
@@ -187,6 +179,4 @@ WORKDIR /app
 
 # ENV PYTHONPATH /opt/openpose/build/python${PYTHONPATH:+:${PYTHONPATH}}
 
-
-ENTRYPOINT [ "/usr/bin/tini", "--" ]
 CMD ["/bin/bash"]
