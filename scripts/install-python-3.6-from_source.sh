@@ -30,9 +30,9 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
 	echo "Updating pip3 to the latest version";
 	echo "";
-# 	sudo rm /usr/bin/python && sudo ln -s /usr/local/bin/python3 /usr/bin/python
-	sudo ln -s /usr/local/bin/python3 /usr/local/bin/python
-	echo 'export LD_LIBRARY_PATH=/usr/local/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
+	sudo update-alternatives --install /usr/local/bin/python python /usr/local/bin/python3.6 30
+	sudo update-alternatives --install /usr/local/bin/python3 python3 /usr/local/bin/python3.6 30
+# 	echo 'export LD_LIBRARY_PATH=/usr/local/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
 	source ~/.bashrc
 	sudo ldconfig
 	curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
