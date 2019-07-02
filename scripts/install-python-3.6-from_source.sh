@@ -20,17 +20,18 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	wget "$PYTHON_DOWNLOAD_URL" -O python.tar.tgz
 	tar -zxvf python.tar.tgz
 	cd Python-$PYTHON_VERSION
-	./configure --enable-shared --enable-ipv6 --enable-optimizations --enable-loadable-sqlite-extensions 
+	./configure --enable-shared --enable-ipv6 --enable-optimizations --with-lto --enable-loadable-sqlite-extensions 
 	make -j $(nproc)
 	echo "";
 	echo "Finalizing the Installation"
 	echo "";
-	sudo make install -j $(nproc)
+	sudo make altinstall -j $(nproc)
 	
 	echo "";
 	echo "Updating pip3 to the latest version";
 	echo "";
-	sudo rm /usr/bin/python && sudo ln -s /usr/local/bin/python3 /usr/bin/python
+# 	sudo rm /usr/bin/python && sudo ln -s /usr/local/bin/python3 /usr/bin/python
+	sudo ln -s /usr/local/bin/python3 /usr/local/bin/python
 	echo 'export LD_LIBRARY_PATH=/usr/local/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
 	source ~/.bashrc
 	sudo ldconfig
