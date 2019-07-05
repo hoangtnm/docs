@@ -16,8 +16,8 @@ help:
 	@echo "  make numpy - Install Numpy"
 	@echo "  make scipy - Install Scipy"
 	@echo "  make sklearn - Install scikit-learn"
-	@echo "  make opencv - Install OpenCV"
 	@echo "  make protobuf - Install Protocol Buffers 3.7.1"
+	@echo "  make opencv - Install OpenCV"
 	@echo "  make caffe - Install Caffe"
 	@echo "  make tensorflow - Install Tensorflow"
 	@echo "  make clean - remove targets and intermediate files." 
@@ -73,13 +73,13 @@ scipy:
 sklearn:
 	./install-sklearn-from_source.sh
 
-.PHONY: opencv
-opencv: 
-	./install-opencv-from_source.sh
-	
 .PHONY: protobuf
 protobuf:
 	./install-protobuf-from_source.sh
+
+.PHONY: opencv
+opencv: 
+	./install-opencv-from_source.sh
 	
 .PHONY: caffe
 caffe:
@@ -99,8 +99,8 @@ prereqs:
 	@chmod +x install-numpy-from_source.sh
 	@chmod +x install-scipy-from_source.sh
 	@chmod +x install-sklearn-from_source.sh
-	@chmod +x install-opencv-from_source.sh
 	@chmod +x install-protobuf-from_source.sh
+	@chmod +x install-opencv-from_source.sh
 	@chmod +x install-caffe-from_source.sh
 	
 .PHONY: clean
