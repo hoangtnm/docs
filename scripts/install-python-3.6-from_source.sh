@@ -7,11 +7,11 @@ echo " Select n to skip Python 3.6 installation or y to install it."
 read -p " Continue installing Python 3.6.8 (y/n) ? " CONTINUE
 if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
-	echo "Installing Python 3.6.8";
+	echo "Installing Python 3.6.9";
 	echo "";
 	echo "Downloading and Building the the Source Code";
 	echo "";
-	export PYTHON_VERSION=3.6.8
+	export PYTHON_VERSION=3.6.9
 	export PYTHON_DOWNLOAD_URL=https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tgz
 	sudo apt update && sudo apt install --no-install-recommends -y \
 		software-properties-common build-essential curl \
