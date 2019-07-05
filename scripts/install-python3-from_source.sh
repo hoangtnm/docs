@@ -20,7 +20,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	wget "$PYTHON_DOWNLOAD_URL" -O python.tar.tgz
 	tar -zxvf python.tar.tgz
 	cd Python-$PYTHON_VERSION
-	./configure --enable-shared --enable-ipv6 --enable-optimizations --with-lto --enable-loadable-sqlite-extensions 
+	./configure --enable-shared --enable-ipv6 --with-assertions --enable-optimizations --with-lto --enable-loadable-sqlite-extensions 
 	make -j $(nproc)
 	echo "";
 	echo "Finalizing the Installation"
