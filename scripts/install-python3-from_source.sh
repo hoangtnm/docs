@@ -17,10 +17,19 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 		software-properties-common build-essential curl \
 		dpkg-dev libssl-dev libreadline-dev libbz2-dev libsqlite3-dev zlib1g-dev python-tk python3-tk tk-dev \
 		python-minimal
+	
 	wget "$PYTHON_DOWNLOAD_URL" -O python.tar.tgz
 	tar -zxvf python.tar.tgz
 	cd Python-$PYTHON_VERSION
-	./configure --enable-shared --enable-ipv6 --with-assertions --enable-optimizations --with-lto --enable-loadable-sqlite-extensions 
+	./configure --enable-shared \
+				--enable-profiling \
+				--enable-optimizations \
+				--enable-loadable-sqlite-extensions \
+				--enable-ipv6 \
+				--with-pydebug \
+				--with-assertions \
+				--with-lto \
+				--with-threads
 	make -j $(nproc)
 	echo "";
 	echo "Finalizing the Installation"
