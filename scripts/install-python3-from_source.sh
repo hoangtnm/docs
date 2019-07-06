@@ -37,7 +37,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 				--with-assertions \
 				--with-lto \
 				--with-system-expat \
-  				--with-system-ffi \
+				--with-system-ffi \
 				--with-threads
 	make -j $(nproc)
 	
