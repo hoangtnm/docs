@@ -13,9 +13,11 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
 	export PYTHON_VERSION=3.6.9
 	export PYTHON_DOWNLOAD_URL=https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tgz
-	sudo apt update && sudo apt install --no-install-recommends -y \
+	sudo apt update && sudo apt install -y \
 		software-properties-common build-essential curl \
-		dpkg-dev libssl-dev libreadline-dev libbz2-dev libsqlite3-dev zlib1g-dev python-tk python3-tk tk-dev \
+		dpkg-dev libssl-dev libreadline-dev libbz2-dev libsqlite3-dev \
+		python3-dev libbluetooth-dev libboost-python-dev \
+		zlib1g-dev python-tk python3-tk tk-dev \
 		python-minimal
 	
 	wget "$PYTHON_DOWNLOAD_URL" -O python.tar.tgz
