@@ -20,7 +20,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 		libexpat1-dev libssl-dev zlib1g-dev \
 		libncurses5-dev libbz2-dev liblzma-dev \
 		dpkg-dev libreadline-dev libsqlite3-dev \
-		libffi-dev tcl-dev linux-headers-generic libgdbm-dev \
+		libffi-dev tcl-dev libgdbm-dev \
 		python-minimal python3 python3-dev bluez libbluetooth-dev libboost-python-dev \
 		python-tk python3-tk tk tk-dev
 	
