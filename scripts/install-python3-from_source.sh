@@ -13,7 +13,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
 	echo "Downloading and Building the the Source Code";
 	echo "";
-	export PYTHON_DIR=$HOME/workspace/custom_builds
+	export PYTHON_DIR=$HOME/workspace/custom_builds/python$PYTHON_VERSION
 	export PYTHON_DOWNLOAD_URL=https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tgz
 	sudo apt update && sudo apt install -y \
 		software-properties-common build-essential curl \
@@ -42,6 +42,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
   				--with-system-ffi \
 				--with-threads
 	make -j $(nproc)
+	
 	echo "";
 	echo "Finalizing the Installation"
 	echo "";
@@ -50,9 +51,12 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
 	echo "Updating pip3 to the latest version";
 	echo "";
-	sudo update-alternatives --install /usr/local/bin/python python $PYTHON_DIR/bin/python3.6 30
-	sudo update-alternatives --install /usr/local/bin/python3 python3 $PYTHON_DIR/bin/python3.6 30
-# 	echo 'export LD_LIBRARY_PATH=$PYTHON_DIR/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
+	# sudo update-alternatives --install /usr/local/bin/python python /usr/local/bin/python3.6 30
+	# sudo update-alternatives --install /usr/local/bin/python3 python3 /usr/local/bin/python3.6 30
+	sudo update-alternatives --install $PYTHON_DIR/bin/python python $PYTHON_DIR/bin/python3.6 30
+	sudo update-alternatives --install $PYTHON_DIR/bin/python3 python3 $PYTHON_DIR/bin/python3.6 30
+	echo "export PATH=$PYTHON_DIR/bin"'${PATH:+:${PATH}}' >> ~/.bashrc
+	echo "export LD_LIBRARY_PATH=$PYTHON_DIR/lib"'${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
 	source ~/.bashrc
 	sudo ldconfig
 	curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
