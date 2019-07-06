@@ -16,7 +16,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	sudo apt update && sudo apt install -y \
 		software-properties-common build-essential curl \
 		dpkg-dev libssl-dev libreadline-dev libbz2-dev libsqlite3-dev \
-		python3-dev libbluetooth-dev libboost-python-dev \
+		python3-dev bluez libbluetooth-dev libboost-python-dev \
 		zlib1g-dev python-tk python3-tk tk-dev \
 		python-minimal
 	
