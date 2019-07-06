@@ -55,7 +55,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	# sudo update-alternatives --install $PYTHON_DIR/bin/python3 python3 $PYTHON_DIR/bin/python3.6 30
 	# echo "export PATH=$PYTHON_DIR/bin"'${PATH:+:${PATH}}' >> ~/.bashrc
 	# echo "export LD_LIBRARY_PATH=$PYTHON_DIR/lib"'${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
-	source ~/.bashrc
+	# source ~/.bashrc
 	sudo ldconfig
 	curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 	sudo python3 get-pip.py
