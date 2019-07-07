@@ -10,7 +10,7 @@ echo " Select n to skip the installation or y to install it."
 read -p " Continue installing Protobuf (y/n) ? " CONTINUE
 if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 
-    read -p " Select your OS's architecture [x86_64/aarch_64], default is $ARCHITECTURE " ARCHITECTURE_INPUT
+    read -p " Select your OS's architecture [x86_64/aarch_64], default is x86_64 " ARCHITECTURE_INPUT
     if [[ "$ARCHITECTURE_INPUT" != "" ]]; then
         if [[ "$ARCHITECTURE_INPUT" == "x86_64" || "$ARCHITECTURE_INPUT" == "aarch_64" ]]; then
             $ARCHITECTURE = $ARCHITECTURE_INPUT
