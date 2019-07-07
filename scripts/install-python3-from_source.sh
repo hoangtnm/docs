@@ -16,12 +16,12 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	# export PYTHON_DIR=$HOME/workspace/custom_builds/python$PYTHON_VERSION
 	export PYTHON_DOWNLOAD_URL=https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tgz
 	sudo apt update && sudo apt install -y \
-		software-properties-common build-essential curl \
+		software-properties-common build-essential wget \
 		libexpat1-dev libssl-dev zlib1g-dev \
 		libncurses5-dev libbz2-dev liblzma-dev \
 		dpkg-dev libreadline-dev libsqlite3-dev \
-		libffi-dev tcl-dev libgdbm-dev \
-		python-minimal python3 python3-dev bluez libbluetooth-dev libboost-python-dev \
+		libffi-dev tcl-dev libgdbm-dev bluez libbluetooth-dev libglib2.0-dev \
+		python-minimal python3 python3-dev libboost-python-dev libboost-thread-dev \
 		python-tk python3-tk tk tk-dev
 	
 	# mkdir -p $PYTHON_DIR
@@ -29,16 +29,16 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	tar -zxvf python.tar.tgz
 	cd Python-$PYTHON_VERSION
 	./configure --enable-shared \
-				--enable-profiling \
-				--enable-optimizations \
-				--enable-loadable-sqlite-extensions \
-				--enable-ipv6 \
-				--with-pydebug \
-				--with-assertions \
-				--with-lto \
-				--with-system-expat \
-				--with-system-ffi \
-				--with-threads
+		--enable-profiling \
+		--enable-optimizations \
+		--enable-loadable-sqlite-extensions \
+		--enable-ipv6 \
+		--with-pydebug \
+		--with-assertions \
+		--with-lto \
+		--with-system-expat \
+		--with-system-ffi \
+		--with-threads
 	make -j $(nproc)
 	
 	echo "";
