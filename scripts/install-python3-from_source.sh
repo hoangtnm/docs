@@ -1,6 +1,6 @@
 #! /bin/bash
 
-export PYTHON_VERSION=3.6.9
+export PYTHON_VERSION=3.6.8
 
 echo ""
 echo "******************** Please confirm ***************************"
@@ -42,15 +42,16 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	make -j $(nproc)
 	
 	echo "";
-	echo "Finalizing the Installation"
+	echo " Finalizing the Installation ";
 	echo "";
-	sudo make altinstall -j $(nproc)
+	# sudo make altinstall -j $(nproc)
+	sudo make install -j $(nproc)
 	
 	echo "";
-	echo "Updating pip3 to the latest version";
+	echo " Updating pip3 to the latest version ";
 	echo "";
-	sudo update-alternatives --install /usr/local/bin/python python /usr/local/bin/python3.6 30
-	sudo update-alternatives --install /usr/local/bin/python3 python3 /usr/local/bin/python3.6 30
+ 	# sudo update-alternatives --install /usr/local/bin/python python /usr/local/bin/python3.6 30
+ 	# sudo update-alternatives --install /usr/local/bin/python3 python3 /usr/local/bin/python3.6 30
 	# sudo update-alternatives --install $PYTHON_DIR/bin/python python $PYTHON_DIR/bin/python3.6 30
 	# sudo update-alternatives --install $PYTHON_DIR/bin/python3 python3 $PYTHON_DIR/bin/python3.6 30
 	# echo "export PATH=$PYTHON_DIR/bin"'${PATH:+:${PATH}}' >> ~/.bashrc
