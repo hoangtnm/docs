@@ -31,7 +31,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	unzip protoc.zip
 	
     sudo cp protoc-$PROTOC_VERSION-$PLATFORM /usr/local
-    cp include/* /usr/local/include/
+    cp protoc-$PROTOC_VERSION-$PLATFORM/include/* /usr/local/include/
 	
 	echo "";
 	echo " Refreshing shared library cache ";
