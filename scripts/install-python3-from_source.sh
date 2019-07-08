@@ -33,7 +33,6 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 		--enable-optimizations \
 		--enable-loadable-sqlite-extensions \
 		--enable-ipv6 \
-		--with-pydebug \
 		--with-assertions \
 		--with-lto \
 		--with-system-expat \
