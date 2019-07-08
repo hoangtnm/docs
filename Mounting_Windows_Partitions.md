@@ -42,7 +42,7 @@ Enter your password, and you’ll see some output resembling this:
 Now open `/etc/fstab` in a text editor with root privileges. In Ubuntu:
 
 ```shell
-gksudo gedit /etc/fstab
+sudo vim /etc/fstab
 ```
 
 For a general-purpose read-write mount, add this line to the end of /etc/fstab:
