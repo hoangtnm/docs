@@ -29,7 +29,6 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	tar -zxvf python.tar.tgz
 	cd Python-$PYTHON_VERSION
 	./configure --enable-shared \
-		--enable-profiling \
 		--enable-optimizations \
 		--enable-loadable-sqlite-extensions \
 		--enable-ipv6 \
