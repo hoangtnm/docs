@@ -42,7 +42,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	source ~/.bashrc
 
 	if [[ -f ~/.zshrc ]]; then
-		echo 'export LD_LIBRARY_PATH=/usr/local/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.zshrc
+		echo "export PATH=/usr/local/protoc-$PROTOC_VERSION/bin"'${PATH:+:${PATH}}' >> ~/.zshrc
 	fi
 
 	sudo ldconfig
