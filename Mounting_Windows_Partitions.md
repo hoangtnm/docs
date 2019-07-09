@@ -48,7 +48,7 @@ sudo vim /etc/fstab
 For a general-purpose read-write mount, add this line to the end of /etc/fstab:
 
 ```
-UUID=66E53AEC54455DB2 /media/storage/    ntfs-3g        auto,user,rw 0 0
+UUID=4032A495477C54EE /media/storage/    ntfs-3g        auto,user,rw 0 0
 ```
 
 Now save your edited /etc/fstab and close the text editor.
