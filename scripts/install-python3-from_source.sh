@@ -46,8 +46,8 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
 	echo " Updating pip3 to the latest version ";
 	echo "";
-	sudo update-alternatives --install /usr/bin/python python /usr/local/bin/python3.6 30
- 	# sudo update-alternatives --install /usr/local/bin/python python /usr/local/bin/python3.6 30
+	# sudo update-alternatives --install /usr/bin/python python /usr/local/bin/python3.6 30
+ 	sudo update-alternatives --install /usr/local/bin/python python /usr/local/bin/python3.6 30
  	# sudo update-alternatives --install /usr/local/bin/python3 python3 /usr/local/bin/python3.6 30
 	# sudo update-alternatives --install $PYTHON_DIR/bin/python python $PYTHON_DIR/bin/python3.6 30
 	# sudo update-alternatives --install $PYTHON_DIR/bin/python3 python3 $PYTHON_DIR/bin/python3.6 30
