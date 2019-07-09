@@ -27,18 +27,24 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
     export OS="linux"
     export PLATFORM=$OS-$ARCHITECTURE
 	export PROTOC_DOWNLOAD_URL=https://github.com/protocolbuffers/protobuf/releases/download/v$PROTOC_VERSION/protoc-$PROTOC_VERSION-$PLATFORM.zip
-	wget "$PROTOC_DOWNLOAD_URL" -O protoc.zip
-	unzip protoc.zip
+	wget "$PROTOC_DOWNLOAD_URL" -O protoc-$PROTOC_VERSION.zip
+	unzip protoc-$PROTOC_VERSION.zip \
+		-d protoc-$PROTOC_VERSION
 	
-    sudo cp protoc-$PROTOC_VERSION-$PLATFORM /usr/local
-    sudo cp protoc-$PROTOC_VERSION-$PLATFORM/include/* /usr/local/include/
+    sudo cp -r protoc-$PROTOC_VERSION /usr/local
+    sudo cp -r protoc-$PROTOC_VERSION/include/* /usr/local/include/
 	
 	echo "";
 	echo " Refreshing shared library cache ";
 	echo "By default, the Protocol Compiler will be installed to /usr/local";
 	echo "";
-    echo "export PATH=/usr/local/protoc-$PROTOC_VERSION-$PLATFORM"'${PATH:+:${PATH}}' >> ~/.bashrc
+    echo "export PATH=/usr/local/protoc-$PROTOC_VERSION/bin"'${PATH:+:${PATH}}' >> ~/.bashrc
 	source ~/.bashrc
+
+	if [[ -f ~/.zshrc ]]; then
+		echo 'export LD_LIBRARY_PATH=/usr/local/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.zshrc
+	fi
+
 	sudo ldconfig
 	
 	echo "";
