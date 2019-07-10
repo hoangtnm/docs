@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 PROTOC_VERSION=3.7.1
 ARCHITECTURE="x86_64"
