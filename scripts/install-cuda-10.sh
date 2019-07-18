@@ -34,8 +34,9 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 		libcudnn7=$CUDNN_VERSION-1+cuda10.0 \
 		libcudnn7-dev=$CUDNN_VERSION-1+cuda10.0
 	sudo ln -s /usr/local/cuda-10.0 /usr/local/cuda
-	sudo apt-mark hold libnccl2 libnccl-dev
-	sudo apt-mark hold libcudnn7 libcudnn7-dev
+	sudo apt-mark hold \
+		libnccl2 libnccl-dev \
+		libcudnn7 libcudnn7-dev
 	
 	echo 'export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}' >> ~/.bashrc
 	echo 'export LIBRARY_PATH=/usr/local/cuda/lib64/stubs${LIBRARY_PATH:+:${LIBRARY_PATH}}' >> ~/.bashrc
