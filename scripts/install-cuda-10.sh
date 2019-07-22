@@ -8,7 +8,7 @@ read -p " Continue installing CUDA Toolkit (y/n) ? " CONTINUE
 if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	export CUDA_VERSION=10.0.130
 	export NCCL_VERSION=2.4.7
-	export CUDNN_VERSION=7.6.0.64
+	export CUDNN_VERSION=7.6.1.34
 	sudo apt purge cuda* cuda-repo-ubuntu* nvidia-machine-learning-repo-ubuntu*
 	sudo apt update && sudo apt install -y curl wget ca-certificates gcc g++
 	wget https://developer.nvidia.com/compute/cuda/10.0/Prod/local_installers/cuda_10.0.130_410.48_linux \
@@ -34,13 +34,21 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 		libcudnn7=$CUDNN_VERSION-1+cuda10.0 \
 		libcudnn7-dev=$CUDNN_VERSION-1+cuda10.0
 	sudo ln -s /usr/local/cuda-10.0 /usr/local/cuda
-	sudo apt-mark hold libnccl2 libnccl-dev
-	sudo apt-mark hold libcudnn7 libcudnn7-dev
+	sudo apt-mark hold \
+		libnccl2 libnccl-dev \
+		libcudnn7 libcudnn7-dev
 	
 	echo 'export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}' >> ~/.bashrc
 	echo 'export LIBRARY_PATH=/usr/local/cuda/lib64/stubs${LIBRARY_PATH:+:${LIBRARY_PATH}}' >> ~/.bashrc
 	echo 'export LD_LIBRARY_PATH=/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
 	source ~/.bashrc
+
+	if [[ -f ~/.zshrc ]]; then
+		echo 'export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}' >> ~/.zshrc
+		echo 'export LIBRARY_PATH=/usr/local/cuda/lib64/stubs${LIBRARY_PATH:+:${LIBRARY_PATH}}' >> ~/.zshrc
+		echo 'export LD_LIBRARY_PATH=/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.zshrc
+	fi
+
 	sudo ldconfig
 	echo "The installation completed!";
 else
