@@ -19,5 +19,5 @@ echo "[... when done, see below for post-install ...]"
 echo "Post-installing: setting PATH" && \
 echo 'export PATH=/usr/local/texlive/2019/bin/x86_64-linux${PATH:+:${PATH}}' >> ~/.bashrc
 if [[ -f ~/.zshrc ]]; then
-		echo 'export PATH=/usr/local/texlive/2019/bin/x86_64-linux${PATH:+:${PATH}}' >> ~/.zshrc
+	echo 'export PATH=/usr/local/texlive/2019/bin/x86_64-linux${PATH:+:${PATH}}' >> ~/.zshrc
 fi
