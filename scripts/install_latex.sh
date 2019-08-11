@@ -5,7 +5,7 @@ export CURR_DIR=$pwd
 
 echo "Pre-installing: downloading, cleaning up" && \
 wget https://mirror-hk.koddos.net/CTAN/systems/texlive/Images/texlive.iso && \
-rm -rf /usr/local/texlive/$LATEX_VERSION && \
+sudo rm -rf /usr/local/texlive/$LATEX_VERSION && \
 rm -rf ~/.$LATEX_VERSION
 
 echo "\nRunning the installer\n" && \
@@ -17,7 +17,7 @@ echo "Enter command: i" && \
 echo "[... when done, see below for post-install ...]"
 
 echo "Post-installing: setting PATH" && \
-ehco 'PATH=/usr/local/texlive/2019/bin/x86_64-linux${PATH:+:${PATH}}' >> ~/.bashrc
+echo 'export PATH=/usr/local/texlive/2019/bin/x86_64-linux${PATH:+:${PATH}}' >> ~/.bashrc
 if [[ -f ~/.zshrc ]]; then
-		ehco 'PATH=/usr/local/texlive/2019/bin/x86_64-linux${PATH:+:${PATH}}' >> ~/.zshrc
+		echo 'export PATH=/usr/local/texlive/2019/bin/x86_64-linux${PATH:+:${PATH}}' >> ~/.zshrc
 fi
