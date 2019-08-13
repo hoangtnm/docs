@@ -13,6 +13,30 @@ I would recommend using routing unless you need a specific feature which require
 
 [source](https://openvpn.net/community-resources/how-to/#determining-whether-to-use-a-routed-or-bridged-vpn)
 
+## Expanding the scope of the VPN to include additional machines on either the client or server subnet
+
+**Including multiple machines on the server side when using a routed VPN (dev tun)**
+
+Once the VPN is operational in a point-to-point capacity between client and server, it may be desirable to expand the scope of the VPN so that clients can reach multiple machines on the server network, rather than only the server machine itself.
+
+For the purpose of this example, we will assume that the server-side LAN uses a subnet of **10.66.0.0/24** and the VPN IP address pool uses **10.8.0.0/24** as cited in the server directive in the OpenVPN server configuration file.
+
+First, you must *advertise* the **10.66.0.0/24** subnet to VPN clients as being accessible through the VPN. This can easily be done with the following server-side config file directive:
+
+```
+push "route 10.66.0.0 255.255.255.0"
+```
+
+Next, you must set up a route on the server-side LAN gateway to route the VPN client subnet (**10.8.0.0/24**) to the OpenVPN server (this is only necessary if the OpenVPN server and the LAN gateway are different machines).
+
+### Including multiple machines on the server side when using a bridged VPN (dev tap)
+
+One of the benefits of using [ethernet bridging](https://openvpn.net/community-resources/ethernet-bridging/) is that you get this for free without needing any additional configuration.
+
+### Including multiple machines on the client side when using a routed VPN (dev tun)
+
+In a typical road-warrior or remote access scenario, the client machine connects to the VPN as a single machine. But suppose the client machine is a gateway for a local LAN (such as a home office), and you would like each machine on the client LAN to be able to route through the VPN.
+
 ## Ethernet Bridging
 
 ### Ethernet Bridging Notes
