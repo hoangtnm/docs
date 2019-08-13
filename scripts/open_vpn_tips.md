@@ -12,3 +12,11 @@ I would recommend using routing unless you need a specific feature which require
 - you would like to allow browsing of Windows file shares across the VPN without setting up a Samba or WINS server.
 
 [source](https://openvpn.net/community-resources/how-to/#determining-whether-to-use-a-routed-or-bridged-vpn)
+
+## Ethernet Bridging
+
+### Ethernet Bridging Notes
+
+When using an ethernet bridging configuration, the first step is to construct the ethernet bridge — a kind of virtual network interface which is a container for other ethernet interfaces, either real as in physical NICs or virtual as in TAP interfaces.
+The ethernet bridge interface must be set up before OpenVPN is actually started.
+
