@@ -44,3 +44,9 @@ In a typical road-warrior or remote access scenario, the client machine connects
 When using an ethernet bridging configuration, the first step is to construct the ethernet bridge — a kind of virtual network interface which is a container for other ethernet interfaces, either real as in physical NICs or virtual as in TAP interfaces.
 The ethernet bridge interface must be set up before OpenVPN is actually started.
 
+## Configuring OpenVPN to run automatically on system startup
+
+To start an auto-login connection via the service daemon, place `client.ovpn` in `/etc/openvpn/` and rename the file.
+It must end with `.conf` as file extension. Make sure the service daemon is enabled to run after a reboot, and then afterwards, simply reboot the system.
+The auto-login type profile will automatically be picked up and the connection will be started by itself.
+You can verify this by checking for example the output of the `ifconfig` command, you should see a `tun0` network adapter in the list then.
