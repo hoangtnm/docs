@@ -7,7 +7,7 @@ echo " Select n to skip CUDA Toolkit installation or y to install it."
 read -p " Continue installing CUDA Toolkit (y/n) ? " CONTINUE
 if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	export CUDA_VERSION=10.0.130
-	export NCCL_VERSION=2.4.7
+	export NCCL_VERSION=2.4.8
 	export CUDNN_VERSION=7.6.2.24
 	sudo apt purge cuda* cuda-repo-ubuntu* nvidia-machine-learning-repo-ubuntu*
 	sudo apt update && sudo apt install -y curl wget ca-certificates gcc g++
