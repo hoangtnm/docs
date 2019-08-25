@@ -81,17 +81,6 @@ It must end with `.conf` as file extension. Make sure the service daemon is enab
 The auto-login type profile will automatically be picked up and the connection will be started by itself.
 You can verify this by checking for example the output of the `ifconfig` command, you should see a `tun0` network adapter in the list then.
 
-### 5. Assigning static IP to VPN clients on Asus RT-AC58U
-
-#### 5.1. Cloning the router's configuration
-
-```bash
-# scp -r <router_username>@<router_gateway>:/etc/openvpn .
-scp -r admin@192.168.2.1:/etc/openvpn .
-```
-
-#### 5.2. 
-
 ### References
 
 [OpenvpnSoftwareRepos](https://community.openvpn.net/openvpn/wiki/OpenvpnSoftwareRepos)
