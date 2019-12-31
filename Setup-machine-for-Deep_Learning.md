@@ -33,7 +33,7 @@ And install:
 
 ```shell
 sudo add-apt-repository ppa:graphics-drivers/ppa 
-sudo apt install nvidia-driver-430
+sudo apt install nvidia-driver-440
 sudo reboot
 ```
 
