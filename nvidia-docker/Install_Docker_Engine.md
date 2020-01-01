@@ -1,16 +1,13 @@
 # Install Docker Engine
 
 ### OS requirements
-To install Docker CE, you need the 64-bit version of one of these Ubuntu versions:
 
 - Bionic 18.04 (LTS)
-- Xenial 16.04 (LTS)
 
-Uninstall old versions
-Older versions of Docker were called docker or docker-engine. If these are installed, uninstall them:
+Older versions of Docker were called `docker`, `docker.io` or `docker-engine`. If these are installed, uninstall them:
 
 ```
-$ sudo apt-get remove docker docker-engine docker.io
+$ sudo apt remove docker docker-engine docker.io
 ```
 
 It’s OK if apt-get reports that none of these packages are installed.
@@ -18,8 +15,8 @@ It’s OK if apt-get reports that none of these packages are installed.
 ### Set up Docker's repository
 
 ```
-sudo apt-get update
-sudo apt-get install \
+sudo apt update
+sudo apt install \
     apt-transport-https \
     ca-certificates \
     curl \
@@ -42,10 +39,11 @@ sudo add-apt-repository \
    stable"
 ```
 
+
 ### Install Docker CE
 
 ```
-sudo apt-get install docker-ce
+sudo apt install docker-ce docker-ce-cli containerd.io
 ```
 
 Verify that Docker CE is installed correctly by running the `hello-world` image.
@@ -54,7 +52,6 @@ Verify that Docker CE is installed correctly by running the `hello-world` image.
 sudo docker run hello-world
 ```
 
-This command downloads a test image and runs it in a container. When the container runs, it prints an informational message and exits.
 
 ### Manage Docker as a non-root user
 
@@ -65,11 +62,8 @@ If you don’t want to preface the docker command with sudo, create a Unix group
 ```
 sudo groupadd docker
 sudo usermod -aG docker $USER
+newgrp docker
 ```
-
-Log out and log back in so that your group membership is re-evaluated.
-
-On a desktop Linux environment such as X Windows, log out of your session completely and then log back in.
 
 Verify that you can run `docker` commands without sudo.
 
