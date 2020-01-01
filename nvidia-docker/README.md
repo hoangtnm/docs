@@ -8,41 +8,89 @@ NVIDIA-GPU-Docker          |NVIDIA-Docker architecture
 :-------------------------:|:-------------------------:
 ![](https://cloud.githubusercontent.com/assets/3028125/12213714/5b208976-b632-11e5-8406-38d379ec46aa.png)  |  ![](https://devblogs.nvidia.com/wp-content/uploads/2018/05/dgx-docker-768x728.png)
 
-# Documentation
+
+The NVIDIA Container Runtime for Docker is an improved mechanism for allowing the Docker Engine to support NVIDIA GPUs used by GPU-accelerated containers. This new runtime replaces the Docker Engine Utility for NVIDIA GPUs. 
+
+
+## 1. Documentation
 
 The full documentation and frequently asked questions are available on the [repository wiki](https://github.com/NVIDIA/nvidia-docker/wiki).  
 
 An introduction to the NVIDIA Container Runtime is also covered in our [blog post](https://devblogs.nvidia.com/gpu-containers-runtime/).
 
-## Quickstart
+
+## 2. Quickstart
 
 **Make sure you have installed the [NVIDIA driver](https://github.com/NVIDIA/nvidia-docker/wiki/Frequently-Asked-Questions#how-do-i-install-the-nvidia-driver) and a [supported version](https://github.com/NVIDIA/nvidia-docker/wiki/Frequently-Asked-Questions#which-docker-packages-are-supported) of [Docker](https://docs.docker.com/engine/installation/) for your distribution (see [prerequisites](https://github.com/NVIDIA/nvidia-docker/wiki/Installation-(version-2.0)#prerequisites)).**
 
 **If you have a custom `/etc/docker/daemon.json`, the `nvidia-docker2` package might override it.**  
 
-#### Ubuntu 16.04/18.04, Debian Jessie/Stretch
+#### Ubuntu 18.04 LTS
+
 ```sh
 # If you have nvidia-docker 1.0 installed: we need to remove it and all existing GPU containers
 docker volume ls -q -f driver=nvidia-docker | xargs -r -I{} -n1 docker ps -q -a -f volume={} | xargs -r docker rm -f
 sudo apt-get purge -y nvidia-docker
 
 # Add the package repositories
-curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | \
-  sudo apt-key add -
+curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
 distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
 curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | \
   sudo tee /etc/apt/sources.list.d/nvidia-docker.list
-sudo apt-get update
+sudo apt update
 
 # Install nvidia-docker2 and reload the Docker daemon configuration
-sudo apt-get install -y nvidia-docker2
+sudo apt install -y nvidia-docker2
 sudo pkill -SIGHUP dockerd
 
 # Test nvidia-smi with the latest official CUDA image
 docker run --runtime=nvidia --rm nvidia/cuda:9.0-base nvidia-smi
 ```
 
-## Environment variables (OCI spec)
+After updating to the NVIDIA Container Runtime for Docker, you can run GPU-accelerated containers in one of the following ways.
+
+- Use `docker run` and specify `runtime=nvidia`
+  
+      docker run --runtime=nvidia ...
+
+- Use `nvidia-docker run`
+
+      nvidia-docker run ...
+
+
+## 3. Default Runtime
+
+The default runtime used by the Docker® Engine is [runc](https://github.com/opencontainers/runc), our runtime can become the default one by configuring the docker daemon with --default-runtime=nvidia. Doing so will remove the need to add the --runtime=nvidia argument to docker run. It is also the only way to have GPU access during docker build.
+
+You can set `nvidia` as the default runtime, for example, by adding the following line to the `/etc/docker/daemon.json` configuration file as the first entry. 
+
+```
+"default-runtime": "nvidia",
+```
+
+The following is an example of how the added line appears in the JSON file. Do not remove any pre-existing content when making this change.
+
+```
+{
+ "default-runtime": "nvidia",
+  "runtimes": {
+     "nvidia": {
+         "path": "/usr/bin/nvidia-container-runtime",
+         "runtimeArgs": []
+     }
+ },
+
+}
+```
+
+You can then use `docker run` to run GPU-accelerated containers. 
+
+```
+docker run ...
+```
+
+
+## 4. Environment variables (OCI spec)
 
 Each environment variable maps to an command-line argument for `nvidia-container-cli` from [libnvidia-container](https://github.com/NVIDIA/libnvidia-container).  
 These variables are already set in our [official CUDA images](https://hub.docker.com/r/nvidia/cuda/).
@@ -99,15 +147,3 @@ If the version of the NVIDIA driver is insufficient to run this version of CUDA,
 ### `CUDA_VERSION`
 Similar to `NVIDIA_REQUIRE_CUDA`, for legacy CUDA images.  
 In addition, if `NVIDIA_REQUIRE_CUDA` is not set, `NVIDIA_VISIBLE_DEVICES` and `NVIDIA_DRIVER_CAPABILITIES` will default to `all`.
-
-
-#### Other distributions and architectures
-
-Look at the [Installation section](https://github.com/nvidia/nvidia-docker/wiki/Installation-(version-2.0)) of the wiki.
-
-## Issues and Contributing
-
-A signed copy of the [Contributor License Agreement](https://raw.githubusercontent.com/NVIDIA/nvidia-docker/master/CLA) needs to be provided to <a href="mailto:digits@nvidia.com">digits@nvidia.com</a> before any change can be accepted.
-
-* Please let us know by [filing a new issue](https://github.com/NVIDIA/nvidia-docker/issues/new)
-* You can contribute by opening a [pull request](https://help.github.com/articles/using-pull-requests/)
