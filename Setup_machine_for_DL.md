@@ -3,7 +3,7 @@
 ### 1. Hardware
 
 - AMD Ryzen™ 3000 Series Processors
-- 64 GB Memory
+- 128 GB Memory
 - 500 GB NVMe (3,500 MB/s Read)
 - NVIDIA GeForce GTX 1080 Ti
 
