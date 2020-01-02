@@ -68,7 +68,7 @@ sudo dpkg -i nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
 sudo apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/7fa2af80.pub
 sudo apt install -y \
     libcudnn7=$CUDNN_VERSION-1+cuda10.1 \
-	libcudnn7-dev=$CUDNN_VERSION-1+cuda10.1
+    libcudnn7-dev=$CUDNN_VERSION-1+cuda10.1
 sudo apt-mark hold libcudnn7 libcudnn7-dev
 ```
 
