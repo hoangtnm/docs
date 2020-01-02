@@ -2,15 +2,9 @@
 
 ### 1. Install Python 3 and Pip 3
 
-Always use Python 3 and Pip 3 unless it's impossible.
-
-Python 2.7 is the last of the 2.x series. Its EOL is January 1st, 2020, and there will be no updates, not even source-only security patches, after that date.
-
-To build Python 3 from source, you can run the following script line by line, or save the whole text as file, "install-python.sh" for example, so you can run it with `sh install-python.sh`.
-
-```shell
+```sh
 #!/bin/bash
-export PYTHON_VERSION=3.6.5
+export PYTHON_VERSION=3.7.5
 export PYTHON_DOWNLOAD_URL=https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tgz
 sudo apt update
 sudo apt install --no-install-recommends -y \
@@ -29,7 +23,7 @@ sudo rm /usr/bin/python && sudo ln -s /usr/local/bin/python3 /usr/bin/python
 
 By default , `pip` is being automatically installed along as Python. But maybe it isn't there for some reason. In this case, you can manually install `pip` using `get-pip`.
 
-```shell
+```sh
 mkdir /home/$USER/workspace && cd /home/$USER/workspace
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python3 get-pip.py
@@ -39,7 +33,7 @@ python3 get-pip.py
 
 Using virtual environment is recommended to work with Python and Pip. Since Python 3, you can create virtual environment as below:
 
-```shell
+```sh
 python3 -m venv /path/to/new/virtual/environment
 ```
 
