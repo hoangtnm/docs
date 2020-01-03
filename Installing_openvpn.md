@@ -1,4 +1,4 @@
-# OpenVPN for Ubuntu 18.04
+# OpenVPN for Ubuntu
 
 ## Using OpenVPN apt repositories
 
@@ -42,6 +42,7 @@ I would recommend using routing unless you need a specific feature which require
 - you would like to allow browsing of Windows file shares across the VPN without setting up a Samba or WINS server.
 
 [source](https://openvpn.net/community-resources/how-to/#determining-whether-to-use-a-routed-or-bridged-vpn)
+
 
 ### 2. Expanding the scope of the VPN to include additional machines on either the client or server subnet
 

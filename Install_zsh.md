@@ -100,7 +100,11 @@ ZSH_THEME="agnoster" # (this is one of the fancy ones)
 # see https://github.com/robbyrussell/oh-my-zsh/wiki/Themes#agnoster
 ```
 
-_Note: many themes require installing the [Powerline Fonts](https://github.com/powerline/fonts) in order to render properly._
+**Note**: many themes require installing the [Powerline Fonts](https://github.com/powerline/fonts) in order to render properly.
+
+```sh
+sudo apt install fonts-powerline
+```
 
 Open up a new terminal window and your prompt should look something like this:
 
@@ -108,10 +112,18 @@ Open up a new terminal window and your prompt should look something like this:
 
 In case you did not find a suitable theme for your needs, please have a look at the wiki for [more of them](https://github.com/robbyrussell/oh-my-zsh/wiki/External-themes).
 
-To use the `agnoster` theme in Microsoft Visual Studio Code, please add the following font to `User Settings`:
+To use the `agnoster` theme in Microsoft Visual Studio Code, we need to install a monospaced version of Powerline:
+
+```sh
+git clone https://github.com/abertsch/Menlo-for-Powerline.git
+sudo mv "Menlo for Powerline.ttf" /usr/share/fonts/
+sudo fc-cache -vf /usr/share/fonts/
+```
+
+Setting the font in VS Code:
 
 ```
-"terminal.integrated.fontFamily": "DejaVu Sans Mono for Powerline, Book"
+"terminal.integrated.fontFamily": "Menlo for Powerline"
 ```
 
 ### Advanced Topics
