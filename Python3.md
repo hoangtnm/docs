@@ -1,4 +1,4 @@
-# Setup Python 3 dev environment
+# Python 3 dev environment
 
 ### 1. Install Python 3 and Pip 3
 
@@ -95,19 +95,3 @@ For more understanding:
 - [Python Virtual Environments – A Primer](https://realpython.com/python-virtual-environments-a-primer/)
 - [Virtual Environments and Packages](https://docs.python.org/3/tutorial/venv.html)
 - [venv - Creation of virtual environments](https://docs.python.org/3/library/venv.html)
-
-### 3. Jupyter Notebook
-
-Jupyter Notebook is useful tool for learning Python, sharing and collaborating with your teammate on the stuff.
-
-You can install Jupyter as pip package, within your favorite virtual environment. Don't follow [its official tips](http://jupyter.org/install)!
-
-```shell
-source ~/workspace/ml-env/bin/activate
-(ml-env) pip install jupyter
-(ml-env) jupyter notebook --ip 0.0.0.0 --port 7963
-```
-
-More about `jupyter` command:
-
-- [Running the Notebook](https://jupyter.readthedocs.io/en/latest/running.html).

@@ -1,6 +1,6 @@
 #! /bin/bash
 
-export PYTHON_VERSION=3.6.8
+export PYTHON_VERSION=3.7.5
 
 echo ""
 echo "******************** Please confirm ***************************"
