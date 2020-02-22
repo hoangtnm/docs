@@ -3,16 +3,14 @@
 ### 1. Hardware
 
 - AMD Ryzen™ 3000 Series Processors
-- 128 GB Memory
-- 500 GB NVMe (3,500 MB/s Read)
-- NVIDIA GeForce GTX 1080 Ti
+- 32 GB DDR4 Memory
+- 500 GB SSD (NVMe)
+- NVIDIA GeForce RTX 2080 Ti
 
 ### 2. OS & platform
 
 - [Ubuntu 18.04.3 LTS](https://ubuntu.com/download/desktop)
 - [Anaconda with Python 3](https://www.anaconda.com/distribution/)
-  <!-- - [Python 3 dev environment](https://github.com/hoangtnm/TrainingServer-docs/blob/master/Setup_python_3_dev_environment.md) -->
-
 
 ### 3. NVIDIA Driver
 
@@ -55,7 +53,6 @@ To remember, the general rule is:
 - `~/.bash_aliases` is being activated every time when you open the terminal (window or tab)
   However this behavior can be changed by modifying `~/.bashrc`, `~/.profile`, or `/etc/bash.bashrc`, etc.
 
-
 ### 5. NVIDIA cuDNN
 
 The NVIDIA CUDA® Deep Neural Network library (cuDNN) is a GPU-accelerated library of primitives for deep neural networks. cuDNN provides highly tuned implementations for standard routines such as forward and backward convolution, pooling, normalization, and activation layers
@@ -66,18 +63,18 @@ export CUDNN_VERSION=7.6.5.32
 wget https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
 sudo dpkg -i nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
 sudo apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/7fa2af80.pub
-sudo apt install -y \
+sudo apt install -y --no-install-recommends \
     libcudnn7=$CUDNN_VERSION-1+cuda10.1 \
     libcudnn7-dev=$CUDNN_VERSION-1+cuda10.1
 sudo apt-mark hold libcudnn7 libcudnn7-dev
 ```
 
-<!-- ### 6. Install NCCL 2.5.6
+<!-- ### 6. Install NCCL 2.4.8
 
 NCCL (pronounced "Nickel") is a stand-alone library of standard collective communication routines for GPUs, implementing all-reduce, all-gather, reduce, broadcast, and reduce-scatter. It has been optimized to achieve high bandwidth on platforms using PCIe, NVLink, NVswitch, as well as networking using InfiniBand Verbs or TCP/IP sockets. NCCL supports an arbitrary number of GPUs installed in a single node or across multiple nodes, and can be used in either single- or multi-process (e.g., MPI) applications.
 
 ```sh
-export NCCL_VERSION=2.5.6
+export NCCL_VERSION=2.4.8
 
 sudo apt install -y \
     libnccl2=$NCCL_VERSION-1+cuda10.1 \
