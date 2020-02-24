@@ -25,10 +25,10 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	chmod +x cuda_10.1.243_418.87.00_linux.run && \
 	sudo sh cuda_10.1.243_418.87.00_linux.run && \
 	sudo apt install -y --no-install-recommends \
-		libnccl2=$NCCL_VERSION-1+cuda10.0 \
-		libnccl-dev=$NCCL_VERSION-1+cuda10.0 \
-		libcudnn7=$CUDNN_VERSION-1+cuda10.0 \
-		libcudnn7-dev=$CUDNN_VERSION-1+cuda10.0 && \
+		libnccl2=$NCCL_VERSION-1+cuda10.1 \
+		libnccl-dev=$NCCL_VERSION-1+cuda10.1 \
+		libcudnn7=$CUDNN_VERSION-1+cuda10.1 \
+		libcudnn7-dev=$CUDNN_VERSION-1+cuda10.1 && \
 	sudo apt-mark hold \
 		libnccl2 libnccl-dev \
 		libcudnn7 libcudnn7-dev
