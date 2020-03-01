@@ -81,3 +81,32 @@ sudo apt install -y \
     libnccl-dev=$NCCL_VERSION-1+cuda10.1
 sudo apt-mark hold libnccl2 libnccl-dev
 ``` -->
+
+### Tips and Tricks
+
+#### 1. Increasing Swap Size on Ubuntu
+
+Now, let’s see how to increase the swap file. First thing first, make sure that you have a swap file in your system.
+
+```sh
+swapon --show
+```
+
+It will show the current swap available. If you see the type file, it indicates that you are using a swap file.
+
+```
+swapon --show
+NAME      TYPE SIZE USED PRIO
+/swapfile file   2G   0B   -2
+```
+
+Let's begin:
+
+```sh
+sudo swapoff /swapfile
+sudo fallocate -l 4G /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+```
+
+That’s it. You just increased the swap size in Ubuntu from 2 GB to 4 GB. You can check swap size using `swapon --show` command.
