@@ -24,7 +24,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
 	chmod +x cuda_10.1.243_418.87.00_linux.run && \
 	sudo sh cuda_10.1.243_418.87.00_linux.run && \
-	sudo apt install -y --no-install-recommends \
+	sudo apt update && sudo apt install -y \
 		libnccl2=$NCCL_VERSION-1+cuda10.1 \
 		libnccl-dev=$NCCL_VERSION-1+cuda10.1 \
 		libcudnn7=$CUDNN_VERSION-1+cuda10.1 \
