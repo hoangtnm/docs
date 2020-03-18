@@ -69,12 +69,12 @@ sudo apt update && sudo apt install -y \
 sudo apt-mark hold libcudnn7 libcudnn7-dev
 ```
 
-<!-- ### 6. Install NCCL 2.4.8
+<!-- ### 6. Install NCCL
 
 NCCL (pronounced "Nickel") is a stand-alone library of standard collective communication routines for GPUs, implementing all-reduce, all-gather, reduce, broadcast, and reduce-scatter. It has been optimized to achieve high bandwidth on platforms using PCIe, NVLink, NVswitch, as well as networking using InfiniBand Verbs or TCP/IP sockets. NCCL supports an arbitrary number of GPUs installed in a single node or across multiple nodes, and can be used in either single- or multi-process (e.g., MPI) applications.
 
 ```sh
-export NCCL_VERSION=2.4.8
+export NCCL_VERSION=2.5.6
 
 sudo apt install -y \
     libnccl2=$NCCL_VERSION-1+cuda10.1 \
