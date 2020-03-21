@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 export LATEX_VERSION=2019
 export CURR_DIR=$pwd

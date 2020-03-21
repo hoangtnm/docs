@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 echo "\n Configuring your Ubuntu repositories \n"
 sudo apt-add-repository universe

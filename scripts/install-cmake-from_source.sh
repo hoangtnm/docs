@@ -1,7 +1,4 @@
-#!/bin/bash
-#
-# CMake installation script.
-######################################################
+#!/usr/bin/env bash
 
 echo "\nInstalling CMake\n"
 

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 OPENCV_VERSION=3.4.1
 # Jetson TX2

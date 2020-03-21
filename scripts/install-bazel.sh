@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/usr/bin/env bash
 
 echo "\nInstalling JDK 8\n";
 sudo apt install -y curl openjdk-8-jdk

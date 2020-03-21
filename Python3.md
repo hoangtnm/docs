@@ -3,8 +3,7 @@
 ### 1. Install Python 3 and Pip 3
 
 ```sh
-#!/bin/bash
-export PYTHON_VERSION=3.7.5
+export PYTHON_VERSION=3.7.7
 export PYTHON_DOWNLOAD_URL=https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tgz
 sudo apt update
 sudo apt install --no-install-recommends -y \

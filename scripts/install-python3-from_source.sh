@@ -1,6 +1,6 @@
-#! /bin/bash
+#!/usr/bin/env bash
 
-export PYTHON_VERSION=3.7.5
+export PYTHON_VERSION=3.7.7
 
 echo ""
 echo "******************** Please confirm ***************************"
