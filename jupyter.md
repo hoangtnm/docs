@@ -76,5 +76,5 @@ c.NotebookApp.open_browser = False
 c.NotebookApp.port = 9999
 
 # The directory to use for notebooks and kernels.
-c.LabApp.notebook-dir = "/home/$USER"
+c.LabApp.notebook_dir = "/home/$USER"
 ```
