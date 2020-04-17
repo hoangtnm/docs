@@ -13,6 +13,8 @@ This repo includes some documents and scripts for setting up an AI workstation p
 - [Mounting NTFS Partitions](Partitions.md)
 - [Getting Started With Jetson Nano Developer Kit](Jetson_Nano.md)
 - [Installing Tensorflow from Sources](Build_tensorflow_from_source.md)
+- [OpenSSL Essentials: Working with SSL Certificates, Private Keys and CSRs](openssl.md)
+- [Jupyter cheat sheet](jupyter.md)
 
 ## Scripts
 
@@ -27,11 +29,3 @@ This repo includes some documents and scripts for setting up an AI workstation p
 - [Installing Scikit-learn from source](scripts/install-sklearn-from_source.sh)
 - [Installing Bazel](scripts/install-bazel.sh)
 - [Installing TensorFlow from source](scripts/install-tensorflow-from_source.sh)
-
-## Tips
-
-### Exposing a Jupyter Notebook server
-
-```sh
-jupyter notebook --ip 0.0.0.0 --port $PORT
-```
