@@ -4,7 +4,7 @@ This repo includes some documents and scripts for setting up an AI workstation p
 
 ## Documents
 
-- [Deep Learning Machine Set-up](Machine_Setup.md)
+- [Configuring Deep Learning Development Environment](Machine_Setup.md)
 - [Python 3 Dev Set-up](Python3.md)
 - [Oh My Zsh Framework](ohmyzsh/README.md)
 - [NVIDIA CUDA with Docker](docker/README.md)
