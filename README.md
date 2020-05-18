@@ -1,13 +1,13 @@
-# AI Workstation Documents
+# Deep Learning Workstation Documents
 
-This repo includes some documents and scripts for setting up an AI workstation powered by NVIDIA GPUs.
+This repo includes documents and scripts, which can be used to set up a comprehensive workstation for deep learning purposes.
 
 ## Documents
 
-- [Configuring Deep Learning Development Environment](Machine_Setup.md)
+- [Configuring Deep Learning Development Environment](setup_guidance.md)
 - [Configuring Python Development Environment](python_devel.md)
+- [Configuring Docker Development Environment](docker_devel.md)
 - [Oh My Zsh Framework](ohmyzsh/README.md)
-- [NVIDIA CUDA with Docker](docker/README.md)
 - [Connecting to GitHub with SSH](Github_SSH.md)
 - [Performing GPU, CPU, and I/O stress testing on Linux](Benchmark.md)
 - [Mounting NTFS Partitions](Partitions.md)
