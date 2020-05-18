@@ -4,17 +4,17 @@ This repo includes documents and scripts, which can be used to set up a comprehe
 
 ## Documents
 
-- [Configuring Deep Learning Development Environment](setup_guidance.md)
-- [Configuring Python Development Environment](python_devel.md)
-- [Configuring Docker Development Environment](docker_devel.md)
+- [Configuring Deep Learning Development Environment](docs/setup_guidance.md)
+- [Configuring Python Development Environment](docs/python_devel.md)
+- [Configuring Docker Development Environment](docs/docker_devel.md)
 - [Oh My Zsh Framework](ohmyzsh/README.md)
-- [Connecting to GitHub with SSH](Github_SSH.md)
-- [Performing GPU, CPU, and I/O stress testing on Linux](Benchmark.md)
-- [Mounting NTFS Partitions](Partitions.md)
-- [Getting Started With Jetson Nano Developer Kit](Jetson_Nano.md)
-- [Installing Tensorflow from Sources](Build_tensorflow_from_source.md)
-- [OpenSSL Essentials: Working with SSL Certificates, Private Keys and CSRs](openssl.md)
-- [Jupyter cheat sheet](jupyter.md)
+- [Connecting to GitHub with SSH](docs/Github_SSH.md)
+- [Performing GPU, CPU, and I/O stress testing on Linux](docs/Benchmark.md)
+- [Mounting NTFS Partitions](docs/Partitions.md)
+- [Getting Started With Jetson Nano Developer Kit](docs/Jetson_Nano.md)
+- [Installing Tensorflow from Sources](docs/Build_tensorflow_from_source.md)
+- [OpenSSL Essentials: Working with SSL Certificates, Private Keys and CSRs](docs/openssl.md)
+- [Jupyter cheat sheet](docs/jupyter.md)
 
 ## Scripts
 
