@@ -33,7 +33,7 @@ sudo glib-compile-schemas /usr/share/glib-2.0/schemas
 This quick hack should stop the `Desktop Sharing` panel crashing, allowing you to open it. So go ahead and click on the `Settings` icon, and then the `Desktop Sharing` icon which is in the top row.
 
 <p align=center>
-    <img src=images/desktop_sharing.png>
+    <img src="../images/desktop_sharing.png">
 </p>
 
 Tick the `Allow other users to view your desktop` and also `Allow other users to control your desktop` check marks. Then make sure `You must confirm each access to this machine` is turned off. Finally tick the `Require the user to enter this password` check mark, and enter a password for the VNC session.
@@ -41,13 +41,13 @@ Tick the `Allow other users to view your desktop` and also `Allow other users to
 Close the `Settings` panel, then click on the green icon at the top left of your screen to open the `Search` panel. Type `startup applications` into the search box that appears at the top of the screen.
 
 <p align=center>
-    <img src=images/startup_applications.png>
+    <img src="../images/startup_applications.png">
 </p>
 
 Click on the application to open the `Startup Applications Preferences` panel. Here we can add VNC to the list of applications that are automatically started when you login to the computer.
 
 <p align=center>
-    <img src=images/edit_startup_programs.png>
+    <img src="../images/edit_startup_programs.png">
 </p>
 
 Click Add at the right of the box, then type ‘Vino’ in the name box, and then in the command box enter `/usr/lib/vino/vino-server`. Finally you can add a comment, perhaps `VNC Server`. Click Save at the bottom right of the box, and then close the app.

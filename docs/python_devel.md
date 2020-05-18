@@ -68,7 +68,7 @@ As part of this ecosystem, there is a whole world of version numbers and depende
 > Note: A virtual environment is a Python environment such that the Python interpreter, libraries and scripts installed into it are isolated from those installed in other virtual environments, and (by default) any libraries installed in a “system” Python, i.e., one which is installed as part of your operating system. [1]
 
 <p align='center'>
-    <img src='images/virtualenv.png' width='50%' height='50%'>
+    <img src='../images/virtualenv.png' width='50%' height='50%'>
 <p>
 
 There are currently two popular options for taking care of managing your different packages: _venv_, _virtualenv_ and _anaconda_.

@@ -1,7 +1,7 @@
 # Perform GPU, CPU, and I/O stress testing on Linux
 
 <p align="center">
-    <img src=images/stress-test-gpu-burn-htop-iotop-nvidia-smi-linux.png>
+    <img src="../images/stress-test-gpu-burn-htop-iotop-nvidia-smi-linux.png">
     Figure 1. CPU, GPU, and I/O utilization monitoring using tmux, htop, iotop, and nvidia-smi. This stress test is running on a Lambda GPU Cloud 4x GPU instance.
 </p>
 
