@@ -235,4 +235,4 @@ In addition, if `NVIDIA_REQUIRE_CUDA` is not set, `NVIDIA_VISIBLE_DEVICES` and `
 
 ## References
 
-[1] N. Corporation. (). Upgrading to the nvidia container runtime for docker, [Online]. Available: https://docs.nvidia.com/dgx/nvidia-container-runtime-upgrade/index.html#using- nv- container- runtime. (accessed: 05.18.2020).
+[1] N. Corporation. (). Upgrading to the nvidia container runtime for docker, [Online]. Available: https://docs.nvidia.com/dgx/nvidia-container-runtime-upgrade/index.html#using-nv-container-runtime. (accessed: 05.18.2020).
