@@ -7,7 +7,7 @@ This repo includes documents and scripts, which can be used to set up a comprehe
 - [Configuring Deep Learning Development Environment](docs/setup_guidance.md)
 - [Configuring Python Development Environment](docs/python_devel.md)
 - [Configuring Docker Development Environment](docs/docker_devel.md)
-- [Oh My Zsh Framework](ohmyzsh/README.md)
+- [Oh My Zsh Framework](docs/ohmyzsh.md)
 - [Connecting to GitHub with SSH](docs/Github_SSH.md)
 - [Performing GPU, CPU, and I/O stress testing on Linux](docs/Benchmark.md)
 - [Mounting NTFS Partitions](docs/Partitions.md)

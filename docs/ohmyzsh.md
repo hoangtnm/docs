@@ -1,44 +1,35 @@
-Oh My Zsh is an open source, community-driven framework for managing your [zsh](https://www.zsh.org/) configuration.
+# Configuring Oh My Zsh Framework <!-- omit in toc -->
+
+## Contents <!-- omit in toc -->
+
+- [Installation](#installation)
+- [Using Oh My Zsh](#using-oh-my-zsh)
+  - [Plugins](#plugins)
+  - [Enabling Plugins](#enabling-plugins)
+  - [Using Plugins](#using-plugins)
+  - [Themes](#themes)
+- [Advanced Topics](#advanced-topics)
+  - [Installation Problems](#installation-problems)
+  - [Custom Plugins and Themes](#custom-plugins-and-themes)
+
+Oh My Zsh is a delightful, open source, community-driven framework for managing your Zsh configuration. It comes bundled with thousands of helpful functions, helpers, plugins, themes, and a few things that make you shout...
+
+Once installed, your terminal shell will become the talk of the town or your money back! With each keystroke in your command prompt, you'll take advantage of the hundreds of powerful plugins and beautiful themes.
 
 <p align="center">
-  <img src="https://s3.amazonaws.com/ohmyzsh/oh-my-zsh-logo.png" alt="Oh My Zsh">
+  <img src="https://s3.amazonaws.com/ohmyzsh/oh-my-zsh-logo.png">
 </p>
 
-## How to install zsh in many platforms
+> While Oh My Zsh supports a wide range of OS such as macOS, Linux and BSD, this document only supports Ubuntu. In case you want to install it on another OS, you can refer https://github.com/ohmyzsh/ohmyzsh for more information.
 
-### macOS
+## Installation
 
-```
-brew install zsh zsh-completions
-```
-
-### Ubuntu
-
-```
-sudo apt install zsh
-```
-
-### Set up zsh as default (Optional)
-
-```
-chsh -s $(which zsh)
-```
-
-
-### Basic Installation
-
-Oh My Zsh is installed by running one of the following commands in your terminal. You can install this via the command-line with either `curl` or `wget`.
-
-#### via curl
-
-```sh
+```bash
+sudo apt install curl git zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-```
 
-#### via wget
-
-```sh
-sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+# Configure it as default shell
+chsh -s $(which zsh)
 ```
 
 ## Using Oh My Zsh
@@ -51,13 +42,13 @@ Oh My Zsh comes with a shitload of plugins to take advantage of. You can take a 
 
 Once you spot a plugin (or several) that you'd like to use with Oh My Zsh, you'll need to enable them in the `.zshrc` file. You'll find the zshrc file in your `$HOME` directory. Open it with your favorite text editor and you'll see a spot to list all the plugins you want to load.
 
-```sh
+```bash
 vim ~/.zshrc
 ```
 
 For example, this might begin to look like this:
 
-```sh
+```
 plugins=(
   docker
   bundler
@@ -68,25 +59,27 @@ plugins=(
 
 ### Using Plugins
 
-Most plugins (should! we're working on this) include a __README__, which documents how to use them.
+Most plugins (should! we're working on this) include a **README**, which documents how to use them.
+
+> Note that the plugins are separated by whitespace. Do not use commas between them.
 
 ### Themes
 
 Once you find a theme that you'd like to use, you will need to edit the `~/.zshrc` file. You'll see an environment variable (all caps) in there that looks like:
 
-```sh
+```
 ZSH_THEME="robbyrussell"
 ```
 
 To use a different theme, simply change the value to match the name of your desired theme. For example:
 
-```sh
+```
 ZSH_THEME="agnoster"
 ```
 
 **Note**: many themes require installing the [Powerline Fonts](https://github.com/powerline/fonts) in order to render properly.
 
-```sh
+```bash
 sudo apt install fonts-powerline
 ```
 
@@ -98,13 +91,13 @@ In case you did not find a suitable theme for your needs, please have a look at 
 
 To use the `agnoster` theme in Microsoft Visual Studio Code, we need to install [Fira Code](https://github.com/tonsky/FiraCode) font:
 
-```sh
+```bash
 sudo apt install fonts-firacode
 ```
 
-Setting the font in VS Code:
+Configures the font in VS Code:
 
-```
+```json
 "editor.fontFamily": "Fira Code",
 "editor.fontLigatures": true,
 "editor.fontSize": 15,
@@ -118,8 +111,8 @@ Setting the font in VS Code:
 
 If you have any hiccups installing, here are a few common fixes.
 
-* You _might_ need to modify your `PATH` in `~/.zshrc` if you're not able to find some commands after switching to `oh-my-zsh`.
-* If you installed manually or changed the install location, check the `ZSH` environment variable in `~/.zshrc`.
+- You _might_ need to modify your `PATH` in `~/.zshrc` if you're not able to find some commands after switching to `oh-my-zsh`.
+- If you installed manually or changed the install location, check the `ZSH` environment variable in `~/.zshrc`.
 
 ### Custom Plugins and Themes
 
@@ -128,9 +121,3 @@ If you want to override any of the default behaviors, just add a new file (endin
 If you have many functions that go well together, you can put them as a `XYZ.plugin.zsh` file in the `custom/plugins/` directory and then enable this plugin.
 
 If you would like to override the functionality of a plugin distributed with Oh My Zsh, create a plugin of the same name in the `custom/plugins/` directory and it will be loaded instead of the one in `plugins/`.
-
-## Uninstalling Oh My Zsh
-
-Oh My Zsh isn't for everyone. We'll miss you, but we want to make this an easy breakup.
-
-If you want to uninstall `oh-my-zsh`, just run `uninstall_oh_my_zsh` from the command-line. It will remove itself and revert your previous `bash` or `zsh` configuration.
