@@ -14,7 +14,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	wget http://developer.download.nvidia.com/compute/cuda/10.1/Prod/local_installers/cuda_10.1.243_418.87.00_linux.run
 	wget https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
 	sudo dpkg -i nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
-	sudo apt-get-key adv --fetch-keys http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/7fa2af80.pub
+	sudo apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/7fa2af80.pub
 	
 	echo "";
 	echo "The following NEW packages will be installed:";
@@ -29,7 +29,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 		libnccl-dev=$NCCL_VERSION-1+cuda10.1 \
 		libcudnn7=$CUDNN_VERSION-1+cuda10.1 \
 		libcudnn7-dev=$CUDNN_VERSION-1+cuda10.1 && \
-	sudo apt-get-mark hold \
+	sudo apt-mark hold \
 		libnccl2 libnccl-dev \
 		libcudnn7 libcudnn7-dev
 	
