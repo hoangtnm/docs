@@ -54,7 +54,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
     echo "";
     echo "Installing OpenCV";
     echo "";
-    sudo apt update && sudo apt install -y \
+    sudo apt-get update && sudo apt-get install -y \
       build-essential cmake pkg-config \
       libjpeg-dev libtiff5-dev libpng12-dev \
       libavcodec-dev libavformat-dev libswscale-dev libv4l-dev \

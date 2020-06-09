@@ -21,7 +21,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
     export VERSION=2020
     export UPDATE=0
     export BUILD_NUMBER=088
-    sudo apt update && sudo apt intel-mkl-64bit-$VERSION.$UPDATE-$BUILD_NUMBER
+    sudo apt-get update && sudo apt-get install intel-mkl-64bit-$VERSION.$UPDATE-$BUILD_NUMBER
     update-alternatives --install /usr/lib/x86_64-linux-gnu/libblas.so libblas.so-x86_64-linux-gnu /opt/intel/mkl/lib/intel64/libmkl_rt.so 50
     update-alternatives --install /usr/lib/x86_64-linux-gnu/libblas.so.3 libblas.so.3-x86_64-linux-gnu /opt/intel/mkl/lib/intel64/libmkl_rt.so 50
     update-alternatives --install /usr/lib/x86_64-linux-gnu/liblapack.so liblapack.so-x86_64-linux-gnu /opt/intel/mkl/lib/intel64/libmkl_rt.so 50

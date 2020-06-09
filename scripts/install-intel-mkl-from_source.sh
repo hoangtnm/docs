@@ -9,7 +9,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
 	echo "Installing Intel MKL 2020 Update 1"; 
 	echo "";
-	sudo apt update && sudo apt install -y \
+	sudo apt-get update && sudo apt-get install -y \
 		build-essential cpio gcc g++ cmake doxygen
 
 	echo "";

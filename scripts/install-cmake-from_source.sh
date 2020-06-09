@@ -2,7 +2,8 @@
 
 echo "\nInstalling CMake\n"
 
-sudo apt update && sudo apt install -y wget make qtbase5-dev libncurses5-dev
+sudo apt-get update && sudo apt-get install -y \
+    wget make qtbase5-dev libncurses5-dev
 wget https://github.com/Kitware/CMake/releases/download/v3.14.3/cmake-3.14.3.tar.gz
 tar xvzf cmake-3.14.3.tar.gz
 cd cmake-3.14.3

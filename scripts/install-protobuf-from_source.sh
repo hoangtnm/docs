@@ -9,8 +9,8 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
 	echo "Installing tools"; 
 	echo "";
-	sudo apt update -y
-	sudo apt install -y build-essential autoconf automake libtool curl make g++ unzip
+	sudo apt-get update && sudo apt-get install -y \
+		build-essential autoconf automake libtool curl make g++ unzip
 	
 	echo "";
 	echo "Downloading the Source Code";

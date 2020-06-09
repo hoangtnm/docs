@@ -7,8 +7,8 @@ echo " Select n to skip Caffe installation or y to install it."
 echo " Note that: OpenBLAS is required instead of ATLAS"
 read -p " Continue installing Caffe (y/n) ? " CONTINUE
 if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
-	sudo apt update -y
-	sudo apt install build-essential \
+	sudo apt-get update && sudo apt-get install -y \
+		build-essential \
 		libhdf5-serial-dev \
 		libboost-all-dev \
 		libleveldb-dev \
@@ -40,11 +40,12 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 		sed -i 's/INCLUDE_DIRS\ :=\ $(PYTHON_INCLUDE)\ \/usr\/local\/include/INCLUDE_DIRS\ :=\ $(PYTHON_INCLUDE)\ \/usr\/local\/include\ \/usr\/include\/hdf5\/serial/g' Makefile.config
 		sed -i 's/LIBRARY_DIRS\ :=\ $(PYTHON_LIB)\ \/usr\/local\/lib\ \/usr\/lib/LIBRARY_DIRS\ :=\ $(PYTHON_LIB)\ \/usr\/local\/lib\ \/usr\/lib\/x86_64-linux-gnu\/hdf5\/serial/g' Makefile.config
 	elif [[ "$CONTINUE" == "rasp" || "$CONTINUE" == "RASP" ]]; then
-		sudo apt install -y libatlas-base-dev \
-		                 libopencv-dev \
-				 python3-dev \
-				 python-opencv \
-				 sudo
+		sudo apt-get install -y \
+			libatlas-base-dev \
+			libopencv-dev \
+			python3-dev \
+			python-opencv \
+			sudo
 		sed -i 's/#\ CPU_ONLY\ :=\ 1/CPU_ONLY\ :=\ 1/g' Makefile.config
 		sed -i 's/#\ OPENCV_VERSION\ :=\ 3/OPENCV_VERSION\ :=\ 3/g' Makefile.config
 		sed -i 's/#\ CUSTOM_CXX\ :=\ g++/CUSTOM_CXX\ :=\ g++/g' Makefile.config

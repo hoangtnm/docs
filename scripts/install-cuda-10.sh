@@ -9,12 +9,12 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	export CUDA_VERSION=10.1.243
 	export NCCL_VERSION=2.5.6
 	export CUDNN_VERSION=7.6.5.32
-	sudo apt purge cuda* cuda-repo-ubuntu* nvidia-machine-learning-repo-ubuntu*
-	sudo apt update && sudo apt install -y wget ca-certificates gcc g++
+	sudo apt-get purge cuda* cuda-repo-ubuntu* nvidia-machine-learning-repo-ubuntu*
+	sudo apt-get update && sudo apt-get install -y wget ca-certificates gcc g++
 	wget http://developer.download.nvidia.com/compute/cuda/10.1/Prod/local_installers/cuda_10.1.243_418.87.00_linux.run
 	wget https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
 	sudo dpkg -i nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
-	sudo apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/7fa2af80.pub
+	sudo apt-get-key adv --fetch-keys http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/7fa2af80.pub
 	
 	echo "";
 	echo "The following NEW packages will be installed:";
@@ -24,12 +24,12 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
 	chmod +x cuda_10.1.243_418.87.00_linux.run && \
 	sudo sh cuda_10.1.243_418.87.00_linux.run && \
-	sudo apt update && sudo apt install -y \
+	sudo apt-get update && sudo apt-get install -y \
 		libnccl2=$NCCL_VERSION-1+cuda10.1 \
 		libnccl-dev=$NCCL_VERSION-1+cuda10.1 \
 		libcudnn7=$CUDNN_VERSION-1+cuda10.1 \
 		libcudnn7-dev=$CUDNN_VERSION-1+cuda10.1 && \
-	sudo apt-mark hold \
+	sudo apt-get-mark hold \
 		libnccl2 libnccl-dev \
 		libcudnn7 libcudnn7-dev
 	

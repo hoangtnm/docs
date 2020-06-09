@@ -9,8 +9,8 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
 	echo "Installing Numpy"; 
 	echo "";
-	sudo apt update
-	sudo apt install -y build-essential cmake git gcc gfortran
+	sudo apt-get update && sudo apt-get install -y \
+		build-essential cmake git gcc gfortran
 	sudo pip3 install cython
 	sudo pip3 uninstall enum34
 	

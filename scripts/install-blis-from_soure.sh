@@ -7,8 +7,8 @@ echo " Select n to skip BLIS installation or y to install it."
 read -p " Continue installing BLIS (y/n) ? " CONTINUE
 if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then  
 	echo "\nInstalling BLIS\n"; 
-	sudo apt update -y
-	sudo apt install -y build-essential cmake make git
+	sudo apt-get update && sudo apt-get install -y \
+		build-essential cmake make git
 	
 	echo "\nDownloading and Building the Source Code\n";
 	git clone https://github.com/flame/blis.git

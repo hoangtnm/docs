@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-echo "\nInstalling JDK 8\n";
-sudo apt install -y curl openjdk-8-jdk
+echo "Installing JDK 8";
+sudo apt-get install -y curl openjdk-8-jdk
 
-echo "\nInstalling required packages\n";
-sudo apt install -y pkg-config zip g++ zlib1g-dev unzip
+echo "Installing required packages";
+sudo apt-get install -y pkg-config zip g++ zlib1g-dev unzip
 
 echo "\nInstalling Bazel 0.21\n";
 export BAZEL_VERSION=0.21.0

@@ -9,8 +9,8 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
 	echo "Installing Scipy"; 
 	echo "";
-	sudo apt update -y
-	sudo apt install -y build-essential cmake git gcc gfortran
+	sudo apt-get update && sudo apst-get install -y \
+		build-essential cmake git gcc gfortran
 	
 	echo "";
 	echo "Downloading and Building the Source Code";

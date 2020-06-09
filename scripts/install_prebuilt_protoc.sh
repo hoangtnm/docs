@@ -23,7 +23,7 @@ if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
 	echo "";
 	echo " Downloading the protocol compiler ";
 	echo "";
-	sudo apt update && sudo apt install wget
+	sudo apt-get update && sudo apt-get install wget
 	export OS="linux"
 	export PLATFORM=$OS-$ARCHITECTURE
 	export PROTOC_DOWNLOAD_URL=https://github.com/protocolbuffers/protobuf/releases/download/v$PROTOC_VERSION/protoc-$PROTOC_VERSION-$PLATFORM.zip
