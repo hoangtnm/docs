@@ -203,4 +203,4 @@ And to exit the environment later:
 
 [3] R. Python. (). Python virtual environments: A primer, [Online]. Available: https://realpython.com/python-virtual-environments-a-primer/. (accessed: 05.17.2020).
 
-[4] P. S. Foundation, (). Virtual environments and packages, [Online]. Available: https://docs.python.org/3/tutorial/venv.html. (accessed: 05.17.2020).s
+[4] P. S. Foundation, (). Virtual environments and packages, [Online]. Available: https://docs.python.org/3/tutorial/venv.html. (accessed: 05.17.2020).
