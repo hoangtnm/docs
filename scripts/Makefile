@@ -8,7 +8,7 @@ help:
 	@echo "  make bazel - Install Bazel"
 	@echo "  make cmake - Install CMake"
 	@echo "  make python3 - Install Python 3.7.7"
-	@echo "  make cuda10 - Install CUDA Toolkit 10.1, cuDNN 7.6 and NCCL 2.5"
+	@echo "  make cuda10 - Install CUDA Toolkit 10.1, cuDNN 7.6 and NCCL 2.7"
 	@echo "  make intelmkl - Install Intel MKL"
 	@echo "  make intelmkl-dnn - Install Intel MKL-DNN"
 	@echo "  make openblas - Install OpenBLAS"
@@ -87,22 +87,8 @@ caffe:
 
 .PHONY: prereqs
 prereqs:
-	@chmod +x install-nvidia-driver.sh
-	@chmod +x install-bazel.sh
-	@chmod +x install-cmake-from_source.sh
-	@chmod +x install-python3-from_source.sh
-	@chmod +x install-cuda-10.sh
-	@chmod +x install-openblas-from_source.sh
-	@chmod +x install-blis-from_soure.sh
-	@chmod +x install-intel-mkl-from_source.sh
-	@chmod +x install-intel-mkl-dnn-from_source.sh
-	@chmod +x install-numpy-from_source.sh
-	@chmod +x install-scipy-from_source.sh
-	@chmod +x install-sklearn-from_source.sh
-	@chmod +x install-protobuf-from_source.sh
-	@chmod +x install-opencv-from_source.sh
-	@chmod +x install-caffe-from_source.sh
+	@chmod +x *.sh
 	
 .PHONY: clean
 clean:
-	@echo "\nmake clean starting."
+	@echo "make clean starting."
