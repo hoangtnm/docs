@@ -1,15 +1,19 @@
 #!/usr/bin/env bash
 
-echo "\nInstalling CMake\n"
-
+echo
+echo Installing dependencies
+echo
 sudo apt-get update && sudo apt-get install -y \
     wget make qtbase5-dev libncurses5-dev
-wget https://github.com/Kitware/CMake/releases/download/v3.14.3/cmake-3.14.3.tar.gz
-tar xvzf cmake-3.14.3.tar.gz
-cd cmake-3.14.3
+
+echo
+echo Downloading CMake 'source' code
+echo
+VERSION=3.14.3
+wget https://github.com/Kitware/CMake/releases/download/v$VERSION/cmake-$VERSION.tar.gz
+tar -xzf cmake-$VERSION.tar.gz
+cd cmake-$VERSION
 ./configure --qt-gui
 ./bootstrap
 make -j $(nproc)
 sudo make install -j $(nproc)
-
-echo "Installation completed."
