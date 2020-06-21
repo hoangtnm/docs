@@ -1,77 +1,55 @@
 #!/usr/bin/env bash
 
-echo ""
-echo "***************** Please confirm ***********************"
-echo " Installing Caffe from source may take a long time. "
-echo " Select n to skip Caffe installation or y to install it." 
-echo " Note that: OpenBLAS is required instead of ATLAS"
-read -p " Continue installing Caffe (y/n) ? " CONTINUE
-if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
-	sudo apt-get update && sudo apt-get install -y \
-		build-essential \
-		libhdf5-serial-dev \
-		libboost-all-dev \
-		libleveldb-dev \
-		libsnappy-dev \
-		liblmdb-dev \
-		libgflags-dev \
-		libgoogle-glog-dev
-	
-	echo "\nDownloading and Building the Source Code\n";
-	git clone -b ssd https://github.com/weiliu89/caffe.git
-	cd caffe
-	cp Makefile.config.example Makefile.config
-	
-	echo "Please select which platform for the environment: Raspberry Pi 3 or PC with NVIDIA GPU";
-	read -p " Raspberry or PC (rasp/pc) ? " CONTINUE
-	if [[ "$CONTINUE" == "pc" || "$CONTINUE" == "PC" ]]; then
-		sed -i 's/#\ USE_CUDNN\ :=\ 1/USE_CUDNN\ :=\ 1/g' Makefile.config
-		sed -i 's/#\ OPENCV_VERSION\ :=\ 3/OPENCV_VERSION\ :=\ 3/g' Makefile.config
-		sed -i 's/#\ CUSTOM_CXX\ :=\ g++/CUSTOM_CXX\ :=\ g++/g' Makefile.config
-		sed -i 's/CUDA_ARCH\ :=\ -gencode\ arch=compute_20,code=sm_20\ \\//g' Makefile.config
-		sed -i 's/-gencode\ arch=compute_20,code=sm_21\ \\//g' Makefile.config
-		sed -i 's/\             -gencode arch=compute_30,code=sm_30/CUDA_ARCH\ :=\ -gencode arch=compute_30,code=sm_30/g' Makefile.config
-		sed -i 's/#\ BLAS_INCLUDE\ :=\ \/path\/to\/your\/blas/BLAS_INCLUDE\ :=\ \/opt\/OpenBLAS\/include/g' Makefile.config
-		sed -i 's/#\ BLAS_LIB\ :=\ \/path\/to\/your\/blas/BLAS_LIB\ :=\ \/opt\/OpenBLAS\/lib/g' Makefile.config
-		sed -i 's/PYTHON_INCLUDE\ := \/usr\/include\/python2.7/#PYTHON_INCLUDE\ :=\ \/usr\/include\/python2.7/g' Makefile.config
-		sed -i 's/#\ PYTHON_LIBRARIES\ :=\ boost_python3\ python3.5m/PYTHON_LIBRARIES\ :=\ boost_python3\ python3.6m/g' Makefile.config
-		sed -i 's/#\ PYTHON_INCLUDE\ :=\ \/usr\/include\/python3.5m/PYTHON_INCLUDE\ :=\ \/usr\/local\/include\/python3.6m/g' Makefile.config
-		sed -i 's/#\                 \/usr\/lib\/python3.5\/dist-packages\/numpy\/core\/include/\                 \/usr\/local\/lib\/python3.6\/site-packages\/numpy-1.15.4-py3.6-linux-x86_64.egg\/numpy\/core\/include/g' Makefile.config
-		sed -i 's/INCLUDE_DIRS\ :=\ $(PYTHON_INCLUDE)\ \/usr\/local\/include/INCLUDE_DIRS\ :=\ $(PYTHON_INCLUDE)\ \/usr\/local\/include\ \/usr\/include\/hdf5\/serial/g' Makefile.config
-		sed -i 's/LIBRARY_DIRS\ :=\ $(PYTHON_LIB)\ \/usr\/local\/lib\ \/usr\/lib/LIBRARY_DIRS\ :=\ $(PYTHON_LIB)\ \/usr\/local\/lib\ \/usr\/lib\/x86_64-linux-gnu\/hdf5\/serial/g' Makefile.config
-	elif [[ "$CONTINUE" == "rasp" || "$CONTINUE" == "RASP" ]]; then
-		sudo apt-get install -y \
-			libatlas-base-dev \
-			libopencv-dev \
-			python3-dev \
-			python-opencv \
-			sudo
-		sed -i 's/#\ CPU_ONLY\ :=\ 1/CPU_ONLY\ :=\ 1/g' Makefile.config
-		sed -i 's/#\ OPENCV_VERSION\ :=\ 3/OPENCV_VERSION\ :=\ 3/g' Makefile.config
-		sed -i 's/#\ CUSTOM_CXX\ :=\ g++/CUSTOM_CXX\ :=\ g++/g' Makefile.config
-		sed -i 's/BLAS\ :=\ open/BLAS\ :=\ atlas/g' Makefile.config
-		sed -i 's/PYTHON_INCLUDE\ := \/usr\/include\/python2.7/#PYTHON_INCLUDE\ :=\ \/usr\/include\/python2.7/g' Makefile.config
-		sed -i 's/#\ PYTHON_LIBRARIES\ :=\ boost_python3\ python3.5m/PYTHON_LIBRARIES\ :=\ boost_python3\ python3.5m/g' Makefile.config
-		sed -i 's/#\ PYTHON_INCLUDE\ :=\ \/usr\/include\/python3.5m/PYTHON_INCLUDE\ :=\ \/usr\/include\/python3.5m/g' Makefile.config
-		sed -i 's/#\                 \/usr\/lib\/python3.5\/dist-packages/\                 \/usr\/lib\/python3.5\/dist-packages/g' Makefile.config
-		sed -i 's/INCLUDE_DIRS\ :=\ $(PYTHON_INCLUDE)\ \/usr\/local\/include/INCLUDE_DIRS\ :=\ $(PYTHON_INCLUDE)\ \/usr\/local\/include\ \/usr\/include\/hdf5\/serial/g' Makefile.config
-		sed -i 's/LIBRARY_DIRS\ :=\ $(PYTHON_LIB)\ \/usr\/local\/lib\ \/usr\/lib/LIBRARY_DIRS\ :=\ $(PYTHON_LIB)\ \/usr\/local\/lib\ \/usr\/lib\/x86_64-linux-gnu\/hdf5\/serial/g' Makefile.config
-	else
-		echo "\nSkipping Caffe installation\n";
-	fi
+echo
+echo Installing dependencies
+echo
+sudo apt-get update && sudo apt-get install -y \
+	build-essential \
+	libhdf5-serial-dev \
+	libboost-all-dev \
+	libleveldb-dev \
+	libsnappy-dev \
+	liblmdb-dev \
+	libgflags-dev \
+	libgoogle-glog-dev \
+	git
 
-	echo "\nBuilding & Verifying\n";
-	make all -j $(nproc)
-	make test -j $(nproc) && make runtest -j $(nproc)
-	make pycaffe -j $(nproc)
-	
-	echo "\nFinalizing the Installation\n";
-	export PYTHONPATH=`pwd`/python:$PYTHONPATH
-	# also add to bash_profile
-	sudo bash -c 'echo "export PYTHONPATH=`pwd`/python:$PYTHONPATH" >> ~/.bash_profile'
-	sudo bash -c 'echo "export PYTHONPATH=`pwd`/python:$PYTHONPATH" >> ~/.bashrc'
-	source ~/.bash_profile
-	source ~/.bashrc
-else
-	echo "\nSkipping Caffe installation\n";
-fi
+echo
+echo Downloading Caffe 'source' code
+echo
+git clone -b ssd https://github.com/weiliu89/caffe.git && cd caffe
+
+echo
+echo Configuring Caffe
+echo
+cp Makefile.config.example Makefile.config
+VERSION=$(python3 -V | sed 's/Python\ //' | cut -c1-3)
+PYTHON_INCLUDE=$(which python${VERSION}m)
+NUMPY_DIR=$(pip show numpy | grep Location | sed 's/Location:\ //')\/numpy\/core\/include
+sed -i 's/^#\ USE_CUDNN/USE_CUDNN/' Makefile.config
+sed -i 's/^#\ OPENCV_VERSION/OPENCV_VERSION/' Makefile.config
+sed -i 's/^#\ CUSTOM_CXX/CUSTOM_CXX/' Makefile.config
+sed -i '/.*-gencode.*sm_20.*/d' Makefile.config
+sed -i '/.*-gencode.*sm_21.*/d' Makefile.config
+sed -i 's/.*\(-gencode.*sm_30\)/CUDA_ARCH\ :=\ \1/' Makefile.config
+sed -i 's/.*\(BLAS_INCLUDE\).*\/blas/\1\ :=\ \/opt\/OpenBLAS\/include/' Makefile.config
+sed -i 's/.*\(BLAS_LIB\).*\/blas/\1\ :=\ \/opt\/OpenBLAS\/lib/' Makefile.config
+sed -i '/.*python2.7.*/d' Makefile.config
+sed -i "s/.*\(PYTHON_LIBRARIES.*boost_python3\) python3.5m/\1 python${VERSION}m/" Makefile.config
+sed -i "s,.*\(PYTHON_INCLUDE\)\(.*\)\(\/usr\/include\/python3.5m\),\1\2$PYTHON_INCLUDE," Makefile.config
+sed -i "s,.*dist-packages\/numpy.*,\t$NUMPY_DIR," Makefile.config
+sed -i 's/^\(INCLUDE_DIRS.*\)/\1\ \/usr\/include\/hdf5\/serial/' Makefile.config
+sed -i 's/^\(LIBRARY_DIRS.*\)/\1\ \/usr\/lib\/x86_64-linux-gnu\/hdf5\/serial/' Makefile.config
+
+echo
+echo Building Caffe
+echo
+make all -j $(nproc)
+make test -j $(nproc) && make runtest -j $(nproc)
+make pycaffe -j $(nproc)
+
+echo
+echo Finalizing the Installation
+echo
+echo export PYTHONPATH=$(pwd)/python:'$PYTHONPATH' >> ~/.bashrc
+echo 'You need to run `source ~/.bashrc` manually to make pycaffe importable'
