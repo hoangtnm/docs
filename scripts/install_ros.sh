@@ -1,26 +1,29 @@
 #!/usr/bin/env bash
 
-echo "\n Configuring your Ubuntu repositories \n"
-sudo apt-add-repository universe
-sudo apt-add-repository multiverse
-sudo apt-add-repository restricted
-sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
-sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+echo
+echo Setuping sources
+echo
+sudo apt-get update && sudo apt-get -y \
+    install curl gnupg2 lsb-release
+curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
+sudo echo "deb [arch=$(dpkg --print-architecture)] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" > /etc/apt/sources.list.d/ros2-latest.list
 
-echo "\n Installing ros-melodic-desktop-full \n"
-sudo apt-get update && sudo apt-get install -y ros-melodic-desktop-full
+echo
+echo Installing ROS 2 packages
+echo
+sudo apt-get update && sudo apt-get install -y \
+    ros-foxy-desktop python3-argcomplete
 
-echo "\n Initializing rosdep \n"
-sudo rosdep init
-rosdep update
+# echo Initializing rosdep
+# sudo rosdep init
+# rosdep update
 
-echo "\n Environment setup \n"
-echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
-source ~/.bashrc
+echo Environment setup
+echo 'source /opt/ros/melodic/setup.bash' >> ~/.bashrc
 
 if [[ -f ~/.zshrc ]]; then
-    echo "source /opt/ros/melodic/setup.zsh" >> ~/.zshrc
+    echo 'source /opt/ros/melodic/setup.zsh' >> ~/.zshrc
 fi
 
-echo "\n Dependencies for building packages \n"
-sudo apt-get install -y python-rosinstall python-rosinstall-generator python-wstool build-essential
+# echo "\n Dependencies for building packages \n"
+# sudo apt-get install -y python-rosinstall python-rosinstall-generator python-wstool build-essential
