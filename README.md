@@ -12,7 +12,6 @@ This repo includes documents and scripts, which can be used to set up a comprehe
 - [Performing GPU, CPU, and I/O stress testing on Linux](docs/Benchmark.md)
 - [Mounting NTFS Partitions](docs/Partitions.md)
 - [Getting Started With Jetson Nano Developer Kit](docs/Jetson_Nano.md)
-- [Installing Tensorflow from Sources](docs/Build_tensorflow_from_source.md)
 - [OpenSSL Essentials: Working with SSL Certificates, Private Keys and CSRs](docs/openssl.md)
 - [Jupyter cheat sheet](docs/jupyter.md)
 
