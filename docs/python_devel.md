@@ -17,22 +17,30 @@ Sometimes your Linux distribution will not have the latest version of Python, or
 ## Build Python from source
 
 ```bash
-export PYTHON_VERSION=3.7.7
-export PYTHON_DOWNLOAD_URL=https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tgz
+VERSION=3.7.7
+DOWNLOAD_URL=https://www.python.org/ftp/python/$VERSION/Python-$VERSION.tgz
 
 # Install dependencies
-sudo apt update && sudo apt install -y \
-    software-properties-common build-essential \
-    dpkg-dev libssl-dev libbz2-dev libreadline-dev libsqlite3-dev zlib1g-dev \
-    llvm libbz2-dev libncurses5-dev libncursesw5-dev xz-utils \
-    python3-tk tk-dev
+sudo apt-get update && sudo apt-get install -y \
+    software-properties-common build-essential curl wget \
+    libexpat1-dev libssl-dev zlib1g-dev \
+    libncurses5-dev libbz2-dev liblzma-dev \
+    dpkg-dev libreadline-dev libsqlite3-dev \
+    libffi-dev tcl-dev libgdbm-dev bluez libbluetooth-dev libglib2.0-dev \
+    python3 python3-dev libboost-python-dev libboost-thread-dev \
+    python3-tk tk tk-dev
 
-wget "$PYTHON_DOWNLOAD_URL" -O python.tar.tgz
-tar -zxvf python.tar.tgz
-cd Python-$PYTHON_VERSION
-
-./configure --enable-shared --enable-ipv6 --enable-optimizations --enable-loadable-sqlite-extensions
-make -j `nproc`
+wget $DOWNLOAD_URL -O python.tar.tgz
+tar -zxf python.tar.tgz && cd Python-$VERSION
+./configure \
+    --enable-shared \
+    --enable-optimizations \
+    --enable-loadable-sqlite-extensions \
+    --enable-ipv6 \
+    --with-assertions \
+    --with-lto \
+    --with-threads
+make -j $(nproc)
 
 # By default, exec_prefix=/usr/local
 # which is the location of the built interpreter.
@@ -52,7 +60,7 @@ sudo update-alternatives --install /usr/local/python3 python3 /usr/local/bin/pyt
 By default , `pip` is being automatically installed along as Python. But maybe it isn't there for some reason. In this case, you can manually install `pip` using `get-pip`.
 
 ```bash
-# python3 -m pip install --upgrade pip
+# python3 -m pip install -U pip
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python3 get-pip.py
 ```
