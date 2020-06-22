@@ -100,7 +100,7 @@ sudo apt-get install -y \
 #### Hiding Ubuntu Dock <!-- omit in toc -->
 
 ```bash
-# Dock shown on mouse over
+# Dock not shown on mouse over
 gsettings set org.gnome.shell.extensions.dash-to-dock autohide false
 
 # Dock always invisible
