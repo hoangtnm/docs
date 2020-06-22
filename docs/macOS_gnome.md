@@ -83,7 +83,7 @@ After downloading, extracting all fonts to `~/.fonts` directory. Once you have i
 One important thing to make Ubuntu look like macOS most is the Dock.
 There are two ways to accomplish this one:
 
-- `Plank Dock`, which replicate macOS experience most such as `magnification`.
+- `Plank Dock`, which replicates macOS experience most such as `magnification`.
 - `Dash to Dock`, which is a GNOME extension.
 
 > `magnification`: magnify icons when you move the pointer over them.
