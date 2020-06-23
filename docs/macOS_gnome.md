@@ -132,6 +132,6 @@ gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false
 
 ## References
 
-[1] Logix. (). “How to remove or disable ubuntu dock,” [Online]. Available:https://www.linuxuprising.com/2018/08/how-to-remove-or-disable-ubuntu-dock.html. (accessed: 06.22.2020)
+[1] Logix. (). “How to remove or disable ubuntu dock,” [Online]. Available: https://www.linuxuprising.com/2018/08/how-to-remove-or-disable-ubuntu-dock.html. (accessed: 06.22.2020)
 
-[2] Community. (). “How to Make Ubuntu Look Like macOS in 5 Easy Steps,” [Online]. Available:https://itsfoss.com/make-ubuntu-look-like-macos/. (accessed: 06.22.2020)
+[2] Community. (). “How to Make Ubuntu Look Like macOS in 5 Easy Steps,” [Online]. Available: https://itsfoss.com/make-ubuntu-look-like-macos/. (accessed: 06.22.2020)
