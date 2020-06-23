@@ -114,8 +114,10 @@ gsettings set org.gnome.shell.extensions.dash-to-dock intellihide false
 
 ![](../images/basic_plank_preferences.png)
 
-You can enable `magnification` with `Icon Zoom` option.
+You can download a `plank theme`, extract it to `~/.local/share/plank/themes` directory and enable it with `Theme.`
+Moreover, `Icon Zoom` enables macOS like `magnification`.
 
+> [Catalinas-Original](https://www.gnome-look.org/p/1311056/) (2020-06-18) is recommended.
 
 ### Dash to Dock
 
