@@ -28,7 +28,6 @@ echo Refreshing shared library cache
 echo By default, the Protocol Compiler will be installed to /usr/local
 echo
 echo 'export LD_LIBRARY_PATH=/usr/local/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
-source ~/.bashrc
 
 if [[ -f ~/.zshrc ]]; then
 	echo 'export LD_LIBRARY_PATH=/usr/local/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.zshrc
@@ -43,7 +42,3 @@ cd python
 python setup.py build
 python setup.py test
 sudo python setup.py install
-
-echo
-echo The installation completed
-echo

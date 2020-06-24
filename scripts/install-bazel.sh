@@ -15,4 +15,3 @@ chmod +x bazel-$VERSION-installer-linux-x86_64.sh
 
 echo Adding bazel to PATH
 echo 'export PATH=$HOME/bin${PATH:+:${PATH}}' >> ~/.bashrc
-source ~/.bashrc

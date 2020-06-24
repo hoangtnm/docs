@@ -1,57 +1,26 @@
 #!/usr/bin/env bash
 
-PROTOC_VERSION=3.7.1
-ARCHITECTURE="x86_64"
+echo
+echo Downloading the protocol compiler
+echo
 
-echo ""
-echo "************************ Please confirm *******************************"
-echo " Installing Protobuf $PROTOC_VERSION from source may take a long time. "
-echo " Select n to skip the installation or y to install it." 
-read -p " Continue installing Protobuf (y/n) ? " CONTINUE
-if [[ "$CONTINUE" == "y" || "$CONTINUE" == "Y" ]]; then
+VERSION=3.7.1
+PLATFORM=linux-$(arch)
+DOWNLOAD_URL=https://github.com/protocolbuffers/protobuf/releases/download/v$VERSION/protoc-$VERSION-$PLATFORM.zip
 
-	read -p " Select your OS's architecture [x86_64/aarch_64], default is x86_64 " ARCHITECTURE_INPUT
-	if [[ "$ARCHITECTURE_INPUT" != "" ]]; then
-		if [[ "$ARCHITECTURE_INPUT" == "x86_64" || "$ARCHITECTURE_INPUT" == "aarch_64" ]]; then
-			$ARCHITECTURE = $ARCHITECTURE_INPUT
-		else
-			echo "Unsupported architecture!"
-			exit 0
-		fi
-	fi
+sudo apt-get update && sudo apt-get install -y wget
+wget "$DOWNLOAD_URL" -O protoc-$VERSION.zip
+unzip protoc-$VERSION.zip -d protoc-$VERSION
 
-	echo "";
-	echo " Downloading the protocol compiler ";
-	echo "";
-	sudo apt-get update && sudo apt-get install wget
-	export OS="linux"
-	export PLATFORM=$OS-$ARCHITECTURE
-	export PROTOC_DOWNLOAD_URL=https://github.com/protocolbuffers/protobuf/releases/download/v$PROTOC_VERSION/protoc-$PROTOC_VERSION-$PLATFORM.zip
-	wget "$PROTOC_DOWNLOAD_URL" -O protoc-$PROTOC_VERSION.zip
-	unzip protoc-$PROTOC_VERSION.zip \
-		-d protoc-$PROTOC_VERSION
+sudo cp -r protoc-$VERSION /usr/local
+sudo cp -r protoc-$VERSION/include/* /usr/local/include/
 
-	sudo cp -r protoc-$PROTOC_VERSION /usr/local
-	sudo cp -r protoc-$PROTOC_VERSION/include/* /usr/local/include/
+echo Refreshing shared library cache
+echo By default, the Protocol Compiler will be installed to /usr/local
+echo "export PATH=/usr/local/protoc-$VERSION/bin"'${PATH:+:${PATH}}' >> ~/.bashrc
 
-	echo "";
-	echo " Refreshing shared library cache ";
-	echo "By default, the Protocol Compiler will be installed to /usr/local";
-	echo "";
-	echo "export PATH=/usr/local/protoc-$PROTOC_VERSION/bin"'${PATH:+:${PATH}}' >> ~/.bashrc
-	source ~/.bashrc
-
-	if [[ -f ~/.zshrc ]]; then
-		echo "export PATH=/usr/local/protoc-$PROTOC_VERSION/bin"'${PATH:+:${PATH}}' >> ~/.zshrc
-	fi
-
-	sudo ldconfig
-
-	echo "";
-	echo "The installation completed";
-	echo "";
-else
-	echo "";
-	echo "Skipping Protoc installation";
-	echo "";
+if [[ -f ~/.zshrc ]]; then
+	echo "export PATH=/usr/local/protoc-$VERSION/bin"'${PATH:+:${PATH}}' >> ~/.zshrc
 fi
+
+sudo ldconfig
