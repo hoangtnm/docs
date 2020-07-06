@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-echo
-echo Installing dependencies
-echo
-sudo apt-get update && sudo apt-get install -y \
+set -e
+
+echo 'Installing dependencies'
+apt-get update && apt-get install -y \
 	build-essential \
 	libhdf5-serial-dev \
 	libboost-all-dev \
@@ -14,14 +14,10 @@ sudo apt-get update && sudo apt-get install -y \
 	libgoogle-glog-dev \
 	git
 
-echo
-echo Downloading Caffe 'source' code
-echo
+echo 'Downloading Caffe source code'
 git clone -b ssd https://github.com/weiliu89/caffe.git && cd caffe
 
-echo
-echo Configuring Caffe
-echo
+echo 'Configuring Caffe'
 cp Makefile.config.example Makefile.config
 VERSION=$(python3 -V | sed 's/Python\ //' | cut -c1-3)
 PYTHON_INCLUDE=$(which python${VERSION}m)
@@ -41,15 +37,11 @@ sed -i "s,.*dist-packages\/numpy.*,\t$NUMPY_DIR," Makefile.config
 sed -i 's/^\(INCLUDE_DIRS.*\)/\1\ \/usr\/include\/hdf5\/serial/' Makefile.config
 sed -i 's/^\(LIBRARY_DIRS.*\)/\1\ \/usr\/lib\/x86_64-linux-gnu\/hdf5\/serial/' Makefile.config
 
-echo
-echo Building Caffe
-echo
+echo 'Building Caffe'
 make all -j $(nproc)
 make test -j $(nproc) && make runtest -j $(nproc)
 make pycaffe -j $(nproc)
 
-echo
-echo Finalizing the Installation
-echo
-echo export PYTHONPATH=$(pwd)/python:'$PYTHONPATH' >> ~/.bashrc
+echo 'Finalizing the Installation'
+echo "export PYTHONPATH=$(pwd)/python:"'$PYTHONPATH' >> ~/.bashrc
 echo 'You need to run `source ~/.bashrc` manually to make pycaffe importable'

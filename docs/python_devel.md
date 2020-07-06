@@ -17,8 +17,8 @@ Sometimes your Linux distribution will not have the latest version of Python, or
 ## Build Python from source
 
 ```bash
-VERSION=3.7.7
-DOWNLOAD_URL=https://www.python.org/ftp/python/$VERSION/Python-$VERSION.tgz
+VERSION='3.7.7'
+DOWNLOAD_URL="https://www.python.org/ftp/python/$VERSION/Python-${VERSION}.tgz"
 
 # Install dependencies
 sudo apt-get update && sudo apt-get install -y \
@@ -28,9 +28,9 @@ sudo apt-get update && sudo apt-get install -y \
     dpkg-dev libreadline-dev libsqlite3-dev \
     libffi-dev tcl-dev libgdbm-dev bluez libbluetooth-dev libglib2.0-dev \
     python3 python3-dev libboost-python-dev libboost-thread-dev \
-    python3-tk tk tk-dev
+    python3-tk tk-dev
 
-wget $DOWNLOAD_URL -O python.tar.tgz
+wget -O python.tar.tgz "${DOWNLOAD_URL}"
 tar -zxf python.tar.tgz && cd Python-$VERSION
 ./configure \
     --enable-shared \

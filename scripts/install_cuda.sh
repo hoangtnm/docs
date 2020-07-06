@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
-CUDA_VERSION=10.1.243
-CUDNN_VERSION=7.6.5.32
-NCCL_VERSION=2.7.3
+set -e
+
+CUDA_VERSION='10.1.243'
+CUDNN_VERSION='7.6.5.32'
+NCCL_VERSION='2.7.3'
 
 sudo apt-get purge cuda* cuda-repo-ubuntu* nvidia-machine-learning-repo-ubuntu*
 sudo apt-get update && sudo apt-get install -y wget ca-certificates gcc g++
@@ -11,7 +13,7 @@ wget https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu
 sudo dpkg -i nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
 sudo apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/7fa2af80.pub
 
-echo The following NEW packages will be installed:
+echo 'The following NEW packages will be installed:'
 echo "  CUDA Toolkit: $CUDA_VERSION"
 echo "  cuDNN       : $CUDNN_VERSION"
 echo "  NCCL        : $NCCL_VERSION"
