@@ -42,6 +42,11 @@ make all -j $(nproc)
 make test -j $(nproc) && make runtest -j $(nproc)
 make pycaffe -j $(nproc)
 
-echo 'Finalizing the Installation'
-echo "export PYTHONPATH=$(pwd)/python:"'$PYTHONPATH' >> ~/.bashrc
-echo 'You need to run `source ~/.bashrc` manually to make pycaffe importable'
+#
+# Environment setup
+#
+
+shell="$0"
+
+echo "export PYTHONPATH=$(pwd)/python:"'$PYTHONPATH' >> ~/."${shell}rc"
+echo "You need to run source ~/.${shell}rc manually to make pycaffe importable"

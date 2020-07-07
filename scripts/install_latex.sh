@@ -13,13 +13,10 @@ echo 'Running the installer'
 mount -t iso9660 -o ro,loop,noauto $CURR_DIR/texlive.iso /mnt
 /mnt/install-tl
 
-echo '[... messages omitted ...]'
-echo 'Enter command: i'
-echo '[... when done, see below for post-install ...]'
+#
+# Environment setup
+#
 
-echo 'Post-installing: setting PATH'
-echo 'export PATH=/usr/local/texlive/2020/bin/x86_64-linux${PATH:+:${PATH}}' >> ~/.bashrc
+shell="$0"
 
-if [[ -f ~/.zshrc ]]; then
-	echo 'export PATH=/usr/local/texlive/2020/bin/x86_64-linux${PATH:+:${PATH}}' >> ~/.zshrc
-fi
+echo 'export PATH=/usr/local/texlive/2020/bin/x86_64-linux${PATH:+:${PATH}}' >> ~/."${shell}rc"

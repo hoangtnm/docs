@@ -4,27 +4,37 @@ set -e
 
 VERSION='2.2'
 
-echo 'Uninstalling pip installation'
-sudo pip3 uninstall tensorflow*
+# Uninstalling pip installation
+python3 -m pip uninstall tensorflow*
 
-echo 'Installing dependencies'
-apt-get update && apt-get install -y build-essential git
+#
+# Installing dependencies
+#
+
+apt-get update && apt-get install -y \
+	build-essential git
 python3 -m pip install -U \
 	pip six numpy wheel setuptools mock \
 	keras_applications keras_preprocessing
 
 echo 'Downloading TensorFlow source code'
-git clone -b "r${VERSION}" https://github.com/tensorflow/tensorflow.git
+git clone -b "r${VERSION}" --depth 1 https://github.com/tensorflow/tensorflow.git
 cd tensorflow
 
-echo 'Configuring the build'
-./configure
+# Configure the build
+# See details at
+# https://github.com/tensorflow/tensorflow/blob/master/tensorflow/tools/dockerfiles/tests/build-gpu.sh
 
-echo 'Making the TensorFlow package builder with GPU support'
-bazel build -c opt --copt=-march=native --cxxopt="-D_GLIBCXX_USE_CXX11_ABI=0" --config=cuda //tensorflow/tools/pip_package:build_pip_package
+export TF_NEED_GCP=1
+export TF_NEED_HDFS=1
+export TF_NEED_S3=1
+export TF_NEED_CUDA=1
+export TF_NEED_TENSORRT=0
+yes "" | python3 configure.py
 
-echo 'Building the package'
+# Build TensorFlow package with GPU support
+bazel build --copt=-march=native --cxxopt="-D_GLIBCXX_USE_CXX11_ABI=0" --config=opt --config=v2 tensorflow/tools/pip_package:build_pip_package
 ./bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
 
-echo 'The built package is located at /tmp/tensorflow_pkg'
-echo 'Please run sudo `pip3 install -U /tmp/tensorflow_pkg/*.whl` to install the package'
+# Install the built package
+python3 -m pip --no-cache-dir install --upgrade /tmp/tensorflow_pkg/*.whl

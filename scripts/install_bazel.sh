@@ -13,5 +13,10 @@ chmod +x bazel_installer
 ./bazel_installer
 rm bazel_installer
 
-echo 'Adding bazel to PATH'
-echo "export PATH=$HOME/bin"'${PATH:+:${PATH}}' >> ~/.bashrc
+#
+# Environment setup
+#
+
+shell="$0"
+
+echo "export PATH=$HOME/bin"'${PATH:+:${PATH}}' >> ~/."${shell}rc"
