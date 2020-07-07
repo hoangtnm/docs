@@ -4,16 +4,16 @@
 
 - [Recommended System Requirements](#recommended-system-requirements)
 - [Installation Guide](#installation-guide)
-  - [NVIDIA GPU Driver](#nvidia-gpu-driver)
-  - [NVIDIA CUDA Toolkit 10.1](#nvidia-cuda-toolkit-101)
-  - [NVIDIA cuDNN](#nvidia-cudnn)
-  - [NVIDIA NCCL](#nvidia-nccl)
+	- [NVIDIA GPU Driver](#nvidia-gpu-driver)
+	- [NVIDIA CUDA Toolkit 10.1](#nvidia-cuda-toolkit-101)
+	- [NVIDIA cuDNN](#nvidia-cudnn)
+	- [NVIDIA NCCL](#nvidia-nccl)
 - [Libraries and Packages](#libraries-and-packages)
-  - [Python and Anaconda Individual Edition](#python-and-anaconda-individual-edition)
-  - [TensorFlow 2](#tensorflow-2)
-  - [PyTorch](#pytorch)
+	- [Python and Anaconda Individual Edition](#python-and-anaconda-individual-edition)
+	- [TensorFlow 2](#tensorflow-2)
+	- [PyTorch](#pytorch)
 - [Tips and Tricks](#tips-and-tricks)
-  - [Increasing Swap Size on Ubuntu](#increasing-swap-size-on-ubuntu)
+	- [Increasing Swap Size on Ubuntu](#increasing-swap-size-on-ubuntu)
 - [References](#references)
 
 ## Recommended System Requirements
@@ -104,7 +104,7 @@ CUDNN_VERSION='7.6.5.32-1'
 echo 'deb https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64 /' > /etc/apt/sources.list.d/nvidia-ml.list
 
 sudo apt-get update && sudo apt-get install -y \
-  libcudnn7=${CUDNN_VERSION}+cuda${CUDA} \s
+	libcudnn7=${CUDNN_VERSION}+cuda${CUDA} \
 	libcudnn7-dev=${CUDNN_VERSION}+cuda${CUDA}
 sudo apt-mark hold libcudnn7
 ```
@@ -117,7 +117,7 @@ The NVIDIA Collective Communications Library (NCCL) implements multi-GPU and mul
 NCCL_VERSION='2.7.3-1'
 
 sudo apt-get install -y \
-  libnccl2=${NCCL_VERSION}+cuda${CUDA} \
+	libnccl2=${NCCL_VERSION}+cuda${CUDA} \
 	libnccl-dev=${NCCL_VERSION}+cuda${CUDA}
 sudo apt-mark hold libnccl2
 ```
