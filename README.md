@@ -18,7 +18,7 @@ This repo includes documents and scripts, which can be used to set up a comprehe
 
 ## Scripts
 
-- [Installing NVIDIA Driver](scripts/install_nvidiadriver.sh)
+- [Installing NVIDIA Driver](scripts/install_nvidia_driver.sh)
 - [Installing CUDA Toolkit 10.1](scripts/install_cuda.sh)
 - [Installing Python 3](scripts/install_python3.sh)
 - [Installing Protobuf](scripts/install_protoc.sh)
