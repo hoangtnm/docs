@@ -46,10 +46,11 @@ mv <extracted>/<theme>/<folder> ~/.themes
 
 Here are suggested icon sets that you can download from Gnome-look website:
 
+- [Cupertino iCons Collection](https://www.gnome-look.org/s/Gnome/p/1102582)
 - [McMojave-circle](https://www.gnome-look.org/p/1305429/)
 - [Mojave CT icons](https://www.gnome-look.org/p/1210856/)
 
-> `Mojave CT icons` (2020-05-24) and `McMojave-circle` (2020-06-13) are recommended.
+> `Cupertino iCons Collection Original` (2020-07-16) and `McMojave-circle` (2020-07-02) are recommended.
 
 ```bash
 # If using McMojave-circle
