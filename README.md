@@ -15,6 +15,7 @@ This repo includes documents and scripts, which can be used to set up a comprehe
 - [OpenSSL Essentials: Working with SSL Certificates, Private Keys and CSRs](docs/openssl.md)
 - [Jupyter cheat sheet](docs/jupyter.md)
 - [Making Ubuntu Look Like macOS](docs/macOS_gnome.md)
+- [WireGuard VPN](docs/wireguard.md)
 
 ## Scripts
 
