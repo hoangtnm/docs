@@ -25,7 +25,7 @@ echo 'deb https://developer.download.nvidia.com/compute/machine-learning/repos/u
 apt-get update && apt-get install -y --no-install-recommends \
 	build-essential \
 	cuda-compat-10-1 \
-	libcublas10=10.2.1.243-1 \ 
+	libcublas10=10.2.1.243-1 \
 	libcublas-dev=10.2.1.243-1 \
 	cuda-nvrtc-${CUDA/./-} \
 	cuda-nvrtc-dev-${CUDA/./-} \
