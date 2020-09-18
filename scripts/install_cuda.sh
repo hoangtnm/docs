@@ -19,7 +19,7 @@ echo 'deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x8
 echo 'deb https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64 /' > /etc/apt/sources.list.d/nvidia-ml.list
 
 #
-# Install CUDA, cuDNN, NCCL
+# Install CUDA, cuDNN, and NCCL
 #
 
 apt-get update && apt-get install -y --no-install-recommends \
@@ -41,18 +41,22 @@ apt-get update && apt-get install -y --no-install-recommends \
 	cuda-libraries-dev-${CUDA/./-} \
 	cuda-minimal-build-${CUDA/./-} \
 	cuda-nvtx-${CUDA/./-} \
+	cuda-nvprof-${CUDA/./-} \
+	cuda-nvprof-${CUDA/./-} \
+	cuda-npp-${CUDA/./-} \
+	cuda-npp-dev-${CUDA/./-} \
 	libnccl2=${NCCL_VERSION}+cuda${CUDA} \
 	libnccl-dev=${NCCL_VERSION}+cuda${CUDA} \
 	libcudnn7=${CUDNN_VERSION}+cuda${CUDA} \
-	libcudnn7-dev=${CUDNN_VERSION}+cuda${CUDA}
-apt-mark hold libcudnn7 libnccl2
+	libcudnn7-dev=${CUDNN_VERSION}+cuda${CUDA} \
+	&& ln -s /usr/local/cuda-10.1 /usr/local/cuda \
+	&& apt-mark hold libcublas10 libcublas-dev libcudnn7 libnccl2
 
 #
 # Environment setup
 #
 
 shell="$0"
-
 echo 'export PATH=/usr/local/cuda-10.1/bin${PATH:+:${PATH}}' >> ~/."${shell}rc"
 echo 'export LIBRARY_PATH=/usr/local/cuda-10.1/lib64/stubs${LIBRARY_PATH:+:${LIBRARY_PATH}}' >> ~/."${shell}rc"
 echo 'export LD_LIBRARY_PATH=/usr/local/cuda-10.1/lib64:/usr/local/cuda-10.1/extras/CUPTI/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/."${shell}rc"

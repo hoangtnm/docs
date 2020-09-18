@@ -3,7 +3,7 @@
 set -e
 
 echo 'Disabling Nouveau'
-cat <<EOF >> /etc/modprobe.d/disable-nouveau.conf
+cat <<EOF > /etc/modprobe.d/disable-nouveau.conf
 blacklist nouveau
 options nouveau modeset=0
 EOF

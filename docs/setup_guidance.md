@@ -33,8 +33,10 @@ Since Ubuntu 20.04 LST, NVIDIA hardware has been supported out of the box, so yo
 It is recommended to create a new configuration file, for example, `/etc/modprobe.d/disable-nouveau.conf`, rather than editing one of the existing files, such as `/etc/modprobe.d/blacklist.conf`.
 
 ```
+cat <<EOF > /etc/modprobe.d/disable-nouveau.conf
 blacklist nouveau
 options nouveau modeset=0
+EOF
 ```
 
 Regenerate the kernel initramfs:
@@ -80,7 +82,13 @@ sudo apt-get update && sudo apt-get install -y --no-install-recommends \
 	cuda-libraries-${CUDA/./-} \
 	cuda-libraries-dev-${CUDA/./-} \
 	cuda-minimal-build-${CUDA/./-} \
-	cuda-nvtx-${CUDA/./-}
+	cuda-nvtx-${CUDA/./-} \
+	cuda-nvprof-${CUDA/./-} \
+	cuda-npp-dev-${CUDA/./-} \
+	libnccl2=${NCCL_VERSION}+cuda${CUDA} \
+	libnccl-dev=${NCCL_VERSION}+cuda${CUDA} \
+	libcudnn7=${CUDNN_VERSION}+cuda${CUDA} \
+	&& apt-mark hold libcublas10 libcublas-dev
 
 echo 'export PATH=/usr/local/cuda-10.1/bin${PATH:+:${PATH}}' >> ~/.bashrc
 echo 'export LD_LIBRARY_PATH=/usr/local/cuda-10.1/lib64:/usr/local-10.1/cuda/extras/CUPTI/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
