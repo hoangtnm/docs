@@ -9,7 +9,7 @@ The [dnscrypt-proxy](https://dnscrypt.info) 2.0+ supports DoH out of the box. It
 ```bash
 sudo apt-get install resolvconf dnscrypt-proxy
 sudo sed -i 's/^\(server_names\).*/\1\ =\ '"['cloudflare',\ 'cloudflare-ipv6']/" '/etc/dnscrypt-proxy/dnscrypt-proxy.toml'
-sudo reboot
+sudo systemctl restart resolvconf
 ```
 
 ## References
