@@ -35,7 +35,7 @@ Since the focus is on making GNOME look like macOS, you should choose a macOS li
 - [Catalina](https://www.pling.com/p/1226871)
 - [McMojave](https://www.pling.com/p/1275087)
 
-> `McMojave-dark` (2020-06-11) is recommended.
+> `McMojave-dark` (2020-10-11) is recommended.
 
 ```bash
 mkdir ~/.themes
@@ -50,7 +50,7 @@ Here are suggested icon sets that you can download from Gnome-look website:
 - [McMojave-circle](https://www.gnome-look.org/p/1305429/)
 - [Mojave CT icons](https://www.gnome-look.org/p/1210856/)
 
-> `Cupertino iCons Collection Original` (2020-07-16) and `McMojave-circle` (2020-07-02) are recommended.
+> `Cupertino iCons Collection Original` (2020-10-2) and `McMojave-circle` (2020-07-02) are recommended.
 
 ```bash
 # If using McMojave-circle
