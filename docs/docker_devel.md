@@ -6,6 +6,7 @@
 - [Post-installation steps for Linux](#post-installation-steps-for-linux)
   - [Manage Docker as a non-root user](#manage-docker-as-a-non-root-user)
   - [Configure Docker to start on boot](#configure-docker-to-start-on-boot)
+  - [Daemon configuration file](#daemon-configuration-file)
 - [NVIDIA Container Runtime for Docker](#nvidia-container-runtime-for-docker)
   - [Quickstart](#quickstart)
   - [Usage](#usage)
@@ -62,6 +63,33 @@ docker run hello-world
 
 ```
 sudo systemctl enable docker
+```
+
+### Daemon configuration file
+
+The default location of the configuration file on Linux is `/etc/docker/daemon.json`.
+
+```json
+{
+  "data-root": "/var/lib/docker",
+  "default-runtime": "nvidia",
+  "runtimes": {
+    "nvidia": {
+      "path": "nvidia-container-runtime",
+      "runtimeArgs": []
+    }
+  }
+}
+```
+
+- `data-root`: Root directory of persistent Docker state.
+- `default-runtime`: Default OCI runtime for containers (default `runc`).
+
+Everytime the configuration file is updated, the following commands will need being executed:
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl restart docker
 ```
 
 ## NVIDIA Container Runtime for Docker
