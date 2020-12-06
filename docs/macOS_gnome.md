@@ -50,7 +50,7 @@ Here are suggested icon sets that you can download from Gnome-look website:
 - [McMojave-circle](https://www.gnome-look.org/p/1305429/)
 - [Mojave CT icons](https://www.gnome-look.org/p/1210856/)
 
-> `Cupertino iCons Collection Original` (2020-10-2) and `McMojave-circle` (2020-07-02) are recommended.
+> `Cupertino iCons Collection Original` (2020-11-25) and `McMojave-circle` are recommended.
 
 ```bash
 # If using McMojave-circle
