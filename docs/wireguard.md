@@ -34,7 +34,7 @@ sudo apt-get install wireguard
 ```bash
 umask 077
 ENDPOINT=10.0.0.1/24
-LISTEN_PORT=1195
+LISTEN_PORT=443
 
 # ufw allow ${LISTEN_PORT}/udp
 # ufw enable
@@ -57,7 +57,7 @@ ip link set wg0 up
 PEER_PUBKEY="$(cat public)"
 PEER_ENDPOINT_IP='10.0.0.2'
 PEER_IP='192.168.1.2'
-PEER_PORT='1195'
+PEER_PORT='443'
 
 wg set wg0 peer ${PEER_PUBKEY} allowed-ips ${PEER_ENDPOINT_IP}/32 endpoint ${PEER_IP}:${PEER_PORT} persistent-keepalive 25
 ```
@@ -67,7 +67,7 @@ wg set wg0 peer ${PEER_PUBKEY} allowed-ips ${PEER_ENDPOINT_IP}/32 endpoint ${PEE
 ```bash
 umask 077
 ENDPOINT=10.0.0.2/24
-LISTEN_PORT=1195
+LISTEN_PORT=443
 
 # ufw allow ${LISTEN_PORT}/udp
 # ufw enable
@@ -90,7 +90,7 @@ ip link set wg0 up
 PEER_PUBKEY="$(cat public)"
 PEER_ENDPOINT_IP='10.0.0.1'
 PEER_IP='192.168.1.1'
-PEER_PORT='1195'
+PEER_PORT='443'
 
 wg set wg0 peer ${PEER_PUBKEY} allowed-ips ${PEER_ENDPOINT_IP}/32 endpoint ${PEER_IP}:${PEER_PORT} persistent-keepalive 25
 ```
