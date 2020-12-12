@@ -107,13 +107,13 @@ However this behavior can be changed by modifying `~/.bashrc`, `~/.profile`, or 
 The NVIDIA CUDA® Deep Neural Network library (cuDNN) is a GPU-accelerated library of primitives for deep neural networks. cuDNN provides highly tuned implementations for standard routines such as forward and backward convolution, pooling, normalization, and activation layers
 
 ```bash
-CUDNN_VERSION='7.6.5.32-1'
+CUDNN_VERSION='7.6.5.32'
 
 echo 'deb https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64 /' > /etc/apt/sources.list.d/nvidia-ml.list
 
 sudo apt-get update && sudo apt-get install -y \
-	libcudnn7=${CUDNN_VERSION}+cuda${CUDA} \
-	libcudnn7-dev=${CUDNN_VERSION}+cuda${CUDA}
+	libcudnn7=${CUDNN_VERSION}-1+cuda${CUDA} \
+	libcudnn7-dev=${CUDNN_VERSION}-1+cuda${CUDA}
 sudo apt-mark hold libcudnn7
 ```
 
@@ -122,11 +122,11 @@ sudo apt-mark hold libcudnn7
 The NVIDIA Collective Communications Library (NCCL) implements multi-GPU and multi-node collective communication primitives that are performance optimized for NVIDIA GPUs. NCCL provides routines such as all-gather, all-reduce, broadcast, reduce, reduce-scatter, that are optimized to achieve high bandwidth and low latency over PCIe and NVLink high-speed interconnect.
 
 ```bash
-NCCL_VERSION='2.7.3-1'
+NCCL_VERSION='2.7.8'
 
 sudo apt-get install -y \
-	libnccl2=${NCCL_VERSION}+cuda${CUDA} \
-	libnccl-dev=${NCCL_VERSION}+cuda${CUDA}
+	libnccl2=${NCCL_VERSION}-1+cuda${CUDA} \
+	libnccl-dev=${NCCL_VERSION}-1+cuda${CUDA}
 sudo apt-mark hold libnccl2
 ```
 

@@ -14,7 +14,7 @@ ENV CUDA_PKG_VERSION 10-1=$CUDA_VERSION-1
 ENV CUDNN_VERSION 7.6.5.32
 LABEL com.nvidia.cudnn.version="${CUDNN_VERSION}"
 
-ENV NCCL_VERSION 2.4.8
+ENV NCCL_VERSION 2.7.8
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     cuda-cudart-$CUDA_PKG_VERSION \
