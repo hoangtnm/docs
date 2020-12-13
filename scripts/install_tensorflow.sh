@@ -23,8 +23,9 @@ cd tensorflow
 # https://github.com/tensorflow/tensorflow/blob/master/tensorflow/tools/dockerfiles/tests/build-gpu.sh
 export TF_CUDA_VERSION=10.2
 export TF_CUDA_COMPUTE_CAPABILITIES="3.5,6.1,7.0,7.5,8.6"
-export TF_CUDA_PATHS=/usr/local/cuda-10.2
-export TF_CUDNN_VERSION=7.6
+export TF_CUDA_PATHS="/usr/local/cuda-10.2,/usr/lib/x86_64-linux-gnu,/usr/include"
+export TF_CUDNN_VERSION=7
+export TF_NCCL_VERSION=2
 export TF_NEED_GCP=0
 export TF_NEED_HDFS=0
 export TF_NEED_S3=0
