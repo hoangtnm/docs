@@ -65,10 +65,10 @@ apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/machine-le
 echo 'deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64 /' > /etc/apt/sources.list.d/cuda.list
 
 sudo apt-get update && sudo apt-get install -y --no-install-recommends \
-	build-essential \
-	cuda-cudart-11-0=11.0.221-1 \
-	cuda-compat-11-0 \
-	cuda-nvml-dev-11-0=11.0.167-1 \
+  build-essential \
+  cuda-cudart-11-0=11.0.221-1 \
+  cuda-compat-11-0 \
+  cuda-nvml-dev-11-0=11.0.167-1 \
   cuda-command-line-tools-11-0=11.0.3-1 \
   cuda-nvprof-11-0=11.0.221-1 \
   libnpp-dev-11-0=11.1.0.245-1 \
@@ -77,7 +77,7 @@ sudo apt-get update && sudo apt-get install -y --no-install-recommends \
   libcublas-dev-11-0=11.2.0.252-1 \
   libcusparse-11-0=11.1.1.245-1 \
   libcusparse-dev-11-0=11.1.1.245-1 \
-	cuda-libraries-11-0=11.0.3-1 \
+  cuda-libraries-11-0=11.0.3-1 \
   libnpp-11-0=11.1.0.245-1 \
   cuda-nvtx-11-0=11.0.167-1 \
   libcublas-11-0=11.2.0.252-1
@@ -106,8 +106,8 @@ CUDNN_VERSION='8.0.4.30'
 echo 'deb https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64 /' > /etc/apt/sources.list.d/nvidia-ml.list
 
 sudo apt-get update && sudo apt-get install -y \
-	libcudnn8=${CUDNN_VERSION}-1+cuda${CUDA} \
-	libcudnn8-dev=${CUDNN_VERSION}-1+cuda${CUDA}
+  libcudnn8=${CUDNN_VERSION}-1+cuda${CUDA} \
+  libcudnn8-dev=${CUDNN_VERSION}-1+cuda${CUDA}
 sudo apt-mark hold libcudnn8 libcudnn7-dev
 ```
 
@@ -120,8 +120,8 @@ NCCL provides routines such as all-gather, all-reduce, broadcast, reduce, reduce
 NCCL_VERSION='2.8.3'
 
 sudo apt-get install -y \
-	libnccl2=${NCCL_VERSION}-1+cuda${CUDA} \
-	libnccl-dev=${NCCL_VERSION}-1+cuda${CUDA}
+  libnccl2=${NCCL_VERSION}-1+cuda${CUDA} \
+  libnccl-dev=${NCCL_VERSION}-1+cuda${CUDA}
 sudo apt-mark hold libnccl2 libnccl-dev
 ```
 
