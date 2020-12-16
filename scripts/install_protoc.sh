@@ -2,7 +2,7 @@
 
 set -e
 
-VERSION=3.7.1
+VERSION=3.13.0
 PLATFORM="linux-$(arch)"
 DOWNLOAD_URL="https://github.com/protocolbuffers/protobuf/releases/download/v${VERSION}/protoc-${VERSION}-${PLATFORM}.zip"
 
