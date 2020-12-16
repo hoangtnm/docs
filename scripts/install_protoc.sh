@@ -13,7 +13,7 @@ unzip "protoc-${VERSION}.zip" -d "protoc-${VERSION}"
 
 echo 'Installing Protocol Compiler'
 cp protoc-${VERSION}/bin/* /usr/local/bin
-cp protoc-${VERSION}/include/* /usr/local/include
+cp -r protoc-${VERSION}/include/* /usr/local/include
 
 echo 'Cleaning intermediate files'
 rm -r protoc-${VERSION}*
