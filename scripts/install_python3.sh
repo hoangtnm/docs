@@ -4,7 +4,7 @@
 
 set -e
 
-VERSION="3.8.5"
+VERSION="3.7.9"
 DOWNLOAD_URL="https://www.python.org/ftp/python/${VERSION}/Python-${VERSION}.tgz"
 
 echo "Downloading Python ${VERSION} source code"
@@ -31,8 +31,8 @@ cd "Python-${VERSION}"
 make -j $(nproc)
 make altinstall
 
-update-alternatives --install /usr/local/bin/python python /usr/local/bin/python3.8 38
-update-alternatives --install /usr/local/bin/python3 python3 /usr/local/bin/python3.8 38
+update-alternatives --install /usr/local/bin/python python /usr/local/bin/python3.7 37
+update-alternatives --install /usr/local/bin/python3 python3 /usr/local/bin/python3.7 37
 ldconfig
 
 echo 'Installing the latest version of pip3'
