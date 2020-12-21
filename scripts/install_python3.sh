@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Build Python 3 from source and install it.
-# Usage: install_python3 [version]
+# Usage: install_python3
 
 set -e
 
