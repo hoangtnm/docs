@@ -7,7 +7,7 @@ help:
 	@echo "  make driver - Install NVIDIA driver"
 	@echo "  make bazel - Install Bazel"
 	@echo "  make cmake - Install CMake"
-	@echo "  make python3 - Install Python 3.7.7"
+	@echo "  make python3 - Install Python 3.8"
 	@echo "  make cuda - Install CUDA Toolkit 10.1, cuDNN 7.6 and NCCL 2.7"
 	@echo "  make intelmkl - Install Intel MKL"
 	@echo "  make openblas - Install OpenBLAS"
