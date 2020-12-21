@@ -2,7 +2,7 @@
 
 set -e
 
-VERSION='1.18.1'
+VERSION='1.19.2'
 DOWNLOAD_URL="https://github.com/numpy/numpy/archive/v${VERSION}.zip"
 
 echo "Installing Numpy ${VERSION}"
@@ -14,10 +14,12 @@ pip3 uninstall enum34
 echo 'Downloading Numpy source code'
 wget -O numpy.zip "${DOWNLOAD_URL}"
 unzip numpy.zip && cd "numpy-${VERSION}"
-echo '[openblas]' >> site.cfg
-echo 'libraries = openblas' >> site.cfg
-echo 'library_dirs = /opt/OpenBLAS/lib' >> site.cfg
-echo 'include_dirs = /opt/OpenBLAS/include' >> site.cfg
+cat <<EOF > site.cfg
+[openblas]
+libraries = openblas
+library_dirs = /opt/OpenBLAS/lib
+include_dirs = /opt/OpenBLAS/include
+EOF
 
 echo 'Validating the build'
 python setup.py config

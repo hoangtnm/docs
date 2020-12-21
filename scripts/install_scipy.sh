@@ -14,10 +14,12 @@ wget -O scipy.zip "${DOWNLOAD_URL}"
 unzip scipy.zip && cd "scipy-${VERSION}"
 
 echo 'Validating the build'
-echo '[openblas]' >> site.cfg
-echo 'libraries = openblas' >> site.cfg
-echo 'library_dirs = /opt/OpenBLAS/lib' >> site.cfg
-echo 'include_dirs = /opt/OpenBLAS/include' >> site.cfg
+cat <<EOF > site.cfg
+[openblas]
+libraries = openblas
+library_dirs = /opt/OpenBLAS/lib
+include_dirs = /opt/OpenBLAS/include
+EOF
 python setup.py config
 
 echo 'Installing Scipy'
