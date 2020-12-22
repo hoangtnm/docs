@@ -14,9 +14,9 @@ sudo apt-get update && sudo apt-get install -y \
 sudo pip3 install ninja pyyaml typing_extensions \
     cffi future six requests dataclasses
 
-git clone --depth=1 -b $"{VERSION}" v --recursive https://github.com/pytorch/pytorch
+git clone --depth 1 -b "${VERSION}" --recursive https://github.com/pytorch/pytorch
 cd pytorch
-git submodule update --remote third_party/protobuf
+# git submodule update --remote third_party/protobuf
 
 export MAX_JOBS=3
 export USE_CUDA=0
@@ -33,7 +33,7 @@ export NO_QNNPACK=1
 export ONNX_ML=1
 
 python3 setup.py clean --all
-sudo -E python3 setup.py build
+python3 setup.py build
 sudo -E python3 setup.py install
 sudo -E python3 setup.py bdist_wheel
 # pip install dist/*.whl

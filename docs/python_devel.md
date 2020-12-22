@@ -17,7 +17,7 @@ Sometimes your Linux distribution will not have the latest version of Python, or
 ## Build Python from source
 
 ```bash
-VERSION='3.7.7'
+VERSION='3.7.9'
 DOWNLOAD_URL="https://www.python.org/ftp/python/$VERSION/Python-${VERSION}.tgz"
 
 # Install dependencies
@@ -38,8 +38,7 @@ tar -zxf python.tar.tgz && cd Python-$VERSION
     --enable-loadable-sqlite-extensions \
     --enable-ipv6 \
     --with-assertions \
-    --with-lto \
-    --with-threads
+    --with-lto
 make -j $(nproc)
 
 # By default, exec_prefix=/usr/local
@@ -53,16 +52,15 @@ make -j $(nproc)
 # https://docs.python.org/3/using/unix.html#building-python
 sudo make altinstall
 
-sudo update-alternatives --install /usr/local/python python /usr/local/bin/python3.7 30
-sudo update-alternatives --install /usr/local/python3 python3 /usr/local/bin/python3.7 30
+sudo update-alternatives --install /usr/local/bin/python python /usr/local/bin/python3.7 37
+sudo update-alternatives --install /usr/local/bin/python3 python3 /usr/local/bin/python3.7 37
 ```
 
 By default , `pip` is being automatically installed along as Python. But maybe it isn't there for some reason. In this case, you can manually install `pip` using `get-pip`.
 
 ```bash
 # python3 -m pip install -U pip
-curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-python3 get-pip.py
+curl "https://bootstrap.pypa.io/get-pip.py" | python
 ```
 
 ## Manage Python environment for machine learning and data science

@@ -26,8 +26,7 @@ cd "Python-${VERSION}"
 	--enable-loadable-sqlite-extensions \
 	--enable-ipv6 \
 	--with-assertions \
-	--with-lto \
-	--with-threads
+	--with-lto
 make -j $(nproc)
 make altinstall
 
