@@ -32,8 +32,9 @@ export NO_NNPACK=1
 export NO_QNNPACK=1
 export ONNX_ML=1
 
-python3 setup.py clean --all
+# python3 setup.py clean --all
 python3 setup.py build
-sudo -E python3 setup.py install
-sudo -E python3 setup.py bdist_wheel
-# pip install dist/*.whl
+# sudo -E python3 setup.py install
+# sudo -E python3 setup.py bdist_wheel
+python3 setup.py bdist_wheel
+pip3 install dist/*.whl
