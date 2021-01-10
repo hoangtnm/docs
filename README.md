@@ -17,6 +17,7 @@ This repo includes documents and scripts, which can be used to set up a comprehe
 - [Making Ubuntu Look Like macOS](docs/macOS_gnome.md)
 - [WireGuard VPN](docs/wireguard.md)
 - [Running a DNS over HTTPS Client](docs/doh.md)
+- [Set Up Vim for Programming](docs/vim.md)
 
 ## Scripts
 
