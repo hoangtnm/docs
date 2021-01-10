@@ -35,7 +35,7 @@ Since the focus is on making GNOME look like macOS, you should choose a macOS li
 - [Catalina](https://www.pling.com/p/1226871)
 - [McMojave](https://www.pling.com/p/1275087)
 
-> `McMojave-dark` (2020-10-11) is recommended.
+> `McMojave-dark` (2020-12-31) is recommended.
 
 ```bash
 mkdir ~/.themes
