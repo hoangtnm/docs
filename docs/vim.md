@@ -4,32 +4,43 @@
 
 - [Overview](#overview)
 - [Installation](#installation)
-- [Vundle Plugin Manager](#vundle-plugin-manager)
+  - [Vim Editor](#vim-editor)
+  - [Vundle Plugin Manager](#vundle-plugin-manager)
 - [Key Mappings](#key-mappings)
 - [References](#references)
 
 ## Overview
 
-Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. This document will describe how to set up Vim as powerful environment for programming such as Python.
+Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient.
+This document will describe how to set up Vim as a powerful environment for programming such as Python.
 
 ## Installation
+
+### Vim Editor
 
 ```bash
 sudo apt-get update && sudo apt-get install -y \
     git vim fonts-powerline
 ```
 
-## Vundle Plugin Manager
+### Vundle Plugin Manager
 
 [Vundle](https://github.com/VundleVim/Vundle.vim) is short for _Vim_ bundle
-and is a [Vim](http://www.vim.org/) plugin manager.
+and is a [Vim](http://www.vim.org/) plugin manager. Vundle enables users to:
+
+- keep track of and [configure](https://github.com/VundleVim/Vundle.vim/blob/v0.10.2/doc/vundle.txt#L126-L233) your plugins right in the `.vimrc`
+- [install](https://github.com/VundleVim/Vundle.vim/blob/v0.10.2/doc/vundle.txt#L234-L254) configured plugins (a.k.a. scripts/bundle)
+- [update](https://github.com/VundleVim/Vundle.vim/blob/v0.10.2/doc/vundle.txt#L255-L265) configured plugins
+- [search](https://github.com/VundleVim/Vundle.vim/blob/v0.10.2/doc/vundle.txt#L266-L295) by name all available [Vim scripts](http://vim-scripts.org/vim/scripts.html)
+- [clean](https://github.com/VundleVim/Vundle.vim/blob/v0.10.2/doc/vundle.txt#L303-L318) unused plugins up
+- run the above actions in a _single keypress_ with [interactive mode](https://github.com/VundleVim/Vundle.vim/blob/v0.10.2/doc/vundle.txt#L319-L360)
 
 ```bash
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 cat <<EOF > ~/.vimrc
-set nocompatible              " required
-filetype off                  " required
+set nocompatible                        " required
+filetype off                            " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -53,42 +64,39 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'powerline/powerline'
-Plugin 'zxqfl/tabnine-vim'
+Plugin 'codota/tabnine-vim'
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+call vundle#end()                       " required
+filetype plugin indent on               " required
 
-" Syntax highlighting
-syntax enable
+syntax enable                           " Syntax highlighting
 let python_highlight_all=1
-
-" Hide .pyc files
-let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
-
-" Line numbering
-set number
-
-" Show a visual line under the cursor's current line
+let NERDTreeIgnore=['\.pyc$', '\~$']    " Ignore files in NERDTree
+set number                              " Line numbering
 set cursorline
+set showmatch               " Highlight matching brackets (), [], and {}
+set encoding=utf-8          " UTF-8 Support
+set clipboard=unnamed       " Use the clipboard register '*'
 
-" Show the matching part of the pair for [] {} and ()
-set showmatch
-
-" Split navigations
+" Key mappings
 nnoremap <C-J> <C-W><C-J>   " move to the split below
 nnoremap <C-K> <C-W><C-K>   " move to the split above
 nnoremap <C-L> <C-W><C-L>   " move to the split to the right
 nnoremap <C-H> <C-W><C-H>   " move to the split to the left
+nnoremap <A-L> :Black<CR>   " Format the entire file with Black formarter
 
-nnoremap <F9> :Black<CR>
+" See details at
+" https://github.com/preservim/nerdtree
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-N> :NERDTree<CR>
+nnoremap <C-T> :NERDTreeToggle<CR>
+nnoremap <C-F> :NERDTreeFind<CR>
 
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
-
-" Enable folding with the spacebar
-nnoremap <space> za
+nnoremap <space> za         " Enable folding with the spacebar
 
 au BufNewFile,BufRead *.py
     \ set tabstop=4         |
@@ -104,15 +112,8 @@ au BufNewFile,BufRead *.js, *.html, *.css
     \ set softtabstop=2     |
     \ set shiftwidth=2
 
-" Flagging Unnecessary Whitespace
-" This will mark extra whitespace as bad and probably color it red.
+" Mark extra (unnecessary) whitespace as bad and probably color it red.
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
-
-" UTF-8 Support
-set encoding=utf-8
-
-" System Clipboard - access system clipboard
-set clipboard=unnamed
 EOF
 
 # Install plugins from CLI
