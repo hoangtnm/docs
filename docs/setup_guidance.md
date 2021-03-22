@@ -1,4 +1,4 @@
-# Configuring Deep Learning Development Environment <!-- omit in toc -->
+# Set Up Deep Learning Development Environment <!-- omit in toc -->
 
 ## Contents <!-- omit in toc -->
 
@@ -49,7 +49,7 @@ Install the latest driver:
 
 ```bash
 sudo add-apt-repository ppa:graphics-drivers/ppa
-sudo apt install nvidia-driver-440
+sudo apt install nvidia-driver-460
 sudo reboot
 ```
 

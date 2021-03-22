@@ -9,7 +9,7 @@ options nouveau modeset=0
 EOF
 
 add-apt-repository ppa:graphics-drivers/ppa
-apt-get update && apt-get install -y nvidia-driver-440
+apt-get update && apt-get install -y nvidia-driver-460
 
 echo 'Regenerating the kernel initramfs'
 update-initramfs -u
