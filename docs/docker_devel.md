@@ -1,4 +1,4 @@
-# Configuring Docker Development Environment <!-- omit in toc -->
+# Set Up Docker Development Environment <!-- omit in toc -->
 
 ## Contents <!-- omit in toc -->
 

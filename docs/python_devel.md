@@ -1,4 +1,4 @@
-# Configuring Python Development Environment <!-- omit in toc -->
+# Set Up Python Development Environment <!-- omit in toc -->
 
 ## Contents <!-- omit in toc -->
 
