@@ -3,6 +3,10 @@
 ## Contents <!-- omit in toc -->
 
 - [Overview](#overview)
+  - [Vim Language](#vim-language)
+    - [Verbs in Vim](#verbs-in-vim)
+    - [Nouns in Vim](#nouns-in-vim)
+  - [Keyboard Shortcuts](#keyboard-shortcuts)
 - [Installation](#installation)
   - [Vim Editor](#vim-editor)
   - [Vundle Plugin Manager](#vundle-plugin-manager)
@@ -13,6 +17,60 @@
 
 Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient.
 This document will describe how to set up Vim as a powerful environment for programming such as Python.
+
+### Vim Language
+
+Syntax of the language: `Verb + Noun`
+
+`d` for delete, `w` for word
+--> combine to `delete word`
+
+#### Verbs in Vim
+
+`Verb` is the operation you want to take on the text.
+
+- `d` => Delete
+- `c` => Change (delete and enter insert mode)
+- `>` => Indent
+- `v` => Visually select
+- `y` => Yank (copy)
+
+#### Nouns in Vim
+
+Text objects:
+
+- `iw` => inner word (works from anywhere in a word)
+- `it` => inner tag (the contents of an HTML tag)
+- i" => inner quotes
+- ip => inner paragraph
+- as => a sentence
+
+Parameterized text objects
+
+- `f`, `F` => "find" the next character (including the character)
+- `t`, `T` => "find" the next character (not including the character)
+- `/` => search (up to the next match)
+
+### Keyboard Shortcuts
+
+| Shortcut          | Description                                                  |
+| ----------------- | ------------------------------------------------------------ |
+| `u`               | undo the last operation                                      |
+| `U`               | redo the last undo                                           |
+| `Ctrl + r`        | redo changes which were undone                               |
+| `h`               | move the cursor one character to the left                    |
+| `j` or `Ctrl + J` | move the cursor down one line                                |
+| `k` or `Ctrl + P` | move the cursor down one line                                |
+| `l`               | move the cursor one character to the right                   |
+| `0`               | move the cursor to the begining of the line                  |
+| `^`               | move the cursor to the first non-empty character of the line |
+| `$`               | move the cursor to the end of the line                       |
+| `g`               | move to the begining of the file                             |
+| `G`               | move to the end of the file                                  |
+| -                 | -                                                            |
+| `i`               | insert text before the cursor                                |
+| `o`               | begin a new line below the cursor                            |
+| `O`               | begin a new line above the cursor                            |
 
 ## Installation
 
@@ -127,3 +185,5 @@ vim +PluginInstall +qall
 [1] Real Python, “VIM and Python – A Match Made in Heaven.” https://realpython.com/vim-and-python-a-match-made-in-heaven/ (accessed Jan. 10, 2021).
 
 [2] Rossi B. Jonas, “Understand Vim Mappings and Create Your Own Shortcuts!” https://medium.com/vim-drops/understand-vim-mappings-and-create-your-own-shortcuts-f52ee4a6b8ed (accessed Jan. 10, 2021).
+
+[3] C. Crowder, “VIM Keyboard Shortcuts Cheatsheet,” 2020. https://www.maketecheasier.com/cheatsheet/vim-keyboard-shortcuts/ (accessed Jan. 23, 2021).

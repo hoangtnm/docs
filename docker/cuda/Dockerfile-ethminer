@@ -1,0 +1,33 @@
+FROM nvidia/cuda:10.2-devel-ubuntu18.04
+
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    cmake \
+    git \
+    gcc \
+    g++ \
+    perl \
+    libdbus-1-dev \
+    libleveldb-dev \
+    libjsoncpp-dev \
+    libjsonrpccpp-dev \
+    libboost-all-dev \
+    libgmp-dev \
+    libreadline-dev \
+    libmicrohttpd-dev \
+    mesa-common-dev \
+    ocl-icd-libopencl1 \
+    opencl-headers \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /ethminer
+RUN git clone --depth 1 https://github.com/ethereum-mining/ethminer.git . && \
+    git submodule update --init --recursive
+
+WORKDIR /ethminer/build
+RUN cmake .. -DETHASHCUDA=ON -DETHASHCL=OFF \
+    && cmake --build . \
+    && make install
+
+ENTRYPOINT [ "/usr/local/bin/ethminer" ]
+CMD [ "--help" ]
