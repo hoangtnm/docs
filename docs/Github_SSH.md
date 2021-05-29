@@ -9,7 +9,7 @@ Using the SSH protocol, you can connect and authenticate to remote servers and s
 ### 1.2. Pasting the text below, substituting in your GitHub email address.
 
 ```sh
-ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+ssh-keygen -t rsa -b 4096
 ```
 
 This creates a new ssh key, using the provided email as a label.
