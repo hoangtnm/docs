@@ -71,7 +71,7 @@ The default location of the configuration file on Linux is `/etc/docker/daemon.j
 
 ```json
 {
-  "data-root": "/var/lib/docker",
+  "data-root": "/path/to/persisted/data",
   "default-runtime": "nvidia",
   "runtimes": {
     "nvidia": {
@@ -82,7 +82,7 @@ The default location of the configuration file on Linux is `/etc/docker/daemon.j
 }
 ```
 
-- `data-root`: Root directory of persistent Docker state.
+- `data-root`: Root directory of persistent Docker state (default `/var/lib/docker`).
 - `default-runtime`: Default OCI runtime for containers (default `runc`).
 
 Everytime the configuration file is updated, the following commands will need being executed:
