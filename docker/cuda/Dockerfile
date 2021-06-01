@@ -56,5 +56,5 @@ RUN /opt/conda/bin/conda install -y -c pytorch -c nvidia -c defaults -c conda-fo
     pandas \
     pillow \
     && /opt/conda/bin/conda clean -ya \
-    && /opt/conda/bin/pip install opencv-python torchelastic lightning_bolts \
+    && /opt/conda/bin/pip install opencv-python torchelastic lightning-bolts["extra"] \
     && /opt/conda/bin/pip install --extra-index-url https://developer.download.nvidia.com/compute/redist --upgrade nvidia-dali-cuda110
