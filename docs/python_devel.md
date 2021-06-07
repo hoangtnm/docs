@@ -8,6 +8,7 @@
   - [Venv](#venv)
   - [Virtualenv](#virtualenv)
   - [Anaconda](#anaconda)
+    - [Installing for Multiple Users](#installing-for-multiple-users)
 - [References](#references)
 
 Sometimes your Linux distribution will not have the latest version of Python, or maybe you just want to be able to build the latest version yourself. Here are the steps you need to do so.
@@ -170,6 +171,24 @@ Now, if you are primarily doing data science work, _Anaconda_ is also a great op
 Similar to virtualenv, Anaconda also uses the concept of creating environments so as to isolate different libraries and versions. Anaconda also introduces its own package manager, called `conda`, from where you can install libraries. [2]
 
 Additionally, Anaconda still has the useful interaction with pip that allows you to install any additional libraries which are not available in the Anaconda package manager. [2]
+
+#### Installing for Multiple Users
+
+```bash
+wget -O ~/miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+chmod +x ~/miniconda.sh
+sudo ~/miniconda.sh -b -p /opt/conda
+rm ~/miniconda.sh
+
+# See details at
+# https://docs.anaconda.com/anaconda/install/multi-user/
+sudo groupadd conda
+sudo chgrp -R conda /opt/conda
+sudo chmod 770 -R /opt/conda
+
+# Add users to `conda` group
+sudo adduser <user> conda
+```
 
 #### Usage <!-- omit in toc -->
 
