@@ -42,6 +42,7 @@ RUN wget -O ~/miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest
     && chmod +x ~/miniconda.sh \
     && ~/miniconda.sh -b -p /opt/conda \
     && rm ~/miniconda.sh \
+    && /opt/conda/bin/conda config --set repodata_threads 2 \
     && /opt/conda/bin/conda config --add channels nvidia \
     && /opt/conda/bin/conda config --add channels pytorch \
     && /opt/conda/bin/conda config --append channels conda-forge
