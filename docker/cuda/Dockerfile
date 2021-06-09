@@ -41,7 +41,10 @@ ARG PYTHON_VERSION=3.7
 RUN wget -O ~/miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
     && chmod +x ~/miniconda.sh \
     && ~/miniconda.sh -b -p /opt/conda \
-    && rm ~/miniconda.sh
+    && rm ~/miniconda.sh \
+    && /opt/conda/bin/conda config --add channels nvidia \
+    && /opt/conda/bin/conda config --add channels pytorch \
+    && /opt/conda/bin/conda config --append channels conda-forge
 RUN /opt/conda/bin/conda install -y -c pytorch -c nvidia -c defaults -c conda-forge \
     python=${PYTHON_VERSION} \
     pytorch \
