@@ -57,11 +57,13 @@ RUN /opt/conda/bin/conda install -y \
     torchmetrics \
     tensorboard \
     cudatoolkit \
+    h5py \
     jupyterlab \
     matplotlib \
     ninja \
-    scipy \
     scikit-learn \
+    scipy \
+    spacy \
     pandas \
     pillow \
     black \
