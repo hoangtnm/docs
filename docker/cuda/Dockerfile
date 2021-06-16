@@ -34,6 +34,7 @@ RUN apt-get update && apt-get install -y \
     openmpi-bin \
     python3-opencv \
     nvtop \
+    && sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \
     && rm -rf /var/lib/apt/lists/*
 
 ENV PATH /opt/conda/bin:$PATH
@@ -57,18 +58,19 @@ RUN /opt/conda/bin/conda install -y \
     torchmetrics \
     tensorboard \
     cudatoolkit \
+    black \
+    flake8 \
     h5py \
     jupyterlab \
     matplotlib \
     ninja \
+    pandas \
+    pillow \
     scikit-learn \
     scipy \
     spacy \
-    pandas \
-    pillow \
-    black \
-    flake8 \
-    && /opt/conda/bin/pip install \
+    && /opt/conda/bin/conda clean -ya
+RUN /opt/conda/bin/pip install \
     opencv-python \
     lightning-bolts["extra"] \
     deepspeed \
@@ -76,5 +78,6 @@ RUN /opt/conda/bin/conda install -y \
     allennlp \
     && /opt/conda/bin/pip install \
     --extra-index-url https://developer.download.nvidia.com/compute/redist \
-    --upgrade nvidia-dali-cuda110 \
-    && /opt/conda/bin/conda clean -ya
+    --upgrade nvidia-dali-cuda110
+
+CMD [ "/usr/bin/zsh" ]
