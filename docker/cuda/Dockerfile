@@ -76,6 +76,7 @@ RUN /opt/conda/bin/pip install \
     deepspeed \
     fairscale \
     allennlp \
+    allennlp-models \
     && /opt/conda/bin/pip install \
     --extra-index-url https://developer.download.nvidia.com/compute/redist \
     --upgrade nvidia-dali-cuda110
