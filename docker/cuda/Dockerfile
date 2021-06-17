@@ -68,6 +68,7 @@ RUN /opt/conda/bin/conda install -y \
     pillow \
     scikit-learn \
     scipy \
+    sentencepiece \
     spacy \
     && /opt/conda/bin/conda clean -ya
 RUN /opt/conda/bin/pip install \
