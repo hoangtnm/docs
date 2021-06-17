@@ -4,14 +4,14 @@ This repo includes documents and scripts, which can be used to set up a comprehe
 
 ## Documents
 
-- [Set Up Deep Learning Development Environment](docs/setup_guidance.md)
-- [Set Up Python Development Environment](docs/python_devel.md)
-- [Set Up Docker Development Environment](docs/docker_devel.md)
+- [Set Up Deep Learning Development Environment](docs/workstation_setup.md)
+- [Set Up Python Development Environment](docs/python.md)
+- [Set Up Docker Development Environment](docs/docker.md)
 - [Oh My Zsh Framework](docs/ohmyzsh.md)
-- [Connecting to GitHub with SSH](docs/Github_SSH.md)
-- [Performing GPU, CPU, and I/O stress testing on Linux](docs/Benchmark.md)
-- [Mounting NTFS Partitions](docs/Partitions.md)
-- [Getting Started With Jetson Nano Developer Kit](docs/Jetson_Nano.md)
+- [Connecting to GitHub with SSH](docs/github.md)
+- [Performing GPU, CPU, and I/O stress testing on Linux](docs/benchmark.md)
+- [Mounting NTFS Partitions](docs/partitions.md)
+- [Getting Started With Jetson Nano Developer Kit](docs/jetson.md)
 - [OpenSSL Essentials: Working with SSL Certificates, Private Keys and CSRs](docs/openssl.md)
 - [Jupyter cheat sheet](docs/jupyter.md)
 - [Making Ubuntu Look Like macOS](docs/macOS_gnome.md)
