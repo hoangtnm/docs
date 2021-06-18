@@ -19,6 +19,8 @@ RUN apt-get update && apt-get install -y \
     libopenjp2-7-dev \
     liblcms2-dev \
     libtiff-dev \
+    libsndfile1 \
+    ffmpeg \
     libz-dev \
     pkg-config \
     rsync \
@@ -64,6 +66,7 @@ RUN /opt/conda/bin/conda install -y \
     jupyterlab \
     matplotlib \
     ninja \
+    nvidia-apex \
     pandas \
     pillow \
     scikit-learn \
@@ -72,12 +75,12 @@ RUN /opt/conda/bin/conda install -y \
     spacy \
     && /opt/conda/bin/conda clean -ya
 RUN /opt/conda/bin/pip install \
-    opencv-python \
-    lightning-bolts["extra"] \
     deepspeed \
     fairscale \
-    allennlp \
-    allennlp-models \
+    lightning-bolts["extra"] \
+    monai \
+    nemo_toolkit["all"] \
+    opencv-python \
     && /opt/conda/bin/pip install \
     --extra-index-url https://developer.download.nvidia.com/compute/redist \
     --upgrade nvidia-dali-cuda110
