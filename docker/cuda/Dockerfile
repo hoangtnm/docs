@@ -25,6 +25,7 @@ RUN apt-get update && apt-get install -y \
     pkg-config \
     rsync \
     software-properties-common \
+    sox \
     unzip \
     zip \
     zlib1g-dev \
@@ -34,6 +35,7 @@ RUN apt-get update && apt-get install -y \
     fonts-powerline \
     fonts-firacode \
     openmpi-bin \
+    python3-dev \
     python3-opencv \
     nvtop \
     && sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \
@@ -52,37 +54,50 @@ RUN wget -O ~/miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest
     && rm ~/miniconda.sh
 RUN /opt/conda/bin/conda install -y \
     python=${PYTHON_VERSION} \
+    pynini \
     pytorch \
     pytorch-lightning\
     torchvision \
     torchaudio \
+    torchtext \
     transformers \
     torchmetrics \
     tensorboard \
     cudatoolkit \
+    altair \
+    dash \
     black \
+    botocore \
     flake8 \
     h5py \
+    huggingface_hub \
     jupyterlab \
     matplotlib \
     ninja \
     nvidia-apex \
+    onnx \
     pandas \
     pillow \
+    plotly \
     scikit-learn \
     scipy \
+    seaborn \
     sentencepiece \
+    sox \
+    pysoundfile \
     spacy \
+    unidecode \
     && /opt/conda/bin/conda clean -ya
-RUN /opt/conda/bin/pip install \
+
+RUN /opt/conda/bin/pip install --no-cache-dir --upgrade \
+    --extra-index-url https://developer.download.nvidia.com/compute/redist \
+    nvidia-dali-cuda110 \
     deepspeed \
     fairscale \
     lightning-bolts["extra"] \
     monai \
-    nemo_toolkit["all"] \
-    opencv-python \
-    && /opt/conda/bin/pip install \
-    --extra-index-url https://developer.download.nvidia.com/compute/redist \
-    --upgrade nvidia-dali-cuda110
+    opencv-python
+# RUN /opt/conda/bin/pip install --no-cache-dir \
+#     nemo_toolkit["all"]
 
 CMD [ "/usr/bin/zsh" ]
