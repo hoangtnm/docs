@@ -70,8 +70,8 @@ RUN /opt/conda/bin/conda install -y \
     captum \
     flake8 \
     h5py \
-    hydra-core \
     huggingface_hub \
+    hydra-core \
     jupyterlab \
     kaldi \
     librosa \
@@ -82,13 +82,16 @@ RUN /opt/conda/bin/conda install -y \
     pandas \
     pillow \
     plotly \
+    pynini \
+    pysoundfile \
+    tokenizers \
+    tqdm \
+    requests \
     scikit-learn \
     scipy \
     seaborn \
     sentencepiece \
     sox \
-    pynini \
-    pysoundfile \
     spacy \
     unidecode \
     && /opt/conda/bin/conda clean -ya
