@@ -67,6 +67,7 @@ RUN /opt/conda/bin/conda install -y \
     dash \
     black \
     botocore \
+    captum \
     flake8 \
     h5py \
     hydra-core \
@@ -97,6 +98,7 @@ RUN /opt/conda/bin/pip install --no-cache-dir --upgrade \
     nvidia-dali-cuda110 \
     deepspeed \
     fairscale \
+    imutils \
     lightning-bolts["extra"] \
     monai \
     opencv-python
