@@ -54,9 +54,8 @@ RUN wget -O ~/miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest
     && rm ~/miniconda.sh
 RUN /opt/conda/bin/conda install -y \
     python=${PYTHON_VERSION} \
-    pynini \
     pytorch \
-    pytorch-lightning\
+    pytorch-lightning \
     torchvision \
     torchaudio \
     torchtext \
@@ -70,11 +69,14 @@ RUN /opt/conda/bin/conda install -y \
     botocore \
     flake8 \
     h5py \
+    hydra-core \
     huggingface_hub \
     jupyterlab \
+    kaldi \
+    librosa \
     matplotlib \
     ninja \
-    nvidia-apex \
+    # nvidia-apex \
     onnx \
     pandas \
     pillow \
@@ -84,6 +86,7 @@ RUN /opt/conda/bin/conda install -y \
     seaborn \
     sentencepiece \
     sox \
+    pynini \
     pysoundfile \
     spacy \
     unidecode \
@@ -97,7 +100,14 @@ RUN /opt/conda/bin/pip install --no-cache-dir --upgrade \
     lightning-bolts["extra"] \
     monai \
     opencv-python
-# RUN /opt/conda/bin/pip install --no-cache-dir \
-#     nemo_toolkit["all"]
+RUN /opt/conda/bin/pip install --no-cache-dir \
+    nemo_toolkit["all"] \
+    && /opt/conda/bin/pip uninstall -y \
+    pytorch-lightning \
+    torchmetrics \
+    && /opt/conda/bin/conda install -y --force-reinstall \
+    pytorch-lightning \
+    torchmetrics \
+    && /opt/conda/bin/conda clean -ya
 
 CMD [ "/usr/bin/zsh" ]
