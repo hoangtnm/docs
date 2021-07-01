@@ -101,6 +101,7 @@ RUN /opt/conda/bin/pip install --no-cache-dir --upgrade \
     nvidia-dali-cuda110 \
     deepspeed \
     fairscale \
+    gluoncv \
     imutils \
     lightning-bolts["extra"] \
     monai \
