@@ -37,7 +37,6 @@ RUN apt-get update && apt-get install -y \
     openmpi-bin \
     python3-dev \
     python3-opencv \
-    nvtop \
     && sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \
     && rm -rf /var/lib/apt/lists/*
 
@@ -60,24 +59,22 @@ RUN /opt/conda/bin/conda install -y \
     torchaudio \
     torchtext \
     transformers \
+    datasets \
     torchmetrics \
     tensorboard \
     cudatoolkit \
-    altair \
-    dash \
     black \
     botocore \
     captum \
+    fasttext \
     flake8 \
     h5py \
     huggingface_hub \
-    hydra-core \
     jupyterlab \
     kaldi \
     librosa \
     matplotlib \
     ninja \
-    # nvidia-apex \
     onnx \
     pandas \
     pillow \
@@ -87,6 +84,7 @@ RUN /opt/conda/bin/conda install -y \
     tokenizers \
     tqdm \
     requests \
+    scikit-image \
     scikit-learn \
     scipy \
     seaborn \
@@ -95,26 +93,18 @@ RUN /opt/conda/bin/conda install -y \
     spacy \
     unidecode \
     && /opt/conda/bin/conda clean -ya
-
 RUN /opt/conda/bin/pip install --no-cache-dir --upgrade \
     --extra-index-url https://developer.download.nvidia.com/compute/redist \
+    git+https://github.com/NVIDIA/NeMo.git#egg=nemo_toolkit[asr,cv,nlp,tts] \
     nvidia-dali-cuda110 \
     deepspeed \
     fairscale \
     fiftyone \
     gluoncv \
     imutils \
-    lightning-bolts["extra"] \
+    jiwer \
+    lightning-bolts \
     monai \
     opencv-python
-RUN /opt/conda/bin/pip install --no-cache-dir \
-    nemo_toolkit["all"] \
-    && /opt/conda/bin/pip uninstall -y \
-    pytorch-lightning \
-    torchmetrics \
-    && /opt/conda/bin/conda install -y --force-reinstall \
-    pytorch-lightning \
-    torchmetrics \
-    && /opt/conda/bin/conda clean -ya
 
 CMD [ "/usr/bin/zsh" ]
