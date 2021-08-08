@@ -53,8 +53,8 @@ RUN wget -O ~/miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest
     && rm ~/miniconda.sh
 RUN /opt/conda/bin/conda install -y \
     python=${PYTHON_VERSION} \
-    pytorch \
-    pytorch-lightning \
+    pytorch=1.8 \
+    pytorch-lightning=1.3 \
     torchvision \
     torchaudio \
     torchtext \
@@ -71,7 +71,6 @@ RUN /opt/conda/bin/conda install -y \
     h5py \
     huggingface_hub \
     jupyterlab \
-    kaldi \
     librosa \
     matplotlib \
     ninja \
@@ -96,7 +95,6 @@ RUN /opt/conda/bin/conda install -y \
 RUN /opt/conda/bin/pip install --no-cache-dir --upgrade \
     --extra-index-url https://developer.download.nvidia.com/compute/redist \
     git+https://github.com/NVIDIA/NeMo.git#egg=nemo_toolkit[asr,cv,nlp,tts] \
-    nvidia-dali-cuda110 \
     deepspeed \
     fairscale \
     fiftyone \
@@ -105,6 +103,8 @@ RUN /opt/conda/bin/pip install --no-cache-dir --upgrade \
     jiwer \
     lightning-bolts \
     monai \
-    opencv-python
+    nvidia-dali-cuda110 \
+    opencv-python \
+    torchio
 
 CMD [ "/usr/bin/zsh" ]
