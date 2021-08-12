@@ -5,6 +5,9 @@ There are several DNS over HTTPS (DoH) clients you can use to connect to 1.1.1.1
 ## Dnscrypt-proxy
 
 The [dnscrypt-proxy](https://dnscrypt.info) 2.0+ supports DoH out of the box. It supports both 1.1.1.1, and other services. It includes more advanced features, such as load balancing and local filtering.
+Some well-known [DNS-over-HTTPS and DNSCrypt resolvers](https://dnscrypt.info/public-servers) are:
+- Cloudflare: `cloudflare` and `cloudflare-ipv6`
+- AdGuard: `adguard-dns` and `adguard-dns-ipv6`
 
 ```bash
 sudo apt-get install resolvconf dnscrypt-proxy
