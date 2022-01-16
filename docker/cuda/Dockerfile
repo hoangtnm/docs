@@ -1,4 +1,5 @@
-FROM nvidia/cuda:11.1.1-cudnn8-devel-ubuntu20.04
+# FROM nvidia/cuda:11.1.1-cudnn8-devel-ubuntu20.04
+FROM nvidia/cuda:11.1.1-base-ubuntu20.04
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -23,88 +24,77 @@ RUN apt-get update && apt-get install -y \
     ffmpeg \
     libz-dev \
     pkg-config \
-    rsync \
     software-properties-common \
     sox \
-    unzip \
-    zip \
     zlib1g-dev \
     wget \
-    vim \
-    zsh \
-    fonts-powerline \
-    fonts-firacode \
     openmpi-bin \
     python3-dev \
     python3-opencv \
-    && sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \
     && rm -rf /var/lib/apt/lists/*
 
 ENV PATH /opt/conda/bin:$PATH
 ARG PYTHON_VERSION=3.7
-RUN wget -O ~/miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
+RUN wget -qO ~/miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
     && chmod +x ~/miniconda.sh \
     && ~/miniconda.sh -b -p /opt/conda \
-    && /opt/conda/bin/conda config --set repodata_threads 4 \
-    && /opt/conda/bin/conda config --add channels huggingface \
-    && /opt/conda/bin/conda config --add channels nvidia \
-    && /opt/conda/bin/conda config --add channels pytorch \
-    && /opt/conda/bin/conda config --append channels conda-forge \
     && rm ~/miniconda.sh
+RUN /opt/conda/bin/conda config \
+    --set repodata_threads 4 \
+    # --set channel_priority strict \
+    && /opt/conda/bin/conda config \
+    --add channels conda-forge \
+    # --add channels nvidia \
+    --add channels pytorch \
+    && /opt/conda/bin/conda config \
+    --append channels conda-forge \
 RUN /opt/conda/bin/conda install -y \
     python=${PYTHON_VERSION} \
-    pytorch=1.8 \
-    pytorch-lightning=1.3 \
+    pytorch=1.10 \
+    pytorch-lightning \
     torchvision \
     torchaudio \
     torchtext \
-    transformers \
-    datasets \
     torchmetrics \
-    tensorboard \
-    cudatoolkit \
-    black \
-    botocore \
-    captum \
-    fasttext \
-    flake8 \
+    tokenizers \
+    transformers \
+    tensorflow-gpu=2.6.2 \
+    datasets \
+    cudatoolkit=10.2 \
     h5py \
-    huggingface_hub \
+    hydra-core \
     jupyterlab \
-    librosa \
+    # librosa \
     matplotlib \
-    ninja \
+    omegaconf \
     onnx \
     pandas \
     pillow \
-    plotly \
+    # plotly \
     pynini \
-    pysoundfile \
-    tokenizers \
-    tqdm \
+    # pysoundfile \
     requests \
     scikit-image \
     scikit-learn \
     scipy \
-    seaborn \
+    # seaborn \
     sentencepiece \
-    sox \
-    spacy \
+    # sox \
+    # spacy \
+    tensorboard \
+    tqdm \
     unidecode \
     && /opt/conda/bin/conda clean -ya
 RUN /opt/conda/bin/pip install --no-cache-dir --upgrade \
     --extra-index-url https://developer.download.nvidia.com/compute/redist \
-    git+https://github.com/NVIDIA/NeMo.git#egg=nemo_toolkit[asr,cv,nlp,tts] \
+    # git+https://github.com/NVIDIA/NeMo.git#egg=nemo_toolkit[asr,nlp,tts] \
+    albumentations \
     deepspeed \
     fairscale \
     fiftyone \
     gluoncv \
-    imutils \
-    jiwer \
-    lightning-bolts \
     monai \
+    nemo_toolkit \
     nvidia-dali-cuda110 \
-    opencv-python \
-    torchio
-
-CMD [ "/usr/bin/zsh" ]
+    imutils \
+    opencv-python-headless
