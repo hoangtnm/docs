@@ -1,9 +1,9 @@
-# FROM nvidia/cuda:11.1.1-cudnn8-devel-ubuntu20.04
-FROM nvidia/cuda:11.1.1-base-ubuntu20.04
+FROM nvidia/cuda:11.2.2-cudnn8-runtime-ubuntu20.04
+# FROM nvidia/cuda:11.2.2-base-ubuntu20.04
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     ca-certificates \
     ccache \
@@ -58,11 +58,10 @@ RUN /opt/conda/bin/conda install -y \
     torchmetrics \
     tokenizers \
     transformers \
-    tensorflow-gpu=2.6.2 \
     datasets \
-    cudatoolkit=10.2 \
+    cudatoolkit=11.3 \
     h5py \
-    hydra-core \
+    hydra-core=1.1 \
     jupyterlab \
     # librosa \
     matplotlib \
@@ -77,10 +76,9 @@ RUN /opt/conda/bin/conda install -y \
     scikit-image \
     scikit-learn \
     scipy \
-    # seaborn \
+    seaborn \
     sentencepiece \
     # sox \
-    # spacy \
     tensorboard \
     tqdm \
     unidecode \
@@ -97,4 +95,8 @@ RUN /opt/conda/bin/pip install --no-cache-dir --upgrade \
     nemo_toolkit \
     nvidia-dali-cuda110 \
     imutils \
-    opencv-python-headless
+    opencv-python-headless \
+    tensorflow==2.7 \
+    tensorflow-addons \
+    tf2onnx \
+    keras-tuner
