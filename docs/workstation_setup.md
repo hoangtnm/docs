@@ -5,9 +5,9 @@
 - [Recommended System Requirements](#recommended-system-requirements)
 - [Installation Guide](#installation-guide)
   - [NVIDIA GPU Driver](#nvidia-gpu-driver)
-  - [NVIDIA CUDA Toolkit 11.0](#nvidia-cuda-toolkit-110)
-  - [NVIDIA cuDNN](#nvidia-cudnn)
-  - [NVIDIA NCCL 2](#nvidia-nccl-2)
+  - [NVIDIA CUDA Toolkit 11.2, cuDNN 8 and NCCL 2](#nvidia-cuda-toolkit-112-cudnn-8-and-nccl-2)
+    - [Package Manger Installation (Recommended)](#package-manger-installation-recommended)
+    - [Runfile Installation](#runfile-installation)
 - [Libraries and Packages](#libraries-and-packages)
   - [Python and Anaconda Individual Edition](#python-and-anaconda-individual-edition)
   - [TensorFlow 2](#tensorflow-2)
@@ -49,80 +49,59 @@ Install the latest driver:
 
 ```bash
 sudo add-apt-repository ppa:graphics-drivers/ppa
-sudo apt install nvidia-driver-460
+sudo apt install nvidia-driver-495
 sudo reboot
 ```
 
-### NVIDIA CUDA Toolkit 11.0
+### NVIDIA CUDA Toolkit 11.2, cuDNN 8 and NCCL 2
+
+#### Package Manger Installation (Recommended)
 
 ```bash
-CUDA='11.0'
+CUDA_VERSION='11.2'
+NVARCH=x86_64
+# NV_ML_REPO_URL=https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu2004/${NVARCH}
+NV_CUDA_REPO_URL=https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/${NVARCH}
 
 sudo apt-get update && sudo apt-get install -y --no-install-recommends \
 	gnupg2 curl ca-certificates
 
-apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu2004/x86_64/7fa2af80.pub
-echo 'deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64 /' > /etc/apt/sources.list.d/cuda.list
+apt-key adv --fetch-keys ${NV_CUDA_REPO_URL}/7fa2af80.pub
+add-apt-repository "deb ${NV_CUDA_REPO_URL} /"
 
-sudo apt-get update && sudo apt-get install -y --no-install-recommends \
-  build-essential \
-  cuda-cudart-11-0=11.0.221-1 \
-  cuda-compat-11-0 \
-  cuda-nvml-dev-11-0=11.0.167-1 \
-  cuda-command-line-tools-11-0=11.0.3-1 \
-  cuda-nvprof-11-0=11.0.221-1 \
-  libnpp-dev-11-0=11.1.0.245-1 \
-  cuda-libraries-dev-11-0=11.0.3-1 \
-  cuda-minimal-build-11-0=11.0.3-1 \
-  libcublas-dev-11-0=11.2.0.252-1 \
-  libcusparse-11-0=11.1.1.245-1 \
-  libcusparse-dev-11-0=11.1.1.245-1 \
-  cuda-libraries-11-0=11.0.3-1 \
-  libnpp-11-0=11.1.0.245-1 \
-  cuda-nvtx-11-0=11.0.167-1 \
-  libcublas-11-0=11.2.0.252-1
+# Search for package versions
+# apt policy PACKAGE | grep ${CUDA_VERSION}
+sudo apt-get update && sudo apt-get install -y \
+  cuda-11-2 \
+  libcudnn8=8.1.1.33-1+cuda11.2 \
+  libcudnn8-dev=8.1.1.33-1+cuda11.2 \
+  libnccl2=2.8.4-1+cuda11.2 \
+  libnccl-dev=2.8.4-1+cuda11.2
+sudo apt-mark hold cuda-11-2 libcudnn8 libnccl2
 
 shell="$0"
-echo 'export PATH=/usr/local/cuda-11.0/bin${PATH:+:${PATH}}' >> ~/."${shell}rc"
-echo 'export LIBRARY_PATH=/usr/local/cuda-11.0/lib64/stubs${LIBRARY_PATH:+:${LIBRARY_PATH}}' >> ~/."${shell}rc"
-echo 'export LD_LIBRARY_PATH=/usr/local/cuda-11.0/lib64:/usr/local/cuda-11.0/extras/CUPTI/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/."${shell}rc"
-source ~/."${shell}rc"
+echo 'export PATH=/usr/local/cuda-11.2/bin${PATH:+:${PATH}}' >> ~/."${shell}rc"
+echo 'export LIBRARY_PATH=/usr/local/cuda-11.2/lib64${LIBRARY_PATH:+:${LIBRARY_PATH}}' >> ~/."${shell}rc"
+echo 'export LD_LIBRARY_PATH=/usr/local/cuda-11.2/lib64:/usr/local/cuda-11.2/extras/CUPTI/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/."${shell}rc"
+source ${HOME}/."${shell}rc"
 ```
 
 To remember, the general rule is:
 
 - `~/.bash_profile` is being activated just one time when you login (GUI or SSH)
-- `~/.bash_aliases` is being activated every time when you open the terminal (window or tab)
 
 However this behavior can be changed by modifying `~/.bashrc`, `~/.profile`, or `/etc/bash.bashrc`, etc.
 
-### NVIDIA cuDNN
-
-The NVIDIA CUDA Deep Neural Network library (cuDNN) is a GPU-accelerated library of primitives for deep neural networks. cuDNN provides highly tuned implementations for standard routines such as forward and backward convolution, pooling, normalization, and activation layers.
+#### Runfile Installation
 
 ```bash
-CUDNN_VERSION='8.0.4.30'
-
-echo 'deb https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64 /' > /etc/apt/sources.list.d/nvidia-ml.list
-
-sudo apt-get update && sudo apt-get install -y \
-  libcudnn8=${CUDNN_VERSION}-1+cuda${CUDA} \
-  libcudnn8-dev=${CUDNN_VERSION}-1+cuda${CUDA}
-sudo apt-mark hold libcudnn8 libcudnn7-dev
-```
-
-### NVIDIA NCCL 2
-
-The NVIDIA Collective Communication Library (NCCL) implements multi-GPU and multi-node communication primitives optimized for NVIDIA GPUs and Networking.
-NCCL provides routines such as all-gather, all-reduce, broadcast, reduce, reduce-scatter as well as point-to-point send and receive that are optimized to achieve high bandwidth and low latency over PCIe and NVLink high-speed interconnects within a node and over NVIDIA Mellanox Network across nodes.
-
-```bash
-NCCL_VERSION='2.8.3'
-
-sudo apt-get install -y \
-  libnccl2=${NCCL_VERSION}-1+cuda${CUDA} \
-  libnccl-dev=${NCCL_VERSION}-1+cuda${CUDA}
-sudo apt-mark hold libnccl2 libnccl-dev
+# Archive of Previous CUDA Releases
+# https://developer.nvidia.com/cuda-toolkit-archive
+#
+# CUDA_VERSION=11.2.2
+# https://developer.nvidia.com/cuda-${CUDA_VERSION}-download-archive?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=2004&target_type=runfilelocal
+wget -O cuda_installer.run https://developer.download.nvidia.com/compute/cuda/11.2.2/local_installers/cuda_11.2.2_460.32.03_linux.run
+sudo ./cuda_installer.run --silent --toolkit
 ```
 
 ## Libraries and Packages
