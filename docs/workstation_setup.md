@@ -77,7 +77,12 @@ sudo apt-get update && sudo apt-get install -y \
   libcudnn8-dev=8.1.1.33-1+cuda11.2 \
   libnccl2=2.8.4-1+cuda11.2 \
   libnccl-dev=2.8.4-1+cuda11.2
-sudo apt-mark hold cuda-11-2 libcudnn8 libnccl2
+sudo apt-mark hold \
+  cuda-11-2 \
+  libcudnn8 \
+  libcudnn8-dev \
+  libnccl2 \
+  libnccl-dev
 
 shell="$0"
 echo 'export PATH=/usr/local/cuda-11.2/bin${PATH:+:${PATH}}' >> ~/."${shell}rc"
