@@ -1,5 +1,4 @@
 FROM nvidia/cuda:11.2.2-cudnn8-runtime-ubuntu20.04
-# FROM nvidia/cuda:11.2.2-base-ubuntu20.04
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -40,39 +39,38 @@ RUN wget -qO ~/miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-lates
     && ~/miniconda.sh -b -p /opt/conda \
     && rm ~/miniconda.sh
 RUN /opt/conda/bin/conda config \
-    --set repodata_threads 4 \
+    --set default_threads 4 \
     # --set channel_priority strict \
     && /opt/conda/bin/conda config \
-    --add channels conda-forge \
-    # --add channels nvidia \
+    # --add channels conda-forge \
     --add channels pytorch \
-    && /opt/conda/bin/conda config \
-    --append channels conda-forge \
-RUN /opt/conda/bin/conda install -y \
-    python=${PYTHON_VERSION} \
-    pytorch=1.10 \
-    pytorch-lightning \
+    && /opt/conda/bin/conda install -y python=${PYTHON_VERSION} \
+    && /opt/conda/bin/pip config set global.find-links https://download.pytorch.org/whl/cu113/torch_stable.html \
+    && /opt/conda/bin/pip config set global.extra-index-url https://developer.download.nvidia.com/compute/redist \
+    && /opt/conda/bin/conda clean -ya
+RUN /opt/conda/bin/pip install --no-cache-dir -U \
+    torch>=1.10 \
+    pytorch-lightning>=1.5 \
     torchvision \
     torchaudio \
     torchtext \
-    torchmetrics \
+    torchmetrics>=0.7 \
     tokenizers \
-    transformers \
+    transformers>=4.16 \
+    tensorflow>=2.7 \
     datasets \
-    cudatoolkit=11.3 \
     h5py \
-    hydra-core=1.1 \
+    hydra-core>=1.1 \
     jupyterlab \
-    # librosa \
+    librosa \
     matplotlib \
-    omegaconf \
-    onnx \
+    omegaconf>=2.1.0 \
+    onnx>=1.7.0 \
     pandas \
     pillow \
-    # plotly \
+    plotly \
     pynini \
     # pysoundfile \
-    requests \
     scikit-image \
     scikit-learn \
     scipy \
@@ -81,22 +79,21 @@ RUN /opt/conda/bin/conda install -y \
     # sox \
     tensorboard \
     tqdm \
-    unidecode \
-    && /opt/conda/bin/conda clean -ya
-RUN /opt/conda/bin/pip install --no-cache-dir --upgrade \
-    --extra-index-url https://developer.download.nvidia.com/compute/redist \
+    unidecode
+RUN /opt/conda/bin/pip install --no-cache-dir -U \
     # git+https://github.com/NVIDIA/NeMo.git#egg=nemo_toolkit[asr,nlp,tts] \
+    git+https://github.com/kpu/kenlm.git \
     albumentations \
     deepspeed \
     fairscale \
     fiftyone \
     gluoncv \
-    monai \
-    nemo_toolkit \
-    nvidia-dali-cuda110 \
     imutils \
+    jiwer \
+    monai \
+    nemo_toolkit[asr] \
+    nvidia-dali-cuda110 \
     opencv-python-headless \
-    tensorflow==2.7 \
-    tensorflow-addons \
-    tf2onnx \
-    keras-tuner
+    phonemizer \
+    pyctcdecode \
+    tensorflow-addons
