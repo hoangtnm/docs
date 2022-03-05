@@ -45,8 +45,11 @@ RUN /opt/conda/bin/conda config \
     # --add channels conda-forge \
     --add channels pytorch \
     && /opt/conda/bin/conda install -y python=${PYTHON_VERSION} \
-    && /opt/conda/bin/pip config set global.find-links https://download.pytorch.org/whl/cu113/torch_stable.html \
-    && /opt/conda/bin/pip config set global.extra-index-url https://developer.download.nvidia.com/compute/redist \
+    && /opt/conda/bin/pip config set global.find-links \
+    "https://download.pytorch.org/whl/cu113/torch_stable.html \
+    https://storage.googleapis.com/jax-releases/jax_releases.html" \
+    && /opt/conda/bin/pip config set global.extra-index-url \
+    "https://developer.download.nvidia.com/compute/redist" \
     && /opt/conda/bin/conda clean -ya
 RUN /opt/conda/bin/pip install --no-cache-dir -U \
     torch>=1.10 \
@@ -87,8 +90,10 @@ RUN /opt/conda/bin/pip install --no-cache-dir -U \
     deepspeed \
     fairscale \
     fiftyone \
+    flax \
     gluoncv \
     imutils \
+    jax[cuda11_cudnn805] \
     jiwer \
     monai \
     nemo_toolkit[asr] \
