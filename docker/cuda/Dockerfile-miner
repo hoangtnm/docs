@@ -20,6 +20,7 @@ RUN apt-get update && apt-get install -y \
     mesa-common-dev \
     ocl-icd-libopencl1 \
     opencl-headers \
+    wget \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /t-rex
