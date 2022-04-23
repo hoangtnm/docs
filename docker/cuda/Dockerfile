@@ -52,6 +52,7 @@ RUN /opt/conda/bin/conda config \
     "https://developer.download.nvidia.com/compute/redist" \
     && /opt/conda/bin/conda clean -ya
 RUN /opt/conda/bin/pip install --no-cache-dir -U \
+    albumentations \
     torch>=1.10 \
     pytorch-lightning>=1.5 \
     torchvision \
@@ -61,44 +62,41 @@ RUN /opt/conda/bin/pip install --no-cache-dir -U \
     tokenizers \
     transformers>=4.16 \
     tensorflow>=2.7 \
+    tensorflow-addons \
     datasets \
+    deepspeed \
+    fairscale \
+    fiftyone \
+    flax \
+    git+https://github.com/kpu/kenlm.git \
+    gluoncv \
     h5py \
     hydra-core>=1.1 \
+    imutils \
+    jax[cuda11_cudnn805] \
+    jiwer \
     jupyterlab \
     librosa \
     matplotlib \
+    monai \
+    nemo_toolkit[asr] \
+    # git+https://github.com/NVIDIA/NeMo.git#egg=nemo_toolkit[asr,nlp,tts] \
+    nvidia-dali-cuda110 \
     omegaconf>=2.1.0 \
+    opencv-python-headless \
     onnx>=1.7.0 \
     pandas \
+    phonemizer \
     pillow \
     plotly \
     pynini \
-    # pysoundfile \
+    pyctcdecode \
     scikit-image \
     scikit-learn \
     scipy \
     seaborn \
     sentencepiece \
-    # sox \
+    sox \
     tensorboard \
     tqdm \
     unidecode
-RUN /opt/conda/bin/pip install --no-cache-dir -U \
-    # git+https://github.com/NVIDIA/NeMo.git#egg=nemo_toolkit[asr,nlp,tts] \
-    git+https://github.com/kpu/kenlm.git \
-    albumentations \
-    deepspeed \
-    fairscale \
-    fiftyone \
-    flax \
-    gluoncv \
-    imutils \
-    jax[cuda11_cudnn805] \
-    jiwer \
-    monai \
-    nemo_toolkit[asr] \
-    nvidia-dali-cuda110 \
-    opencv-python-headless \
-    phonemizer \
-    pyctcdecode \
-    tensorflow-addons
