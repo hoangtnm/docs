@@ -53,6 +53,7 @@ RUN /opt/conda/bin/conda config \
     && /opt/conda/bin/conda clean -ya
 RUN /opt/conda/bin/pip install --no-cache-dir -U \
     albumentations \
+    accelerate \
     torch>=1.10 \
     pytorch-lightning>=1.5 \
     torchvision \
