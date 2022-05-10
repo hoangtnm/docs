@@ -66,7 +66,7 @@ NV_CUDA_REPO_URL=https://developer.download.nvidia.com/compute/cuda/repos/ubuntu
 sudo apt-get update && sudo apt-get install -y --no-install-recommends \
 	gnupg2 curl ca-certificates
 
-apt-key adv --fetch-keys ${NV_CUDA_REPO_URL}/7fa2af80.pub
+apt-key adv --fetch-keys ${NV_CUDA_REPO_URL}/3bf863cc.pub
 add-apt-repository "deb ${NV_CUDA_REPO_URL} /"
 
 # Search for package versions
