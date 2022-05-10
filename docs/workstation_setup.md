@@ -70,13 +70,13 @@ apt-key adv --fetch-keys ${NV_CUDA_REPO_URL}/7fa2af80.pub
 add-apt-repository "deb ${NV_CUDA_REPO_URL} /"
 
 # Search for package versions
-# apt policy PACKAGE | grep ${CUDA_VERSION}
+# apt list -a PACKAGE | grep ${CUDA_VERSION}
 sudo apt-get update && sudo apt-get install -y \
   cuda-11-2 \
-  libcudnn8=8.1.1.33-1+cuda11.2 \
-  libcudnn8-dev=8.1.1.33-1+cuda11.2 \
-  libnccl2=2.8.4-1+cuda11.2 \
-  libnccl-dev=2.8.4-1+cuda11.2
+  libcudnn8=8.1\*cuda${CUDA_VERSION} \
+  libcudnn8-dev=8.1\*cuda${CUDA_VERSION} \
+  libnccl2=2.8\*cuda${CUDA_VERSION} \
+  libnccl-dev=2.8\*cuda${CUDA_VERSION}
 sudo apt-mark hold \
   cuda-11-2 \
   libcudnn8 \
@@ -100,8 +100,9 @@ However this behavior can be changed by modifying `~/.bashrc`, `~/.profile`, or 
 #### Runfile Installation
 
 ```bash
-# Archive of Previous CUDA Releases
+# Archive of CUDA, cuDNN Releases
 # https://developer.nvidia.com/cuda-toolkit-archive
+# https://developer.nvidia.com/rdp/cudnn-archive
 #
 # CUDA_VERSION=11.2.2
 # https://developer.nvidia.com/cuda-${CUDA_VERSION}-download-archive?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=2004&target_type=runfilelocal
