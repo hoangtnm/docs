@@ -60,7 +60,6 @@ sudo reboot
 ```bash
 CUDA_VERSION='11.2'
 NVARCH=x86_64
-# NV_ML_REPO_URL=https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu2004/${NVARCH}
 NV_CUDA_REPO_URL=https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/${NVARCH}
 
 sudo apt-get update && sudo apt-get install -y --no-install-recommends \
