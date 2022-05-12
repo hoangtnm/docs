@@ -61,7 +61,7 @@ RUN /opt/conda/bin/pip install --no-cache-dir -U \
     torchtext \
     torchmetrics>=0.7 \
     tokenizers \
-    transformers>=4.16 \
+    transformers[sentencepiece]>=4.16 \
     tensorflow>=2.7 \
     tensorflow-addons \
     datasets \
