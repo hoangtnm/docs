@@ -71,6 +71,7 @@ RUN /opt/conda/bin/pip install --no-cache-dir -U \
     flax \
     git+https://github.com/kpu/kenlm.git \
     gluoncv \
+    gradio \
     h5py \
     hydra-core>=1.1 \
     imutils \
