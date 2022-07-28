@@ -55,7 +55,7 @@ RUN /opt/conda/bin/pip install --no-cache-dir -U \
     albumentations \
     accelerate \
     torch>=1.12 \
-    pytorch-lightning~=1.6.0 \
+    pytorch-lightning[extra]~=1.6.0 \
     torchvision \
     torchaudio \
     torchtext \
