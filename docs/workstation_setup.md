@@ -67,7 +67,7 @@ sudo apt-get update && sudo apt-get install -y --no-install-recommends \
 # https://developer.nvidia.com/blog/updating-the-cuda-linux-gpg-repository-key
 # apt-key adv --fetch-keys ${NV_CUDA_REPO_URL}/3bf863cc.pub
 sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/3bf863cc.pub
-add-apt-repository "deb ${NV_CUDA_REPO_URL} /"
+sudo add-apt-repository "deb ${NV_CUDA_REPO_URL} /"
 
 # Search for package versions
 # apt list -a PACKAGE | grep ${CUDA_VERSION}
