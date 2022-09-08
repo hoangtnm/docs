@@ -54,14 +54,15 @@ RUN /opt/conda/bin/conda config \
 RUN /opt/conda/bin/pip install --no-cache-dir -U \
     albumentations \
     accelerate \
-    torch>=1.12 \
-    pytorch-lightning[extra]~=1.6.0 \
+    black \
+    torch~=1.12.1 \
+    pytorch-lightning[extra]~=1.6.4 \
     torchvision \
     torchaudio \
     torchtext \
-    torchmetrics>=0.7 \
+    torchmetrics>=0.9 \
     tokenizers \
-    transformers[sentencepiece]>=4.16 \
+    transformers[sentencepiece]>=4.21.0 \
     tensorflow>=2.7 \
     tensorflow-addons \
     datasets \
@@ -75,9 +76,12 @@ RUN /opt/conda/bin/pip install --no-cache-dir -U \
     h5py \
     hydra-core>=1.1 \
     imutils \
+    isort \
     jax[cuda11_cudnn805] \
     jiwer \
+    jupyter~=1.0.0 \
     jupyterlab \
+    jupyterlab-code-formatter \
     librosa \
     matplotlib \
     monai \
@@ -91,7 +95,6 @@ RUN /opt/conda/bin/pip install --no-cache-dir -U \
     phonemizer \
     pillow \
     plotly \
-    pynini \
     pyctcdecode \
     scikit-image \
     scikit-learn \
@@ -100,5 +103,4 @@ RUN /opt/conda/bin/pip install --no-cache-dir -U \
     sentencepiece \
     sox \
     tensorboard \
-    tqdm \
-    unidecode
+    tqdm
