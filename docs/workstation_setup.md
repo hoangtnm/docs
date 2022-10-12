@@ -84,11 +84,12 @@ sudo apt-mark hold \
   libnccl2 \
   libnccl-dev
 
-shell="$0"
-echo 'export PATH=/usr/local/cuda-11.2/bin${PATH:+:${PATH}}' >> ~/."${shell}rc"
-echo 'export LIBRARY_PATH=/usr/local/cuda-11.2/lib64${LIBRARY_PATH:+:${LIBRARY_PATH}}' >> ~/."${shell}rc"
-echo 'export LD_LIBRARY_PATH=/usr/local/cuda-11.2/lib64:/usr/local/cuda-11.2/extras/CUPTI/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/."${shell}rc"
-source ${HOME}/."${shell}rc"
+shell=$(ps -o comm= $$)
+tee -a ~/."${shell}rc" << EOF
+export PATH=/usr/local/cuda-11.2/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda-11.2/lib64:/usr/local/cuda-11.2/extras/CUPTI/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+EOF
+source ~/."${shell}rc"
 ```
 
 To remember, the general rule is:
