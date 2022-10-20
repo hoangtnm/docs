@@ -402,7 +402,9 @@ helm repo add nvidia https://nvidia.github.io/gpu-operator \
   --set devicePlugin.env[0].name=DEVICE_LIST_STRATEGY \
   --set devicePlugin.env[0].value="volume-mounts" \
   --set toolkit.env[0].name=ACCEPT_NVIDIA_VISIBLE_DEVICES_ENVVAR_WHEN_UNPRIVILEGED \
-  --set toolkit.env[0].value=false
+  --set-string toolkit.env[0].value=false \
+  --set toolkit.env[1].name=ACCEPT_NVIDIA_VISIBLE_DEVICES_AS_VOLUME_MOUNTS \
+  --set-string toolkit.env[1].value=true
 # helm search repo nvidia -l
 ```
 
