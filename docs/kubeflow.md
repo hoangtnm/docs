@@ -301,21 +301,25 @@ kubectl taint nodes --all node-role.kubernetes.io/master-
 # done
 ```
 
-```bash
-sudo apt-get update && sudo apt-get install -y lvm2
-git clone -b v1.5.12 --depth 1 https://github.com/rook/rook.git \
+<!-- ```bash
+ROOK_VERSION=v1.5.12
+# ROOK_VERSION=v1.7.11
+git clone -b ${ROOK_VERSION} --depth 1 https://github.com/rook/rook.git \
   && cd rook/cluster/examples/kubernetes/ceph \
   && kubectl create -f crds.yaml -f common.yaml -f operator.yaml \
   && kubectl create -f cluster-test.yaml \
   && kubectl apply -f csi/rbd/storageclass-test.yaml \
   && popd
-# git clone -b v1.10.3 --depth 1 https://github.com/rook/rook.git \
-#   && cd rook/deploy/examples \
-#   && kubectl create -f crds.yaml -f common.yaml -f operator.yaml \
-#   && kubectl create -f cluster-test.yaml \
-#   && kubectl apply -f csi/rbd/storageclass-test.yaml \
-#   && popd
+``` -->
 
+```bash
+sudo apt-get update && sudo apt-get install -y lvm2
+git clone -b v1.10.3 --depth 1 https://github.com/rook/rook.git \
+  && cd rook/deploy/examples \
+  && kubectl create -f crds.yaml -f common.yaml -f operator.yaml \
+  && kubectl create -f cluster-test.yaml \
+  && kubectl apply -f csi/rbd/storageclass-test.yaml \
+  && popd
 # watch -c kubectl get pods -n rook-ceph
 # Deploy Rook with Ceph as default StorageClass
 kubectl patch sc rook-ceph-block -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
@@ -341,6 +345,17 @@ kubectl get pods -n knative-serving
 kubectl get pods -n kubeflow
 kubectl get pods -n kubeflow-user-example-com
 ```
+
+Sometimes some applications in your Kubeflow deployment can be in an error state.
+If some pods are in `CrashLoopBackOff` you can further inspect the pod by checking the logs with `kubectl logs -n kubeflow PodName`.
+If you see `“error”:“too many open files”` error messages you can execute the following command on your host machine and the applications will slowly turn to active:
+
+```bash
+sudo sysctl fs.inotify.max_user_instances=1280
+sudo sysctl fs.inotify.max_user_watches=655360
+```
+
+This behavior has been previously observed on pods of `katib-controller`, `kubeflow-profiles`, `kfp-api` and `kfp-persistence`.
 
 ### Kubeflow Dashboard
 
