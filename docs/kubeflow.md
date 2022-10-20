@@ -26,7 +26,7 @@
 
 ## Prerequisites
 
-- Ubuntu 20.04 LTS
+- Ubuntu 20.04 LTS or 22.04 LTS
 - Check network adapters and [required ports](https://kubernetes.io/docs/reference/ports-and-protocols/)
 - Disable swap on the nodes so that kubelet can work correctly
 - Install a supported container runtime such as Docker, containerd or CRI-O
