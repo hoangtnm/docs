@@ -7,6 +7,7 @@ This repo includes documents and scripts, which can be used to set up a comprehe
 - [Set Up Deep Learning Development Environment](docs/workstation_setup.md)
 - [Set Up Python Development Environment](docs/python.md)
 - [Set Up Docker Development Environment](docs/docker.md)
+- [Kubeflow Manifests v1.6 Installation Guide](docs/kubeflow.md)
 - [Oh My Zsh Framework](docs/ohmyzsh.md)
 - [Connecting to GitHub with SSH](docs/github.md)
 - [Performing GPU, CPU, and I/O stress testing on Linux](docs/benchmark.md)
