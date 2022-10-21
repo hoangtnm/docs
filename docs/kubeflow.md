@@ -84,7 +84,7 @@ sudo sed -i \
 
 #### Docker Engine
 
-##### Option 1 (recommended): Install Docker Engine with root privileges <!-- omit in toc -->
+<!-- ##### Option 1 (recommended): Install Docker Engine with root privileges -->
 
 ```bash
 sudo apt-get remove docker docker-engine docker.io containerd runc
@@ -106,7 +106,7 @@ EOF
 sudo systemctl restart docker
 ```
 
-##### Option 2 (not tested): Run the Docker daemon as Rootless mode <!-- omit in toc -->
+<!-- ##### Option 2 (not tested): Run the Docker daemon as Rootless mode
 
 ```bash
 sudo apt-get remove docker docker-engine docker.io containerd runc
@@ -129,6 +129,7 @@ EOF
 systemctl --user restart docker
 sudo sed -i 's/^#no-cgroups = false/no-cgroups = true/;' /etc/nvidia-container-runtime/config.toml
 ```
+-->
 
 <!-- ### Microk8s
 
