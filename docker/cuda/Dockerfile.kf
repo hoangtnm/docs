@@ -1,4 +1,4 @@
-FROM public.ecr.aws/j1r0q0g6/notebooks/notebook-servers/jupyter-pytorch-cuda-full:v1.5.0
+FROM public.ecr.aws/j1r0q0g6/notebooks/notebook-servers/jupyter:v1.5.0
 # FROM public.ecr.aws/j1r0q0g6/notebooks/notebook-servers/codeserver-python:v1.5.0
 
 USER root
@@ -39,3 +39,7 @@ RUN python3 -m pip pip config set global.find-links \
     nemo_toolkit[asr] \
     nvidia-dali-cuda110 \
     pyctcdecode
+
+ENV NVIDIA_VISIBLE_DEVICES all
+ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
+ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64
