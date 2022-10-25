@@ -352,8 +352,13 @@ If some pods are in `CrashLoopBackOff` you can further inspect the pod by checki
 If you see `“error”:“too many open files”` error messages you can execute the following command on your host machine and the applications will slowly turn to active:
 
 ```bash
-sudo sysctl fs.inotify.max_user_instances=1280
-sudo sysctl fs.inotify.max_user_watches=655360
+# sudo sysctl fs.inotify.max_user_instances=1280
+# sudo sysctl fs.inotify.max_user_watches=655360
+sudo tee -a /etc/sysctl.d/kubernetes.conf << EOF
+fs.inotify.max_user_instances=1280
+fs.inotify.max_user_watches=655360
+EOF
+sudo sysctl --system
 ```
 
 This behavior has been previously observed on pods of `katib-controller`, `kubeflow-profiles`, `kfp-api` and `kfp-persistence`.
