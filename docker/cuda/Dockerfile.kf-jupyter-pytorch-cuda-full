@@ -1,5 +1,4 @@
 FROM kubeflownotebookswg/jupyter-pytorch-cuda-full:v1.6.1
-# FROM kubeflownotebookswg/codeserver-python:v1.6.1
 
 USER root
 RUN apt-get update && apt-get install -y --no-install-recommends \
