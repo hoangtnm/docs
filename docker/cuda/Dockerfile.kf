@@ -1,7 +1,5 @@
 FROM kubeflownotebookswg/jupyter-pytorch-cuda-full:v1.6.1
 # FROM kubeflownotebookswg/codeserver-python:v1.6.1
-# FROM public.ecr.aws/j1r0q0g6/notebooks/notebook-servers/jupyter:v1.5.0
-# FROM public.ecr.aws/j1r0q0g6/notebooks/notebook-servers/codeserver-python:v1.5.0
 
 USER root
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -42,9 +40,6 @@ RUN python3 -m pip config set global.find-links \
     && python3 -m pip config set global.extra-index-url \
     "https://developer.download.nvidia.com/compute/redist" \
     && python3 -m pip install --no-cache-dir -U \
-    kfp==1.8.14 \
-    kfp-server-api==1.8.5 \
-    kserve~=0.8.0 \
     albumentations \
     black \
     torch~=1.12.1 \
