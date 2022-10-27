@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     git \
     git-lfs \
+    jq \
     libcurl3-dev \
     libfreetype6-dev \
     libhdf5-serial-dev \
@@ -29,6 +30,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     openmpi-bin \
     python3-dev \
     python3-opencv \
+    nvtop \
     screen \
     && rm -rf /var/lib/apt/lists/*
 USER $NB_UID
