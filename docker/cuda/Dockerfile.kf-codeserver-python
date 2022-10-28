@@ -30,9 +30,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     openmpi-bin \
     python3-dev \
     python3-opencv \
+    nvtop \
     screen \
     && rm -rf /var/lib/apt/lists/*
-USER $NB_UID
+USER ${NB_UID}
 
 RUN python3 -m pip config set global.find-links \
     "https://download.pytorch.org/whl/cu113/torch_stable.html \
@@ -64,28 +65,44 @@ RUN python3 -m pip config set global.find-links \
     pyctcdecode
 
 USER root
-ARG CODESERVER_VERSION=4.8.0
+# https://github.com/coder/code-server/tags
+# https://coder.com/docs/code-server/latest/FAQ
+ARG CODESERVER_VERSION=4.6.1
 RUN wget -qO /tmp/code-server.deb https://github.com/coder/code-server/releases/download/v${CODESERVER_VERSION}/code-server_${CODESERVER_VERSION}_amd64.deb \
     && dpkg -i /tmp/code-server.deb \
     && rm -f /tmp/code-server.deb
+ENV EXTENSIONS_GALLERY='{"serviceUrl": "https://marketplace.visualstudio.com/_apis/public/gallery"}'
 # ENV EXP_1='.extensionsGallery.serviceUrl="https://marketplace.visualstudio.com/_apis/public/gallery"'
 # ENV EXP_2='.extensionsGallery.cacheUrl="https://vscode.blob.core.windows.net/gallery/index"'
 # ENV EXP_3='.extensionsGallery.itemUrl="https://marketplace.visualstudio.com/items"'
-# RUN jq "'${EXP_1} | ${EXP_2} | ${EXP_3}'" /usr/lib/code-server/lib/vscode/product.json \
-#     > /usr/lib/code-server/lib/vscode/product.json
-RUN jq \
-    '.extensionsGallery.serviceUrl="https://marketplace.visualstudio.com/_apis/public/gallery" \
-    | .extensionsGallery.cacheUrl="https://vscode.blob.core.windows.net/gallery/index" \
-    | .extensionsGallery.itemUrl="https://marketplace.visualstudio.com/items"' \
-    /usr/lib/code-server/lib/vscode/product.json > /usr/lib/code-server/lib/vscode/product.json
-USER $NB_UID
+# RUN jq "${EXP_1} | ${EXP_2} | ${EXP_3}" /usr/lib/code-server/lib/vscode/product.json > /tmp/product.json \
+#     && mv /tmp/product.json /usr/lib/code-server/lib/vscode
+USER ${NB_UID}
+
+RUN COMMAND="" \
+    && for ext in $(code-server --list-extensions); do COMMAND+="--install-extension ${ext} --force "; done \
+    && code-server ${COMMAND}
 RUN code-server \
     --install-extension ms-python.python --force \
+    --install-extension ms-python.vscode-pylance \
     --install-extension ms-python.black-formatter \
+    --install-extension ms-python.isort \
+    --install-extension sourcery.sourcery \
     --install-extension VisualStudioExptTeam.vscodeintellicode \
     --install-extension VisualStudioExptTeam.intellicode-api-usage-examples \
     --install-extension VisualStudioExptTeam.vscodeintellicode-completions \
-    --install-extension vscodevim.vim
+    --install-extension k--kato.intellij-idea-keybindings \
+    --install-extension yzhang.markdown-all-in-one \
+    --install-extension esbenp.prettier-vscode \
+    --install-extension vscodevim.vim \
+    && code-server --list-extensions --show-versions
+
+# s6 - 01-copy-tmp-home
+USER root
+RUN mkdir -p /tmp_home \
+    && cp -r ${HOME} /tmp_home \
+    && chown -R ${NB_USER}:users /tmp_home
+USER ${NB_UID}
 
 ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
