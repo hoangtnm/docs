@@ -32,9 +32,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-opencv \
     nvtop \
     screen \
+    zsh \
     && rm -rf /var/lib/apt/lists/*
 USER ${NB_UID}
 
+RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
 RUN python3 -m pip config set global.find-links \
     "https://download.pytorch.org/whl/cu113/torch_stable.html \
     https://storage.googleapis.com/jax-releases/jax_releases.html" \
@@ -67,7 +69,7 @@ RUN python3 -m pip config set global.find-links \
 USER root
 # https://github.com/coder/code-server/tags
 # https://coder.com/docs/code-server/latest/FAQ
-ARG CODESERVER_VERSION=4.6.1
+ARG CODESERVER_VERSION=4.8.1
 RUN wget -qO /tmp/code-server.deb https://github.com/coder/code-server/releases/download/v${CODESERVER_VERSION}/code-server_${CODESERVER_VERSION}_amd64.deb \
     && dpkg -i /tmp/code-server.deb \
     && rm -f /tmp/code-server.deb
