@@ -23,6 +23,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ffmpeg \
     libz-dev \
     pkg-config \
+    rsync \
     software-properties-common \
     sox \
     zlib1g-dev \
@@ -36,11 +37,19 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 USER $NB_UID
 
 RUN python3 -m pip config set global.find-links \
-    "https://download.pytorch.org/whl/cu113/torch_stable.html \
+    "https://download.pytorch.org/whl/cu116/torch_stable.html \
     https://storage.googleapis.com/jax-releases/jax_releases.html" \
     && python3 -m pip config set global.extra-index-url \
-    "https://developer.download.nvidia.com/compute/redist" \
+    "https://developer.download.nvidia.com/compute/redist"
+RUN python3 -m pip uninstall -y \
+    pyOpenSSL \
+    kfserving \
+    fastai \
     && python3 -m pip install --no-cache-dir -U \
+    kfp~=1.8.14 \
+    kfp-server-api \
+    kserve~=0.8.0
+RUN python3 -m pip install --no-cache-dir -U \
     albumentations \
     black \
     torch~=1.12.1 \
@@ -50,7 +59,7 @@ RUN python3 -m pip config set global.find-links \
     torchtext \
     torchmetrics~=0.10.0 \
     tokenizers \
-    transformers[sentencepiece]~=4.23.1 \
+    transformers[sentencepiece]~=4.21.2 \
     datasets \
     fiftyone \
     git+https://github.com/kpu/kenlm.git \
@@ -60,7 +69,7 @@ RUN python3 -m pip config set global.find-links \
     isort \
     jupyterlab \
     jupyterlab-code-formatter \
-    nemo_toolkit[asr] \
+    nemo_toolkit[asr,nlp]~=1.12.0 \
     nvidia-dali-cuda110 \
     pyctcdecode
 

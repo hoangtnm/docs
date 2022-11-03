@@ -23,6 +23,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ffmpeg \
     libz-dev \
     pkg-config \
+    rsync \
     software-properties-common \
     sox \
     zlib1g-dev \
@@ -34,42 +35,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     screen \
     zsh \
     && rm -rf /var/lib/apt/lists/*
-USER ${NB_UID}
-
-RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
-RUN python3 -m pip config set global.find-links \
-    "https://download.pytorch.org/whl/cu113/torch_stable.html \
-    https://storage.googleapis.com/jax-releases/jax_releases.html" \
-    && python3 -m pip config set global.extra-index-url \
-    "https://developer.download.nvidia.com/compute/redist" \
-    && python3 -m pip install --no-cache-dir -U \
-    albumentations \
-    black \
-    torch~=1.12.1 \
-    pytorch-lightning[extra]~=1.7.6 \
-    torchvision \
-    torchaudio \
-    torchtext \
-    torchmetrics~=0.10.0 \
-    tokenizers \
-    transformers[sentencepiece]~=4.23.1 \
-    datasets \
-    fiftyone \
-    git+https://github.com/kpu/kenlm.git \
-    gradio \
-    h5py \
-    imutils \
-    isort \
-    jupyterlab \
-    jupyterlab-code-formatter \
-    nemo_toolkit[asr] \
-    nvidia-dali-cuda110 \
-    pyctcdecode
-
-USER root
+ARG CODESERVER_VERSION=4.8.2
 # https://github.com/coder/code-server/tags
 # https://coder.com/docs/code-server/latest/FAQ
-ARG CODESERVER_VERSION=4.8.1
 RUN wget -qO /tmp/code-server.deb https://github.com/coder/code-server/releases/download/v${CODESERVER_VERSION}/code-server_${CODESERVER_VERSION}_amd64.deb \
     && dpkg -i /tmp/code-server.deb \
     && rm -f /tmp/code-server.deb
@@ -80,6 +48,44 @@ ENV EXTENSIONS_GALLERY='{"serviceUrl": "https://marketplace.visualstudio.com/_ap
 # RUN jq "${EXP_1} | ${EXP_2} | ${EXP_3}" /usr/lib/code-server/lib/vscode/product.json > /tmp/product.json \
 #     && mv /tmp/product.json /usr/lib/code-server/lib/vscode
 USER ${NB_UID}
+
+RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
+RUN python3 -m pip config set global.find-links \
+    "https://download.pytorch.org/whl/cu116/torch_stable.html \
+    https://storage.googleapis.com/jax-releases/jax_releases.html" \
+    && python3 -m pip config set global.extra-index-url \
+    "https://developer.download.nvidia.com/compute/redist"
+RUN python3 -m pip uninstall -y \
+    pyOpenSSL \
+    kfserving \
+    fastai \
+    && python3 -m pip install --no-cache-dir -U \
+    kfp~=1.8.14 \
+    kfp-server-api \
+    kserve~=0.8.0
+RUN python3 -m pip install --no-cache-dir -U \
+    albumentations \
+    black \
+    torch~=1.12.1 \
+    pytorch-lightning[extra]~=1.7.6 \
+    torchvision \
+    torchaudio \
+    torchtext \
+    torchmetrics~=0.10.0 \
+    tokenizers \
+    transformers[sentencepiece]~=4.21.2 \
+    datasets \
+    fiftyone \
+    git+https://github.com/kpu/kenlm.git \
+    gradio \
+    h5py \
+    imutils \
+    isort \
+    jupyterlab \
+    jupyterlab-code-formatter \
+    nemo_toolkit[asr,nlp]~=1.12.0 \
+    nvidia-dali-cuda110 \
+    pyctcdecode
 
 RUN COMMAND="" \
     && for ext in $(code-server --list-extensions); do COMMAND+="--install-extension ${ext} --force "; done \
