@@ -61,6 +61,7 @@ RUN python3 -m pip install --no-cache-dir -U \
     tokenizers \
     transformers[sentencepiece]~=4.21.2 \
     datasets \
+    decord \
     fiftyone \
     git+https://github.com/kpu/kenlm.git \
     gradio \
