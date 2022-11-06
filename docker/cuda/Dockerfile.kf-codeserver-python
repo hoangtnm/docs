@@ -1,5 +1,7 @@
 FROM kubeflownotebookswg/codeserver-python:v1.6.1
 
+ENV DEBIAN_FRONTEND noninteractive
+
 USER root
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
