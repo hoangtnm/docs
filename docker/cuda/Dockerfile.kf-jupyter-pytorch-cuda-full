@@ -3,6 +3,26 @@ FROM kubeflownotebookswg/jupyter-pytorch-cuda-full:v1.6.1
 ENV DEBIAN_FRONTEND noninteractive
 
 USER root
+ENV CUDA_VERSION 11.2
+ENV NV_CUDA_REPO_URL https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64
+RUN curl -fsSL ${NV_CUDA_REPO_URL}/3bf863cc.pub | apt-key add - \
+    && echo "deb ${NV_CUDA_REPO_URL} /" > /etc/apt/sources.list.d/cuda.list \
+    && apt-get update && apt-get install -y --no-install-recommends \
+    cuda-cudart-${CUDA_VERSION/./-} \
+    cuda-compat-${CUDA_VERSION/./-} \
+    cuda-libraries-${CUDA_VERSION/./-} \
+    libnpp-${CUDA_VERSION/./-} \
+    cuda-nvtx-${CUDA_VERSION/./-} \
+    libcusparse-${CUDA_VERSION/./-} \
+    libcublas-${CUDA_VERSION/./-} \
+    libcudnn8=8.1*cuda${CUDA_VERSION} \
+    libnccl2=2.8*cuda${CUDA_VERSION} \
+    && apt-mark hold \
+    libcublas-${CUDA_VERSION/./-} \
+    libcudnn8 \
+    libnccl2 \
+    && ln -s cuda-11.2 /usr/local/cuda \
+    && rm -rf /var/lib/apt/lists/*
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     ca-certificates \
@@ -76,6 +96,8 @@ RUN python3 -m pip install --no-cache-dir -U \
     nvidia-dali-cuda110 \
     pyctcdecode
 
+ENV PATH /usr/local/nvidia/bin:/usr/local/cuda/bin:${PATH}
+ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64
+
 ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
-ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64
