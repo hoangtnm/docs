@@ -11,6 +11,7 @@ RUN curl -fsSL ${NV_CUDA_REPO_URL}/3bf863cc.pub | apt-key add - \
     cuda-cudart-${CUDA_VERSION/./-} \
     cuda-compat-${CUDA_VERSION/./-} \
     cuda-libraries-${CUDA_VERSION/./-} \
+    cuda-nvcc-${CUDA_VERSION/./-} \
     libnpp-${CUDA_VERSION/./-} \
     cuda-nvtx-${CUDA_VERSION/./-} \
     libcusparse-${CUDA_VERSION/./-} \
