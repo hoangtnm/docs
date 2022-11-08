@@ -81,7 +81,7 @@ RUN python3 -m pip install --no-cache-dir -U \
     torchtext \
     torchmetrics~=0.10.0 \
     tokenizers \
-    transformers[sentencepiece]~=4.21.2 \
+    transformers~=4.21.2 \
     datasets \
     decord \
     fiftyone \
