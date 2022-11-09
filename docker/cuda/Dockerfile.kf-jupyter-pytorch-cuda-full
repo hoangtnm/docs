@@ -8,20 +8,35 @@ ENV NV_CUDA_REPO_URL https://developer.download.nvidia.com/compute/cuda/repos/ub
 RUN curl -fsSL ${NV_CUDA_REPO_URL}/3bf863cc.pub | apt-key add - \
     && echo "deb ${NV_CUDA_REPO_URL} /" > /etc/apt/sources.list.d/cuda.list \
     && apt-get update && apt-get install -y --no-install-recommends \
+    libtinfo5 \
+    libncursesw5 \
     cuda-cudart-${CUDA_VERSION/./-} \
+    cuda-cudart-dev-${CUDA_VERSION/./-} \
+    cuda-command-line-tools-${CUDA_VERSION/./-} \
+    cuda-minimal-build-${CUDA_VERSION/./-} \
+    cuda-libraries-dev-${CUDA_VERSION/./-} \
+    cuda-nvml-dev-${CUDA_VERSION/./-} \
+    cuda-nvcc-${CUDA_VERSION/./-} \
+    cuda-nvtx-${CUDA_VERSION/./-} \
+    cuda-nvprof-${CUDA_VERSION/./-} \
     cuda-compat-${CUDA_VERSION/./-} \
     cuda-libraries-${CUDA_VERSION/./-} \
-    cuda-nvcc-${CUDA_VERSION/./-} \
     libnpp-${CUDA_VERSION/./-} \
-    cuda-nvtx-${CUDA_VERSION/./-} \
+    libnpp-dev-${CUDA_VERSION/./-} \
     libcusparse-${CUDA_VERSION/./-} \
+    libcusparse-dev-${CUDA_VERSION/./-} \
     libcublas-${CUDA_VERSION/./-} \
+    libcublas-dev-${CUDA_VERSION/./-} \
     libcudnn8=8.1*cuda${CUDA_VERSION} \
+    libcudnn8-dev=8.1*cuda${CUDA_VERSION} \
     libnccl2=2.8*cuda${CUDA_VERSION} \
+    libnccl-dev=2.8*cuda${CUDA_VERSION} \
     && apt-mark hold \
     libcublas-${CUDA_VERSION/./-} \
     libcudnn8 \
+    libcudnn8-dev \
     libnccl2 \
+    libnccl-dev \
     && ln -s cuda-11.2 /usr/local/cuda \
     && rm -rf /var/lib/apt/lists/*
 RUN apt-get update && apt-get install -y --no-install-recommends \
