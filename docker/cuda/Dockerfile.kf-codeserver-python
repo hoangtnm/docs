@@ -48,6 +48,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     git-lfs \
     jq \
+    libboost-system-dev \
+    libboost-thread-dev \
+    libboost-program-options-dev \
+    libboost-test-dev \
+    libeigen3-dev \
+    libbz2-dev \
+    liblzma-dev \
     libcurl3-dev \
     libfreetype6-dev \
     libhdf5-serial-dev \
