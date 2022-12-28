@@ -47,6 +47,7 @@ RUN /opt/conda/bin/conda config \
     && /opt/conda/bin/conda install -y python=${PYTHON_VERSION} \
     && /opt/conda/bin/pip config set global.find-links \
     "https://download.pytorch.org/whl/cu113/torch_stable.html \
+    https://release.colossalai.org \
     https://storage.googleapis.com/jax-releases/jax_releases.html" \
     && /opt/conda/bin/pip config set global.extra-index-url \
     "https://developer.download.nvidia.com/compute/redist" \
@@ -56,17 +57,18 @@ RUN /opt/conda/bin/pip install --no-cache-dir -U \
     accelerate \
     black \
     torch~=1.12.1 \
-    pytorch-lightning[extra]~=1.6.4 \
+    pytorch-lightning[extra]~=1.8.4 \
     torchvision \
     torchaudio \
     torchtext \
-    torchmetrics>=0.9 \
+    torchmetrics~=0.10.0 \
     tokenizers \
     transformers[sentencepiece]>=4.21.0 \
     tensorflow>=2.7 \
     tensorflow-addons \
     datasets \
-    deepspeed \
+    decord \
+    deepspeed~=0.6.0 \
     fairscale \
     fiftyone \
     flax \

@@ -95,7 +95,8 @@ USER ${NB_UID}
 
 RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
 RUN python3 -m pip config set global.find-links \
-    "https://download.pytorch.org/whl/cu116/torch_stable.html \
+    "https://download.pytorch.org/whl/cu113/torch_stable.html \
+    https://release.colossalai.org \
     https://storage.googleapis.com/jax-releases/jax_releases.html" \
     && python3 -m pip config set global.extra-index-url \
     "https://developer.download.nvidia.com/compute/redist"
@@ -109,28 +110,57 @@ RUN python3 -m pip uninstall -y \
     kserve~=0.8.0
 RUN python3 -m pip install --no-cache-dir -U \
     albumentations \
+    accelerate \
     black \
     torch~=1.12.1 \
-    pytorch-lightning[extra]~=1.7.6 \
+    pytorch-lightning[extra]~=1.8.4 \
     torchvision \
     torchaudio \
     torchtext \
     torchmetrics~=0.10.0 \
     tokenizers \
-    transformers~=4.21.2 \
+    transformers[sentencepiece]>=4.21.0 \
+    tensorflow>=2.7 \
+    tensorflow-addons \
     datasets \
     decord \
+    deepspeed~=0.6.0 \
+    fairscale \
     fiftyone \
+    flax \
     git+https://github.com/kpu/kenlm.git \
+    gluoncv \
     gradio \
     h5py \
+    hydra-core>=1.1 \
     imutils \
     isort \
+    jax[cuda11_cudnn805] \
+    jiwer \
+    jupyter~=1.0.0 \
     jupyterlab \
     jupyterlab-code-formatter \
-    nemo_toolkit[asr,nlp]~=1.12.0 \
+    librosa \
+    matplotlib \
+    monai \
+    nemo_toolkit[asr] \
     nvidia-dali-cuda110 \
-    pyctcdecode
+    omegaconf>=2.1.0 \
+    opencv-python-headless \
+    onnx>=1.7.0 \
+    pandas \
+    phonemizer \
+    pillow \
+    plotly \
+    pyctcdecode \
+    scikit-image \
+    scikit-learn \
+    scipy \
+    seaborn \
+    sentencepiece \
+    sox \
+    tensorboard \
+    tqdm
 
 RUN COMMAND="" \
     && for ext in $(code-server --list-extensions); do COMMAND+="--install-extension ${ext} --force "; done \
