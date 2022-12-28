@@ -36,7 +36,7 @@ ENV PATH /opt/conda/bin:$PATH
 ARG PYTHON_VERSION=3.8
 RUN wget -qO ~/miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
     && chmod +x ~/miniconda.sh \
-    && ~/miniconda.sh -b -p /opt/conda \
+    && bash ~/miniconda.sh -b -p /opt/conda \
     && rm ~/miniconda.sh
 RUN /opt/conda/bin/conda config \
     --set default_threads 4 \
