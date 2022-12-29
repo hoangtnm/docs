@@ -90,7 +90,6 @@ RUN /opt/conda/bin/pip install --no-cache-dir -U \
     nvidia-dali-cuda110 \
     omegaconf \
     opencv-python-headless \
-    onnx \
     pandas \
     phonemizer \
     pillow \

@@ -131,7 +131,6 @@ RUN python3 -m pip install --no-cache-dir -U \
     nvidia-dali-cuda110 \
     omegaconf \
     opencv-python-headless \
-    onnx \
     pandas \
     phonemizer \
     pillow \
