@@ -63,9 +63,7 @@ RUN /opt/conda/bin/pip install --no-cache-dir -U \
     torchtext \
     torchmetrics~=0.10.0 \
     tokenizers \
-    transformers[sentencepiece]>=4.21.0 \
-    tensorflow>=2.7 \
-    tensorflow-addons \
+    transformers[sentencepiece]~=4.25.1 \
     datasets \
     decord \
     deepspeed~=0.6.0 \
@@ -76,7 +74,7 @@ RUN /opt/conda/bin/pip install --no-cache-dir -U \
     gluoncv \
     gradio \
     h5py \
-    hydra-core>=1.1 \
+    hydra-core \
     imutils \
     isort \
     jax[cuda11_cudnn805] \
@@ -90,9 +88,9 @@ RUN /opt/conda/bin/pip install --no-cache-dir -U \
     nemo_toolkit[asr] \
     # git+https://github.com/NVIDIA/NeMo.git#egg=nemo_toolkit[asr,nlp,tts] \
     nvidia-dali-cuda110 \
-    omegaconf>=2.1.0 \
+    omegaconf \
     opencv-python-headless \
-    onnx>=1.7.0 \
+    onnx \
     pandas \
     phonemizer \
     pillow \
