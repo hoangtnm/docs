@@ -396,7 +396,7 @@ The GPU addon will install and configure the following components on the MicroK8
 
 ```bash
 sudo snap install helm --classic
-helm repo add nvidia https://nvidia.github.io/gpu-operator \
+helm repo add nvidia https://helm.ngc.nvidia.com/nvidia \
   && helm repo update \
   && helm install \
   --version=v22.9.0 \
