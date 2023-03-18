@@ -48,6 +48,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     git-lfs \
     jq \
+    libosmesa6-dev \
+    freeglut3-dev \
+    libegl-dev \
     libboost-system-dev \
     libboost-thread-dev \
     libboost-program-options-dev \
