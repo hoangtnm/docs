@@ -68,6 +68,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ffmpeg \
     libz-dev \
     pkg-config \
+    tree \
     rsync \
     software-properties-common \
     sox \
@@ -95,9 +96,7 @@ USER ${NB_UID}
 
 RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
 RUN python3 -m pip config set global.find-links \
-    "https://download.pytorch.org/whl/cu113/torch_stable.html \
-    https://release.colossalai.org \
-    https://storage.googleapis.com/jax-releases/jax_releases.html" \
+    "https://storage.googleapis.com/jax-releases/jax_releases.html" \
     && python3 -m pip config set global.extra-index-url \
     "https://developer.download.nvidia.com/compute/redist"
 RUN python3 -m pip uninstall -y \
@@ -110,10 +109,9 @@ RUN python3 -m pip uninstall -y \
     kserve~=0.8.0
 RUN python3 -m pip install --no-cache-dir -U \
     albumentations \
-    accelerate \
     black \
-    torch~=1.12.1 \
-    pytorch-lightning[extra]~=1.8.4 \
+    torch~=2.0.0 \
+    lightning[extra]~=2.0.0 \
     torchvision \
     torchaudio \
     torchtext \
@@ -123,6 +121,7 @@ RUN python3 -m pip install --no-cache-dir -U \
     datasets \
     decord \
     deepspeed~=0.6.0 \
+    lightning-colossalai \
     fairscale \
     fiftyone \
     flax \
