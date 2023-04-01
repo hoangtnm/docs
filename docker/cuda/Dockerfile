@@ -46,9 +46,7 @@ RUN /opt/conda/bin/conda config \
     --add channels pytorch \
     && /opt/conda/bin/conda install -y python=${PYTHON_VERSION} \
     && /opt/conda/bin/pip config set global.find-links \
-    "https://download.pytorch.org/whl/cu113/torch_stable.html \
-    https://release.colossalai.org \
-    https://storage.googleapis.com/jax-releases/jax_releases.html" \
+    "https://storage.googleapis.com/jax-releases/jax_cuda_releases.html" \
     && /opt/conda/bin/pip config set global.extra-index-url \
     "https://developer.download.nvidia.com/compute/redist" \
     && /opt/conda/bin/conda clean -ya
@@ -77,7 +75,7 @@ RUN /opt/conda/bin/pip install --no-cache-dir -U \
     hydra-core \
     imutils \
     isort \
-    jax[cuda11_cudnn805] \
+    jax[cuda11_pip] \
     jiwer \
     jupyter~=1.0.0 \
     jupyterlab \

@@ -119,7 +119,7 @@ RUN python3 -m pip install --no-cache-dir -U \
     hydra-core \
     imutils \
     isort \
-    jax[cuda11_cudnn805] \
+    jax[cuda11_pip] \
     jiwer \
     jupyter~=1.0.0 \
     jupyterlab \
