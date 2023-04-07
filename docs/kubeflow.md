@@ -400,7 +400,7 @@ sudo snap install helm --classic
 helm repo add nvidia https://helm.ngc.nvidia.com/nvidia \
   && helm repo update \
   && helm install \
-  --version=v22.9.2 \
+  --version=v23.3.1 \
   --generate-name \
   --create-namespace \
   --namespace=gpu-operator-resources \
