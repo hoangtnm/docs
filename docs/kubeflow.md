@@ -74,8 +74,18 @@ distribution=$(. /etc/os-release;echo $ID$VERSION_ID) \
   && curl -s -L https://nvidia.github.io/libnvidia-container/$distribution/libnvidia-container.list | \
     sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
     sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
-sudo apt-get update && sudo apt-get install nvidia-container-runtime=3.11.0-1
-sudo apt-mark hold nvidia-container-runtime
+sudo apt-get update && sudo apt-get install \
+  nvidia-container-toolkit-base=1.11.0-1 \
+  nvidia-container-toolkit=1.11.0-1 \
+  libnvidia-container1=1.11.0-1 \
+  libnvidia-container-tools=1.11.0-1 \
+  nvidia-container-runtime=3.11.0-1
+sudo apt-mark hold \
+  nvidia-container-toolkit-base \
+  nvidia-container-toolkit \
+  libnvidia-container1 \
+  libnvidia-container-tools \
+  nvidia-container-runtime
 
 sudo sed -i \
   -e "s/^#\(accept-nvidia-visible-devices-envvar-when-unprivileged\).*/\1 = false/" \
