@@ -54,30 +54,28 @@ RUN /opt/conda/bin/pip install --no-cache-dir -U \
     albumentations \
     accelerate \
     black \
-    torch~=1.12.1 \
-    pytorch-lightning[extra]~=1.8.4 \
+    torch~=2.0.0 \
+    lightning[extra]~=2.0.0 \
     torchvision \
     torchaudio \
     torchtext \
     torchmetrics~=0.10.0 \
     tokenizers \
-    transformers[sentencepiece]~=4.25.1 \
+    transformers~=4.28.0 \
     datasets \
     decord \
     deepspeed~=0.6.0 \
-    fairscale \
     fiftyone \
     flax \
     git+https://github.com/kpu/kenlm.git \
     gluoncv \
     gradio \
     h5py \
-    hydra-core \
     imutils \
     isort \
     jax[cuda11_pip] \
     jiwer \
-    jupyter~=1.0.0 \
+    # jupyter~=1.0.0 \
     jupyterlab \
     jupyterlab-code-formatter \
     librosa \
@@ -87,9 +85,9 @@ RUN /opt/conda/bin/pip install --no-cache-dir -U \
     # git+https://github.com/NVIDIA/NeMo.git#egg=nemo_toolkit[asr,nlp,tts] \
     nvidia-dali-cuda110 \
     omegaconf \
-    opencv-python-headless \
+    opencv-python \
     pandas \
-    phonemizer \
+    # phonemizer \
     pillow \
     plotly \
     pyctcdecode \
