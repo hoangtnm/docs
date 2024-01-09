@@ -54,8 +54,8 @@ RUN /opt/conda/bin/pip install --no-cache-dir -U \
     albumentations \
     accelerate \
     black \
-    torch~=2.0.0 \
-    lightning[extra]~=2.0.0 \
+    torch~=2.1.0 \
+    lightning[extra]~=2.1.0 \
     torchvision \
     torchaudio \
     torchtext \
@@ -66,14 +66,12 @@ RUN /opt/conda/bin/pip install --no-cache-dir -U \
     decord \
     deepspeed~=0.6.0 \
     fiftyone \
-    flax \
     git+https://github.com/kpu/kenlm.git \
     gluoncv \
     gradio \
     h5py \
     imutils \
     isort \
-    jax[cuda11_pip] \
     jiwer \
     # jupyter~=1.0.0 \
     jupyterlab \
