@@ -1,9 +1,10 @@
+accelerate>=0.25.0
 torch~=2.1.0
-lightning[extra]~=2.1.0
+lightning[extra,strategies]~=2.1.0
 torchvision
 torchaudio
-accelerate
 transformers
+timm
 diffusers
 gradio
 torchmetrics
