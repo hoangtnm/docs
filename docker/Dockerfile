@@ -1,7 +1,8 @@
-# FROM ubuntu:22.04 as base
-FROM nvidia/cuda:12.2.2-devel-ubuntu22.04 as base
+ARG IMAGE=ubuntu
+FROM ubuntu:22.04 as base-ubuntu
+FROM nvidia/cuda:12.2.2-devel-ubuntu22.04 as base-nvidia
 
-FROM base as base-amd64
+FROM base-${IMAGE} as base-amd64
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV NVIDIA_VISIBLE_DEVICES all
@@ -29,6 +30,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-opencv \
     && rm -rf /var/lib/apt/lists/*
 
-COPY requirements.txt .
-RUN python3 -m pip install --no-cache-dir -r requirements.txt \
-    && rm requirements.txt
+COPY requirements_base.txt .
+COPY requirements_dev.txt .
+RUN python3 -m pip install --no-cache-dir \
+    -r requirements_base.txt \
+    # -r requirements_dev.txt \
+    && rm requirements_*.txt
