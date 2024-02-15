@@ -1,2 +1,4 @@
+fastapi
+uvicorn[standard]
 lightning[strategies]~=2.1.0
 nvidia-dali-cuda120
