@@ -2,6 +2,9 @@ ARG IMAGE=nvidia
 
 FROM ubuntu:22.04 as base-ubuntu
 
+ENV NVIDIA_VISIBLE_DEVICES all
+ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
+
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates \
     wget \
@@ -15,8 +18,6 @@ FROM nvidia/cuda:12.1.1-cudnn8-devel-ubuntu20.04 as base-nvidia
 FROM base-${IMAGE} as base-amd64
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV NVIDIA_VISIBLE_DEVICES all
-ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
 
 # ENV TZ="Asia/Ho_Chi_Minh"
 # RUN apt-get update && apt-get install -y --no-install-recommends \
