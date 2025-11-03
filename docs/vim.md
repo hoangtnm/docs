@@ -9,6 +9,7 @@
   - [Keyboard Shortcuts](#keyboard-shortcuts)
 - [Installation](#installation)
   - [Vim Editor](#vim-editor)
+  - [Basic Vim Configurations](#basic-vim-configurations)
   - [Vundle Plugin Manager](#vundle-plugin-manager)
 - [Key Mappings](#key-mappings)
 - [References](#references)
@@ -79,6 +80,26 @@ Parameterized text objects
 ```bash
 sudo apt-get update && sudo apt-get install -y \
     git vim fonts-powerline
+```
+
+### Basic Vim Configurations
+
+```bash
+cat <<EOF > ~/.vimrc
+au BufNewFile,BufRead *.py,*.*rc
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=120 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix
+
+au BufNewFile,BufRead *.js,*.html,*.css
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2
+EOF
 ```
 
 ### Vundle Plugin Manager
