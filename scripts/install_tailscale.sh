@@ -78,6 +78,7 @@ tailscale-install() {
     mkdir -p "${INSTALL_DIR}" || true
     
     # Download the latest static binaries
+    # https://pkgs.tailscale.com/stable/#static
     export TS_VERSION=$(curl -L https://api.github.com/repos/tailscale/tailscale/releases/latest | jq -r '.tag_name[1:]')
     echo "Latest version: ${TS_VERSION}"
     
